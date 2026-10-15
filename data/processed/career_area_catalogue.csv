@@ -1,0 +1,95 @@
+area_id,name,cluster,kind,isco_minor,isco_units,isco_titles,band_min,band_max,major,supplement,n_isco_units
+A001,Government & public-sector leadership,"Education, Social & Public Service",isco,111,"1111,1112,1113,1114",Legislators and Senior Officials,3,3,1,,4
+A002,Executive leadership & general management,"Business, Finance & Management",isco,112,1120,Managing Directors and Chief Executives,3,3,1,,1
+A003,Business services & administration management,"Business, Finance & Management",isco,121,"1211,1212,1213,1219",Business Services and Administration Managers,3,3,1,,4
+A004,"Sales, marketing & R&D management","Business, Finance & Management",isco,122,"1221,1222,1223","Sales, Marketing and Development Managers",3,3,1,,3
+A005,Agricultural production & farm management,"Agriculture, Forestry & Fisheries",isco,"131,611,612,613","1311,1312,6111,6112,6113,6114,6121,6122,6123,6129,6130","Production Managers in Agriculture, Forestry and Fisheries | Market Gardeners and Crop Growers | Animal Producers | Mixed Crop and Animal Producers",2,3,1,,11
+A006,"Manufacturing, construction & logistics management","Production, Trades, Transport & Operations",isco,132,"1321,1322,1323,1324","Manufacturing, Mining, Construction and Distribution Managers",3,3,1,,4
+A007,ICT service management,Technology & Data,isco,133,1330,Information and Communications Technology Service managers,3,3,1,,1
+A008,Professional services management,"Business, Finance & Management",isco,134,"1341,1342,1343,1344,1345,1346,1349",Professional Services Managers,3,3,1,,7
+A009,Hospitality management,"Hospitality, Retail & Personal Services",isco,141,"1411,1412",Hotel and Restaurant Managers,3,3,1,,2
+A010,Retail & wholesale management,"Hospitality, Retail & Personal Services",isco,142,1420,Retail and Wholesale Trade Managers,3,3,1,,1
+A011,"Sports, culture & other services management","Hospitality, Retail & Personal Services",isco,143,"1431,1439",Other Services Managers,3,3,1,,2
+A012,Physical & earth sciences,"Science, Engineering & Built Environment",isco,211,"2111,2112,2113,2114",Physical and Earth Science Professionals,3,3,2,,4
+A013,"Mathematics, statistics & actuarial science","Science, Engineering & Built Environment",isco,212,2120,"Mathematicians, Actuaries and Statisticians",3,3,2,,1
+A014,"Life sciences, biology & laboratory science","Science, Engineering & Built Environment",isco,"213,314","2131,2132,2133,3141,3142,3143",Life Science Professionals | Life Science Technicians and Related Associate Professionals,3,3,2,,6
+A015,Engineering & engineering technology,"Science, Engineering & Built Environment",isco,"214,311","2141,2142,2143,2144,2145,2146,2149,3111,3112,3113,3114,3115,3116,3117,3118,3119",Engineering Professionals (excluding Electrotechnology) | Physical and Engineering Science Technicians,3,3,2,,16
+A016,"Electrical, electronics & telecom engineering","Science, Engineering & Built Environment",isco,215,"2151,2152,2153",Electrotechnology Engineers,3,3,2,,3
+A017,"Architecture, planning, surveying & design","Science, Engineering & Built Environment",isco,216,"2161,2162,2163,2164,2165,2166","Architects, Planners, Surveyors and Designers",3,3,2,,6
+A018,Medicine,"Health, Care & Wellbeing",isco,221,"2211,2212",Medical Doctors,3,3,2,,2
+A019,Nursing & midwifery,"Health, Care & Wellbeing",isco,"222,322","2221,2222,3221,3222",Nursing and Midwifery Professionals | Nursing and Midwifery Associate Professionals,3,3,2,,4
+A020,Traditional & complementary medicine,"Health, Care & Wellbeing",isco,"223,323","2230,3230",Traditional and Complementary Medicine Professionals | Traditional and Complementary Medicine Associate Professionals,3,3,2,,2
+A021,Paramedic & emergency care,"Health, Care & Wellbeing",isco,224,2240,Paramedical Practitioners,3,3,2,,1
+A022,Veterinary science & animal health,"Health, Care & Wellbeing",isco,"225,324","2250,3240",Veterinarians | Veterinary Technicians and Assistants,3,3,2,,2
+A023,"Dentistry, pharmacy & allied health therapies","Health, Care & Wellbeing",isco,226,"2261,2262,2263,2264,2265,2266,2267,2269",Other Health Professionals,3,3,2,,8
+A024,Medical & pharmaceutical technology,"Health, Care & Wellbeing",isco,321,"3211,3212,3213,3214",Medical and Pharmaceutical Technicians,3,3,3,,4
+A025,Community health & health support,"Health, Care & Wellbeing",isco,325,"3251,3252,3253,3254,3255,3256,3257,3258,3259",Other Health Associate Professionals,3,3,3,,9
+A026,Sports coaching & fitness,"Health, Care & Wellbeing",isco,342,"3421,3422,3423",Sports and Fitness Workers,3,3,3,,3
+A027,Personal care & care assistance,"Health, Care & Wellbeing",isco,532,"5321,5322,5329",Personal Care Workers in Health Services,2,2,5,,3
+A028,University & higher education teaching,"Education, Social & Public Service",isco,231,2310,University and Higher Education Teachers,3,3,2,,1
+A029,Vocational education & training,"Education, Social & Public Service",isco,232,2320,Vocational education teachers,3,3,2,,1
+A030,Secondary school teaching,"Education, Social & Public Service",isco,233,2330,Secondary Education Teachers,3,3,2,,1
+A031,Primary & early-childhood teaching and child care,"Education, Social & Public Service",isco,"234,531","2341,2342,5311,5312",Primary School and Early Childhood Teachers | Child Care Workers and Teachers' Aides,2,3,2,,4
+A032,Specialist teaching & education advisory,"Education, Social & Public Service",isco,235,"2351,2352,2353,2354,2355,2356,2359",Other Teaching Professionals,3,3,2,,7
+A033,"Finance, accounting & financial analysis","Business, Finance & Management",isco,"241,331","2411,2412,2413,3311,3312,3313,3314,3315",Finance Professionals | Financial and Mathematical Associate Professionals,3,3,2,,8
+A034,"Management analysis, HR & organisational development","Business, Finance & Management",isco,242,"2421,2422,2423,2424",Administration Professionals,3,3,2,,4
+A035,"Sales, marketing & public relations","Business, Finance & Management",isco,"243,332","2431,2432,2433,2434,3321,3322,3323,3324","Sales, Marketing and Public Relations Professionals | Sales and Purchasing Agents and Brokers",3,3,2,,8
+A036,"Business services: events, recruitment & real estate","Business, Finance & Management",isco,333,"3331,3332,3333,3334,3339",Business Services Agents,3,3,3,,5
+A037,Administrative & executive support,"Business, Finance & Management",isco,"334,412","3341,3342,3343,3344,4120",Administrative and Specialized Secretaries | Secretaries (general),2,3,3,,5
+A038,Office administration,"Business, Finance & Management",isco,411,4110,General Office Clerks,2,2,4,,1
+A039,Data entry & keyboard operation,"Business, Finance & Management",isco,413,"4131,4132",Keyboard Operators,2,2,4,,2
+A040,Banking & payment services clerks,"Business, Finance & Management",isco,421,"4211,4212,4213,4214","Tellers, Money Collectors and Related Clerks",2,2,4,,4
+A041,Numerical & accounting clerks,"Business, Finance & Management",isco,431,"4311,4312,4313",Numerical Clerks,2,2,4,,3
+A042,"Records, mail & other clerical support","Business, Finance & Management",isco,441,"4411,4412,4413,4414,4415,4416,4419",Other Clerical Support Workers,2,2,4,,7
+A043,Software & applications development,Technology & Data,isco,251,"2511,2512,2513,2514,2519",Software and Applications Developers and Analysts,3,3,2,,5
+A044,"Database, systems & network administration",Technology & Data,isco,252,"2521,2522,2523,2529",Database and Network Professionals,3,3,2,,4
+A045,"ICT operations, user support & telecoms",Technology & Data,isco,"351,352","3511,3512,3513,3514,3521,3522",Information and Communications Technology Operations and User Support Technicians | Telecommunications and Broadcasting Technicians,3,3,3,,6
+A046,Law & justice,"Education, Social & Public Service",isco,261,"2611,2612,2619",Legal Professionals,3,3,2,,3
+A047,"Libraries, archives & museums","Creative, Media & Culture",isco,262,"2621,2622","Librarians, Archivists and Curators",3,3,2,,2
+A048,"Social sciences, psychology & counselling","Education, Social & Public Service",isco,263,"2631,2632,2633,2634,2635,2636",Social and Religious Professionals,3,3,2,,6
+A049,"Writing, journalism & languages","Creative, Media & Culture",isco,264,"2641,2642,2643","Authors, Journalists and Linguists",3,3,2,,3
+A050,Creative & performing arts,"Creative, Media & Culture",isco,265,"2651,2652,2653,2654,2655,2656,2659",Creative and Performing Artists,3,3,2,,7
+A051,"Photography, design support & culinary arts","Creative, Media & Culture",isco,343,"3431,3432,3433,3434,3435","Artistic, Cultural and Culinary Associate Professionals",3,3,3,,5
+A052,Government regulation & compliance,"Education, Social & Public Service",isco,335,"3351,3352,3353,3354,3355,3359",Government Regulatory  Associate Professionals,3,3,3,,6
+A053,"Paralegal, social work & community support","Education, Social & Public Service",isco,341,"3411,3412,3413","Legal, Social and Religious Associate Professionals",3,3,3,,3
+A054,"Protective services (police, fire, security)","Education, Social & Public Service",isco,541,"5411,5412,5413,5414,5419",Protective Services Workers,2,2,5,,5
+A055,Client information & contact-centre services,"Hospitality, Retail & Personal Services",isco,422,"4221,4222,4223,4224,4225,4226,4227,4229",Client Information Workers,2,2,4,,8
+A056,"Travel, tourism & guiding","Hospitality, Retail & Personal Services",isco,511,"5111,5112,5113","Travel Attendants, Conductors and Guides",2,2,5,,3
+A057,Cooking & food preparation,"Hospitality, Retail & Personal Services",isco,"512,941","5120,9411,9412",Cooks | Food Preparation Assistants,1,2,5,,3
+A058,Food & beverage service,"Hospitality, Retail & Personal Services",isco,513,"5131,5132",Waiters and Bartenders,2,2,5,,2
+A059,"Hairdressing, beauty & grooming","Hospitality, Retail & Personal Services",isco,514,"5141,5142","Hairdressers, Beauticians and Related Workers",2,2,5,,2
+A060,Housekeeping & facilities supervision,"Hospitality, Retail & Personal Services",isco,515,"5151,5152,5153",Building and Housekeeping Supervisors,2,2,5,,3
+A061,Other personal services,"Hospitality, Retail & Personal Services",isco,516,"5161,5162,5163,5164,5165,5169",Other Personal Services Workers,2,2,5,,6
+A062,"Retail, shop & street sales","Hospitality, Retail & Personal Services",isco,"521,522,523,524,952","5211,5212,5221,5222,5223,5230,5241,5242,5243,5244,5245,5246,5249,9520",Street and Market Salespersons | Shop Aalespersons | Cashiers and Ticket Clerks | Other Sales Workers | Street Vendors (excluding Food),1,2,5,,14
+A063,Cleaning services,"Hospitality, Retail & Personal Services",isco,"911,912","9111,9112,9121,9122,9123,9129","Domestic, Hotel and Office Cleaners and Helpers | Vehicle, Window, Laundry and Other Hand Cleaning Workers",1,1,9,,6
+A064,"Street services, waste collection & other elementary work","Hospitality, Retail & Personal Services",isco,"951,961,962","9510,9611,9612,9613,9621,9622,9623,9624,9629",Street and Related Service Workers | Refuse Workers | Other Elementary Workers,1,1,9,,9
+A065,"Forestry, fishery & hunting","Agriculture, Forestry & Fisheries",isco,"621,622","6210,6221,6222,6223,6224","Forestry and Related Workers | Fishery Workers, Hunters and Trappers",2,2,6,,5
+A066,"Subsistence farming, fishing & agricultural labour","Agriculture, Forestry & Fisheries",isco,"631,632,633,634,921","6310,6320,6330,6340,9211,9212,9213,9214,9215,9216","Subsistence Crop Farmers | Subsistence Livestock Farmers | Subsistence Mixed Crop and Livestock Farmers | Subsistence Fishers, Hunters, Trappers and Gatherers | Agricultural, Forestry and Fishery Labourers",1,2,6,,10
+A067,Industrial production supervision & process control,"Production, Trades, Transport & Operations",isco,"312,313","3121,3122,3123,3131,3132,3133,3134,3135,3139","Mining, Manufacturing and Construction Supervisors | Process Control Technicians",3,3,3,,9
+A068,Aviation & maritime operations,"Production, Trades, Transport & Operations",isco,315,"3151,3152,3153,3154,3155",Ship and Aircraft Controllers and Technicians,3,3,3,,5
+A069,"Stores, logistics & transport clerks","Production, Trades, Transport & Operations",isco,432,"4321,4322,4323",Material Recording and Transport Clerks,2,2,4,,3
+A070,Building & construction trades,"Production, Trades, Transport & Operations",isco,"711,712,713","7111,7112,7113,7114,7115,7119,7121,7122,7123,7124,7125,7126,7127,7131,7132,7133","Building Frame and Related Trades Workers | Building Finishers and Related Trades Workers | Painters, Building Structure Cleaners and Related Trades Workers",2,2,7,,16
+A071,"Metalwork, welding & fabrication","Production, Trades, Transport & Operations",isco,721,"7211,7212,7213,7214,7215","Sheet and Structural Metal Workers, Moulders and Welders, and Related Workers",2,2,7,,5
+A072,"Machinery mechanics, toolmaking & repair","Production, Trades, Transport & Operations",isco,"722,723","7221,7222,7223,7224,7231,7232,7233,7234","Blacksmiths, Toolmakers and Related Trades Workers | Machinery Mechanics and Repairers",2,2,7,,8
+A073,Handicrafts & artisan crafts,"Creative, Media & Culture",isco,731,"7311,7312,7313,7314,7315,7316,7317,7318,7319",Handicraft Workers,2,2,7,,9
+A074,Printing trades,"Production, Trades, Transport & Operations",isco,732,"7321,7322,7323",Printing Trades Workers,2,2,7,,3
+A075,Electrical & electronics installation & repair,"Production, Trades, Transport & Operations",isco,"741,742","7411,7412,7413,7421,7422",Electrical Equipment Installers and Repairers | Electronics and Telecommunications Installers and Repairers,2,2,7,,5
+A076,Food processing & baking trades,"Production, Trades, Transport & Operations",isco,751,"7511,7512,7513,7514,7515,7516",Food Processing and Related Trades Workers,2,2,7,,6
+A077,Woodworking & cabinet-making,"Production, Trades, Transport & Operations",isco,752,"7521,7522,7523","Wood Treaters, Cabinet-makers and Related Trades Workers",2,2,7,,3
+A078,"Garment, tailoring & textile trades","Production, Trades, Transport & Operations",isco,753,"7531,7532,7533,7534,7535,7536",Garment and Related Trades Workers,2,2,7,,6
+A079,Other craft & specialist trades,"Production, Trades, Transport & Operations",isco,754,"7541,7542,7543,7544,7549",Other Craft and Related Workers,2,2,7,,5
+A080,"Mining, metal & chemical plant operation","Production, Trades, Transport & Operations",isco,"811,812,813","8111,8112,8113,8114,8121,8122,8131,8132",Mining and Mineral Processing Plant Operators | Metal Processing and Finishing Plant Operators | Chemical and Photographic Products Plant and Machine Operators,2,2,8,,8
+A081,Manufacturing machine operation,"Production, Trades, Transport & Operations",isco,"814,815,816,817,818","8141,8142,8143,8151,8152,8153,8154,8155,8156,8157,8159,8160,8171,8172,8181,8182,8183,8189","Rubber, Plastic and Paper Products Machine Operators | Textile, Fur and Leather Products Machine Operators | Food and Related Products Machine Operators | Wood Processing and Papermaking Plant Operators | Other Stationary Plant and Machine Operators",2,2,8,,18
+A082,Assembly work,"Production, Trades, Transport & Operations",isco,821,"8211,8212,8219",Assemblers,2,2,8,,3
+A083,Professional driving & rail operation,"Production, Trades, Transport & Operations",isco,"831,832,833","8311,8312,8321,8322,8331,8332","Locomotive Engine Drivers and Related Workers | Car, Van and Motorcycle Drivers | Heavy Truck and Bus Drivers",2,2,8,,6
+A084,Mobile plant & marine deck operation,"Production, Trades, Transport & Operations",isco,"834,835","8341,8342,8343,8344,8350",Mobile Plant Operators | Ships' Deck Crews and Related Workers,2,2,8,,5
+A085,"Labouring in mining, construction, manufacturing & transport","Production, Trades, Transport & Operations",isco,"931,932,933","9311,9312,9313,9321,9329,9331,9332,9333,9334",Mining and Construction Labourers | Manufacturing Labourers | Transport and Storage Labourers,1,1,9,,9
+A086,Data science & analytics,Technology & Data,lens,"212,242,251,252","2120,2511,2521,2421","Mathematicians, Actuaries and Statisticians | Systems Analysts | Database Designers and Administrators | Management and Organization Analysts",3,3,2,data science data analytics data analyst business intelligence dashboards data visualisation data mining predictive modelling statistical modelling big data insights reporting,4
+A087,AI & machine learning engineering,Technology & Data,lens,"212,251","2511,2512,2519,2120","Systems Analysts | Software Developers | Software and Applications Developers and Analysts Not Elsewhere Classified | Mathematicians, Actuaries and Statisticians",3,3,2,artificial intelligence machine learning deep learning natural language processing neural networks model training prediction classification algorithms,4
+A088,"UX, product & digital design",Technology & Data,lens,"216,251","2513,2166,2519,2511",Web and Multimedia Developers | Graphic and Multimedia Designers | Software and Applications Developers and Analysts Not Elsewhere Classified | Systems Analysts,3,3,2,user experience interface design usability prototyping product design digital product requirements stakeholders,4
+A089,"IoT, embedded & smart systems",Technology & Data,lens,"215,251,351","2152,2153,2519,3511",Electronics Engineers | Telecommunications Engineers | Software and Applications Developers and Analysts Not Elsewhere Classified | Information and Communications Technology Operations Technicians,3,3,2,internet of things embedded systems sensors microcontrollers connected devices smart home automation monitoring,4
+A090,Cybersecurity & information security,Technology & Data,lens,252,"2523,2529,2522",Computer Network Professionals | Database and Network Professionals Not Elsewhere Classified | Systems Aministrators,3,3,2,cybersecurity information security protect systems networks threats risk compliance,3
+A091,Psychology & behavioural research,"Education, Social & Public Service",lens,"212,263","2634,2632,2635,2120","Psychologists | Sociologists, Anthropologists and Related Professionals | Social Work and Counselling Professionals | Mathematicians, Actuaries and Statisticians",3,3,2,psychology behavioural science mental health emotional wellbeing human behaviour assessment research,4
+A092,Economics & public policy analysis,"Business, Finance & Management",lens,"212,242,263","2631,2422,2120","Economists | Policy Administration Professionals | Mathematicians, Actuaries and Statisticians",3,3,2,economic analysis policy evaluation public policy research impact assessment,3
+A093,"Training, learning & development","Business, Finance & Management",lens,"235,242","2424,2356,2351",Training and Staff Development Professionals | Information Technology Trainers | Education Methods Specialists,3,3,2,learning and development corporate training instructional design facilitation workshops capability building,3
+A094,Music performance & production,"Creative, Media & Culture",lens,"265,352","2652,2654,3521","Musicians, Singers and Composers | Film, Stage and Related Directors and Producers | Broadcasting and Audio-visual Technicians",3,3,2,music composition performance sound production recording audio musician songwriter,3
