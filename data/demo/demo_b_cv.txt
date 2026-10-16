@@ -1,0 +1,22 @@
+DEMO PERSON B (MADE UP)
+Kandy, Sri Lanka
+
+PROFESSIONAL SUMMARY
+Backend software engineer with a computer science degree, five years building data pipelines and web services.
+Comfortable with databases, cloud deployment and turning messy data into dashboards.
+
+WORK EXPERIENCE
+Software Engineer
+Northwind Systems | Jan 2020 - Present
+- Developed REST APIs in Python and Java, wrote unit tests and deployed services on AWS using Docker.
+- Designed MySQL and PostgreSQL database schemas and a data warehouse with ETL jobs.
+- Built Power BI dashboards and ran regression analysis to forecast monthly demand.
+Junior Developer
+Pixel Works | Jun 2018 - Dec 2019
+- Built web applications with JavaScript and React; gathered user requirements and fixed bugs.
+
+EDUCATION
+BSc (Hons) Computer Science, University of Moratuwa, 2014 - 2018
+
+SKILLS
+Python, Java, JavaScript, SQL, PostgreSQL, MySQL, AWS, Docker, Linux, Power BI, machine learning basics, statistics

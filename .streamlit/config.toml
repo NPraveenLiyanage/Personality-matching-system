@@ -1,0 +1,7 @@
+[theme]
+# One accent colour across Streamlit's own controls and the charts (the report's "blue = the point").
+# Light/dark follows each viewer's own setting.
+primaryColor = "#2a78d6"
+
+[client]
+toolbarMode = "viewer"

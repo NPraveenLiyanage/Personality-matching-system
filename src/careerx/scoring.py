@@ -28,7 +28,7 @@ import pandas as pd
 from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS, TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-from .lexicon import CONCEPTS, TRAIT_CUES
+from .lexicon import DEFAULT_LEXICON, TRAIT_CUES, get_concepts
 from .profile import DIM_NAMES, Profile
 
 DEFAULT_WEIGHTS = dict(interest_strength=0.60, personality_influence=0.35)
@@ -55,10 +55,13 @@ def _rank01(x: np.ndarray) -> np.ndarray:
 
 
 class Scorer:
-    def __init__(self, catalogue: pd.DataFrame, weights: dict | None = None, gamma: float = 1.5):
+    def __init__(self, catalogue: pd.DataFrame, weights: dict | None = None, gamma: float = 1.5,
+                 lexicon: str = DEFAULT_LEXICON):
         self.cat = catalogue.reset_index(drop=True)
-        self.weights = {**DEFAULT_WEIGHTS, **(weights or {})}
+        self.weights = {**DEFAULT_WEIGHTS, **(weights or {})}      # defaults only; never mutated after init
         self.gamma = gamma
+        self.lexicon = lexicon
+        CONCEPTS = get_concepts(lexicon)
 
         self.vec = TfidfVectorizer(tokenizer=tokenize, lowercase=False, token_pattern=None, sublinear_tf=True)
         self.X = self.vec.fit_transform(self.cat["text"])
@@ -123,26 +126,50 @@ class Scorer:
         return out
 
     # ---------------------------------------------------------------- scoring
-    def score(self, p: Profile) -> pd.DataFrame:
+    def score(self, p: Profile, weights: dict | None = None, formula: str = "final",
+              use_readiness: bool = True, use_personality: bool = True) -> pd.DataFrame:
+        """Score every area.
+
+        weights  per-call overrides (interest_strength, personality_influence); the scorer itself is shared and
+                 never mutated, so concurrent app sessions cannot affect each other.
+        formula  "final"    relevance (CV OR interests) x work-style modifier x readiness   (what we use)
+                 "average"  relevance as a weighted MEAN of CV and interests (dilutes CV areas; our 2nd attempt)
+                 "additive" weighted SUM of CV, work-style, interests, readiness (our 1st attempt; fails the gate)
+        The two older formulas exist so the report can reproduce what went wrong.
+        """
+        wts = {**self.weights, **(weights or {})}
         cv, s_cv = self._concept_component({k: v["strength"] for k, v in p.cv_concepts.items()})
         it, s_it = self._concept_component(p.interests)
-        pe_raw, pe_w, per_dim = self._personality_component(p.personality)
-        rd = self._readiness_component(p)
-
-        # relevance: CV evidence OR stated interest (interests are 0 when unknown, never guessed)
-        k = self.weights["interest_strength"] if p.interests_known else 0.0
-        relevance = 1 - (1 - cv) * (1 - k * it)
-        w = {"interest_strength": round(k, 2)}
+        pe_raw, pe_w, per_dim = self._personality_component(p.personality if use_personality else None)
+        rd = self._readiness_component(p) if use_readiness else np.ones(len(self.cat))
 
         # work-style: min-max stretched across the catalogue so it re-orders instead of shifting everything
         if pe_w > 0:
             pe = (pe_raw - pe_raw.min()) / max(pe_raw.max() - pe_raw.min(), 1e-9)
         else:
             pe = np.full(len(self.cat), 0.5)
-        infl = self.weights["personality_influence"] if pe_w > 0 else 0.0
-        modifier = (1 - infl) + infl * pe
+        infl = wts["personality_influence"] if pe_w > 0 else 0.0
+        k = wts["interest_strength"] if p.interests_known else 0.0
 
-        total = 100 * relevance * modifier * rd
+        if formula == "additive":
+            parts = {"cv": (0.35, cv), "readiness": (0.15, rd)}
+            if pe_w > 0:
+                parts["personality"] = (0.25, pe_raw)          # raw (unstretched), as in the first version
+            if p.interests_known:
+                parts["interests"] = (0.25, it)
+            tot_w = sum(w_ for w_, _ in parts.values())
+            total = 100 * sum(w_ * c_ for w_, c_ in parts.values()) / tot_w
+            relevance, modifier = cv, np.ones(len(self.cat))
+        else:
+            if formula == "average":
+                w_it = 0.25 if p.interests_known else 0.0
+                relevance = (0.35 * cv + w_it * it) / (0.35 + w_it)
+            else:
+                # relevance: CV evidence OR stated interest (interests are 0 when unknown, never guessed)
+                relevance = 1 - (1 - cv) * (1 - k * it)
+            modifier = (1 - infl) + infl * pe
+            total = 100 * relevance * modifier * rd
+        w = {"interest_strength": round(k, 2)}
 
         df = self.cat[["area_id", "name", "cluster", "kind", "band_min", "band_max", "isco_minor",
                        "isco_units", "n_isco_units"]].copy()

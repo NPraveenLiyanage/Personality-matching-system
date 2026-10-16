@@ -27,7 +27,7 @@ def _c(id, label, triggers, vocab):
     return Concept(id, label, tuple(triggers), vocab)
 
 
-CONCEPTS: list[Concept] = [
+CONCEPTS_V1: list[Concept] = [
     _c("statistics", "Statistics & quantitative modelling",
        [r"statistic", r"regression", r"forecast", r"arima", r"hypothesis test", r"data sampling", r"probabilit",
         r"quantitative"],
@@ -158,6 +158,67 @@ CONCEPTS: list[Concept] = [
        "business owner manage enterprise start small business sales strategy develop"),
 ]
 
+# ----------------------------------------------------------------------------------------------------
+# v2 adds categories that v1 could not see at all. They were found by running a very different CV (a
+# senior learning/consulting/media career) through a lexicon that had been shaped by a tech CV: none of
+# its defining phrases matched a trigger. The triggers below are CATEGORY terms that any CV in these
+# fields would use, not one person's phrases. v1 is kept unchanged so the difference can be shown.
+CONCEPTS_V2_ADDED: list[Concept] = [
+    _c("learning_development", "Learning & development",
+       [r"learning (and|&) development", r"\bl ?& ?d\b", r"instructional design", r"train[- ]the[- ]trainer",
+        r"e-?learning", r"capability (building|development)", r"leadership development",
+        r"training (programme|program|faculty|needs|unit)", r"\bfacilitat", r"corporate training",
+        r"staff development"],
+       "training staff development learning programmes instructional design facilitate workshops capability "
+       "employees courses curriculum trainers"),
+    _c("people_performance", "People performance & HR consulting",
+       [r"performance (consult|management|improvement)", r"people (analytics|performance|management)",
+        r"talent management", r"culture (transformation|assessment|change)", r"change management",
+        r"organi[sz]ational (development|culture|effectiveness)", r"human capital", r"employee engagement",
+        r"succession planning"],
+       "human resources performance management staff development organisation change employees talent policies "
+       "advise managers"),
+    _c("executive_leadership", "Executive leadership & general management",
+       [r"managing director", r"chief executive", r"\bceo\b", r"\bfounder\b", r"co-?founder",
+        r"principal consultant", r"board of directors", r"general manager", r"strategic (advis|leadership|direction)",
+        r"senior leadership", r"\bhead of\b"],
+       "chief executive managing director direct formulate policy strategy plan organisation lead senior "
+       "management board enterprise"),
+    _c("consulting_advisory", "Consulting & advisory",
+       [r"consult(ant|ing|ancy)", r"\badvis(or|er|ory)\b", r"strategic advis"],
+       "consultant advise advice clients business management analyse recommend organisation improve efficiency"),
+    _c("media_production", "Media & content production",
+       [r"television", r"broadcast", r"\bproducer\b", r"executive producer", r"\bscriptwrit", r"\bepisodes?\b",
+        r"documentar", r"podcast", r"\bradio\b", r"video (production|editing)", r"film director",
+        r"creative director", r"directed (a|the|\d)"],
+       "film television radio broadcast production producer director script media content programme audio "
+       "visual entertainment"),
+    _c("assessment_psychometrics", "Assessment & psychometrics",
+       [r"(leadership|psychometric|personality|competency|talent|culture|skills) assessment", r"psychometric",
+        r"competency (framework|model)", r"\baptitude", r"personality (test|profil|questionnaire)", r"\bcoaching\b"],
+       "assessment tests psychological personality aptitude evaluate measure competency counselling guidance career"),
+    _c("public_policy", "Public policy & government advisory",
+       [r"public sector", r"\bpolicy\b", r"\bgovernment", r"board of investment", r"\bministry\b",
+        r"\bregulation", r"\bfdi\b", r"parliament"],
+       "government policy public administration regulations advise ministry programmes national development "
+       "legislation"),
+]
+CONCEPTS_V2: list[Concept] = CONCEPTS_V1 + CONCEPTS_V2_ADDED
+
+LEXICONS: dict[str, list[Concept]] = {"v1": CONCEPTS_V1, "v2": CONCEPTS_V2}
+LEXICON_LABELS = {"v1": "v1 (first version)", "v2": "v2 (adds learning, consulting, leadership, media, policy)"}
+DEFAULT_LEXICON = "v2"
+
+
+def get_concepts(version: str = DEFAULT_LEXICON) -> list[Concept]:
+    return LEXICONS[version]
+
+
+def concept_by_id(version: str = DEFAULT_LEXICON) -> dict[str, Concept]:
+    return {c.id: c for c in LEXICONS[version]}
+
+
+CONCEPTS = CONCEPTS_V2                      # default; kept so existing imports keep working
 CONCEPT_BY_ID = {c.id: c for c in CONCEPTS}
 
 # Work-style cues, searched in each area's ISCO text. Used for the personality-fit component.

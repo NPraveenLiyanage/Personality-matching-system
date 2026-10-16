@@ -2,7 +2,9 @@
 
     python notebooks/build_notebook.py
 
-The notebook is the written record of the whole process. It is generated from this script so it can be
+The notebook is the written record of the whole process. It is built from a REAL participant's documents kept in the
+git-ignored private_data/ folder, so the notebook itself is git-ignored too. This script contains no personal data.
+It is generated from this script so it can be
 regenerated (and re-executed) whenever the catalogue, lexicon or scoring changes.
 """
 from pathlib import Path
@@ -10,8 +12,16 @@ from pathlib import Path
 import nbformat as nbf
 from nbconvert.preprocessors import ExecutePreprocessor
 
+import sys
+
 HERE = Path(__file__).resolve().parent
-OUT = HERE / "01_career_exploration_phase1.ipynb"
+OUT = HERE / "01_career_exploration_phase1.ipynb"          # git-ignored: it contains results from real documents
+sys.path.insert(0, str(HERE.parent / "src"))
+from careerx import pipeline as _PL  # noqa: E402
+
+if not (_PL.PRIVATE_DIR / "participant_a_cv.pdf").exists():
+    sys.exit("This notebook is built from a real participant's documents, which are never committed. Put "
+             "participant_a_cv.pdf and participant_a_personamap.pdf in private_data/ to build it.")
 
 cells = []
 
@@ -50,9 +60,11 @@ attempt that failed its own quality check. Everything here is regenerated from t
 | 10 | Narrowing to a Top 10 with the participant's own reactions |
 | 11 | Validation design for the internal testers |
 | 12 | Outputs written to disk |
-| 13 | Findings, limitations and next steps |
+| 13 | A second participant exposed a keyword gap (keyword list v2) |
+| 14 | Findings, limitations and next steps |
 
-> **Status honesty.** One participant (Thilakshana R) has been run. No human validation has happened yet.
+> **Status honesty.** One real participant ("Participant A") has been run here. This notebook holds results from
+> their documents, so keep it private. No human validation has happened yet.
 > Everything below is a *first dry run* to be validated by the testers, not a result.
 """)
 
@@ -68,7 +80,16 @@ import matplotlib.pyplot as plt
 from IPython.display import display, Markdown
 
 from careerx import isco, catalogue, lexicon, profile as P, scoring, narrowing, feedback, report
-from careerx import pipeline as PL
+from careerx import pipeline as PL, diagnostics as D
+
+CV = PL.PRIVATE_DIR / "participant_a_cv.pdf"            # real documents: local only, never committed
+PM = PL.PRIVATE_DIR / "participant_a_personamap.pdf"
+
+
+def sample_profile(interest_ids=None, passions_text=""):
+    return PL.private_profile(CV, PM, name="Participant A", today=PL.REFERENCE_DATE,
+                              interest_ids=interest_ids, passions_text=passions_text)
+
 
 pd.set_option("display.width", 200); pd.set_option("display.max_colwidth", 80); pd.set_option("display.max_rows", 120)
 plt.rcParams.update({"figure.dpi": 110, "axes.spines.top": False, "axes.spines.right": False})
@@ -79,7 +100,7 @@ print("project root:", ROOT)
 md(r"""
 ## 1. What the principal consultant asked for
 
-Taken from the meeting transcript (`data/raw/Requirements.md`). The checklist below is what the rest of the
+Taken from the meeting transcript (kept outside the repository). The checklist below is what the rest of the
 notebook is measured against.
 
 | # | Requirement from the transcript | Where handled |
@@ -93,7 +114,7 @@ notebook is measured against.
 | R7 | The CV is not enough: ask about **passions and interests** (the "music not on my CV" case). | §5, §8 |
 | R8 | Let the participant react to suggestions ("why did you pick this / not that"). | §10 |
 | R9 | Both **personality and leadership** inputs feed the match. | §5: personality is used. The PersonaMap report's *leadership-style* section (Goleman styles) is in the PDF but **not yet used by the engine**; no separate leadership questionnaire output has been provided |
-| R10 | Later (not Phase 1): study vs. professional path, apply through the platform, employers invited by email. | §13 |
+| R10 | Later (not Phase 1): study vs. professional path, apply through the platform, employers invited by email. | §14 |
 
 **One requirement is deliberately interpreted:** the consultant wants *every* tester mapped to *all* areas.
 We do exactly that (the machine scores all of them). What we avoid is asking a **human** to react to all of
@@ -108,15 +129,15 @@ Five files were provided: the CV, the PersonaMap report, the requirements transc
 """)
 
 md(r"""
-### 2.1 The participant: Thilakshana R
+### 2.1 The participant: Participant A
 
 The text of both PDFs is parsed by `careerx.profile`. First, what the personality report says (the four
 preference percentages are *parsed from the report text*, not typed in):
 """)
 
 code(r"""
-cv_text = P.extract_pdf_text(PL.SAMPLE_CV)
-pm_text = P.extract_pdf_text(PL.SAMPLE_PM)
+cv_text = P.extract_pdf_text(CV)
+pm_text = P.extract_pdf_text(PM)
 pm = P.parse_personamap(pm_text)
 pd.DataFrame([
     ("Extroversion (E vs I)", pm["E"], "exactly balanced; report says no pattern underneath"),
@@ -129,10 +150,8 @@ pd.DataFrame([
 md(r"""
 **What the two documents say, in my own summary** (so a reader does not need to open the PDFs):
 
-* **CV:** BSc (Hons) IT specialising in Data Science (CGPA 3.5). Currently a Data Analytics intern at Sandbox
-  (regression, dashboards, location intelligence, requirements gathering, QA, workforce/culture research),
-  previously an AI/ML engineer intern. Projects: a bipolar-risk NLP system with an IEEE paper, an IoT climate
-  system, a MERN web system for an Ayurvedic centre, an airline-satisfaction classifier.
+* **CV:** a data-science graduate with two internships (analytics and AI/ML) and several technical projects
+  (NLP, IoT, a web system, a classifier). Details are withheld here on purpose.
 * **PersonaMap (XNFJ, Idealist; ENFJ "Connection Builder" / INFJ "Visionweaver"):** plans very consistently
   but closes decisions slowly; reads how others see a situation; explains abstract material through analogy;
   warm but willing to say the difficult thing. Energy dimension is *genuinely balanced*, and the report
@@ -287,12 +306,12 @@ The profile builder (`careerx.profile`) turns documents into three things:
    and the matched phrases are kept as **cited evidence**.
 2. **Personality preferences** parsed from the PersonaMap text (§2.1).
 3. **Education band and experience**, detected from the CV and **editable** in the app.
-4. **Interests**, the new intake from R7. For Thilakshana none has been collected yet; the engine
+4. **Interests**, the new intake from R7. For Participant A none has been collected yet; the engine
    treats this as *unknown* and does **not** guess.
 """)
 
 code(r"""
-prof = PL.sample_profile()
+prof = sample_profile()
 print("education band:", prof.education_band, "|", prof.education_note)
 print("years experience (work-experience section only):", prof.years_experience)
 ev = pd.DataFrame([dict(concept=lexicon.CONCEPT_BY_ID[k].label, strength=v["strength"], n_mentions=v["n_hits"],
@@ -307,7 +326,7 @@ md(r"""
 Running the profile builder for the first time showed problems that were worth fixing *before* scoring:
 
 * **Referees leaked in.** The CV's REFERENCES section lists "Assistant Lecturer" and "CEO / Founder". Those are
-  the referees' jobs, not hers. Naively, that made *teaching* and *entrepreneurship* look like CV strengths.
+  the referees' jobs, not the candidate's. Naively, that made *teaching* and *entrepreneurship* look like CV strengths.
 * **Generic words.** "environment" (as in "Agile team environment") triggered agriculture/environment;
   "translating requirements" triggered translation/writing.
 * **Saturation.** The first strength formula hit 1.0 for 14 concepts, so nothing was ranked within the CV.
@@ -326,7 +345,7 @@ for k in leaked:
 
 md(r"""
 **Caution on over-fitting (D3).** These lexicon fixes were made after looking at *this one* CV. That is
-normal for a first dry run, but it means Thilakshana's result is partly "tuned to her". The four other
+normal for a first dry run, but it means this result is partly tuned to this one CV. The four other
 testers are the real test of the lexicon, which is exactly what the consultant's validation rounds are for.
 """)
 
@@ -475,17 +494,16 @@ display(scores[["name", "cluster", "score"]].tail(8).round(1))
 """)
 
 md(r"""
-Of the five rows above, **three are management areas** (ICT service, sales/R&D, business services management):
-the CV evidence is real but they typically need track record she does not yet have (readiness ×0.45), which is
-the readiness factor behaving as designed. The other two (**Nursing**, **Training**) simply sit just above the
-0.30 evidence threshold we chose for this table, so they are weak adjacencies, not suppressed strengths.
+All the rows above are **management areas** (ICT service, sales/R&D, business services management): the CV
+evidence is real but these roles typically need track record the participant does not yet have (readiness ×0.45),
+which is the readiness factor behaving as designed. No other CV-evidenced area is being held down.
 
 **Items to verify with the participant (not conclusions):**
 
 * **Cybersecurity & information security** ranks in the top 5 although the CV never mentions security. It
   inherits from *networks, databases, cloud*. Likely a false positive, a good first test of "adjacent but not
   evidenced" in the validation form.
-* **Management analysis, HR & organisational development** ranks only about 12th although the CV has genuine
+* **Management analysis, HR & organisational development** ranks only about 11th although the CV has genuine
   workforce/culture research and stakeholder reporting. The ISCO text for that area is less
   technology-flavoured than the lens areas, so it scores lower on the data vocabulary. A possible false negative.
 * **Seven of the top ten are Technology & Data.** That matches the CV, but is exactly the "one-field" result the
@@ -495,16 +513,16 @@ the readiness factor behaving as designed. The other two (**Nursing**, **Trainin
 md(r"""
 ### 8.3 Hidden passions (R7, the music example)
 
-Thilakshana's profile has no stated interests, so the passion route was not exercised. We can demonstrate
-the mechanism with an *illustrative* intake, clearly not a real answer from her:
+Participant A's profile has no stated interests, so the passion route was not exercised. We can demonstrate
+the mechanism with an *illustrative* intake, clearly not a real answer from them:
 """)
 
 code(r"""
 def top_names(p, k=12):
     return PL.run(p)["scores"][["rank", "name", "score"]].head(k)
 
-base = PL.run(PL.sample_profile())["scores"].set_index("name")
-demo = PL.run(PL.sample_profile(interest_ids=["music_arts", "entrepreneurship"]))["scores"].set_index("name")
+base = PL.run(sample_profile())["scores"].set_index("name")
+demo = PL.run(sample_profile(interest_ids=["music_arts", "entrepreneurship"]))["scores"].set_index("name")
 cmp = pd.DataFrame({
     "rank (CV + PersonaMap)": base["rank"], "score": base.score,
     "rank (+ illustrative passions)": demo["rank"], "score ": demo.score,
@@ -515,11 +533,11 @@ cmp
 """)
 
 md(r"""
-Music performance & production moves from rank 53 to 12, and Creative & performing arts from 67 to 20,
-**without any CV evidence** (CV evidence 0.08 and 0.04). CV-evidenced areas do not lose score (some gain a
+Music performance & production moves from rank 55 to 13, and Creative & performing arts from 66 to 20,
+**without any CV evidence** (CV evidence 0.08 and 0.05). CV-evidenced areas do not lose score (some gain a
 little through shared vocabulary). A stated passion alone is intentionally capped (`interest_strength` = 0.6):
 enough to land in the "worth exploring" list and be flagged, not enough to outrank strong evidence.
-Entrepreneurship moves Executive leadership only from 52nd to 44th: ISCO classifies by job content, not by
+Entrepreneurship moves Executive leadership only from 45th to 44th: ISCO classifies by job content, not by
 the mode of working (D2), and that area is also held down by the experience-based readiness factor.
 """)
 
@@ -567,8 +585,8 @@ tab
 
 md(r"""
 **Reading this honestly.** For this profile, personality **never changes who is in the Top 10**; at the
-extremes it only swaps neighbouring places between ranks 5 and 10 (e.g. UX moves up two places, Economics down
-two) and pushes one area (Social sciences & counselling) from 11th to outside the top 12. That is partly by
+extremes it only swaps neighbouring places between ranks 4 and 10 (e.g. Economics falls two places, UX rises one)
+and pushes one area (Social sciences & counselling) from 12th to 15th. That is partly by
 design (§7: work-style cannot create relevance) and partly because the top ten are all ideas-and-analysis
 work, so their work-style fit is similar. It also means that **for a person with a clear CV, the Top 10 is
 essentially determined by the CV**, so the interests intake (R7) is the main lever for widening the result.
@@ -607,7 +625,7 @@ md(r"""
 
 We have no real reactions yet, so to show the mechanics we script an **imaginary** participant who is drawn to
 people-and-meaning-flavoured analytics and dislikes security/infrastructure. **This is a demonstration of the
-mechanism only; it says nothing about Thilakshana's real preferences.**
+mechanism only; it says nothing about Participant A's real preferences.**
 """)
 
 code(r"""
@@ -654,12 +672,12 @@ pd.DataFrame(rows, columns=["diversity", "clusters in Top 10", "of which Technol
 """)
 
 md(r"""
-**Honest reading.** At the default (0.25) the diversity step changes nothing for this profile, and the
-simulated reactions above give an identical Top 10 with and without it. It only starts acting at about 0.5,
+**Honest reading.** At the default (0.25) the diversity step changes nothing for this profile (first two rows above).
+It only starts acting at about 0.5,
 where the near-duplicates (Cybersecurity ≈ Database administration, similarity 0.92; UX ≈ Software
-development, 0.79) are replaced by areas with **weaker CV evidence** (Finance, Life sciences). So there is a
+development, 0.79) are replaced by areas with **weaker CV evidence** (for example Life sciences and Management analysis). So there is a
 genuine trade-off between *breadth* (the consultant's "spectrum of areas") and *evidence*, and the right
-setting is a product decision to make with him, not something to hide in a default. The app exposes the slider.
+setting is a product decision to make with the consultant, not something to hide in a default. The app exposes the slider.
 """)
 
 # =====================================================================================================
@@ -703,32 +721,100 @@ md(r"""
 """)
 
 code(r"""
-out = ROOT / "outputs"; proc = ROOT / "data" / "processed"
-out.mkdir(exist_ok=True); proc.mkdir(exist_ok=True)
+out = PL.PRIVATE_DIR / "outputs"            # the participant's own results stay in the git-ignored folder
+proc = ROOT / "data" / "processed"          # the catalogue itself is public (it is ISCO-derived)
+out.mkdir(parents=True, exist_ok=True); proc.mkdir(exist_ok=True)
 
 cat.drop(columns=["text", "examples"]).to_csv(proc / "career_area_catalogue.csv", index=False)
-scores.drop(columns=["examples"]).to_csv(out / "thilakshana_full_map.csv", index=False)
-feedback.feedback_template(scores).to_csv(out / "thilakshana_feedback_form.csv", index=False)
-PL.profile_to_json(prof, ROOT / "data" / "profiles" / "thilakshana.json")
+scores.drop(columns=["examples"]).to_csv(out / "participant_a_full_map.csv", index=False)
+feedback.feedback_template(scores).to_csv(out / "participant_a_feedback_form.csv", index=False)
+(PL.PRIVATE_DIR / "profiles").mkdir(exist_ok=True)
+PL.profile_to_json(prof, PL.PRIVATE_DIR / "profiles" / "participant_a.json")
 
 # Model-only Top 10: what the engine gives BEFORE the participant has reacted to anything
 d0 = narrowing.apply_ratings(sl, {})
 sim0 = narrowing.area_similarity(sc.X, list(d0.area_id), list(cat.area_id))
 top_model = narrowing.final_top(d0, sim=sim0, diversity=0.25)
-(out / "thilakshana_top10_model_only.md").write_text(report.build_markdown(prof, top_model, scores, gate), encoding="utf-8")
+(out / "participant_a_top10_model_only.md").write_text(report.build_markdown(prof, top_model, scores, gate), encoding="utf-8")
 print("written:", [p.name for p in sorted(out.iterdir())] + ["data/processed/career_area_catalogue.csv"])
 top_model[["final_rank", "name", "cluster", "score"]].round(1)
 """)
 
 md(r"""
-The table above is the **Phase 1 output for Thilakshana as it stands today**: the model-only Top 10,
-before she has reacted to anything and before she has given any interests. It becomes her real Top 10 only
-after the §10 flow with her own answers.
+The table above is the **Phase 1 output for Participant A as it stands today**: the model-only Top 10,
+before they have reacted to anything and before any interests were given. It becomes their real Top 10 only
+after the §10 flow with their own answers.
 """)
 
 # =====================================================================================================
 md(r"""
-## 13. Findings, limitations and next steps
+## 13. A second participant exposed a keyword gap (keyword list v2)
+
+When a very different CV (a senior learning, consulting and media career) was run through the engine, the top
+areas did not look right. The cause was not the scoring. The keyword list had **no phrases at all** for learning
+and development, executive leadership, consulting, media production or public policy, because it had been shaped
+around one technical CV. This is the over-fitting risk flagged in §5.1, now confirmed.
+
+Two additions came out of it:
+
+* **A coverage check** (`diagnostics.lexicon_coverage`): the share of career-related words in a CV that match a
+  keyword phrase, and the frequent words that match nothing. It would have caught the gap automatically.
+* **Keyword list v2**: seven categories added by *category terms*, not one person's phrases. v1 is kept unchanged
+  so the difference can be shown. A made-up snippet shows the effect:
+""")
+
+code(r"""
+snippet = ("Head of Learning & Development and Managing Director of a consulting firm. Led leadership development "
+           "programmes, instructional design and a train-the-trainer faculty. Strategic advisor to a government "
+           "ministry on policy. Produced a television series for broadcast.")
+for lex in ("v1", "v2"):
+    found = sorted(P.build_profile("x", snippet, lexicon=lex).cv_concepts)
+    cov = D.lexicon_coverage(snippet * 3, PL.get_scorer(lex), lex)
+    print(f"{lex}: {len(found)} concepts found {found}")
+    print(f"     recognises {cov['recognised_pct']}% of career words; ignores: {cov['blind_spots'][:6]}\n")
+""")
+
+md(r"""
+**Did v2 disturb the first participant?** It should not: v2 only adds categories. We check, rather than assume.
+""")
+
+code(r"""
+res = {}
+for lex in ("v1", "v2"):
+    pp = PL.private_profile(CV, PM, name="Participant A", lexicon=lex, today=PL.REFERENCE_DATE)
+    res[lex] = PL.run(pp, lexicon=lex)
+t1, t2 = set(res["v1"]["scores"].head(10).name), set(res["v2"]["scores"].head(10).name)
+print("top-10 overlap v1 vs v2:", len(t1 & t2), "/ 10 | left:", sorted(t1 - t2), "| entered:", sorted(t2 - t1))
+print("generosity check v1:", res["v1"]["gate"]["passed"], "| v2:", res["v2"]["gate"]["passed"])
+""")
+
+md(r"""
+**What v2 did for the second participant** (measured locally on the real CV, so it cannot be reproduced from this
+notebook): Executive leadership moved from #12 to #4, Government and public-sector leadership from #47 to #18 and
+Learning and development from #22 to #11, just outside the top 10. The creative and media areas barely moved.
+So v2 helped, but it did not fix everything.
+
+**Why the creative strand stays low.** The score adds up evidence across concepts, so a management area that many
+concepts touch beats an area that one strong strand (music, media) points to. We tested an alternative where *any*
+strong strand counts. It is **worse**: it changed the top 10 by only one or two places and marked **34%** and **52%**
+of areas as suitable on two rich CVs, failing the generosity check. So the limitation stays, and the interests intake
+is the intended remedy (§8.3).
+
+### 13.1 One more bug: overlapping jobs counted as 63 years
+
+The same CV listed many roles at once (a founder with several ventures and part-time appointments). The first
+estimator **added up** each role's length, so the same calendar years were counted repeatedly and the app's
+number box crashed. It now counts the calendar months covered by at least one role:
+""")
+
+code(r"""
+roles = ("WORK EXPERIENCE\nFounder | Jan 2010 - Dec 2012\nDirector | Jan 2011 - Dec 2013\n"
+         "Advisor | Jun 2012 - Dec 2015\nEDUCATION\n")
+D.naive_vs_merged_years(roles, PL.REFERENCE_DATE)
+""")
+
+md(r"""
+## 14. Findings, limitations and next steps
 
 ### What we can say
 * The **method works end to end** on real documents: parse → catalogue of 94 areas → full scoring → quality
@@ -743,8 +829,8 @@ md(r"""
 ### What we cannot say yet
 * That any of this is *accurate*. One participant, no human feedback. The 90% target is untested.
 * That the lexicon generalises: it was adjusted after looking at this CV (D3).
-* Anything about her interests (the intake has not been collected). The leadership-style section of her
-  PersonaMap report exists (it says she would involve and develop people, and sets pace least naturally) but
+* Anything about their interests (the intake has not been collected). The leadership-style section of their
+  PersonaMap report exists (it says they would involve and develop people, and set pace least naturally) but
   the engine does not use it yet, and no separate leadership questionnaire output has been provided.
 
 ### Known limitations
@@ -768,9 +854,12 @@ md(r"""
 | D6 | Balanced personality dimension gets zero weight | Use 50% as a data point | The report itself refuses to infer a pattern there |
 | D7 | PersonaMap never leaves the participant's own report | Pass to employers in Phase 2 | Report is marked not for selection decisions |
 | D8 | Optional Top-10 diversity penalty (default 0.25, a no-op for this profile; §10.2) | Pure score order | Allow trading evidence for breadth ("a spectrum of areas"); setting to be agreed with the consultant |
+| D9 | Versioned keyword list (v1, v2) | Edit the list in place | Lets us show before and after honestly (§13) |
+| D10 | No real person's data inside the app or repository | Ship a real sample | Real documents only enter at run time and live in session memory or the git-ignored private_data folder |
+| D11 | Keep adding evidence across strands | "Any strong strand counts" scoring | Tested on two rich CVs: it marked 34% and 52% of areas suitable, so it fails the generosity check (§13) |
 
 ### Suggested next steps
-1. Collect the **interests intake** for Thilakshana and rerun. Agree with the consultant how the report's
+1. Collect the **interests intake** for Participant A and rerun. Agree with the consultant how the report's
    leadership-style section (and any separate leadership questionnaire) should feed the match.
 2. Run the other four testers' CV + PersonaMap through the **same** engine, unchanged, and compare the
    score distributions (the gate must hold for all five).

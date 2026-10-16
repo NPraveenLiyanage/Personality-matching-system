@@ -7,7 +7,7 @@ from dataclasses import dataclass, field
 from datetime import date
 from pathlib import Path
 
-from .lexicon import CONCEPTS, CONCEPT_BY_ID
+from .lexicon import DEFAULT_LEXICON, get_concepts
 
 POLE_TO_DIM = {  # label -> (dimension, is_first_pole)
     "extroverted": ("E", True), "introverted": ("E", False),
@@ -21,7 +21,9 @@ DIM_NAMES = {"E": "Extroversion", "N": "Intuition", "F": "Feeling", "J": "Judgin
 @dataclass
 class Profile:
     name: str
-    cv_text: str = ""
+    cv_text: str = ""                                     # references section removed
+    raw_cv_text: str = ""                                 # as provided (session memory only, never stored)
+    lexicon: str = DEFAULT_LEXICON
     cv_concepts: dict = field(default_factory=dict)      # id -> {"strength": float, "hits": [str]}
     interests: dict = field(default_factory=dict)         # id -> strength (stated passions)
     passions_text: str = ""
@@ -53,14 +55,14 @@ def extract_pdf_text(src) -> str:
 
 
 # ---------------------------------------------------------------- CV -> concepts
-def detect_concepts(text: str, weight: float = 1.0) -> dict:
+def detect_concepts(text: str, weight: float = 1.0, lexicon: str = DEFAULT_LEXICON) -> dict:
     """Which lexicon concepts the text evidences, with strength 0..1 and the phrases that triggered it.
 
     raw      = distinct_triggers_hit + 0.3 * extra_occurrences
     strength = raw / (raw + 4)          # saturating but graded: 1 hit ~0.20, 3 hits ~0.43, 6 hits ~0.60
     """
     out = {}
-    for c in CONCEPTS:
+    for c in get_concepts(lexicon):
         distinct, total, hits = 0, 0, []
         for pat in c.triggers:
             ms = list(re.finditer(pat, text, flags=re.I))
@@ -89,12 +91,10 @@ _RANGE = re.compile(
     re.I)
 
 
-def estimate_years(text: str, today: date | None = None) -> float:
-    """Calendar time covered by dated roles in the WORK EXPERIENCE section (projects are not counted).
+def month_ranges(text: str, today: date | None = None) -> list[tuple[int, int]]:
+    """Dated roles in the WORK EXPERIENCE section as (start, end) month indices (year * 12 + month - 1).
 
-    Roles that overlap (a founder who runs several ventures at once, part-time appointments) are merged,
-    so the result is years with at least one dated role, never the sum of the individual role lengths.
-    A year-only end ("Jun 2010 - 2014") is read as December of that year.
+    Projects and education are not counted. A year-only end ("Jun 2010 - 2014") is read as December.
     """
     today = today or date.today()
     m = re.search(r"(work experience|professional experience|employment|experience)\s*\n", text, re.I)
@@ -104,7 +104,7 @@ def estimate_years(text: str, today: date | None = None) -> float:
         end = re.search(r"\n\s*(technical skills|skills|projects|education|references|certifications)\s*\n",
                         rest, re.I)
         seg = rest[:end.start()] if end else rest
-    covered: set[int] = set()                      # month index = year * 12 + (month - 1)
+    out = []
     for r in _RANGE.finditer(seg):
         m1, y1 = _MONTHS[r.group(1).lower()[:3]], int(r.group(2))
         if r.group(5):
@@ -115,7 +115,19 @@ def estimate_years(text: str, today: date | None = None) -> float:
             m2, y2 = _MONTHS[r.group(3).lower()[:3]], int(r.group(4))
         start, end = y1 * 12 + m1 - 1, y2 * 12 + m2 - 1
         if end >= start:
-            covered.update(range(start, end + 1))
+            out.append((start, end))
+    return out
+
+
+def estimate_years(text: str, today: date | None = None) -> float:
+    """Calendar time covered by dated roles.
+
+    Roles that overlap (a founder who runs several ventures at once, part-time appointments) are merged,
+    so the result is years with at least one dated role, never the sum of the individual role lengths.
+    """
+    covered: set[int] = set()
+    for start, end in month_ranges(text, today):
+        covered.update(range(start, end + 1))
     return round(len(covered) / 12, 1)
 
 
@@ -164,10 +176,13 @@ def parse_personamap(text: str) -> dict | None:
 def build_profile(name: str, cv_text: str, personamap_text: str | None = None, personality: dict | None = None,
                   interest_ids: list[str] | None = None, passions_text: str = "",
                   education_band: int | None = None, years_experience: float | None = None,
-                  today: date | None = None) -> Profile:
-    cv_text = strip_references(cv_text)
-    p = Profile(name=name, cv_text=cv_text)
-    p.cv_concepts = detect_concepts(cv_text)
+                  today: date | None = None, lexicon: str = DEFAULT_LEXICON,
+                  keep_references: bool = False) -> Profile:
+    """keep_references=True is only for the 'what broke' demo: referees' job titles then leak into the evidence."""
+    raw_text = cv_text
+    cv_text = cv_text if keep_references else strip_references(cv_text)
+    p = Profile(name=name, cv_text=cv_text, raw_cv_text=raw_text, lexicon=lexicon)
+    p.cv_concepts = detect_concepts(cv_text, lexicon=lexicon)
     band, note = detect_education(cv_text)
     p.education_band = education_band if education_band else band
     p.education_note = note if not education_band else "Set manually"
@@ -180,9 +195,10 @@ def build_profile(name: str, cv_text: str, personamap_text: str | None = None, p
     elif personality:
         p.personality = {d: float(personality[d]) for d in "ENFJ"}
 
-    ints = {i: 1.0 for i in (interest_ids or []) if i in CONCEPT_BY_ID}
+    known = {c.id for c in get_concepts(lexicon)}
+    ints = {i: 1.0 for i in (interest_ids or []) if i in known}
     if passions_text.strip():
-        for cid, v in detect_concepts(passions_text).items():
+        for cid, v in detect_concepts(passions_text, lexicon=lexicon).items():
             ints[cid] = max(ints.get(cid, 0.0), min(1.0, v["strength"] + 0.4))   # stated, so boosted
     p.interests = ints
     p.passions_text = passions_text

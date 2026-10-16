@@ -1,13 +1,14 @@
-"""Career Exploration Engine, Phase 1 test bench.
+"""Test bench: the step-by-step tool a tester uses (profile, map, shortlist, narrowing, Top 10, feedback).
 
-Run:  streamlit run app/streamlit_app.py
+Opened from the router in app/streamlit_app.py (page "Test bench").
 """
-import hashlib
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "src"))
+ROOT = Path(__file__).resolve().parents[2]
+for _p in (ROOT / "src", ROOT / "app"):
+    if str(_p) not in sys.path:
+        sys.path.insert(0, str(_p))
 
 import numpy as np
 import pandas as pd
@@ -15,26 +16,8 @@ import streamlit as st
 
 from careerx import feedback, narrowing, report, scoring
 from careerx import pipeline as PL
-from careerx.profile import DIM_NAMES, build_profile, extract_pdf_text, parse_personamap
-
-st.set_page_config(page_title="Career Exploration: Phase 1 test bench", page_icon="🧭", layout="wide")
-
-EDU_OPTIONS = {3: "Degree level (ISCO skill levels 3-4)", 2: "Diploma / vocational / A-level (skill level 2)",
-               1: "School level (skill level 1)"}
-
-
-@st.cache_data(show_spinner=False)
-def sample_texts():
-    return extract_pdf_text(PL.SAMPLE_CV), extract_pdf_text(PL.SAMPLE_PM)
-
-
-@st.cache_resource(show_spinner=False)
-def scorer():
-    return PL.get_scorer()
-
-
-def sig_of(*parts) -> str:
-    return hashlib.md5(repr(parts).encode()).hexdigest()[:10]
+from careerx.profile import DIM_NAMES, build_profile
+from common import EDU_OPTIONS, label, lexicon_choice, participants_panel, scorer, sig_of, store
 
 
 # ------------------------------------------------------------------ sidebar
@@ -57,11 +40,12 @@ with st.sidebar:
         max_share = st.slider("Selectivity gate: max share of areas 'suitable'", 0.05, 0.5, 0.25, 0.05)
         diversity = st.slider("Top-10 diversity", 0.0, 0.5, 0.25, 0.05,
                               help="0 = pure score order. Higher = fewer near-duplicate areas in the Top 10.")
+        lex = lexicon_choice("bench_lex")
     st.info("Internal testing only. PersonaMap data is confidential to the participant and is not used for "
             "selection decisions.", icon="🔒")
 
-sc = scorer()
-sc.weights = dict(interest_strength=interest_strength, personality_influence=influence)
+sc = scorer(lex)
+weights = dict(interest_strength=interest_strength, personality_influence=influence)   # per call; scorer is shared
 
 st.title("Career Exploration Engine, Phase 1 test bench")
 st.write("From a CV and a personality profile to a short, explainable list of career **areas** "
@@ -72,29 +56,14 @@ tabs = st.tabs(["1 · Profile", "2 · Full map & gate", "3 · Shortlist", "4 · 
 
 # ================================================================== 1. profile
 with tabs[0]:
-    mode = st.radio("Whose profile?", ["Sample: Thilakshana R (real CV + PersonaMap)", "New tester"],
-                    horizontal=True)
+    specs = store()
+    pick = st.selectbox("Whose profile?", list(specs), format_func=lambda k: label(specs[k]), key="bench_pick")
+    spec = specs[pick]
+    participants_panel("bench")
+    name, cv_text = spec["name"], spec["cv_text"]
+    pm_text, manual_pers, ref_date = spec.get("pm_text") or "", spec.get("personality"), spec.get("ref_date")
     left, right = st.columns([1.1, 1])
-    manual_pers = None
     with left:
-        if mode.startswith("Sample"):
-            name = "Thilakshana R"
-            cv_text, pm_text = sample_texts()
-            st.success("Loaded CV and PersonaMap report from data/raw.")
-        else:
-            name = st.text_input("Tester name or code", "Tester 2")
-            cvf = st.file_uploader("CV (PDF)", type="pdf")
-            cv_paste = st.text_area("...or paste CV text", height=140)
-            cv_text = extract_pdf_text(cvf.getvalue()) if cvf else cv_paste
-            pmf = st.file_uploader("PersonaMap report (PDF)", type="pdf")
-            pm_text = extract_pdf_text(pmf.getvalue()) if pmf else ""
-            if not (pm_text and parse_personamap(pm_text)):
-                st.caption("No PersonaMap report parsed. Set the four preferences manually "
-                           "(percent of the first pole):")
-                c = st.columns(4)
-                manual_pers = {d: c[i].slider(DIM_NAMES[d], 0, 100, 50, key=f"pers_{d}")
-                               for i, d in enumerate("ENFJ")}
-
         st.subheader("Interests intake")
         opts = PL.interest_options()
         chosen = st.multiselect("Areas you are genuinely passionate about (beyond what is on your CV)",
@@ -102,12 +71,7 @@ with tabs[0]:
         passions = st.text_area("In your own words: what do you love doing, even if you never studied it?",
                                 height=80, placeholder="e.g. I play the guitar and want to build a startup")
 
-    ref_date = PL.SAMPLE_REFERENCE_DATE if mode.startswith("Sample") else None
-    pre = (build_profile(name, cv_text, pm_text or None, personality=manual_pers, today=ref_date)
-           if cv_text.strip() else None)
-    if pre is None:
-        st.warning("Add a CV to continue.")
-        st.stop()
+    pre = build_profile(name, cv_text, pm_text or None, personality=manual_pers, today=ref_date, lexicon=lex)
 
     with left:
         st.subheader("Level and experience")
@@ -119,10 +83,11 @@ with tabs[0]:
                                      "are merged, part-time roles count). Edit if wrong.")
 
     profile = build_profile(name, cv_text, pm_text or None, personality=manual_pers, interest_ids=chosen,
-                            passions_text=passions, education_band=edu, years_experience=years, today=ref_date)
+                            passions_text=passions, education_band=edu, years_experience=years, today=ref_date,
+                            lexicon=lex)
     # sig_profile: who the participant is (feedback survives calibration changes)
     # sig: also the calibration sliders (the narrowing editor is positional, so it must reset when scores move)
-    sig_profile = sig_of(name, cv_text, pm_text, manual_pers, tuple(chosen), passions, edu, years)
+    sig_profile = sig_of(pick, name, len(cv_text), pm_text[:40], manual_pers, tuple(chosen), passions, edu, years, lex)
     sig = sig_of(sig_profile, interest_strength, influence)
 
     with right:
@@ -148,7 +113,7 @@ with tabs[0]:
             st.caption("No interests given yet: the interests component is skipped, not guessed.")
 
 # ---------------------------------------------------------------- compute
-scores = sc.score(profile)
+scores = sc.score(profile, weights=weights)
 gate = scoring.sanity_gate(scores, max_share=max_share)
 sl = narrowing.shortlist(scores)
 

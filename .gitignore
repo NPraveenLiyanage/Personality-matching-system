@@ -1,0 +1,13 @@
+# Real participant data never goes in the repo (CVs, personality reports, transcripts, their results)
+private_data/
+outputs/
+data/profiles/
+data/raw/Requirements.md
+data/raw/*.pdf
+notebooks/*.ipynb
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/

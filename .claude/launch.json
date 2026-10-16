@@ -4,8 +4,9 @@
     {
       "name": "career-app",
       "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "streamlit", "run", "app/streamlit_app.py", "--server.port", "8765", "--server.headless", "true", "--browser.gatherUsageStats", "false"],
-      "port": 8765
+      "runtimeArgs": ["-m", "streamlit", "run", "app/streamlit_app.py", "--server.port", "8791", "--server.headless", "true", "--browser.gatherUsageStats", "false"],
+      "port": 8791,
+      "autoPort": false
     }
   ]
 }

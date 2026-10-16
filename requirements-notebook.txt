@@ -1,0 +1,6 @@
+# Only needed to rebuild the process notebook (not needed to run the app)
+-r requirements.txt
+matplotlib>=3.7
+nbformat>=5.9
+nbconvert>=7.0
+ipykernel>=6.0
