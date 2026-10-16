@@ -148,13 +148,23 @@ def parse_personamap(text: str) -> dict | None:
     Returns {"E":..,"N":..,"F":..,"J":..} as % of the first pole (Extroverted / iNtuition / Feeling /
     Judging) plus 'code' and 'balanced' (dimensions the report calls evenly balanced), or None.
     """
+    poles = r"(Extroverted|Extraverted|Introverted|Intuition|Intuitive|Sensing|Feeling|Thinking|Judging|Perceiving)"
+    pole_key = {"extraverted": "extroverted", "intuitive": "intuition"}
+    cands: list[tuple[int, str, float]] = []                    # (position in text, dimension, % of first pole)
+    layouts = (r"(\d{1,3}(?:\.\d+)?)[ \t]*%[ \t]*" + poles + r"\b",                    # "70% Introverted"
+               r"\b" + poles + r"\b[ \t]*[(:\u2013\u2014\-]{0,2}[ \t]*(\d{1,3}(?:\.\d+)?)\s*%")  # "Introverted (70%)"
+    for i, rx in enumerate(layouts):
+        for m in re.finditer(rx, text, re.I):
+            pct, label = (m.group(1), m.group(2)) if i == 0 else (m.group(2), m.group(1))
+            label = label.lower()
+            dim, first = POLE_TO_DIM[pole_key.get(label, label)]
+            v = float(pct)
+            if 0 <= v <= 100:
+                cands.append((m.start(), dim, v if first else 100 - v))
     dims: dict[str, float] = {}
     balanced: list[str] = []
-    for m in re.finditer(r"(\d{1,3})\s*%\s*(Extroverted|Introverted|Intuition|Sensing|Feeling|Thinking|"
-                         r"Judging|Perceiving)\b", text, re.I):
-        dim, first = POLE_TO_DIM[m.group(2).lower()]
-        pct = float(m.group(1))
-        dims.setdefault(dim, pct if first else 100 - pct)
+    for _, dim, v in sorted(cands):                             # first mention in the report wins
+        dims.setdefault(dim, v)
     for m in re.finditer(r"(\d{1,3})\s*%\s*[—–\-]+\s*evenly balanced", text, re.I):
         nxt = re.search(r"(Extroverted|Introverted|Intuition|Sensing|Feeling|Thinking|Judging|Perceiving)",
                         text[m.end(): m.end() + 80], re.I)

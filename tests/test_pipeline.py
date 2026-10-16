@@ -44,6 +44,16 @@ def test_personamap_parse_reads_percentages_and_balanced_dimension():
     assert other["E"] == 70.0 and other["F"] == 30.0 and other["J"] == 100.0       # 'Thinking' = 100 - Feeling
 
 
+def test_personamap_parse_handles_label_first_layout():
+    """Calybrate Me layout: '■Introverted (70%) — ...' (label, then percentage in brackets)."""
+    text = ("Profile code\nI S T J\n■Introverted (70%) — moderately drawn to quiet\n■Sensing (75%) — facts\n"
+            "■Thinking (85%) — logic\n■Judging (90%) — structure\n")
+    pm = parse_personamap(text)
+    assert (pm["E"], pm["N"], pm["F"], pm["J"]) == (30.0, 25.0, 15.0, 90.0) and pm["code"] == "ISTJ"
+    assert parse_personamap("Extraverted: 66%\nIntuitive: 62%\nFeeling: 58%\nPerceiving: 55%")["J"] == 45.0
+    assert parse_personamap("no percentages here, profile ISTJ") is None
+
+
 def test_experience_years_merge_overlapping_roles():
     """Regression: concurrent roles used to be summed (63 'years') and crashed the app's number box."""
     cv = ("PROFESSIONAL EXPERIENCE\nFounder | Jan 2010 - Dec 2012\nDirector | Jan 2011 - Dec 2013\n"
