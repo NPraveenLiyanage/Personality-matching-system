@@ -113,8 +113,10 @@ with tabs[0]:
         st.subheader("Level and experience")
         edu = st.selectbox("Education level", list(EDU_OPTIONS), index=list(EDU_OPTIONS).index(pre.education_band),
                            format_func=lambda k: EDU_OPTIONS[k], help=pre.education_note)
-        years = st.number_input("Years of work experience", 0.0, 40.0, float(pre.years_experience), 0.5,
-                                help="Estimated from dated work-experience entries; edit if wrong.")
+        years = st.number_input("Years of work experience", 0.0, 60.0,
+                                float(min(max(pre.years_experience, 0.0), 60.0)), 0.5,
+                                help="Estimated as the calendar time covered by dated roles (overlapping roles "
+                                     "are merged, part-time roles count). Edit if wrong.")
 
     profile = build_profile(name, cv_text, pm_text or None, personality=manual_pers, interest_ids=chosen,
                             passions_text=passions, education_band=edu, years_experience=years, today=ref_date)

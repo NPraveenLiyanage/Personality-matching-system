@@ -41,7 +41,10 @@ class Profile:
 # ---------------------------------------------------------------- text extraction
 def extract_pdf_text(src) -> str:
     """Text of a PDF given a path or raw bytes (PyMuPDF)."""
-    import fitz
+    try:
+        import pymupdf as fitz            # current name; `import fitz` is deprecated
+    except ImportError:                   # older PyMuPDF
+        import fitz
     if isinstance(src, (str, Path)):
         doc = fitz.open(str(src))
     else:
@@ -82,12 +85,17 @@ _MONTHS = {m: i for i, m in enumerate(
     ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"], 1)}
 _RANGE = re.compile(
     r"(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s+(\d{4})\s*[^\w\s]+\s*"
-    r"(?:(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s+(\d{4})|(present|current|now))",
+    r"(?:(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s+(\d{4})|(present|current|now)|(\d{4}))",
     re.I)
 
 
 def estimate_years(text: str, today: date | None = None) -> float:
-    """Sum of month-ranges inside the WORK EXPERIENCE section (projects are not counted)."""
+    """Calendar time covered by dated roles in the WORK EXPERIENCE section (projects are not counted).
+
+    Roles that overlap (a founder who runs several ventures at once, part-time appointments) are merged,
+    so the result is years with at least one dated role, never the sum of the individual role lengths.
+    A year-only end ("Jun 2010 - 2014") is read as December of that year.
+    """
     today = today or date.today()
     m = re.search(r"(work experience|professional experience|employment|experience)\s*\n", text, re.I)
     seg = text
@@ -96,15 +104,19 @@ def estimate_years(text: str, today: date | None = None) -> float:
         end = re.search(r"\n\s*(technical skills|skills|projects|education|references|certifications)\s*\n",
                         rest, re.I)
         seg = rest[:end.start()] if end else rest
-    months = 0
+    covered: set[int] = set()                      # month index = year * 12 + (month - 1)
     for r in _RANGE.finditer(seg):
         m1, y1 = _MONTHS[r.group(1).lower()[:3]], int(r.group(2))
         if r.group(5):
             m2, y2 = today.month, today.year
+        elif r.group(6):
+            m2, y2 = 12, int(r.group(6))
         else:
             m2, y2 = _MONTHS[r.group(3).lower()[:3]], int(r.group(4))
-        months += max(0, (y2 - y1) * 12 + (m2 - m1) + 1)
-    return round(months / 12, 1)
+        start, end = y1 * 12 + m1 - 1, y2 * 12 + m2 - 1
+        if end >= start:
+            covered.update(range(start, end + 1))
+    return round(len(covered) / 12, 1)
 
 
 def detect_education(text: str) -> tuple[int, str]:

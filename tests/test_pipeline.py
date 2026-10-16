@@ -1,5 +1,6 @@
 """Verification checks from the plan. Run:  python tests/test_pipeline.py   (or pytest)"""
 import sys
+from datetime import date
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
@@ -96,6 +97,36 @@ def test_feedback_comment_rule_and_summary():
     assert list(miss.no) == [2]
     summ = feedback.summarise(fb)
     assert summ["rated"] == 3 and len(summ["false_negatives"]) == 1
+
+
+def test_experience_years_merge_overlapping_roles():
+    """Regression: a CV with concurrent roles used to be summed (63 'years') and crashed the app's widget."""
+    from careerx.profile import estimate_years
+    cv = ("PROFESSIONAL EXPERIENCE\n"
+          "Founder | Jan 2010 - Dec 2012\n"
+          "Director | Jan 2011 - Dec 2013\n"
+          "Advisor | Jun 2012 - Present\n"
+          "EDUCATION\n"
+          "BSc | 2005 - 2009\n")
+    yrs = estimate_years(cv, today=date(2020, 1, 1))
+    assert 10.0 <= yrs <= 10.2, yrs                      # Jan 2010 .. Jan 2020, not 3+3+8 = 14
+    year_only = "EXPERIENCE\nX | Jun 2010 - 2014\nEDUCATION\n"
+    assert estimate_years(year_only, today=date(2020, 1, 1)) == 4.6      # Jun 2010 .. Dec 2014
+
+
+def test_app_survives_very_long_career():
+    """The app must not crash when the estimate is large (number_input has a max)."""
+    from streamlit.testing.v1 import AppTest
+    at = AppTest.from_file(str(Path(__file__).resolve().parents[1] / "app" / "streamlit_app.py"),
+                           default_timeout=120).run()
+    at.radio[0].set_value("New tester").run()
+    cv = ("J. Doe. BSc.\n"
+          "WORK EXPERIENCE\n"
+          "Consultant | Jan 1950 - Present\n"
+          "EDUCATION\n"
+          "BSc | 1948 - 1950\n")
+    [t for t in at.text_area if "paste CV" in t.label][0].set_value(cv).run()
+    assert not at.exception, [e.value for e in at.exception]
 
 
 if __name__ == "__main__":
