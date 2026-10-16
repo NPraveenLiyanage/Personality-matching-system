@@ -16,6 +16,15 @@ POLE_TO_DIM = {  # label -> (dimension, is_first_pole)
     "judging": ("J", True), "perceiving": ("J", False),
 }
 DIM_NAMES = {"E": "Extroversion", "N": "Intuition", "F": "Feeling", "J": "Judging"}
+POLE_NAMES = {"E": ("Extroversion", "Introversion"), "N": ("Intuition", "Sensing"),
+              "F": ("Feeling", "Thinking"), "J": ("Judging", "Perceiving")}
+
+
+def dominant_pole(dim: str, pct_first: float) -> tuple[str, float]:
+    """The side the person leans to, with its strength: (E, 30) -> ('Introversion', 70). 50 -> ('Balanced', 50)."""
+    if abs(pct_first - 50) < 1:
+        return f"{POLE_NAMES[dim][0]} / {POLE_NAMES[dim][1]} (balanced)", 50.0
+    return (POLE_NAMES[dim][0], pct_first) if pct_first > 50 else (POLE_NAMES[dim][1], 100 - pct_first)
 
 
 @dataclass

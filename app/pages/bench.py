@@ -16,7 +16,7 @@ import streamlit as st
 
 from careerx import feedback, narrowing, report, scoring
 from careerx import pipeline as PL
-from careerx.profile import DIM_NAMES, build_profile
+from careerx.profile import build_profile, dominant_pole
 from common import EDU_OPTIONS, label, lexicon_choice, participants_panel, scorer, sig_of, store
 
 
@@ -98,7 +98,8 @@ with tabs[0]:
             for i, d in enumerate("ENFJ"):
                 v = profile.personality[d]
                 bal = abs(v - 50) < 1
-                cols[i].metric(DIM_NAMES[d] + (" (balanced)" if bal else ""), f"{v:.0f}%",
+                side, strength = dominant_pole(d, v)
+                cols[i].metric(side, f"{strength:.0f}%",
                                help="Balanced dimensions get zero weight, as the report itself advises." if bal else None)
         else:
             st.caption("No personality data: work-style is ignored (neutral).")

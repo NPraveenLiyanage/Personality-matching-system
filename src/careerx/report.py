@@ -6,7 +6,7 @@ from datetime import date
 import pandas as pd
 
 from .narrowing import reason_text
-from .profile import DIM_NAMES, Profile
+from .profile import Profile, dominant_pole
 
 CONFIDENTIAL = ("CONFIDENTIAL. This report is built from the participant's own CV and personality profile, "
                 "for their self-exploration only. It must not be used for selection, promotion or any decision "
@@ -28,7 +28,7 @@ def build_markdown(profile: Profile, top: pd.DataFrame, scores: pd.DataFrame, ga
     L.append(f"- Education level used: skill band {profile.education_band} ({profile.education_note})")
     L.append(f"- Experience: about {profile.years_experience:g} years")
     if profile.personality:
-        bits = [f"{DIM_NAMES[d]} {profile.personality[d]:.0f}%" for d in "ENFJ"]
+        bits = [f"{n} {p:.0f}%" for n, p in (dominant_pole(d, profile.personality[d]) for d in "ENFJ")]
         L.append(f"- Work style (PersonaMap {profile.personality_code or ''}): " + ", ".join(bits))
     if profile.interests:
         L.append("- Stated interests: " + ", ".join(sorted(profile.interests)))
