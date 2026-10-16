@@ -40,6 +40,10 @@ def scorer(lexicon: str = "v2"):
 
 # ---------------------------------------------------------------------------------- store
 def store() -> dict[str, dict]:
+    new = st.session_state.pop("_new_pick", None)        # select a just-added participant before the pickers draw
+    if new:
+        for k in ("bench_pick", "ov_pick"):
+            st.session_state[k] = new
     if "participants" not in st.session_state:
         st.session_state["participants"] = {s["id"]: s for s in PL.demo_specs()}
     return st.session_state["participants"]
@@ -66,6 +70,9 @@ def _pdf_text(uploaded) -> tuple[str, str | None]:
 def participants_panel(key: str = "pp", expanded: bool = False) -> None:
     """Add real participants (upload or paste) and manage the list. Held in this session only."""
     st.caption("Held in this browser session only. Nothing is saved, logged or shared, and it is gone when you close the page.")
+    msg = st.session_state.pop("_pp_msg", None)
+    if msg:
+        getattr(st, msg[0])(msg[1])
     with st.expander("Add a participant (CV + personality report)", expanded=expanded):
         with st.form(f"{key}_form", clear_on_submit=True):
             name = st.text_input("Name or code", placeholder="e.g. Tester 1")
@@ -98,7 +105,15 @@ def participants_panel(key: str = "pp", expanded: bool = False) -> None:
                 store()[sid] = dict(id=sid, name=(name.strip() or f"Participant {len(store()) + 1}"), cv_text=cv,
                                     pm_text=pm_text if parsed else None,
                                     personality=None if parsed else manual, demo=False, ref_date=None)
-                st.success("Added" + ("" if parsed or not pm_text else ", but the report could not be read, so the sliders were used."))
+                if pm_text and not parsed:
+                    msg = ("warning", "Added, but the PersonaMap report could not be read, so the sliders (default 50%) were used.")
+                elif parsed and len(parsed["found"]) < 4:
+                    miss = ", ".join(DIM_NAMES[d] for d in "ENFJ" if d not in parsed["found"])
+                    msg = ("warning", f"Added, but the report had no readable value for: {miss}. Those show as 50%.")
+                else:
+                    msg = ("success", "Added and selected below.")
+                st.session_state["_pp_msg"] = msg
+                st.session_state["_new_pick"] = sid
                 st.rerun()
     added = [s for s in store().values() if not s.get("demo")]
     if added:
