@@ -52,7 +52,7 @@ def main():
         rows += audit.audit_rows(c["id"], res)
         print(f"{c['id']:<42} {res.status:<9} matched {len(hit)}/{len(exp)} extra {len(extra)} rejected {len(res.rejected)} "
               f"repaired {sum(r.status == 'repaired' for r in res.records)} {('ERR ' + res.errors[0][:90]) if res.errors else ''}")
-    tag = (cfg["model"] or "model").replace("/", "_")
+    tag = __import__("re").sub(r"[^A-Za-z0-9._-]", "_", cfg["model"] or "model")
     rd = ROOT / "bench" / "runs"
     rd.mkdir(parents=True, exist_ok=True)
     (rd / f"phase2_{tag}_{date.today()}.json").write_text(json.dumps(out, indent=1, ensure_ascii=False), encoding="utf-8")

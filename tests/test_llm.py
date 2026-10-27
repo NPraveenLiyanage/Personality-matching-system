@@ -100,8 +100,8 @@ def test_run_match_retries_then_succeeds_and_fails_loudly():
 
 def test_live_demo_b():
     s = client.settings()
-    if not s["api_key"]:
-        print("SKIP live OpenRouter check (no OPENROUTER_API_KEY)")
+    if os.environ.get("CAREERX_RUN_LIVE") != "1" or not s["api_key"]:
+        print("SKIP live OpenRouter check (set CAREERX_RUN_LIVE=1 and OPENROUTER_API_KEY to opt in)")
         return
     p = pipeline.demo_profile("demo_b")
     out = engine.run_match(payload.build_payload(p), pipeline.get_catalogue(), runs=1)

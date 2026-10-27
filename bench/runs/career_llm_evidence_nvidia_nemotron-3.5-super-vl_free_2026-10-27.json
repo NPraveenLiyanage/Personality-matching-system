@@ -1,0 +1,1375 @@
+{
+ "meta": {
+  "engine": "llm_evidence",
+  "date": "2026-10-27",
+  "git_commit": "4ef3930",
+  "k": 10,
+  "n_cases": 1,
+  "n_failed": 0,
+  "cases_sha256": "3b2bcab6ceb56cc3",
+  "catalogue_fingerprint": "11600e8abed14d08",
+  "reference_date": "2026-10-15",
+  "model": "nvidia/nemotron-3.5-super-vl:free",
+  "note": "synthetic design expectations, not expert ratings",
+  "provider": "nvidia",
+  "split": "all",
+  "prompts": "extract_v1+assess_v1",
+  "schema": "evidence_v1",
+  "definitions_status": "draft_unreviewed",
+  "use_confusions": false,
+  "zdr": false,
+  "data_collection": "allow",
+  "fallbacks": "none",
+  "runs_per_case": 1
+ },
+ "aggregate": {
+  "metrics_version": 2,
+  "k": 10,
+  "overall": {
+   "n_cases": 1,
+   "domain_confusion_cases": "0/1",
+   "domain_confusion_rate": 0.0,
+   "trap_areas_displayed_as_supported": 0,
+   "trap_cases_shown_only_as_exploration": 1,
+   "supported_recall": "1/1",
+   "supported_recall_rate": 1.0,
+   "all_supported_found_cases": "1/1",
+   "mean_areas_displayed": 2.0,
+   "top1_in_authored_ok_set": "1/1",
+   "authored_ok_share_of_displayed_lower_bound": 1.0,
+   "abstained_on_no_support_cases": "0/0",
+   "abstained_cases_total": 0
+  },
+  "by_category": {
+   "domain_confusion": {
+    "n_cases": 1,
+    "domain_confusion_cases": "0/1",
+    "domain_confusion_rate": 0.0,
+    "trap_areas_displayed_as_supported": 0,
+    "trap_cases_shown_only_as_exploration": 1,
+    "supported_recall": "1/1",
+    "supported_recall_rate": 1.0,
+    "all_supported_found_cases": "1/1",
+    "mean_areas_displayed": 2.0,
+    "top1_in_authored_ok_set": "1/1",
+    "authored_ok_share_of_displayed_lower_bound": 1.0,
+    "abstained_on_no_support_cases": "0/0",
+    "abstained_cases_total": 0
+   }
+  },
+  "by_split": {
+   "tune": {
+    "n_cases": 1,
+    "domain_confusion_cases": "0/1",
+    "domain_confusion_rate": 0.0,
+    "trap_areas_displayed_as_supported": 0,
+    "trap_cases_shown_only_as_exploration": 1,
+    "supported_recall": "1/1",
+    "supported_recall_rate": 1.0,
+    "all_supported_found_cases": "1/1",
+    "mean_areas_displayed": 2.0,
+    "top1_in_authored_ok_set": "1/1",
+    "authored_ok_share_of_displayed_lower_bound": 1.0,
+    "abstained_on_no_support_cases": "0/0",
+    "abstained_cases_total": 0
+   }
+  }
+ },
+ "per_case": {
+  "c01_hospital_app_developer": {
+   "top": [
+    "A043",
+    "A044"
+   ],
+   "exploration": [
+    "A008",
+    "A018",
+    "A019",
+    "A020",
+    "A021",
+    "A023",
+    "A024",
+    "A025"
+   ],
+   "n_displayed": 2,
+   "supported_found": [
+    "A043"
+   ],
+   "supported_missed": [],
+   "trap_hits": [],
+   "trap_as_exploration": [
+    "A018",
+    "A019",
+    "A021",
+    "A023",
+    "A024",
+    "A025"
+   ],
+   "n_in_authored_ok_set": 2,
+   "top1_in_authored_ok_set": true,
+   "rank_of_first_supported": 1,
+   "abstained": false
+  }
+ },
+ "top": {
+  "c01_hospital_app_developer": [
+   {
+    "area_id": "A043",
+    "name": "Software & applications development",
+    "score": 2.0,
+    "support_class": "direct"
+   },
+   {
+    "area_id": "A044",
+    "name": "Database, systems & network administration",
+    "score": 2.0,
+    "support_class": "direct"
+   }
+  ]
+ },
+ "failed": {},
+ "stages": {
+  "c01_hospital_app_developer": {
+   "status": "repaired",
+   "warnings": [],
+   "validation_log": [],
+   "extraction": {
+    "status": "repaired",
+    "records": [
+     {
+      "evidence_id": "E001",
+      "passage_id": "P002",
+      "section": "summary",
+      "page": null,
+      "quote": "Final-year software engineering student looking for a graduate software development role.",
+      "evidence_type": "stated_interest",
+      "role": null,
+      "candidate_actions": [],
+      "candidate_responsibilities": [],
+      "tools_methods": [],
+      "domain_context": null,
+      "qualification": null,
+      "contribution": "unknown",
+      "dates": {
+       "start": null,
+       "end": null,
+       "duration_months": null,
+       "recency": "unknown"
+      },
+      "negation": false,
+      "ambiguities": [],
+      "missing_info": [
+       "start/end dates"
+      ],
+      "status": "accepted",
+      "changes": [],
+      "flags": []
+     },
+     {
+      "evidence_id": "E002",
+      "passage_id": "P003",
+      "section": "education",
+      "page": null,
+      "quote": "BSc (Hons) Software Engineering, Northfield Institute of Technology, 2022 - 2026",
+      "evidence_type": "listed_skill_only",
+      "role": null,
+      "candidate_actions": [],
+      "candidate_responsibilities": [],
+      "tools_methods": [],
+      "domain_context": null,
+      "qualification": {
+       "subject": "Software Engineering",
+       "level": "BSc (Hons)"
+      },
+      "contribution": "own",
+      "dates": {
+       "start": "2022",
+       "end": "2026",
+       "duration_months": 48,
+       "recency": "recent"
+      },
+      "negation": false,
+      "ambiguities": [],
+      "missing_info": [],
+      "status": "accepted",
+      "changes": [],
+      "flags": [
+       "qualification set on a non-education/certification record"
+      ]
+     },
+     {
+      "evidence_id": "E003",
+      "passage_id": "P004",
+      "section": "projects",
+      "page": null,
+      "quote": "Built a hospital patient management web application using Python, SQL and React.",
+      "evidence_type": "applied_skill",
+      "role": null,
+      "candidate_actions": [
+       "Built a hospital patient management web application using Python, SQL and React.",
+       "Designed the database schema and wrote the REST API for appointment booking and patient records."
+      ],
+      "candidate_responsibilities": [],
+      "tools_methods": [
+       "Python",
+       "SQL",
+       "React"
+      ],
+      "domain_context": "healthcare",
+      "qualification": null,
+      "contribution": "own",
+      "dates": {
+       "start": "2025",
+       "end": null,
+       "duration_months": null,
+       "recency": "unknown"
+      },
+      "negation": false,
+      "ambiguities": [],
+      "missing_info": [
+       "role",
+       "duration",
+       "specific start/end dates"
+      ],
+      "status": "repaired",
+      "changes": [
+       "recency recomputed from end date: 'unknown' (model said 'recent')"
+      ],
+      "flags": []
+     },
+     {
+      "evidence_id": "E004",
+      "passage_id": "P005",
+      "section": "skills",
+      "page": null,
+      "quote": "Python, SQL, React, Git",
+      "evidence_type": "listed_skill_only",
+      "role": null,
+      "candidate_actions": [],
+      "candidate_responsibilities": [],
+      "tools_methods": [
+       "Python",
+       "SQL",
+       "React",
+       "Git"
+      ],
+      "domain_context": null,
+      "qualification": null,
+      "contribution": "unknown",
+      "dates": {
+       "start": null,
+       "end": null,
+       "duration_months": null,
+       "recency": "unknown"
+      },
+      "negation": false,
+      "ambiguities": [],
+      "missing_info": [
+       "proficiency levels",
+       "context of use"
+      ],
+      "status": "accepted",
+      "changes": [],
+      "flags": []
+     }
+    ],
+    "rejected": [],
+    "errors": [],
+    "notes": [
+     "P001 is a header containing only a name and yields no evidence.",
+     "P004 describes a final-year project in a healthcare domain; the participant's personal actions are stated.",
+     "P005 lists skills without application context; individual skills cannot be quoted separately due to the two-word minimum quote rule."
+    ]
+   },
+   "assessment": {
+    "raw_rows": [
+     {
+      "area_id": "A001",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A002",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A003",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A004",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A005",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A006",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A007",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A008",
+      "support_class": "domain_exposure_only",
+      "relevance": null,
+      "evidence": [
+       {
+        "evidence_id": "E003",
+        "basis": "domain"
+       }
+      ],
+      "rationale": "The only link is that the participant built software for a hospital, giving exposure to the healthcare domain rather than health-service management work.",
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A009",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A010",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A011",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A012",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A013",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A014",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A015",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A016",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A017",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A018",
+      "support_class": "domain_exposure_only",
+      "relevance": null,
+      "evidence": [
+       {
+        "evidence_id": "E003",
+        "basis": "domain"
+       }
+      ],
+      "rationale": "The only link is that the participant built software for a hospital, providing exposure to the healthcare domain rather than medical practice.",
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A019",
+      "support_class": "domain_exposure_only",
+      "relevance": null,
+      "evidence": [
+       {
+        "evidence_id": "E003",
+        "basis": "domain"
+       }
+      ],
+      "rationale": "The only link is that the participant built software for a hospital, providing exposure to the healthcare domain rather than nursing or midwifery work.",
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A020",
+      "support_class": "domain_exposure_only",
+      "relevance": null,
+      "evidence": [
+       {
+        "evidence_id": "E003",
+        "basis": "domain"
+       }
+      ],
+      "rationale": "The only link is that the participant built software for a hospital, providing exposure to the healthcare domain rather than traditional or complementary medicine practice.",
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A021",
+      "support_class": "domain_exposure_only",
+      "relevance": null,
+      "evidence": [
+       {
+        "evidence_id": "E003",
+        "basis": "domain"
+       }
+      ],
+      "rationale": "The only link is that the participant built software for a hospital, providing exposure to the healthcare domain rather than paramedical or emergency care work.",
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A022",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A023",
+      "support_class": "domain_exposure_only",
+      "relevance": null,
+      "evidence": [
+       {
+        "evidence_id": "E003",
+        "basis": "domain"
+       }
+      ],
+      "rationale": "The only link is that the participant built software for a hospital, providing exposure to the healthcare domain rather than dentistry, pharmacy, or allied health therapy work.",
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A024",
+      "support_class": "domain_exposure_only",
+      "relevance": null,
+      "evidence": [
+       {
+        "evidence_id": "E003",
+        "basis": "domain"
+       }
+      ],
+      "rationale": "The only link is that the participant built software for a hospital, providing exposure to the healthcare domain rather than medical or pharmaceutical technology work.",
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A025",
+      "support_class": "domain_exposure_only",
+      "relevance": null,
+      "evidence": [
+       {
+        "evidence_id": "E003",
+        "basis": "domain"
+       }
+      ],
+      "rationale": "The only link is that the participant built software for a hospital, providing exposure to the healthcare domain rather than community health or health support work.",
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A026",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A027",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A028",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A029",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A030",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A031",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A032",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A033",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A034",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A035",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A036",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A037",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A038",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A039",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A040",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A041",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A042",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A043",
+      "support_class": "direct",
+      "relevance": 2,
+      "evidence": [
+       {
+        "evidence_id": "E003",
+        "basis": "actions"
+       }
+      ],
+      "rationale": "The participant personally built a web application and wrote a REST API and database schema, showing direct software development work.",
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A044",
+      "support_class": "direct",
+      "relevance": 2,
+      "evidence": [
+       {
+        "evidence_id": "E003",
+        "basis": "actions"
+       }
+      ],
+      "rationale": "The participant personally designed a database schema for a web application, showing direct database design work.",
+      "qualification_gaps": [],
+      "uncertainty": "medium"
+     },
+     {
+      "area_id": "A045",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A046",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A047",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A048",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A049",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A050",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A051",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A052",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A053",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A054",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A055",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A056",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A057",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A058",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A059",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A060",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A061",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A062",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A063",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A064",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A065",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A066",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A067",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A068",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A069",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A070",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A071",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A072",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A073",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A074",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A075",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A076",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A077",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A078",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A079",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A080",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A081",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A082",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A083",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A084",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A085",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A086",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A087",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A088",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A089",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A090",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A091",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A092",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A093",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A094",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     }
+    ],
+    "errors": [],
+    "rejected": []
+   },
+   "exploration": [
+    {
+     "rank": null,
+     "area_id": "A008",
+     "name": "Professional services management",
+     "support_class": "domain_exposure_only",
+     "relevance": null,
+     "evidence_ids": [
+      "E003"
+     ],
+     "explanation": "Context - applied skill (2025): \"Built a hospital patient management web application using Python, SQL and React.\"",
+     "qualification_gaps": [],
+     "uncertainty": "low",
+     "status": "accepted",
+     "label": "Industry exposure only: the work served this field, but the evidence does not show doing this occupation's work"
+    },
+    {
+     "rank": null,
+     "area_id": "A018",
+     "name": "Medicine",
+     "support_class": "domain_exposure_only",
+     "relevance": null,
+     "evidence_ids": [
+      "E003"
+     ],
+     "explanation": "Context - applied skill (2025): \"Built a hospital patient management web application using Python, SQL and React.\"",
+     "qualification_gaps": [],
+     "uncertainty": "low",
+     "status": "accepted",
+     "label": "Industry exposure only: the work served this field, but the evidence does not show doing this occupation's work"
+    },
+    {
+     "rank": null,
+     "area_id": "A019",
+     "name": "Nursing & midwifery",
+     "support_class": "domain_exposure_only",
+     "relevance": null,
+     "evidence_ids": [
+      "E003"
+     ],
+     "explanation": "Context - applied skill (2025): \"Built a hospital patient management web application using Python, SQL and React.\"",
+     "qualification_gaps": [],
+     "uncertainty": "low",
+     "status": "accepted",
+     "label": "Industry exposure only: the work served this field, but the evidence does not show doing this occupation's work"
+    },
+    {
+     "rank": null,
+     "area_id": "A020",
+     "name": "Traditional & complementary medicine",
+     "support_class": "domain_exposure_only",
+     "relevance": null,
+     "evidence_ids": [
+      "E003"
+     ],
+     "explanation": "Context - applied skill (2025): \"Built a hospital patient management web application using Python, SQL and React.\"",
+     "qualification_gaps": [],
+     "uncertainty": "low",
+     "status": "accepted",
+     "label": "Industry exposure only: the work served this field, but the evidence does not show doing this occupation's work"
+    },
+    {
+     "rank": null,
+     "area_id": "A021",
+     "name": "Paramedic & emergency care",
+     "support_class": "domain_exposure_only",
+     "relevance": null,
+     "evidence_ids": [
+      "E003"
+     ],
+     "explanation": "Context - applied skill (2025): \"Built a hospital patient management web application using Python, SQL and React.\"",
+     "qualification_gaps": [],
+     "uncertainty": "low",
+     "status": "accepted",
+     "label": "Industry exposure only: the work served this field, but the evidence does not show doing this occupation's work"
+    },
+    {
+     "rank": null,
+     "area_id": "A023",
+     "name": "Dentistry, pharmacy & allied health therapies",
+     "support_class": "domain_exposure_only",
+     "relevance": null,
+     "evidence_ids": [
+      "E003"
+     ],
+     "explanation": "Context - applied skill (2025): \"Built a hospital patient management web application using Python, SQL and React.\"",
+     "qualification_gaps": [],
+     "uncertainty": "low",
+     "status": "accepted",
+     "label": "Industry exposure only: the work served this field, but the evidence does not show doing this occupation's work"
+    },
+    {
+     "rank": null,
+     "area_id": "A024",
+     "name": "Medical & pharmaceutical technology",
+     "support_class": "domain_exposure_only",
+     "relevance": null,
+     "evidence_ids": [
+      "E003"
+     ],
+     "explanation": "Context - applied skill (2025): \"Built a hospital patient management web application using Python, SQL and React.\"",
+     "qualification_gaps": [],
+     "uncertainty": "low",
+     "status": "accepted",
+     "label": "Industry exposure only: the work served this field, but the evidence does not show doing this occupation's work"
+    },
+    {
+     "rank": null,
+     "area_id": "A025",
+     "name": "Community health & health support",
+     "support_class": "domain_exposure_only",
+     "relevance": null,
+     "evidence_ids": [
+      "E003"
+     ],
+     "explanation": "Context - applied skill (2025): \"Built a hospital patient management web application using Python, SQL and React.\"",
+     "qualification_gaps": [],
+     "uncertainty": "low",
+     "status": "accepted",
+     "label": "Industry exposure only: the work served this field, but the evidence does not show doing this occupation's work"
+    }
+   ],
+   "run_meta": {
+    "extraction": {
+     "schema_version": "evidence_v1",
+     "prompt_version": "extract_v1",
+     "model": "nvidia/nemotron-3.5-super-vl:free",
+     "provider": "Nvidia",
+     "request_id": "gen-1793094913-XHfhXdkdnx84HCum1MkZ",
+     "finish_reason": "stop",
+     "usage": {
+      "prompt_tokens": 1198,
+      "completion_tokens": 8130,
+      "total_tokens": 9328,
+      "cost": 0,
+      "is_byok": false,
+      "prompt_tokens_details": {
+       "cached_tokens": 0,
+       "cache_write_tokens": 0,
+       "audio_tokens": 0,
+       "video_tokens": 0
+      },
+      "cost_details": {
+       "upstream_inference_cost": 0,
+       "upstream_inference_prompt_cost": 0,
+       "upstream_inference_completions_cost": 0
+      },
+      "completion_tokens_details": {
+       "reasoning_tokens": 7413,
+       "image_tokens": 0,
+       "audio_tokens": 0
+      }
+     },
+     "latency_s": 66.57
+    },
+    "assessment": {
+     "model": "nvidia/nemotron-3.5-super-vl:free",
+     "provider": "Nvidia",
+     "request_id": "gen-1793094980-MaPu3z6BM1P1A8ScKHhu",
+     "finish_reason": "stop",
+     "usage": {
+      "prompt_tokens": 20112,
+      "completion_tokens": 14686,
+      "total_tokens": 34798,
+      "cost": 0,
+      "is_byok": false,
+      "prompt_tokens_details": {
+       "cached_tokens": 0,
+       "cache_write_tokens": 0,
+       "audio_tokens": 0,
+       "video_tokens": 0
+      },
+      "cost_details": {
+       "upstream_inference_cost": 0,
+       "upstream_inference_prompt_cost": 0,
+       "upstream_inference_completions_cost": 0
+      },
+      "completion_tokens_details": {
+       "reasoning_tokens": 9328,
+       "image_tokens": 0,
+       "audio_tokens": 0
+      }
+     },
+     "latency_s": 91.81,
+     "prompt_version": "assess_v1"
+    }
+   }
+  }
+ }
+}

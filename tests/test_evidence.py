@@ -26,7 +26,7 @@ def gold_record(pid, e):
         passage_id=pid, quote=e["quote"], evidence_type=e["type"], role=e.get("role"),
         candidate_actions=e.get("actions", []), candidate_responsibilities=[], tools_methods=e.get("tools", []),
         domain_context=e.get("domain"), qualification=e.get("qualification"), contribution=e["contribution"],
-        dates=dict(start=e.get("start"), end=e.get("end"), duration_months=None, recency="unknown"),
+        dates=dict(start=e.get("start"), end=e.get("end"), duration_months=None, recency=validate.recency_from_end(e.get("end"))),
         negation=e.get("negation", False), ambiguities=e.get("ambiguities", []), missing_info=[])
 
 
@@ -272,3 +272,69 @@ def test_audit_rows_and_csv(tmp_path):
     audit.write_audit_csv(p, rows)
     head = p.read_text(encoding="utf-8").splitlines()[0]
     assert head.split(",") == audit.COLUMNS and len(rows) == 4
+
+
+# ------------------------------------------------------------------ derived fields and flags (added after the first live run)
+def test_recency_is_computed_locally_from_the_reference_date():
+    from careerx import pipeline
+    assert schema.REFERENCE_DATE == pipeline.REFERENCE_DATE
+    f = validate.recency_from_end
+    assert [f("present"), f("2025"), f("Mar 2021"), f("2018"), f("2012"), f("2005"), f(None), f("n/a")] ==         ["recent", "recent", "recent", "mid", "old", "old", "unknown", "unknown"]
+    ing, d = _one("x10_plc_ambiguity", dates=dict(start="2021", end="2024", duration_months=None, recency="old"))
+    rec = extract.run_extraction(ing, fake(d)).records[0]
+    assert rec.dates["recency"] == "recent" and any("recomputed" in c for c in rec.changes)
+
+
+def test_summary_claims_and_ungrounded_actions_are_flagged_not_blocked():
+    ing = ing_for("x10_plc_ambiguity")
+    summ = next(p for p in ing.sendable() if p.section == "summary")
+    d = dict(records=[gold_record(summ.id, dict(quote="Maintenance technician with three years in textile manufacturing.",
+                                                type="employment", contribution="own", actions=["negotiated supplier contracts for steel"]))],
+             extraction_notes=[])
+    rec = extract.run_extraction(ing, fake(d)).records[0]
+    assert any("summary section" in f for f in rec.flags) and any("not grounded" in f for f in rec.flags)
+    assert rec.status == "accepted" or all("recomputed" in c for c in rec.changes)
+
+
+def test_qualification_in_education_section_is_typed_from_the_section_not_the_model():
+    text = "\n".join(["EDUCATION", "Diploma in Nursing, Lakeview School of Nursing, 2018", "",
+                      "CERTIFICATIONS", "Basic Life Support certification, renewed 2023"])
+    ing = ingest.ingest_text(text)
+    edu = next(p for p in ing.sendable() if p.section == "education")
+    cert = next(p for p in ing.sendable() if p.section == "certifications")
+    d = dict(records=[
+        gold_record(edu.id, dict(quote="Diploma in Nursing, Lakeview School of Nursing", type="listed_skill_only", contribution="own",
+                                 qualification={"subject": "Nursing", "level": "Diploma"})),
+        gold_record(cert.id, dict(quote="Basic Life Support certification", type="applied_skill", contribution="own",
+                                  qualification={"subject": "Basic Life Support", "level": None}))], extraction_notes=[])
+    res = extract.run_extraction(ing, fake(d))
+    assert [r.evidence_type for r in res.records] == ["education", "certification"] and res.status == "repaired"
+    assert "section" in res.records[0].changes[0]
+
+
+def test_second_account_is_used_only_for_auth_or_credit_failures(monkeypatch):
+    class R:
+        def __init__(self, code, body=None):
+            self.status_code, self._b, self.text = code, body, "x"
+        def json(self):
+            return self._b
+    ok = {"choices": [{"message": {"content": "{}"}, "finish_reason": "stop"}], "model": "m", "id": "r"}
+    seen = []
+
+    def post_factory(codes):
+        def post(url, json=None, headers=None, timeout=None):
+            seen.append(headers["Authorization"])
+            return codes[headers["Authorization"]]
+        return post
+    cfg = dict(api_key="K1", api_key_2="K2", model="m", provider="p", max_tokens=10, timeout=1)
+    monkeypatch.setattr(client.requests, "post", post_factory({"Bearer K1": R(402), "Bearer K2": R(200, ok)}))
+    res = client.chat("s", "u", {}, cfg)
+    assert res.account == 2 and seen == ["Bearer K1", "Bearer K2"]
+    seen.clear()
+    monkeypatch.setattr(client.time, "sleep", lambda s: None)
+    monkeypatch.setattr(client.requests, "post", post_factory({"Bearer K1": R(429), "Bearer K2": R(200, ok)}))
+    with pytest.raises(client.EvidenceLLMError, match="429"):
+        client.chat("s", "u", {}, cfg)
+    assert set(seen) == {"Bearer K1"}                      # a rate limit never moves to the other account
+    monkeypatch.setattr(client.requests, "post", post_factory({"Bearer K1": R(200, ok)}))
+    assert client.chat("s", "u", {}, dict(cfg, api_key_2="")).account == 1

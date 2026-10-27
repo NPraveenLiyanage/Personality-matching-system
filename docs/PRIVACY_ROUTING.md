@@ -21,3 +21,11 @@ Per request, in the `provider` object: `only` (pinned provider slug), `allow_fal
 
 ## Unverified until Phase 4 (needs a key and a synthetic payload)
 Current model IDs, context/output limits, pricing, rate limits, per-endpoint retention/training policies, structured-output support. The historical IDs (Nemotron free, Gemma free, `openrouter/free`) are configuration history, not recommendations. The Nemotron free endpoint previously warned against confidential or personal data.
+
+## Observed on this account (2026-10-27)
+- `zdr:true` with `anthropic/claude-haiku-5.5` pinned to provider `anthropic` returned HTTP 404 (no endpoint matched). The synthetic-only runs used `data_collection:deny` without ZDR. Real data must not be sent until a ZDR-capable pinned endpoint is confirmed or consent covers the provider's retention.
+- Some models reject `temperature`; with `require_parameters:true` this 404s. Temperature is therefore omitted by default (`CAREERX_TEMPERATURE` to set it).
+- The OpenRouter endpoint listing does not expose retention/training policy; confirm in the provider's terms and the account privacy settings.
+- The API key was first pasted into the tracked `.env.example`; it now lives in the git-ignored `.env`. Rotate it when testing ends.
+- Free endpoints: `data_collection: deny` yields HTTP 404 on free models (no endpoint matches). A synthetic-only run may set `CAREERX_DATA_COLLECTION=allow` / `--data-collection allow`; the setting is stored in the run metadata and defaults to `deny`. Never use it with real participant data.
+- Second account: `OPENROUTER_API_KEY_2` in `.env` (git-ignored) is used only when account 1 returns 401 (invalid key) or 402 (out of credit). A 429 rate or daily limit is never answered by switching accounts. Run metadata records the account index (1 or 2), never the key.

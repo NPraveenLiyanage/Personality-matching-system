@@ -17,7 +17,9 @@ URL = "https://openrouter.ai/api/v1/chat/completions"
 
 
 class EvidenceLLMError(RuntimeError):
-    pass
+    def __init__(self, msg: str, status: int | None = None):
+        super().__init__(msg)
+        self.status = status
 
 
 @dataclass
@@ -29,6 +31,7 @@ class ChatResult:
     finish_reason: str | None = None
     usage: dict = field(default_factory=dict)
     latency_s: float = 0.0
+    account: int = 1               # which configured key served the request (1 or 2); never the key itself
 
 
 def settings() -> dict:
@@ -36,9 +39,11 @@ def settings() -> dict:
     g = os.environ.get
     return dict(
         api_key=g("OPENROUTER_API_KEY", ""),
+        api_key_2=g("OPENROUTER_API_KEY_2", ""),              # used only after 401/402 on key 1, never for 429 rate limits
         model=g("CAREERX_EVIDENCE_MODEL", ""),
         provider=g("CAREERX_EVIDENCE_PROVIDER", ""),          # pinned provider slug
         require_zdr=g("CAREERX_REQUIRE_ZDR", "0") == "1",
+        data_collection=g("CAREERX_DATA_COLLECTION", "deny"),  # "allow" only for synthetic-only runs on free endpoints
         max_price=g("CAREERX_MAX_PRICE_PER_M", ""),           # USD per million tokens, applied to prompt and completion
         temperature=g("CAREERX_TEMPERATURE", ""),            # empty = omit; some models reject the parameter
         max_tokens=int(g("CAREERX_MAX_TOKENS", "8000")),
@@ -47,7 +52,7 @@ def settings() -> dict:
 
 
 def request_body(system: str, user: str, schema: dict, cfg: dict) -> dict:
-    prov: dict = {"only": [cfg["provider"]], "allow_fallbacks": False, "data_collection": "deny",
+    prov: dict = {"only": [cfg["provider"]], "allow_fallbacks": False, "data_collection": cfg.get("data_collection", "deny"),
                   "require_parameters": True}
     if cfg.get("require_zdr"):
         prov["zdr"] = True
@@ -64,7 +69,23 @@ def request_body(system: str, user: str, schema: dict, cfg: dict) -> dict:
 
 
 def chat(system: str, user: str, schema: dict, cfg: dict | None = None, attempts: int = 2) -> ChatResult:
+    """One request. Account 2 (OPENROUTER_API_KEY_2) is tried only when account 1 is rejected (401) or out of credit (402);
+    a 429 rate/daily limit is reported as a failure and never answered by switching accounts."""
     cfg = cfg or settings()
+    keys = [k for k in (cfg.get("api_key"), cfg.get("api_key_2")) if k]
+    for i, key in enumerate(keys or [""], 1):
+        try:
+            res = _chat_one(system, user, schema, dict(cfg, api_key=key), attempts)
+            res.account = i
+            return res
+        except EvidenceLLMError as e:
+            if e.status in (401, 402) and i < len(keys):
+                continue
+            raise
+    raise EvidenceLLMError("OPENROUTER_API_KEY is not set.")
+
+
+def _chat_one(system: str, user: str, schema: dict, cfg: dict, attempts: int) -> ChatResult:
     if not cfg["api_key"]:
         raise EvidenceLLMError("OPENROUTER_API_KEY is not set.")
     if not cfg["model"] or not cfg["provider"]:
@@ -85,7 +106,7 @@ def chat(system: str, user: str, schema: dict, cfg: dict | None = None, attempts
             time.sleep(min(60, 8 * 2 ** k))
             continue
         if r.status_code != 200:
-            raise EvidenceLLMError(f"HTTP {r.status_code}: {r.text[:160]} (no compliant endpoint? privacy settings are not relaxed)")
+            raise EvidenceLLMError(f"HTTP {r.status_code}: {r.text[:160]} (no compliant endpoint? privacy settings are not relaxed)", r.status_code)
         try:
             j = r.json()
             ch = j["choices"][0]

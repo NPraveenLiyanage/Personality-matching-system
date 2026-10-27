@@ -1,0 +1,2332 @@
+{
+ "meta": {
+  "engine": "llm_evidence",
+  "date": "2026-10-27",
+  "git_commit": "4ef3930",
+  "k": 10,
+  "n_cases": 12,
+  "n_failed": 10,
+  "cases_sha256": "3b2bcab6ceb56cc3",
+  "catalogue_fingerprint": "11600e8abed14d08",
+  "reference_date": "2026-10-15",
+  "model": "nvidia/nemotron-3.5-super-vl:free",
+  "note": "synthetic design expectations, not expert ratings",
+  "provider": "nvidia",
+  "split": "tune",
+  "prompts": "extract_v1+assess_v1",
+  "schema": "evidence_v1",
+  "definitions_status": "draft_unreviewed",
+  "use_confusions": false,
+  "zdr": false,
+  "data_collection": "allow",
+  "fallbacks": "none",
+  "runs_per_case": 1
+ },
+ "aggregate": {
+  "metrics_version": 2,
+  "k": 10,
+  "overall": {
+   "n_cases": 2,
+   "domain_confusion_cases": "0/2",
+   "domain_confusion_rate": 0.0,
+   "trap_areas_displayed_as_supported": 0,
+   "trap_cases_shown_only_as_exploration": 0,
+   "supported_recall": "1/2",
+   "supported_recall_rate": 0.5,
+   "all_supported_found_cases": "1/2",
+   "mean_areas_displayed": 0.5,
+   "top1_in_authored_ok_set": "1/2",
+   "authored_ok_share_of_displayed_lower_bound": 1.0,
+   "abstained_on_no_support_cases": "0/0",
+   "abstained_cases_total": 1
+  },
+  "by_category": {
+   "domain_confusion": {
+    "n_cases": 1,
+    "domain_confusion_cases": "0/1",
+    "domain_confusion_rate": 0.0,
+    "trap_areas_displayed_as_supported": 0,
+    "trap_cases_shown_only_as_exploration": 0,
+    "supported_recall": "1/1",
+    "supported_recall_rate": 1.0,
+    "all_supported_found_cases": "1/1",
+    "mean_areas_displayed": 1.0,
+    "top1_in_authored_ok_set": "1/1",
+    "authored_ok_share_of_displayed_lower_bound": 1.0,
+    "abstained_on_no_support_cases": "0/0",
+    "abstained_cases_total": 0
+   },
+   "genuine_positive": {
+    "n_cases": 1,
+    "domain_confusion_cases": "0/1",
+    "domain_confusion_rate": 0.0,
+    "trap_areas_displayed_as_supported": 0,
+    "trap_cases_shown_only_as_exploration": 0,
+    "supported_recall": "0/1",
+    "supported_recall_rate": 0.0,
+    "all_supported_found_cases": "0/1",
+    "mean_areas_displayed": 0.0,
+    "top1_in_authored_ok_set": "0/1",
+    "authored_ok_share_of_displayed_lower_bound": null,
+    "abstained_on_no_support_cases": "0/0",
+    "abstained_cases_total": 1
+   }
+  },
+  "by_split": {
+   "tune": {
+    "n_cases": 2,
+    "domain_confusion_cases": "0/2",
+    "domain_confusion_rate": 0.0,
+    "trap_areas_displayed_as_supported": 0,
+    "trap_cases_shown_only_as_exploration": 0,
+    "supported_recall": "1/2",
+    "supported_recall_rate": 0.5,
+    "all_supported_found_cases": "1/2",
+    "mean_areas_displayed": 0.5,
+    "top1_in_authored_ok_set": "1/2",
+    "authored_ok_share_of_displayed_lower_bound": 1.0,
+    "abstained_on_no_support_cases": "0/0",
+    "abstained_cases_total": 1
+   }
+  }
+ },
+ "per_case": {
+  "c01_hospital_app_developer": {
+   "top": [
+    "A043"
+   ],
+   "exploration": [],
+   "n_displayed": 1,
+   "supported_found": [
+    "A043"
+   ],
+   "supported_missed": [],
+   "trap_hits": [],
+   "trap_as_exploration": [],
+   "n_in_authored_ok_set": 1,
+   "top1_in_authored_ok_set": true,
+   "rank_of_first_supported": 1,
+   "abstained": false
+  },
+  "c02_practising_nurse": {
+   "top": [],
+   "exploration": [],
+   "n_displayed": 0,
+   "supported_found": [],
+   "supported_missed": [
+    "A019"
+   ],
+   "trap_hits": [],
+   "trap_as_exploration": [],
+   "n_in_authored_ok_set": 0,
+   "top1_in_authored_ok_set": false,
+   "rank_of_first_supported": null,
+   "abstained": true
+  }
+ },
+ "top": {
+  "c01_hospital_app_developer": [
+   {
+    "area_id": "A043",
+    "name": "Software & applications development",
+    "score": 4.0,
+    "support_class": "direct"
+   }
+  ],
+  "c02_practising_nurse": []
+ },
+ "failed": {
+  "c03_bank_app_developer": "RuntimeError: assessment failed: request failed after 2 attempts (HTTP 429)",
+  "c04_accountant": "RuntimeError: extraction failed: request failed after 2 attempts (HTTP 429)",
+  "c05_legal_chatbot_developer": "RuntimeError: extraction failed: request failed after 2 attempts (HTTP 429)",
+  "c06_lawyer": "RuntimeError: extraction failed: request failed after 2 attempts (HTTP 429)",
+  "c11_nurse_who_built_scheduler": "RuntimeError: extraction failed: request failed after 2 attempts (HTTP 429)",
+  "c12_team_project_limited_contribution": "RuntimeError: extraction failed: request failed after 2 attempts (HTTP 429)",
+  "c13_explicit_negation": "RuntimeError: extraction failed: request failed after 2 attempts (HTTP 429)",
+  "c14_skills_list_only": "RuntimeError: extraction failed: request failed after 2 attempts (HTTP 429)",
+  "c19_career_changer_nurse_to_developer": "RuntimeError: extraction failed: request failed after 2 attempts (HTTP 429)",
+  "c20_old_experience_only": "RuntimeError: extraction failed: request failed after 2 attempts (HTTP 429)"
+ },
+ "stages": {
+  "c01_hospital_app_developer": {
+   "status": "repaired",
+   "warnings": [],
+   "validation_log": [],
+   "extraction": {
+    "status": "repaired",
+    "records": [
+     {
+      "evidence_id": "E001",
+      "passage_id": "P003",
+      "section": "education",
+      "page": null,
+      "quote": "BSc (Hons) Software Engineering, Northfield Institute of Technology, 2022 - 2026",
+      "evidence_type": "education",
+      "role": null,
+      "candidate_actions": [],
+      "candidate_responsibilities": [],
+      "tools_methods": [],
+      "domain_context": null,
+      "qualification": {
+       "subject": "Software Engineering",
+       "level": "BSc (Hons)"
+      },
+      "contribution": "own",
+      "dates": {
+       "start": "2022",
+       "end": "2026",
+       "duration_months": null,
+       "recency": "recent"
+      },
+      "negation": false,
+      "ambiguities": [],
+      "missing_info": [],
+      "status": "accepted",
+      "changes": [],
+      "flags": []
+     },
+     {
+      "evidence_id": "E002",
+      "passage_id": "P002",
+      "section": "summary",
+      "page": null,
+      "quote": "Final-year software engineering student looking for a graduate software development role.",
+      "evidence_type": "stated_interest",
+      "role": null,
+      "candidate_actions": [],
+      "candidate_responsibilities": [],
+      "tools_methods": [],
+      "domain_context": null,
+      "qualification": null,
+      "contribution": "unknown",
+      "dates": {
+       "start": null,
+       "end": null,
+       "duration_months": null,
+       "recency": "unknown"
+      },
+      "negation": false,
+      "ambiguities": [],
+      "missing_info": [],
+      "status": "accepted",
+      "changes": [],
+      "flags": []
+     },
+     {
+      "evidence_id": "E003",
+      "passage_id": "P005",
+      "section": "skills",
+      "page": null,
+      "quote": "Python, SQL, React, Git",
+      "evidence_type": "listed_skill_only",
+      "role": null,
+      "candidate_actions": [],
+      "candidate_responsibilities": [],
+      "tools_methods": [
+       "Python",
+       "SQL",
+       "React",
+       "Git"
+      ],
+      "domain_context": null,
+      "qualification": null,
+      "contribution": "unknown",
+      "dates": {
+       "start": null,
+       "end": null,
+       "duration_months": null,
+       "recency": "unknown"
+      },
+      "negation": false,
+      "ambiguities": [],
+      "missing_info": [],
+      "status": "accepted",
+      "changes": [],
+      "flags": []
+     }
+    ],
+    "rejected": [
+     {
+      "index": 2,
+      "reasons": [
+       "quote not found in cited passage P004"
+      ],
+      "raw_quote": "Built a hospital patient management web application using Python, SQL and React. Designed the database schema and wrote "
+     }
+    ],
+    "errors": [],
+    "notes": [
+     "P001 contains only a name and no extractable evidence.",
+     "P004 is treated as one applied-skill/project record because the tools are used together in the same described work; splitting them would require overlapping quotes."
+    ]
+   },
+   "assessment": {
+    "raw_rows": [
+     {
+      "area_id": "A001",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A002",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A003",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A004",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A005",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A006",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A007",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A008",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A009",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A010",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A011",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A012",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A013",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A014",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A015",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A016",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A017",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A018",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A019",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A020",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A021",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A022",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A023",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A024",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A025",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A026",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A027",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A028",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A029",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A030",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A031",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A032",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A033",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A034",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A035",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A036",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A037",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A038",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A039",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A040",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A041",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A042",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A043",
+      "support_class": "direct",
+      "relevance": 4,
+      "evidence": [
+       {
+        "evidence_id": "E001",
+        "basis": "qualification"
+       }
+      ],
+      "rationale": "The participant holds a recent BSc (Hons) in Software Engineering, matching the core subject of software and applications development.",
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A044",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A045",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A046",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A047",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A048",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A049",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A050",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A051",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A052",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A053",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A054",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A055",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A056",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A057",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A058",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A059",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A060",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A061",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A062",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A063",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A064",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A065",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A066",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A067",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A068",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A069",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A070",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A071",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A072",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A073",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A074",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A075",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A076",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A077",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A078",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A079",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A080",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A081",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A082",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A083",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A084",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A085",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A086",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A087",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A088",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A089",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A090",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A091",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A092",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A093",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A094",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     }
+    ],
+    "errors": [],
+    "rejected": []
+   },
+   "exploration": [],
+   "run_meta": {
+    "extraction": {
+     "schema_version": "evidence_v1",
+     "prompt_version": "extract_v1",
+     "model": "nvidia/nemotron-3.5-super-vl:free",
+     "provider": "Nvidia",
+     "request_id": "gen-1793095089-VAyp6Z6XH8stMz5Bbg1K",
+     "finish_reason": "stop",
+     "usage": {
+      "prompt_tokens": 1198,
+      "completion_tokens": 6541,
+      "total_tokens": 7739,
+      "cost": 0,
+      "is_byok": false,
+      "prompt_tokens_details": {
+       "cached_tokens": 0,
+       "cache_write_tokens": 0,
+       "audio_tokens": 0,
+       "video_tokens": 0
+      },
+      "cost_details": {
+       "upstream_inference_cost": 0,
+       "upstream_inference_prompt_cost": 0,
+       "upstream_inference_completions_cost": 0
+      },
+      "completion_tokens_details": {
+       "reasoning_tokens": 5845,
+       "image_tokens": 0,
+       "audio_tokens": 0
+      }
+     },
+     "latency_s": 79.91
+    },
+    "assessment": {
+     "model": "nvidia/nemotron-3.5-super-vl:free",
+     "provider": "Nvidia",
+     "request_id": "gen-1793095169-eBNQZpG7R6iOkmL7k071",
+     "finish_reason": "stop",
+     "usage": {
+      "prompt_tokens": 19942,
+      "completion_tokens": 8734,
+      "total_tokens": 28676,
+      "cost": 0,
+      "is_byok": false,
+      "prompt_tokens_details": {
+       "cached_tokens": 0,
+       "cache_write_tokens": 0,
+       "audio_tokens": 0,
+       "video_tokens": 0
+      },
+      "cost_details": {
+       "upstream_inference_cost": 0,
+       "upstream_inference_prompt_cost": 0,
+       "upstream_inference_completions_cost": 0
+      },
+      "completion_tokens_details": {
+       "reasoning_tokens": 3788,
+       "image_tokens": 0,
+       "audio_tokens": 0
+      }
+     },
+     "latency_s": 64.01,
+     "prompt_version": "assess_v1"
+    }
+   }
+  },
+  "c02_practising_nurse": {
+   "status": "repaired",
+   "warnings": [],
+   "validation_log": [
+    {
+     "area_id": "A008",
+     "original_class": "domain_exposure_only",
+     "final_class": "unsupported",
+     "changes": [
+      "downgraded domain_exposure_only -> unsupported: no cited record has a domain_context"
+     ]
+    },
+    {
+     "area_id": "A018",
+     "original_class": "domain_exposure_only",
+     "final_class": "unsupported",
+     "changes": [
+      "downgraded domain_exposure_only -> unsupported: no cited record has a domain_context"
+     ]
+    },
+    {
+     "area_id": "A019",
+     "original_class": "direct",
+     "final_class": "unsupported",
+     "changes": [
+      "downgraded direct -> unsupported: no valid supporting citation left",
+      "relevance cleared on a non-supported row"
+     ]
+    },
+    {
+     "area_id": "A020",
+     "original_class": "domain_exposure_only",
+     "final_class": "unsupported",
+     "changes": [
+      "downgraded domain_exposure_only -> unsupported: no cited record has a domain_context"
+     ]
+    },
+    {
+     "area_id": "A021",
+     "original_class": "domain_exposure_only",
+     "final_class": "unsupported",
+     "changes": [
+      "downgraded domain_exposure_only -> unsupported: no cited record has a domain_context"
+     ]
+    },
+    {
+     "area_id": "A023",
+     "original_class": "domain_exposure_only",
+     "final_class": "unsupported",
+     "changes": [
+      "downgraded domain_exposure_only -> unsupported: no cited record has a domain_context"
+     ]
+    },
+    {
+     "area_id": "A024",
+     "original_class": "domain_exposure_only",
+     "final_class": "unsupported",
+     "changes": [
+      "downgraded domain_exposure_only -> unsupported: no cited record has a domain_context"
+     ]
+    },
+    {
+     "area_id": "A025",
+     "original_class": "domain_exposure_only",
+     "final_class": "unsupported",
+     "changes": [
+      "downgraded domain_exposure_only -> unsupported: no cited record has a domain_context"
+     ]
+    },
+    {
+     "area_id": "A027",
+     "original_class": "domain_exposure_only",
+     "final_class": "unsupported",
+     "changes": [
+      "downgraded domain_exposure_only -> unsupported: no cited record has a domain_context"
+     ]
+    }
+   ],
+   "extraction": {
+    "status": "repaired",
+    "records": [
+     {
+      "evidence_id": "E001",
+      "passage_id": "P003",
+      "section": "experience",
+      "page": null,
+      "quote": "Administered medication and monitored patients on a 30-bed surgical ward.",
+      "evidence_type": "applied_skill",
+      "role": "Staff Nurse",
+      "candidate_actions": [
+       "Administered medication and monitored patients on a 30-bed surgical ward.",
+       "Supported junior staff, completed patient handover notes and assisted in wound care."
+      ],
+      "candidate_responsibilities": [],
+      "tools_methods": [],
+      "domain_context": "healthcare",
+      "qualification": null,
+      "contribution": "own",
+      "dates": {
+       "start": "2019",
+       "end": "2024",
+       "duration_months": 60,
+       "recency": "recent"
+      },
+      "negation": false,
+      "ambiguities": [],
+      "missing_info": [],
+      "status": "accepted",
+      "changes": [],
+      "flags": []
+     },
+     {
+      "evidence_id": "E002",
+      "passage_id": "P004",
+      "section": "education",
+      "page": null,
+      "quote": "Diploma in Nursing, Lakeview School of Nursing, 2018",
+      "evidence_type": "listed_skill_only",
+      "role": null,
+      "candidate_actions": [],
+      "candidate_responsibilities": [],
+      "tools_methods": [],
+      "domain_context": null,
+      "qualification": {
+       "subject": "Nursing",
+       "level": "Diploma"
+      },
+      "contribution": "own",
+      "dates": {
+       "start": null,
+       "end": "2018",
+       "duration_months": null,
+       "recency": "mid"
+      },
+      "negation": false,
+      "ambiguities": [],
+      "missing_info": [
+       "start date"
+      ],
+      "status": "accepted",
+      "changes": [],
+      "flags": [
+       "qualification set on a non-education/certification record"
+      ]
+     },
+     {
+      "evidence_id": "E003",
+      "passage_id": "P005",
+      "section": "certifications",
+      "page": null,
+      "quote": "Basic Life Support certification, renewed 2023",
+      "evidence_type": "listed_skill_only",
+      "role": null,
+      "candidate_actions": [],
+      "candidate_responsibilities": [],
+      "tools_methods": [],
+      "domain_context": null,
+      "qualification": {
+       "subject": "Basic Life Support",
+       "level": "certification"
+      },
+      "contribution": "own",
+      "dates": {
+       "start": null,
+       "end": "2023",
+       "duration_months": null,
+       "recency": "recent"
+      },
+      "negation": false,
+      "ambiguities": [],
+      "missing_info": [
+       "start date"
+      ],
+      "status": "accepted",
+      "changes": [],
+      "flags": [
+       "qualification set on a non-education/certification record"
+      ]
+     },
+     {
+      "evidence_id": "E004",
+      "passage_id": "P002",
+      "section": "summary",
+      "page": null,
+      "quote": "Registered nurse with five years of surgical ward experience.",
+      "evidence_type": "applied_skill",
+      "role": "Registered nurse",
+      "candidate_actions": [],
+      "candidate_responsibilities": [],
+      "tools_methods": [],
+      "domain_context": "healthcare",
+      "qualification": null,
+      "contribution": "unknown",
+      "dates": {
+       "start": null,
+       "end": null,
+       "duration_months": 60,
+       "recency": "unknown"
+      },
+      "negation": false,
+      "ambiguities": [],
+      "missing_info": [
+       "employer",
+       "start date",
+       "end date"
+      ],
+      "status": "repaired",
+      "changes": [
+       "contribution 'own' without any listed action; downgraded to 'unknown'"
+      ],
+      "flags": [
+       "from the summary section: a self-description to corroborate, not primary evidence"
+      ]
+     }
+    ],
+    "rejected": [],
+    "errors": [],
+    "notes": [
+     "P001 contains only a name and no extractable evidence.",
+     "P002 is a summary statement without employer or specific dates; duration is stated as five years.",
+     "No negation or ambiguous terms were found."
+    ]
+   },
+   "assessment": {
+    "raw_rows": [
+     {
+      "area_id": "A001",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A002",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A003",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A004",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A005",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A006",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A007",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A008",
+      "support_class": "domain_exposure_only",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A009",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A010",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A011",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A012",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A013",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A014",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A015",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A016",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A017",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A018",
+      "support_class": "domain_exposure_only",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A019",
+      "support_class": "direct",
+      "relevance": 4,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [
+       "Professional registration or licence"
+      ],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A020",
+      "support_class": "domain_exposure_only",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A021",
+      "support_class": "domain_exposure_only",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A022",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A023",
+      "support_class": "domain_exposure_only",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A024",
+      "support_class": "domain_exposure_only",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A025",
+      "support_class": "domain_exposure_only",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A026",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A027",
+      "support_class": "domain_exposure_only",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A028",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A029",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A030",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A031",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A032",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A033",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A034",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A035",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A036",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A037",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A038",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A039",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A040",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A041",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A042",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A043",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A044",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A045",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A046",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A047",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A048",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A049",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A050",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A051",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A052",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A053",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A054",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A055",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A056",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A057",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A058",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A059",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A060",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A061",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A062",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A063",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A064",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A065",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A066",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A067",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A068",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A069",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A070",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A071",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A072",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A073",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A074",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A075",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A076",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A077",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A078",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A079",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A080",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A081",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A082",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A083",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A084",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A085",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A086",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A087",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A088",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A089",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A090",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A091",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A092",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A093",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A094",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     }
+    ],
+    "errors": [],
+    "rejected": []
+   },
+   "exploration": [],
+   "run_meta": {
+    "extraction": {
+     "schema_version": "evidence_v1",
+     "prompt_version": "extract_v1",
+     "model": "nvidia/nemotron-3.5-super-vl:free",
+     "provider": "Nvidia",
+     "request_id": "gen-1793095233-OHPQyl2l1SNbae5En9Lr",
+     "finish_reason": "stop",
+     "usage": {
+      "prompt_tokens": 1194,
+      "completion_tokens": 9842,
+      "total_tokens": 11036,
+      "cost": 0,
+      "is_byok": false,
+      "prompt_tokens_details": {
+       "cached_tokens": 0,
+       "cache_write_tokens": 0,
+       "audio_tokens": 0,
+       "video_tokens": 0
+      },
+      "cost_details": {
+       "upstream_inference_cost": 0,
+       "upstream_inference_prompt_cost": 0,
+       "upstream_inference_completions_cost": 0
+      },
+      "completion_tokens_details": {
+       "reasoning_tokens": 9161,
+       "image_tokens": 0,
+       "audio_tokens": 0
+      }
+     },
+     "latency_s": 95.71
+    },
+    "assessment": {
+     "model": "nvidia/nemotron-3.5-super-vl:free",
+     "provider": "Nvidia",
+     "request_id": "gen-1793095328-2OF6KJTDLeKpNjmsSc6k",
+     "finish_reason": "stop",
+     "usage": {
+      "prompt_tokens": 20112,
+      "completion_tokens": 22884,
+      "total_tokens": 42996,
+      "cost": 0,
+      "is_byok": false,
+      "prompt_tokens_details": {
+       "cached_tokens": 0,
+       "cache_write_tokens": 0,
+       "audio_tokens": 0,
+       "video_tokens": 0
+      },
+      "cost_details": {
+       "upstream_inference_cost": 0,
+       "upstream_inference_prompt_cost": 0,
+       "upstream_inference_completions_cost": 0
+      },
+      "completion_tokens_details": {
+       "reasoning_tokens": 17960,
+       "image_tokens": 0,
+       "audio_tokens": 0
+      }
+     },
+     "latency_s": 201.89,
+     "prompt_version": "assess_v1"
+    }
+   }
+  }
+ }
+}

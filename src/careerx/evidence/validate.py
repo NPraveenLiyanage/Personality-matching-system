@@ -12,10 +12,11 @@ import unicodedata
 from dataclasses import dataclass, field
 
 from .schema import (CONTRIBUTIONS, EVIDENCE_TYPES, MAX_QUOTE_WORDS, MIN_QUOTE_CHARS, MIN_QUOTE_WORDS, RECENCY,
-                     EvidenceRecord, Passage)
+                     REFERENCE_DATE, EvidenceRecord, Passage)
 
 _TYPOGRAPHY = str.maketrans({"‘": "'", "’": "'", "“": '"', "”": '"', "–": "-", "—": "-",
                              "−": "-", " ": " ", "•": "-", "·": "-"})
+_SECTION_TYPE = {"education": "education", "certifications": "certification"}   # section headings come from ingest, not the model
 _ACTIVITY_TYPES = ("employment", "internship", "project", "volunteering", "research", "applied_skill")
 _REQUIRED = ("passage_id", "quote", "evidence_type", "role", "candidate_actions", "candidate_responsibilities",
              "tools_methods", "domain_context", "qualification", "contribution", "dates", "negation", "ambiguities",
@@ -41,6 +42,29 @@ class Outcome:
         if self.rejected or any(r.status == "repaired" for r in self.records):
             return "repaired"
         return "accepted"
+
+
+def recency_from_end(end: str | None, ref=REFERENCE_DATE) -> str:
+    """recent (<=5 years before the reference date or ongoing), mid (<=10), old, else unknown. Computed locally, never by the model."""
+    if not end:
+        return "unknown"
+    if re.search(r"\b(present|current|now|ongoing|to date)\b", end, re.I):
+        return "recent"
+    years = re.findall(r"\b(?:19|20)\d{2}\b", end)
+    if not years:
+        return "unknown"
+    age = ref.year - int(years[-1])
+    return "recent" if age <= 5 else "mid" if age <= 10 else "old"
+
+
+def _ungrounded(actions: list[str], text_n: str) -> list[str]:
+    """Actions whose longer words mostly do not occur in the cited passage (possible invention)."""
+    bad = []
+    for a in actions:
+        w = [x for x in re.findall(r"[a-z]{4,}", norm(a))]
+        if w and sum(x[:5] in text_n for x in w) / len(w) < 0.5:
+            bad.append(a)
+    return bad
 
 
 def _is_str_list(v) -> bool:
@@ -154,18 +178,30 @@ def _check_record(raw, by_id: dict, refs: set, normed: dict):
             if years and any(y not in text_n for y in years):
                 changes.append(f"dates.{k} {dates[k]!r} not in passage; set to null")
                 dates[k] = None
+    recency = recency_from_end(dates["end"])
+    if recency != dates["recency"]:
+        changes.append(f"recency recomputed from end date: {recency!r} (model said {dates['recency']!r})")
+        dates["recency"] = recency
     contribution = raw["contribution"]
     if (contribution == "own" and raw["evidence_type"] in _ACTIVITY_TYPES
             and not raw["candidate_actions"] and not raw["candidate_responsibilities"]):
         changes.append("contribution 'own' without any listed action; downgraded to 'unknown'")
         contribution = "unknown"
     etype = raw["evidence_type"]
+    if q and (q.get("subject") or q.get("level")) and etype in ("listed_skill_only", "applied_skill") and p.section in _SECTION_TYPE:
+        changes.append(f"evidence_type {etype!r} -> {_SECTION_TYPE[p.section]!r}: a qualification stated in the {p.section} section")
+        etype = _SECTION_TYPE[p.section]
     if etype == "listed_skill_only" and raw["candidate_actions"]:
         flags.append("listed_skill_only record lists actions; check it is not applied evidence")
     if q and etype not in ("education", "certification"):
         flags.append("qualification set on a non-education/certification record")
     if raw["negation"] and contribution == "own":
         flags.append("negated statement marked as own contribution")
+    if p.section in ("summary", "header") and etype in _ACTIVITY_TYPES + ("education", "certification"):
+        flags.append("from the summary section: a self-description to corroborate, not primary evidence")
+    bad = _ungrounded(raw["candidate_actions"] + raw["candidate_responsibilities"], text_n)
+    if bad:
+        flags.append("actions not grounded in the passage: " + "; ".join(bad[:3]))
     unseen = [t for t in raw["tools_methods"] if norm(t) not in text_n]
     if unseen:
         flags.append("tools not literally in passage: " + ", ".join(unseen[:5]))

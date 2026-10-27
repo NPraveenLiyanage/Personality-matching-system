@@ -1,0 +1,26 @@
+# Occupations that are normally entered through formal qualification or registration. For these areas the backend only accepts a
+# direct or transferable claim when a cited evidence record's ROLE or QUALIFICATION SUBJECT matches a term below (matched at a word
+# start, case-insensitive). Actions and domain context never satisfy it. This is not a blanket exclusion of industry words: a
+# genuine nurse's role ("Staff Nurse") or qualification ("Diploma in Nursing") passes.
+# status: draft_unreviewed - term lists need review by a career expert (too broad lets confusions through; too narrow hides
+# genuine practitioners such as a nurse whose CV omits the role title).
+status: draft_unreviewed
+catalogue_version: catalogue_v1
+areas:
+  A018: [physician, doctor, medical officer, surgeon, mbbs, "md ", medicine, general practitioner, registrar, house officer]
+  A019: [nurse, nursing, midwife, midwifery]
+  A020: [ayurved, traditional medicine, homeopath, acupunctur, unani, siddha, naturopath, herbal medicine]
+  A021: [paramedic, emergency medical, ambulance, emt]
+  A022: [veterinar]
+  A023: [dentist, dental, pharmac, physiotherap, occupational therap, optometr, speech therap]
+  A024: [medical technolog, radiograph, laboratory technolog, medical laborator, biomedical technolog]
+  A028: [lecturer, professor, university teach, academic]
+  A029: [instructor, trainer, vocational, tutor, teacher]
+  A030: [teacher, teaching, education, pgde, secondary school]
+  A031: [teacher, teaching, early childhood, nursery, preschool, child care, childcare, education]
+  A032: [teacher, teaching, special education, education, curriculum]
+  A033: [accountant, accounting, audit, chartered, cpa, financial, finance, bookkeep, treasury]
+  A046: [attorney, lawyer, advocate, solicitor, barrister, llb, law, legal, judge, magistrate]
+  A053: [paralegal, social work, social worker, case worker, community worker]
+  A054: [police, firefighter, fire officer, security officer, security guard]
+  A068: [pilot, air traffic, seafarer, mariner, ship officer, deck officer]

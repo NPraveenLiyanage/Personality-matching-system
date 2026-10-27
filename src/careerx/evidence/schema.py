@@ -2,8 +2,10 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from datetime import date
 
 SCHEMA_VERSION = "evidence_v1"
+REFERENCE_DATE = date(2026, 10, 15)   # mirrors careerx.pipeline.REFERENCE_DATE (a test keeps them equal); recency is computed from it, not by the model
 
 EVIDENCE_TYPES = ("employment", "internship", "project", "education", "certification", "volunteering",
                   "research", "applied_skill", "listed_skill_only", "stated_interest")

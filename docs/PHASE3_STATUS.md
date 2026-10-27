@@ -1,0 +1,34 @@
+# Phase 3 status: career assessment (2026-10-27)
+
+Status: **built and tested offline; not run live; gate not passed.** Live runs are blocked: the OpenRouter account has $0 purchased credit (the earlier $0.16 of usage used up a free allowance). The area-definitions drafting call failed with HTTP 402, so `data/processed/area_definitions_v1.yaml` does not exist yet.
+
+## Built
+- `src/careerx/evidence/assess.py`, `assess_v1.md`: stage 2. The assessor sees only the validated evidence records, extraction warnings and area definitions (never the raw CV or personality). One row per area: support class (direct, transferable, domain_exposure_only, interest_only, unsupported, insufficient_info), relevance 0-4 (an evidence rating, not a probability), cited evidence IDs each with a `basis` (role, actions, qualification, tools, domain, interest), a one-sentence rationale for positive rows, qualification gaps, uncertainty. The prompt states the domain-is-not-profession principle generically (examples limited to hospital, bank, legal).
+- `verify.py`: structural checks. Cited records must exist, not be negated, not be `listed_skill_only` or `stated_interest`, have own/shared contribution, and have content in the cited basis field; `domain` and `interest` bases cannot support direct/transferable. For regulated occupations (`data/processed/regulated_areas_v1.yaml`, 17 areas) a cited record's role or qualification subject must match a term list, so a genuine nurse passes and a software developer's hospital project does not. Rows only move down and every change is logged. Response-level errors (missing or duplicate rows, bad types, relevance outside 0-4) fail the run.
+- `rank.py`: deterministic order (direct before transferable, relevance, recency, number of records, area id). Supported list may be shorter than 10 or empty. Domain-exposure and interest-only areas go to a separate labelled exploration list. Explanations are assembled from the cited records, not model prose.
+- `engine.py`: full pipeline with both stages' outputs kept (`stages`) so each error can be attributed to extraction or assessment. Failures are returned as failures; no fallback.
+- `scripts/draft_area_definitions.py`: drafts definitions from catalogue ISCO text only (never the benchmark cases), saves `status: draft_unreviewed`.
+- `bench/run_benchmark.py --engine llm_evidence --model ... --provider ... --split tune|holdout --run-live`; `bench/metrics.py` v2 (precision over areas actually shown, mean areas shown, abstention, traps shown as supported vs labelled exploration); both baselines re-scored under v2 with no change in results.
+- Tests: `tests/test_evidence_assess.py` (22) covering the hospital-developer downgrade, genuine nurse/accountant retained, nurse-who-built-a-tool, listed skills, team-only, negation, basis checks, ranking and engine failure paths. Full offline suite: 113 passed, 11 expected failures (frozen-baseline gaps).
+
+## Decisions made before any evidence-engine output was seen
+- Trap definition (cases_version 2): an area with no supporting evidence that would be an unsupported claim if shown as supported; labelled exploration is allowed. Trap lists were reviewed and left unchanged.
+- Holdout protection: iterate on the 12 `tune` cases only; run the 10 `holdout` cases once at the end. The assessor does not see `common_contextual_confusions` by default (ablation flag `--use-confusions`), because LLM-drafted confusion lists can name the same principles the holdout cases test (e.g. e-learning platform vs teaching). Even so the drafted definitions are not clean of this influence; add new holdout cases in untouched domains before a final claim.
+
+## To finish Phase 3
+1. Add OpenRouter credit (a few dollars is enough: drafting about $0.3 on Sonnet, each benchmark split well under $1 on Haiku).
+2. Run `scripts/draft_area_definitions.py`; a human reviews the 94 definitions and the regulated-term list.
+3. Run `--split tune` with Haiku, read stage-attributed errors, fix; run `--split holdout` once; freeze.
+4. Gate: zero trap areas shown as supported on the domain-confusion cases, genuine positives retained, case counts by split reported. Expected outcomes are author-written and unreviewed; reviewer sign-off needed.
+
+## Not established
+Anything about live assessment quality. The verification layer enforces structure, not semantic correctness, and the regulated-term lists are an unreviewed draft: too broad lets confusions through, too narrow hides genuine practitioners whose role title is missing.
+
+## Update: free-model tune run (2026-10-27, later)
+- Model `nvidia/nemotron-3.5-super-vl:free` (provider `nvidia`, strict structured output, 1M context) was chosen as the only free model that was up and supported strict JSON schema. The older Nemotron-3-super free endpoint was down. Free endpoints require `data_collection: allow`; this was used with **synthetic text and public catalogue text only** and is recorded in each run's metadata (`--data-collection allow`).
+- Area definitions drafted with it: `data/processed/area_definitions_v1.yaml`, 94 areas, `draft_unreviewed`. Spot check: usable, but the Software definition is generic, and the model marked only A019-A024 as formal-qualification (not Medicine or Law), which differs from `regulated_areas_v1.yaml`. Needs human review.
+- Cost per case is high in tokens: about 8k output tokens for extraction and 15k for assessment, mostly hidden reasoning (about 160 s per case). `--max-tokens 60000` was needed; at 12000, 11 of 12 cases were truncated and recorded as failures.
+- **Free tier limit: 50 requests per day**, shared across free models (resets 00:00 UTC; $10 of credit raises it to 1,000/day). The tune run completed 2 of 12 cases before HTTP 429; the other 10 are recorded as failures, not results. No usable tune-split numbers exist yet.
+- c01 (hospital-app developer): supported list = software only; all healthcare areas appeared as labelled exploration. c02 (genuine nurse): Nursing was lost. Stage attribution: (1) extraction typed the nursing diploma `listed_skill_only`; (2) the assessor marked Nursing `direct` with no citations, which the verifier correctly downgraded.
+- Fixes made (offline, tested; 117 passed + 11 expected failures): a record with a stated qualification inside an Education/Certifications section is typed from the section heading (logged as a repair); rows marked direct/transferable with no citations get one targeted re-ask whose answer goes through the same verification; the prompt now says uncited rows are rejected. **These fixes were designed after seeing tune-case output (c02), which is legitimate on tune; holdout has not been run.**
+- Windows note: model ids contain `:`; run-file names are now sanitised (a `:` made NTFS hide results in an alternate data stream).
