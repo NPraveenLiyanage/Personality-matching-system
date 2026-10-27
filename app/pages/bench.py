@@ -16,6 +16,7 @@ import streamlit as st
 
 from careerx import feedback, narrowing, report, scoring
 from careerx import pipeline as PL
+from careerx.llm import client as llm_client, engine as llm_engine, payload as llm_payload
 from careerx.profile import build_profile, dominant_pole
 from common import EDU_OPTIONS, label, lexicon_choice, participants_panel, scorer, sig_of, store
 
@@ -52,7 +53,7 @@ st.write("From a CV and a personality profile to a short, explainable list of ca
          "(not job titles), built on the ISCO-08 occupation classification.")
 
 tabs = st.tabs(["1 · Profile", "2 · Full map & gate", "3 · Shortlist", "4 · Narrow down", "5 · Top 10 report",
-                "6 · Tester feedback"])
+                "6 · Tester feedback", "7 · LLM match"])
 
 # ================================================================== 1. profile
 with tabs[0]:
@@ -311,3 +312,54 @@ with tabs[5]:
     st.download_button("⬇ Download feedback (CSV)", edited.to_csv(index=False),
                        f"feedback_{profile.name.replace(' ', '_')}.csv", disabled=bool(len(miss)),
                        help="Enabled once every row below 'highly accurate' has a comment.")
+
+
+# ================================================================== 7. LLM match (OpenRouter free model)
+with tabs[6]:
+    st.subheader("LLM career-area match (experimental)")
+    cfg = llm_client.settings()
+    st.caption(f"Model: `{cfg['model']}` (free, via OpenRouter), temperature 0, {cfg['runs']} runs, median score. "
+               "Shown next to the rule engine; it does not replace it.")
+    if not cfg["api_key"]:
+        st.warning("Set OPENROUTER_API_KEY in a .env file (see .env.example), then reload.")
+    st.info("Running this sends the CV text (email, phone, links and the participant's name removed) and the "
+            "preference summary to OpenRouter and the free model's provider. Free models may log prompts.", icon="🔒")
+    ok = st.checkbox("The participant has agreed to this", key="llm_consent", value=bool(spec.get("demo")))
+    lk = "llm_" + sig_profile
+    if st.button("Run LLM match", disabled=not (cfg["api_key"] and ok)):
+        try:
+            with st.spinner("Asking the model (free models are slow and rate limited; this can take a few minutes)..."):
+                pl = llm_payload.build_payload(profile, [sc.concept_labels[k] for k in profile.interests])
+                st.session_state[lk] = llm_engine.run_match(pl, PL.get_catalogue(), cfg=cfg)
+        except Exception as e:                                  # network, rate limit, invalid answers
+            st.session_state.pop(lk, None)
+            st.error(f"The LLM match failed: {e}")
+    res = st.session_state.get(lk)
+    if res:
+        if res["failed_runs"]:
+            st.warning(f"{res['failed_runs']} of {res['n_runs'] + res['failed_runs']} runs failed validation and were left out.")
+        if res["repaired"]:
+            st.caption("Some quotes were not exact; those were dropped and the areas capped at 49.")
+        a, b = st.columns(2)
+        with a:
+            st.markdown("**LLM Top 10** (final = evidence x work-style x level)")
+            t = res["top10"][["rank", "name", "cv", "style", "level", "final", "low_confidence"]]
+            st.dataframe(t, hide_index=True, width="stretch")
+        with b:
+            st.markdown("**Rule engine Top 10**")
+            st.dataframe(scores.head(10)[["rank", "name", "score"]], hide_index=True, width="stretch")
+        st.markdown("**Evidence behind each LLM area**")
+        for _, r in res["top10"].iterrows():
+            d = res["detail"].get(int(r["id"]))
+            with st.expander(f"{int(r['rank'])}. {r['name']}  ·  {r['final']:.0f}" + ("  ·  low confidence" if r["low_confidence"] else "")):
+                if not d:
+                    st.caption("No detail returned for this area.")
+                    continue
+                for e in d["evidence"]:
+                    st.markdown(f"> {e['quote']}  
+{e['supports']}")
+                if d["missing"]:
+                    st.caption("Not shown in the CV: " + "; ".join(d["missing"]))
+                if d["overlaps_with"]:
+                    st.caption("Overlaps with: " + ", ".join(llm_engine.areas.NAMES.get(int(i), str(i)) for i in d["overlaps_with"]))
+                st.caption(f"Work style: {r['style']} ({r['style_reason']})  ·  Level: {r['level']}")

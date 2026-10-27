@@ -40,6 +40,14 @@ picks fields, reacts like/maybe/no, takes a few forced choices, and gets a Top 1
 1-5 with a comment required unless "highly accurate". No machine learning: the scoring is rule-based and every number traces back
 to a CV phrase, a report percentage or a line of ISCO text.
 
+## LLM match (experimental, test bench tab 7)
+
+`src/careerx/llm/` runs the Calybrate career-area prompt (`prompt_v1.md`) on a free OpenRouter model
+(default `nvidia/nemotron-3-super-120b-a12b:free`, fallbacks `google/gemma-4-31b-it:free`, `openrouter/free`), 3 runs at
+temperature 0, validates quotes and ids, takes the median and computes `final = cv x style x level`. Copy `.env.example` to
+`.env` and set `OPENROUTER_API_KEY`. CV text leaves the machine (identifiers removed) and free models may log prompts, so the
+tab asks for the participant's agreement. Tests: `python tests/test_llm.py` (offline; live check runs when a key is set).
+
 ## Folders
 
 | Path | What |
