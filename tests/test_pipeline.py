@@ -209,6 +209,7 @@ def test_no_real_participant_files_are_tracked_by_git():
     assert not [f for f in tracked if f.lower().endswith(".pdf")], "a PDF is tracked"
     assert not [f for f in tracked if f.startswith(("private_data/", "outputs/", "data/profiles/"))]
     assert not [f for f in tracked if f.endswith(".ipynb") or "__pycache__" in f]
+    assert not [f for f in tracked if f.startswith("PERSONAMAP_") or f == ".env"], "participant workbook or .env is tracked"
 
 
 # ------------------------------------------------------------------------------------------ optional: real data, local only

@@ -1,11 +1,11 @@
 # Master Plan — Evidence-First Career-Area Matching (Phase 1 product)
 
-Status: APPROVED PLAN (2026-10-27). Nothing implemented yet; phases execute one at a time on instruction.
+Status: APPROVED PLAN (2026-10-27), revised 2026-10-27 after inspecting `PERSONAMAP_RESPONSES_MASKED.xlsx` (see §13). Nothing implemented yet; phases execute one at a time on instruction.
 
 ## Context
 The rule engine matches career areas from lexicon hits, so the *subject* of a project (hospital app) leaks into *professional evidence* (nursing 66.5, paramedic 61.2, medicine 58.2). The experimental OpenRouter matcher is also unsafe: its validator only checks that a quote is a substring of the CV, not that it supports the area. Goal: recommend areas only from the participant's attributable evidence, and prove any improvement on independently rated cases. Scope: Phase 1 career exploration only (no vacancy/employer matching; no hiring/competence judgments).
 
-Decisions made with the user: docs at `docs/MASTER_PLAN.md`; existing `llm/` is **frozen as the "direct-prompt baseline"** (only fix the bench.py syntax error); **synthetic data only** for external calls; **small API budget, no raters yet** (Phase 5 blocked on raters).
+Decisions made with the user: docs at `docs/MASTER_PLAN.md`; existing `llm/` is **frozen as the "direct-prompt baseline"** (only fix the bench.py syntax error); **synthetic data only** for external calls; **small API budget, no raters yet** (Phase 5 blocked on raters). **Dataset finding (§13):** `PERSONAMAP_RESPONSES_MASKED.xlsx` is a personality-questionnaire dataset with job titles; it contains **no CVs and no career-area labels**, so it cannot train the evidence extractor or career-area assessor. It is assigned limited, local-only roles (§13).
 
 ## 1. Verified current architecture (re-inspected 2026-10-27)
 - **Rule engine** `src/careerx/`: `profile.build_profile` (regex concept detection, `strength=raw/(raw+4)`, education band, merged-years estimate, PersonaMap parse, interests) → `scoring.Scorer.score` over all 94 areas: `score=100*relevance*modifier*readiness`; personality is a bounded multiplier (default influence 0.35); interests only raise → `sanity_gate` → `narrowing.shortlist/apply_ratings/final_top` → `report.build_markdown`, `feedback.*`. `pipeline.run` returns `dict(scores, gate, shortlist)`.
@@ -74,6 +74,7 @@ Valid ids; schema/types; finite, in-range; no dup/missing of the 94; evidence id
 - `bench/` package: `cases/*.yaml` (synthetic CV text, expected: must-support areas, must-NOT-support areas, acceptable set, failure categories, pair_id, sector, stage, difficulty), `runner.py` (engine-agnostic, writes `bench/runs/<engine>_<date>.json` with metadata, frozen baselines committed for rule engine + direct LLM), `metrics.py` (denominators explicit).
 - 30–50 cases: all §5 items (hospital/bank/legal/education/disease-classifier pairs, nurse-with-scheduler, team projects, negation, skills-list-only, coursework vs employment, career changers, old/recent, sparse, missing dates, garbled PDF text, referee titles, "PLC", incidental medical/Ayurvedic terms, prompt injection) + industry-swap pairs + non-tech sectors/levels.
 - Reproduce the nursing-66.5 case and the two validator gaps as failing regression tests (marked `xfail` for the frozen baselines).
+- Dataset-derived (local-only, aggregate use): `bench/sector_seeds.yaml` built from the dataset's designation/company-sector distribution so synthetic cases cover the real participant population (managers, manufacturing, finance, IT, quality, HR…), not only technology. Titles are never copied into committed files verbatim if they could identify a person; seeds are generalised.
 - Gate: runner reproducible (same inputs → same case set/metrics); baselines frozen; failure taxonomy documented.
 
 **Phase 2 — Evidence extraction**
@@ -85,6 +86,7 @@ Valid ids; schema/types; finite, in-range; no dup/missing of the 94; evidence id
 **Phase 3 — Career assessment**
 - `data/processed/area_definitions_v1.yaml`: per-area id, name, definition, typical activities, supporting-evidence examples, common contextual confusions, qualification gaps (drafted by LLM, **human-reviewed**); single source replacing `llm/areas.py` duplication for the new engine (`catalogue_v1` hash recorded).
 - `evidence/assess.py` (+ batched calls if 94-area output is too long; measure), `rank.py`, `verify.py`, `prompts/assess_v1.md`. Full 94 assessed — no rule-engine prefilter.
+- Work-style ablation (personality off vs bounded on) uses the dataset's real distribution of PersonaMap profiles as *inputs* only (to check the adjustment behaves sensibly across type frequencies, e.g. the ESTJ-heavy skew); it supplies no ground truth of career fit.
 - Gate: all dedicated contextual-confusion regression cases pass (0 domain-confusion errors) **and** genuine-positive cases (nurse, accountant, lawyer, teacher, clinician) still get their areas.
 
 **Phase 4 — Validation & model comparison**
@@ -101,7 +103,7 @@ Valid ids; schema/types; finite, in-range; no dup/missing of the 94; evidence id
 - `engines/` registry: `rule`, `llm_direct`, `llm_evidence` all returning `EngineResult`; app engine selector with visible label; narrowing/report/feedback consume the contract (supported vs exploration separated; rejected/failed shown explicitly, **no silent rule fallback**); feedback capture tagged with engine+versions; session-only storage retained; feature flag + rollback (default stays `rule`); README/docs updated; remove auto-run live test (explicit `--run-live` / marker).
 - Gate: Phase 5 gate passed; pilot monitoring plan agreed.
 
-**Optional Phase 7 — Fine-tuning** only after Phase 5 shows prompted quality and cost/latency justify it (split by participant/template family, never train on final test, check licences/memory for chosen open-weight model, evaluate vs rule, strong prompted, small untuned, evidence pipeline). No numbers promised.
+**Optional Phase 7 — Fine-tuning** (the PersonaMap dataset is **not** training data for it: no CV text, no area labels; see §13) only after Phase 5 shows prompted quality and cost/latency justify it (split by participant/template family, never train on final test, check licences/memory for chosen open-weight model, evaluate vs rule, strong prompted, small untuned, evidence pipeline). No numbers promised.
 
 ## 7. File-by-file (initial implementation, Phases 0–3)
 - Edit: `app/pages/bench.py` (syntax fix only, Phase 0). Later: `app/common.py`, `bench.py` engine selector (Phase 6).
@@ -115,8 +117,11 @@ Metrics with denominators: expert relevance of *displayed supported* recommendat
 ## 9. Privacy & routing
 Synthetic only for external calls; keys only via env/.env (gitignored; never printed; .env not currently covered by the tracked-files test — add check); per-run request pinned (`provider.only`, `allow_fallbacks:false`, `data_collection:deny`, `zdr` when required, `require_parameters:true`); fail clearly if no compliant endpoint; no payload logging by default (log hashes/ids/usage); real participants only with explicit external-inference consent (separate from training consent) and session-only handling; evaluation/feedback retention design = open decision (hosted Streamlit disk is not durable).
 
+## 10a. Dataset handling (added)
+`PERSONAMAP_RESPONSES_MASKED.xlsx` stays local: it is excluded only via `.git/info/exclude` (machine-local, not shared), so add it to `.gitignore` and extend the tracked-files test to cover `*.xlsx` outside `data/raw/` and `PERSONAMAP_*`. Never sent to OpenRouter or any external service; never printed in full; analyses report aggregates only.
+
 ## 10. Human-input dependencies
-Career-expert raters (≥2) and rating time; API budget cap; consent wording and real-CV authorisation; review of area definitions; catalogue changes (split A015 engineering? treat management?); confirmation of final model/provider after live verification; decision on whether to export catalogue stable-ID scheme.
+**Paired CVs for the PersonaMap participants (or any real CVs with expert-assigned career areas) — this is the only route by which real data could become training/eval data; requires participant consent for that specific purpose;** career-expert raters (≥2) and rating time; API budget cap; consent wording and real-CV authorisation; review of area definitions; catalogue changes (split A015 engineering? treat management?); confirmation of final model/provider after live verification; decision on whether to export catalogue stable-ID scheme.
 
 ## 11. Smallest useful first implementation (what Phase 0–1 starts with)
 1. Fix bench.py syntax; run full pytest; record baseline.
@@ -129,3 +134,26 @@ Per phase report: what changed, why, how verified, what the evidence establishes
 ## Assumptions / unverified
 - OpenRouter routing/structured-output field names verified from docs fetched today (`data_collection`, `zdr`, `require_parameters`, `allow_fallbacks`, `only`, `max_price`; `response_format.json_schema` support is per endpoint). Model IDs, prices and policies are **not yet verified** — the model listing fetched was non-standard; do live verification in Phase 4 with a key.
 - Free-model endpoints (Nemotron/Gemma/`openrouter/free`) historically carry data-collection warnings; not used for anything beyond synthetic tests.
+
+## 13. PersonaMap dataset assessment (inspected 2026-10-27; structure only, no CV content exists in it)
+**What it contains** (workbook with ~15 sheets): `Form Responses 1` (~907 rows, 2021–, 33 a/b questions), `Form Responses 3` (54 rows, 2025, 74 questions + `Generation`, consent text), `PERSONAMAP Platform` (~945 rows: name, company, designation, gender, MBTI type and its four dichotomies), `Profile Automation`/copies (answer grids), plus lookup/email-template sheets (`Personality Codes`, `EmailTemplates`, `Company Color Code`, small name/type lists). Roughly 880 unique respondents; 573 distinct designations across 307 companies; strongly skewed to ESTJ (~37%) and ESFJ/ISTJ/ENTJ, with INTP/INFP/ISTP almost absent; many "manager/assistant manager/executive" titles. Some columns contain mojibake (encoding) and duplicated sheets.
+
+**What it does not contain:** CVs, work histories, projects, education, qualifications, interests text, any career-area label, any expert relevance judgment, any outcome. Designation is a single job title, not evidence of tasks or responsibilities.
+
+**Consequences for the plan**
+1. **Cannot train or fine-tune** the evidence extractor, the 94-area assessor, or any CV→career-area ranker. A personality→career model trained here would be circular (job title as label), biased (skewed cohort and sector mix), and conflicts with the rule that personality is not evidence of ability or qualification.
+2. **Consent limits use.** The form states responses are confidential, used for professional development and research, reported in aggregate, and not shared with third parties without permission. External API processing or model training on individual rows is not covered; treat as local, aggregate-only until consent is confirmed in writing.
+3. **Permitted, useful roles (all local):** (a) PersonaMap parsing/scoring sanity checks — verify `profile.parse_personamap` and the a/b→type mapping against the platform's MBTI columns; (b) realistic distribution of PersonaMap profiles for the work-style ablation (Phase 3/4); (c) sector/designation mix to seed synthetic benchmark cases (Phase 1); (d) descriptive, aggregate-only analysis (e.g. how often type fields are balanced) to calibrate the "balanced/unknown" handling.
+4. **Possible weak-signal use (optional, needs sign-off):** map designations to ISCO groups/career areas as *weak, noisy tags* to test whether the pipeline's displayed areas are at least compatible with the participant's current role. This is not ground truth (people move between roles; titles like "executive" are ambiguous) and never enters training.
+5. **What would unlock training:** real CVs (or participant-written experience summaries) for a subset of these participants, with consent for inference *and* separately for training/evaluation use, plus expert-assigned supported areas. Until then Phase 7 relies on synthetic and expert-corrected data per §9 of the brief.
+
+**Plan changes made:** Context decisions, Phase 1 (sector seeds), Phase 3 (ablation inputs), Phase 7 (dataset excluded), §10a (handling), §10 (dependency on paired CVs).
+
+## 14. Data status and synthetic-CV decision (added 2026-10-27)
+Owner's answers: **no real CVs exist**; **CVs will be generated as synthetic examples**; **experience summaries are frozen** (owner will supply later; do not build on them yet). Full record and the list of questions to reopen when they arrive: `docs/OPEN_DECISIONS.md`.
+
+Plan impact:
+- Phase 1 builds the 30-50 case benchmark entirely from synthetic CVs (flagged `synthetic: true`), with human-reviewed expected outcomes, template-family splits and a synthetic holdout frozen before prompt tuning.
+- Phases 2-4 run on synthetic data only; claims are limited to "behaves correctly on designed cases", never real-world accuracy.
+- Phase 5 stays blocked until real CVs/summaries, consent and raters exist.
+- Phase 7 stays optional and unstarted; no training data exists beyond synthetic.

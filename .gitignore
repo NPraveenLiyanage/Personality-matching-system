@@ -5,6 +5,7 @@ data/profiles/
 data/raw/Requirements.md
 data/raw/*.pdf
 notebooks/*.ipynb
+PERSONAMAP_*.xlsx
 
 # Python
 __pycache__/

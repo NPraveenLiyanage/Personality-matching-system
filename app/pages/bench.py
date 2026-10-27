@@ -356,8 +356,7 @@ with tabs[6]:
                     st.caption("No detail returned for this area.")
                     continue
                 for e in d["evidence"]:
-                    st.markdown(f"> {e['quote']}  
-{e['supports']}")
+                    st.markdown(f"> {e['quote']}  \n{e['supports']}")
                 if d["missing"]:
                     st.caption("Not shown in the CV: " + "; ".join(d["missing"]))
                 if d["overlaps_with"]:
