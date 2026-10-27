@@ -157,3 +157,6 @@ Plan impact:
 - Phases 2-4 run on synthetic data only; claims are limited to "behaves correctly on designed cases", never real-world accuracy.
 - Phase 5 stays blocked until real CVs/summaries, consent and raters exist.
 - Phase 7 stays optional and unstarted; no training data exists beyond synthetic.
+
+## 15. Phase 2 status (2026-10-27) — built offline, gate NOT passed
+Added `src/careerx/evidence/` (`schema`, `ingest`, `validate`, `client`, `extract`, `audit`, `extract_v1.md`), `bench/cases/phase2_extraction_cases.yaml` (10 synthetic cases), `bench/audit/extraction_audit.csv` (template), `tests/test_evidence.py`. `llm/` is untouched. Full suite: 68 passed offline. The gate (extraction quality on dev cases) needs live model outputs and the manual audit, so it is open. Not yet verified: any real model's extraction quality, structured-output support of the chosen endpoint, the audit thresholds.

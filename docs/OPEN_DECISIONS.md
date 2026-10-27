@@ -41,3 +41,6 @@ Then rework Phase 5 (evaluation) and, only if justified, Phase 7 (fine-tuning) a
 - `catalogue_v1` = the 94 areas from `careerx.catalogue.build_catalogue()`, IDs `A001`-`A094`, fingerprint `11600e8abed14d08` (SHA-256 prefix over id, name, cluster, kind rows). IDs are positional in code, so they are **frozen**: no reordering or insertion in `catalogue.py`.
 - Any change (split A015, regroup management, merge tech lenses) goes in an explicit, reviewable `catalogue_v2` diff file with a mapping from old IDs. Feedback files reference IDs, so an old ID is never reused for a different area.
 - Area definitions (activities, confusions, qualification gaps) will live in one file, `data/processed/area_definitions_v1.yaml` (Phase 3), replacing the duplicate list in `llm/areas.py` for the new engine.
+
+## Fine-tuning data decision (2026-10-27)
+Owner asked to fine-tune using the PersonaMap workbook. The workbook has no CV text and no career-area labels, so it cannot train the extractor or assessor. Decision (owner-confirmed): the Phase 7 training corpus will be synthetic CVs seeded from the workbook's generalised sector/title mix, with validated, human-reviewed extractions. Phase 2 fixes the record format (`evidence_v1`) that corpus will use. Still blocked on: a measured prompted baseline, human review of labels, and a licence/hardware check for any open-weight model.
