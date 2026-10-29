@@ -42,7 +42,7 @@ def scorer(lexicon: str = "v2"):
 def store() -> dict[str, dict]:
     new = st.session_state.pop("_new_pick", None)        # select a just-added participant before the pickers draw
     if new:
-        for k in ("bench_pick", "ov_pick"):
+        for k in ("bench_pick", "ov_pick", "ev_pick"):
             st.session_state[k] = new
     if "participants" not in st.session_state:
         st.session_state["participants"] = {s["id"]: s for s in PL.demo_specs()}

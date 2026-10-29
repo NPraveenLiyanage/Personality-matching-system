@@ -175,3 +175,12 @@ Definitions drafted (free Nemotron-3.5-super-vl, draft_unreviewed). Tune split: 
 
 ## 19. Phase 3 results (2026-10-29) — gate NOT passed, evidence mixed
 Evidence pipeline (free Nemotron-3.5-super-vl, unreviewed definitions) on 22 synthetic cases: no trap area shown as supported in 18 trap cases (tune 0/8, holdout 0/10; baselines 7/8 and 1/10 rule, 5/8 and 2/10 direct), but holdout recall 8/12 vs 12/12 and only ~1 area shown per case. Two empty holdout cases traced to quote matching rejecting joined bullets; fixed after seeing them, so the holdout is now used and fresh held-out cases are needed. Details: `docs/PHASE3_RESULTS.md`.
+
+## 20. Fresh held-out set v2 and pilot (2026-10-29)
+Fresh 12-case set (untouched by fixes): evidence pipeline 1/10 trap cases vs rule engine 8/10, same recall (8/11) with 1.5 vs 10 areas shown, top-1 in expected set 9/11 vs 6/11. Pilot page built (`app/pages/pilot.py`, `docs/PILOT_GUIDE.md`); single review file `docs/PROJECT_REVIEW.md` (now holding a provisional AI-assisted desk review that still needs a human practitioner); review sheets `docs/review/`. Still open: independent review of expectations/definitions, a paid-model comparison (Phase 4), real-data consent, unfinished-degree rule.
+
+## 21. Case expectations v3 (2026-10-29)
+Reviewer 7b changes applied as a new case version (`bench/cases/career_cases_v3.yaml`) without editing the originals; new `exploration_only` field and overclaim metric (metrics v3); all stored runs re-scored; comparison in `docs/CASES_V3_COMPARISON.md`. Trap results unchanged; expected-area recall for the evidence pipeline rose on tune and fresh sets partly because expectations changed after outputs were known, so not independent. Regulated-term and definition proposals (7c, 7d) not yet applied.
+
+## 22. Reviewer-based pipeline v2 (2026-10-29)
+Tune re-run done (0/8 trap cases, 13/14 expected areas, 0 overclaims). Fresh held-out v3 set written, not yet run. See docs/PHASE3_RESULTS.md.

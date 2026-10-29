@@ -12,12 +12,13 @@ import yaml
 
 from .schema import EvidenceRecord
 
-PROMPT_PATH = Path(__file__).with_name("assess_v1.md")
-PROMPT_VERSION = "assess_v1"
+PROMPT_PATH = Path(__file__).with_name("assess_v2.md")
+PROMPT_VERSION = "assess_v2"
 DEFINITIONS_PATH = Path(__file__).resolve().parents[3] / "data" / "processed" / "area_definitions_v1.yaml"
 REGULATED_PATH = Path(__file__).resolve().parents[3] / "data" / "processed" / "regulated_areas_v1.yaml"
 
-SUPPORT_CLASSES = ("direct", "transferable", "domain_exposure_only", "interest_only", "unsupported", "insufficient_info")
+SUPPORT_CLASSES = ("direct", "transferable", "domain_exposure_only", "interest_only", "in_progress_study", "unsupported",
+                   "insufficient_info")
 POSITIVE = ("direct", "transferable")
 BASES = ("role", "actions", "qualification", "tools", "domain", "interest")
 UNCERTAINTY = ("low", "medium", "high")
@@ -69,7 +70,9 @@ def build_reask_user(records: list[EvidenceRecord], defs: dict, area_ids: list[s
     areas = [dict(area_id=a, name=defs["areas"][a]["name"], definition=defs["areas"][a]["definition"],
                   typical_activities=defs["areas"][a]["typical_activities"],
                   evidence_examples=defs["areas"][a]["evidence_examples"],
-                  qualification_gaps=defs["areas"][a]["qualification_gaps"]) for a in area_ids]
+                  qualification_gaps=defs["areas"][a]["qualification_gaps"],
+                  **({"scope_note": defs["areas"][a]["reviewer_scope_note"]} if defs["areas"][a].get("reviewer_scope_note") else {}))
+             for a in area_ids]
     return json.dumps(dict(
         instruction=("In your previous answer these areas were marked direct or transferable but cited no evidence_id. A claim "
                      "without a citation is rejected. For each area below, either cite the supporting records (evidence_id with "
@@ -83,6 +86,8 @@ def build_user(records: list[EvidenceRecord], warnings: list[dict], defs: dict, 
     for aid, d in defs["areas"].items():
         a = dict(area_id=aid, name=d["name"], definition=d["definition"], typical_activities=d["typical_activities"],
                  evidence_examples=d["evidence_examples"], qualification_gaps=d["qualification_gaps"])
+        if d.get("reviewer_scope_note"):
+            a["scope_note"] = d["reviewer_scope_note"]
         if use_confusions:
             a["common_contextual_confusions"] = d["common_contextual_confusions"]
         areas.append(a)

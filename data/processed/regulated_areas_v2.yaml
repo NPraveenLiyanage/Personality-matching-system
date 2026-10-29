@@ -1,0 +1,207 @@
+status: reviewer_provisional
+catalogue_version: catalogue_v1
+areas:
+  A018:
+  - physician
+  - doctor
+  - medical officer
+  - surgeon
+  - mbbs
+  - 'md '
+  - medicine
+  - general practitioner
+  - registrar
+  - house officer
+  - medical practitioner
+  - consultant physician
+  - mbbs equivalent
+  - medical specialist
+  A019:
+  - nurse
+  - nursing
+  - midwife
+  - midwifery
+  - registered nurse
+  - staff nurse
+  - midwifery practitioner
+  - nursing diploma
+  A020:
+  - ayurved
+  - traditional medicine
+  - homeopath
+  - acupunctur
+  - unani
+  - siddha
+  - naturopath
+  - herbal medicine
+  - ayurveda physician
+  A021:
+  - paramedic
+  - emergency medical
+  - ambulance
+  - emt
+  - emergency medical technician
+  - ambulance paramedic
+  - prehospital emergency clinician
+  A022:
+  - veterinar
+  - veterinarian
+  - veterinary surgeon
+  - dvm
+  - veterinary nurse/technician
+  A023:
+  - dentist
+  - dental
+  - pharmac
+  - physiotherap
+  - occupational therap
+  - optometr
+  - speech therap
+  - dental surgeon
+  - registered pharmacist
+  - physiotherapist
+  - occupational therapist
+  - optometrist
+  A024:
+  - medical technolog
+  - radiograph
+  - laboratory technolog
+  - medical laborator
+  - biomedical technolog
+  - radiographer
+  - medical laboratory technologist
+  - clinical laboratory technician
+  A028:
+  - lecturer
+  - professor
+  - university teach
+  - academic
+  - senior lecturer
+  - assistant lecturer
+  - university lecturer
+  - professor with teaching duties
+  A029:
+  - instructor
+  - trainer
+  - vocational
+  - tutor
+  - teacher
+  - tvet lecturer
+  - vocational instructor
+  - trade instructor
+  - apprenticeship trainer
+  A030:
+  - teacher
+  - teaching
+  - education
+  - pgde
+  - secondary school
+  - secondary school subject teacher
+  - secondary teaching certificate
+  A031:
+  - teacher
+  - teaching
+  - early childhood
+  - nursery
+  - preschool
+  - child care
+  - childcare
+  - education
+  - primary school teacher
+  - kindergarten educator
+  - preschool teacher
+  - childcare practitioner
+  A032:
+  - teacher
+  - teaching
+  - special education
+  - education
+  - curriculum
+  - special-needs educator
+  - education-methods specialist
+  - curriculum adviser
+  A033:
+  - accountant
+  - accounting
+  - audit
+  - chartered
+  - cpa
+  - financial
+  - finance
+  - bookkeep
+  - treasury
+  - certified accountant
+  - chartered accountant
+  - financial analyst
+  - tax accountant
+  A046:
+  - attorney
+  - lawyer
+  - advocate
+  - solicitor
+  - barrister
+  - llb
+  - law
+  - legal
+  - judge
+  - magistrate
+  - attorney-at-law
+  - admitted legal practitioner
+  - practising advocate
+  A053:
+  - paralegal
+  - social work
+  - social worker
+  - case worker
+  - community worker
+  - paralegal assistant
+  - community caseworker
+  - legal caseworker
+  A054:
+  - police
+  - firefighter
+  - fire officer
+  - security officer
+  - security guard
+  - police constable
+  - fire and rescue officer
+  A068:
+  - pilot
+  - air traffic
+  - seafarer
+  - mariner
+  - ship officer
+  - deck officer
+  - airline pilot
+  - air traffic controller
+  - ship master
+  - marine navigator
+reviewer_concern:
+  A018: 'YES: medicine, MD, registrar, doctor in non-clinical contexts; require positive role/duties and
+    check registration separately.'
+  A019: 'YES: nursing as subject, nursing app, or ward name; qualifications/registration cannot be validated
+    by a word match.'
+  A020: 'YES: herbal medicine, traditional medicine and product names are domain mentions, not clinical
+    practice.'
+  A021: 'YES: ambulance or emergency medical can describe transport or software; require documented care
+    tasks.'
+  A022: 'YES: veterinary as clinic/product industry; distinguish licensed veterinarian from assistant
+    or technician.'
+  A023: 'YES: dental, pharmac, therapy prefixes can be product or app contexts; check precise clinical
+    role.'
+  A024: 'YES: medical technology or biomedical technology can be software/engineering; distinguish technicians
+    and regulated roles.'
+  A028: 'YES: academic can mean research only; no inference of higher-education teaching without duties.'
+  A029: 'YES: instructor, trainer, tutor, teacher are generic across settings.'
+  A030: 'YES: education, teacher and teaching alone do not identify school level.'
+  A031: 'YES: primary teaching and childcare are distinct occupations with different credential rules.'
+  A032: 'YES: education, teacher and curriculum are broad; require specialist activities.'
+  A033: 'YES: financial, finance, audit and chartered may be company names/projects. No blanket licensing
+    rule for all financial analysts.'
+  A046: 'YES: law, legal, LLB are not evidence of admission to practice; separate lawyer, judge and legal
+    researcher.'
+  A053: 'YES: community worker is vague and legal context alone not paralegal practice.'
+  A054: 'YES: security officer may refer to information security; protect against domain/project matches.'
+  A068: 'YES: pilot means trial project or TV pilot; seafarer and mariner are vague without operating
+    duties.'
+note: v1 terms + words the reviewer said were missing. 'Too broad' terms were kept (see reviewer_concern).

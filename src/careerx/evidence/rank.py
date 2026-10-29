@@ -12,7 +12,8 @@ _TIER = {"direct": 0, "transferable": 1}
 _RECENCY = {"recent": 0, "mid": 1, "old": 2, "unknown": 3}
 EXPLORATION_LABEL = {"domain_exposure_only": "Industry exposure only: the work served this field, but the evidence does not "
                                               "show doing this occupation's work",
-                     "interest_only": "Stated interest: not yet backed by experience"}
+                     "interest_only": "Stated interest: not yet backed by experience",
+                     "in_progress_study": "Study in progress: a pathway to explore, not yet established practice"}
 
 
 def _best_recency(a: AreaAssessment, by_eid: dict) -> int:

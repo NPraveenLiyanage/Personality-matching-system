@@ -52,7 +52,7 @@ def rank_llm_evidence(case: dict, cat):
     from careerx.evidence import assess, client as ev_client, engine as ev_engine
     ctx = _EVIDENCE_CTX
     if "defs" not in ctx:
-        ctx["defs"], ctx["reg"] = assess.load_definitions(ctx.get("definitions")), assess.load_regulated()
+        ctx["defs"], ctx["reg"] = assess.load_definitions(ctx.get("definitions")), assess.load_regulated(ctx.get("regulated"))
     first_line = case["cv_text"].strip().splitlines()[0]
     res = ev_engine.run(case["cv_text"], first_line, ctx["defs"], cfg=ctx["cfg"], regulated=ctx["reg"],
                         use_confusions=ctx.get("use_confusions", False))
@@ -73,16 +73,18 @@ def rescore(path: Path, cases_path: Path, k: int) -> None:
     """Re-score a stored run under the current metrics version and case file. The stored rankings are untouched."""
     run = json.loads(path.read_text(encoding="utf-8"))
     cases = [c for c in metrics.load_cases(cases_path) if c["id"] in run["top"]]
-    per_case = {c["id"]: metrics.case_metrics(c, [r["area_id"] for r in run["top"][c["id"]]], k) for c in cases}
+    stages = run.get("stages") or {}
+    expl = lambda cid: [e["area_id"] for e in (stages.get(cid) or {}).get("exploration", [])]   # noqa: E731
+    per_case = {c["id"]: metrics.case_metrics(c, [r["area_id"] for r in run["top"][c["id"]]], k, expl(c["id"])) for c in cases}
     run["aggregate"] = metrics.aggregate(cases, per_case, k)
     run["per_case"] = per_case
-    run["meta"].update(rescored_from=path.name, metrics_version=metrics.METRICS_VERSION,
+    run["meta"].update(rescored_from=path.name, metrics_version=metrics.METRICS_VERSION, cases_file=cases_path.name,
                        cases_sha256=hashlib.sha256(cases_path.read_bytes()).hexdigest()[:16])
-    out = path.with_name(path.stem + f"_m{metrics.METRICS_VERSION}.json")
+    out = path.with_name(path.stem + f"_m{metrics.METRICS_VERSION}_{cases_path.stem}.json")
     out.write_text(json.dumps(run, indent=1, ensure_ascii=False), encoding="utf-8")
     o = run["aggregate"]["overall"]
     print(f"{path.name} -> {out.name}: domain-confusion {o['domain_confusion_cases']}, recall {o['supported_recall']}, "
-          f"mean displayed {o['mean_areas_displayed']}, abstained on no-support {o['abstained_on_no_support_cases']}")
+          f"overclaim cases {o['overclaim_cases']}, mean displayed {o['mean_areas_displayed']}, abstained on no-support {o['abstained_on_no_support_cases']}")
 
 
 def main():
@@ -97,10 +99,12 @@ def main():
                     help="llm_evidence: 'allow' is needed for free endpoints; only ever used with synthetic cases")
     ap.add_argument("--max-tokens", type=int, default=12000, help="llm_evidence: output limit per call (reasoning models need more)")
     ap.add_argument("--account", type=int, default=1, choices=[1, 2], help="llm_evidence: which configured OpenRouter key is primary (recorded in the run metadata, never the key)")
-    ap.add_argument("--split", default="", choices=["", "tune", "holdout"], help="only run cases of this split")
+    ap.add_argument("--split", default="", help="only run cases of this split (tune, holdout, holdout_v2, ...)")
     ap.add_argument("--definitions", default="", help="llm_evidence: area definitions file (default data/processed/area_definitions_v1.yaml)")
+    ap.add_argument("--regulated", default="", help="llm_evidence: regulated-areas file (default data/processed/regulated_areas_v1.yaml)")
     ap.add_argument("--use-confusions", action="store_true", help="llm_evidence ablation: show common_contextual_confusions to the assessor")
     ap.add_argument("--run-live", action="store_true")
+    ap.add_argument("--label", default="", help="suffix for output/checkpoint file names, e.g. pipe2")
     ap.add_argument("--resume", action="store_true", help="keep finished cases from the checkpoint of a killed run; re-run the rest")
     ap.add_argument("--rescore", default="", help="recompute metrics for a stored run file with the current metrics/case file (no API calls)")
     a = ap.parse_args()
@@ -123,7 +127,7 @@ def main():
             if not cfg.get("api_key_2"):
                 sys.exit("--account 2 needs OPENROUTER_API_KEY_2 in .env")
             cfg.update(api_key=cfg["api_key_2"], api_key_2="")
-        _EVIDENCE_CTX.update(cfg=cfg, definitions=a.definitions or None, use_confusions=a.use_confusions)
+        _EVIDENCE_CTX.update(cfg=cfg, definitions=a.definitions or None, regulated=a.regulated or None, use_confusions=a.use_confusions)
     cases = metrics.load_cases(a.cases)
     if a.only:
         cases = [c for c in cases if c["id"] in a.only.split(",")]
@@ -133,7 +137,7 @@ def main():
     per_case, ranked_out, failed, stage_out = {}, {}, {}, {}
     rd = ROOT / "bench" / "runs"
     rd.mkdir(parents=True, exist_ok=True)
-    tag = a.engine + (("_" + a.model.replace("/", "_")) if a.model else "") + (f"_{a.split}" if a.split else "")
+    tag = a.engine + (("_" + a.model.replace("/", "_")) if a.model else "") + (f"_{a.split}" if a.split else "") + (f"_{a.label}" if a.label else "")
     tag = re.sub(r"[^A-Za-z0-9._-]", "_", tag)          # model ids contain ":" (an NTFS stream separator) and "/"
     ckpt = rd / f"_checkpoint_{tag}.json"
     resumed = []
@@ -174,13 +178,13 @@ def main():
     if a.engine == "llm_direct":
         meta.update(prompt="llm/prompt_v1.md", runs_per_case=1, fallbacks="none", provider="unpinned (frozen client)")
     if a.engine == "llm_evidence":
-        meta.update(provider=a.provider, split=a.split or "all", prompts="extract_v1+assess_v1", schema="evidence_v1",
+        meta.update(provider=a.provider, split=a.split or "all", prompts="extract_v1+assess_v2", schema="evidence_v1",
                     definitions_status=(__import__("yaml").safe_load(open(a.definitions or str(ROOT / "data/processed/area_definitions_v1.yaml"), encoding="utf-8")).get("status")),
                     frozen_files={f: hashlib.sha256((ROOT / f).read_bytes()).hexdigest()[:12] for f in (
-                        "src/careerx/evidence/extract_v1.md", "src/careerx/evidence/assess_v1.md", "src/careerx/evidence/validate.py",
+                        "src/careerx/evidence/extract_v1.md", "src/careerx/evidence/assess_v2.md", "src/careerx/evidence/validate.py",
                         "src/careerx/evidence/verify.py", "src/careerx/evidence/rank.py", "src/careerx/evidence/engine.py",
-                        "data/processed/regulated_areas_v1.yaml", "data/processed/area_definitions_v1.yaml")},
-                    use_confusions=a.use_confusions, zdr=False, data_collection=a.data_collection, account=a.account, fallbacks="none", runs_per_case=1)
+                        a.regulated or "data/processed/regulated_areas_v1.yaml", a.definitions or "data/processed/area_definitions_v1.yaml")},
+                    label=a.label or None, use_confusions=a.use_confusions, zdr=False, data_collection=a.data_collection, account=a.account, fallbacks="none", runs_per_case=1)
     meta["resumed_cases_from_checkpoint"] = resumed
     out = dict(meta=meta, aggregate=agg, per_case=per_case, top=ranked_out, failed=failed, stages=stage_out)
     path = rd / f"career_{tag}_{date.today()}.json"

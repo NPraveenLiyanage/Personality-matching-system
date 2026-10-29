@@ -36,3 +36,23 @@ Status: **gate not passed; evidence is mixed.** All numbers are against author-w
 3. Human review of the 94 area definitions and the regulated-term list.
 4. Decide, with a reviewer, how many areas the product should show; the current pipeline's conservatism may need an explicit recall target.
 5. Phase 4: compare models (paid models only if you approve), repeat-run agreement, cost.
+
+## Addendum 2026-10-29: fresh held-out set v2 (12 cases, written after the first holdout was used; fixed pipeline, one run)
+Run: `bench/runs/career_llm_evidence_nvidia_nemotron-3.5-super-vl_free_holdout_v2_2026-10-29.json` (account 1, 12 of 12 completed). Rule engine on the same cases: `bench/runs/career_rule_holdout_v2_2026-10-29.json`. The direct AI prompt was not run (paid model).
+
+| | Rule engine | Evidence pipeline |
+|---|---|---|
+| Trap cases with a trap shown as supported | 8 / 10 | **1 / 10** |
+| Expected areas found | 8 / 11 | 8 / 11 |
+| Top area in expected/acceptable set | 6 / 11 | 9 / 11 |
+| Share of shown areas in the expected/acceptable set (lower bound) | 0.24 | 0.72 |
+| Mean areas shown | 10 | 1.5 |
+| Abstained on no-support cases | 0 / 3 | 2 / 3 |
+
+The industry-swap triple (same developer; hospital, bank, school client) gave Software as the only supported area in all three. Failures and caveats are listed in `docs/PROJECT_REVIEW.md` section 2. One run per case; expectations unreviewed; the first live use of the targeted re-ask worked (v2_11).
+
+
+## Tune re-run under the reviewer-based pipeline (2026-10-29, later; account 2, free Nemotron)
+Changes: area_definitions_v2 (44 reviewer scope notes), regulated_areas_v2 (57 added words), assess_v2 prompt with the new in_progress_study class, in-progress-study rule in the verifier. Scored against cases v3 (reviewer expectations).
+Tune split, 12 of 12 completed (c05 first truncated at the 60,000-token limit and was re-run from the checkpoint): trap cases 0/8, expected areas found 13/14, overclaims 0/9, mean areas shown 1.17, top area in expected set 11/11, abstained on the no-support case 1/1.
+Caveats: tune cases were used to design these changes; expectations are the reviewer-based v3 ones (set after outputs were known); one run per case. NOT yet run: the fresh held-out set v3 (bench/cases/career_cases_holdout_v3.yaml, 12 cases, expectations fixed before any run). Run it once, after account 1's free quota resets, with --definitions data/processed/area_definitions_v2.yaml --regulated data/processed/regulated_areas_v2.yaml --label pipe2.

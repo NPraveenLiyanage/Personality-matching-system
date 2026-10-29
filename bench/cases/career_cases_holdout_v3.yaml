@@ -1,0 +1,295 @@
+# Fresh held-out set v3 (written 2026-10-29 BEFORE any run of the reviewer-based pipeline changes: definitions v2, regulated v2,
+# assess_v2 with the in-progress-study class). ALL SYNTHETIC. New domains: pharmacy, nursing student, medical-centre reception,
+# heavy-truck driving, primary teaching, bank data analysis, social work, bus-depot mechanic, interest-only school leaver,
+# law-firm developer vs legal secretary, journalism.
+# Expectation fields follow cases v3: supported / acceptable (fine to show as supported) / exploration_only (fine ONLY as labelled
+# exploration; showing as supported is an overclaim) / traps (unsupported claim if shown as supported).
+# Rules: do not edit expectations after seeing output; expectations are author-written and not independently reviewed.
+- id: v3_01_pharmacist
+  synthetic: true
+  split: holdout_v3
+  pair_group: null
+  sector: health
+  stage: established
+  categories: [genuine_positive, regulated_role]
+  cv_text: |
+    Anura Dissanayake
+    SUMMARY
+    Pharmacist with six years of experience in community pharmacy.
+
+    EXPERIENCE
+    Pharmacist, Lakeview Community Pharmacy (2020 - 2026)
+    - Dispensed prescriptions, counselled patients on how to take their medicines and checked for interactions.
+    - Managed the controlled-drug register and supervised two pharmacy assistants.
+
+    EDUCATION
+    B.Pharm, Eastbridge University, 2019
+    Registered Pharmacist, State Pharmacy Council, 2020
+  supported: [A023]
+  acceptable: []
+  exploration_only: [A024]
+  traps: [A043, A087]
+
+- id: v3_02_nursing_student_coursework
+  synthetic: true
+  split: holdout_v3
+  pair_group: null
+  sector: health
+  stage: early
+  categories: [in_progress_study, regulated_role]
+  cv_text: |
+    Madhavi Kulasekara
+    SUMMARY
+    Second-year nursing student looking for a part-time healthcare support job.
+
+    EDUCATION
+    BSc Nursing, Eastbridge University, 2025 - present
+    Modules completed: anatomy, fundamentals of nursing, pharmacology, communication skills.
+
+    SKILLS
+    First aid certificate, communication, teamwork
+  supported: []
+  acceptable: [A025, A027]
+  exploration_only: [A019]
+  traps: [A018, A043]
+
+- id: v3_03_medical_centre_receptionist
+  synthetic: true
+  split: holdout_v3
+  pair_group: null
+  sector: administration
+  stage: established
+  categories: [domain_confusion, incidental_domain_terms]
+  cv_text: |
+    Ishara Gunasekara
+    SUMMARY
+    Receptionist with five years of front-desk experience, the last three in a medical centre.
+
+    EXPERIENCE
+    Receptionist, Greenfield Medical Centre (2023 - 2026)
+    - Greeted patients, booked appointments by phone and updated the appointment system.
+    - Answered billing questions and routed urgent calls to the nursing staff.
+
+    Receptionist, Seaview Hotel (2021 - 2023)
+    - Checked guests in and out and handled room bookings and complaints.
+
+    EDUCATION
+    Advanced Level, Southfield Girls' School, 2020
+  supported: [A055]
+  acceptable: [A038, A037, A042]
+  exploration_only: []
+  traps: [A019, A018, A025, A023]
+
+- id: v3_04_heavy_truck_driver_medical_supplies
+  synthetic: true
+  split: holdout_v3
+  pair_group: null
+  sector: transport
+  stage: established
+  categories: [domain_confusion, incidental_domain_terms, non_degree]
+  cv_text: |
+    Roshan Jayawardena
+    SUMMARY
+    Heavy vehicle driver with nine years of experience.
+
+    EXPERIENCE
+    Heavy Truck Driver, Highland Logistics (2017 - 2026)
+    - Drove 12-tonne trucks delivering medical supplies and pharmaceuticals to hospitals and clinics across the island.
+    - Loaded and checked cargo, kept delivery logs and reported vehicle faults.
+
+    LICENCES
+    Heavy Vehicle Driving Licence, valid to 2028
+  supported: [A083]
+  acceptable: [A069, A085]
+  exploration_only: []
+  traps: [A021, A024, A023, A025]
+
+- id: v3_05_primary_school_teacher
+  synthetic: true
+  split: holdout_v3
+  pair_group: null
+  sector: education
+  stage: established
+  categories: [genuine_positive, regulated_role]
+  cv_text: |
+    Kaushalya Premadasa
+    SUMMARY
+    Primary school teacher with seven years of classroom experience.
+
+    EXPERIENCE
+    Class Teacher, St Mary's Primary School (2019 - 2026)
+    - Taught grade 3 pupils language, mathematics and environmental studies and planned weekly lessons.
+    - Assessed pupils' progress, ran parent meetings and organised the annual sports day.
+
+    EDUCATION
+    Diploma in Teaching (Primary), Teacher Training College, 2018
+  supported: [A031]
+  acceptable: [A032]
+  exploration_only: [A030]
+  traps: [A043, A087]
+
+- id: v3_06_bank_data_analyst
+  synthetic: true
+  split: holdout_v3
+  pair_group: null
+  sector: finance
+  stage: established
+  categories: [domain_confusion, genuine_positive]
+  cv_text: |
+    Pasan Wijesundara
+    SUMMARY
+    Data analyst with four years of experience in retail banking analytics.
+
+    EXPERIENCE
+    Data Analyst, Crestline Bank (2022 - 2026)
+    - Wrote SQL queries and built dashboards of branch performance for the regional managers.
+    - Analysed customer churn using Python and presented the monthly findings.
+
+    EDUCATION
+    BSc Statistics, Westgate University, 2021
+  supported: [A086]
+  acceptable: [A013, A044]
+  exploration_only: [A087]
+  traps: [A033, A040, A041]
+
+- id: v3_07_social_worker
+  synthetic: true
+  split: holdout_v3
+  pair_group: null
+  sector: social_care
+  stage: established
+  categories: [genuine_positive, regulated_role, incidental_domain_terms]
+  cv_text: |
+    Dilrukshi Amarasekara
+    SUMMARY
+    Social worker with eight years of experience in child protection.
+
+    EXPERIENCE
+    Social Worker, District Child Protection Office (2018 - 2026)
+    - Assessed family situations, prepared case reports for the juvenile court and referred children to support services.
+    - Visited families, coordinated with schools and health staff and kept case records.
+
+    EDUCATION
+    BA Social Work, Eastbridge University, 2017
+  supported: [A053]
+  acceptable: [A048, A025]
+  exploration_only: []
+  traps: [A046]
+
+- id: v3_08_mechanical_technician_bus_depot
+  synthetic: true
+  split: holdout_v3
+  pair_group: null
+  sector: transport
+  stage: established
+  categories: [domain_confusion, non_degree, technician_not_engineer]
+  cv_text: |
+    Saliya Bandara
+    SUMMARY
+    Mechanical technician with seven years of experience in vehicle maintenance.
+
+    EXPERIENCE
+    Mechanical Technician, Metro Bus Depot (2019 - 2026)
+    - Serviced engines and brakes, diagnosed faults and carried out scheduled maintenance on a fleet of 40 buses.
+    - Kept maintenance records and ordered spare parts.
+
+    EDUCATION
+    NVQ Level 4 Automotive Technology, Technical College, 2018
+  supported: [A072]
+  acceptable: [A067]
+  exploration_only: [A015]
+  traps: [A083, A084]
+
+- id: v3_09_school_leaver_wants_to_be_a_doctor
+  synthetic: true
+  split: holdout_v3
+  pair_group: null
+  sector: health
+  stage: early
+  categories: [interest_only, regulated_role]
+  cv_text: |
+    Thilini Weerakoon
+    SUMMARY
+    School leaver. I want to become a doctor and plan to apply to medical school next year.
+
+    EDUCATION
+    G.C.E. Advanced Level, Southfield Girls' School, 2025: biology, chemistry, physics.
+
+    INTERESTS
+    Volunteering at school health clubs, reading about medicine.
+  supported: []
+  acceptable: [A014, A012, A025]
+  exploration_only: [A018]
+  traps: [A019, A021]
+
+- id: v3_10_law_firm_software_developer
+  synthetic: true
+  split: holdout_v3
+  pair_group: law_firm_roles
+  sector: technology
+  stage: established
+  categories: [domain_confusion, minimal_pair]
+  cv_text: |
+    Janith Perera
+    SUMMARY
+    Software developer with five years of experience in internal business systems.
+
+    EXPERIENCE
+    Software Developer, Harbour and Fernando Law Associates (2021 - 2026)
+    - Built the firm's case-tracking web application in Django and PostgreSQL and added document search.
+    - Supported the lawyers' day-to-day IT needs and fixed defects.
+
+    EDUCATION
+    BSc Computer Science, Westgate University, 2020
+  supported: [A043]
+  acceptable: [A044, A045]
+  exploration_only: []
+  traps: [A046, A053]
+
+- id: v3_11_law_firm_legal_secretary
+  synthetic: true
+  split: holdout_v3
+  pair_group: law_firm_roles
+  sector: administration
+  stage: established
+  categories: [domain_confusion, minimal_pair]
+  cv_text: |
+    Chathurika Ranasinghe
+    SUMMARY
+    Legal secretary with seven years of experience in a commercial law firm.
+
+    EXPERIENCE
+    Legal Secretary, Harbour and Fernando Law Associates (2019 - 2026)
+    - Typed and formatted pleadings and contracts and managed the attorneys' diaries and court dates.
+    - Filed documents at the court registry and kept the firm's case files in order.
+
+    EDUCATION
+    Diploma in Secretarial Studies, Technical College, 2018
+  supported: [A037]
+  acceptable: [A038, A042]
+  exploration_only: []
+  traps: [A046, A053]
+
+- id: v3_12_newspaper_reporter
+  synthetic: true
+  split: holdout_v3
+  pair_group: null
+  sector: media
+  stage: established
+  categories: [domain_confusion, incidental_domain_terms]
+  cv_text: |
+    Nilanthi Hettiarachchi
+    SUMMARY
+    Reporter with six years of experience in a daily newspaper.
+
+    EXPERIENCE
+    Reporter, Daily Island Newspaper (2020 - 2026)
+    - Wrote news stories on health, the courts and education and interviewed doctors, judges and teachers.
+    - Edited copy for the daily edition and met daily deadlines.
+
+    EDUCATION
+    BA Mass Communication, Eastbridge University, 2019
+  supported: [A049]
+  acceptable: [A035]
+  exploration_only: []
+  traps: [A018, A046, A019, A030]

@@ -14,6 +14,13 @@ from .assess import BASES, POSITIVE, SUPPORT_CLASSES, UNCERTAINTY
 from .schema import EvidenceRecord
 
 _NO_SUPPORT_TYPES = ("listed_skill_only", "stated_interest")
+_ONGOING = re.compile(r"\b(present|current|ongoing|to date|now)\b", re.I)
+
+
+def _ongoing(r: EvidenceRecord) -> bool:
+    """Study that is still in progress: an education/certification record whose end date says present/ongoing."""
+    return r.evidence_type in ("education", "certification") and bool(_ONGOING.search(r.dates.get("end") or ""))
+
 _BASIS_FIELD_OK = {
     "role": lambda r: bool(r.role),
     "actions": lambda r: bool(r.candidate_actions or r.candidate_responsibilities),
@@ -120,6 +127,7 @@ def _check_row(aid: str, raw: dict, by_eid: dict, reg_terms: list[str] | None):
     final = cls
     if cls in POSITIVE:
         valid = []
+        in_progress = False
         for eid, basis in ev:
             r = by_eid[eid]
             if basis in ("domain", "interest"):
@@ -128,6 +136,9 @@ def _check_row(aid: str, raw: dict, by_eid: dict, reg_terms: list[str] | None):
                 changes.append(f"citation {eid} is a {r.evidence_type} record and cannot support {cls}")
             elif r.negation:
                 changes.append(f"citation {eid} is a negated statement")
+            elif _ongoing(r):
+                changes.append(f"citation {eid} is study still in progress and cannot support {cls}")
+                in_progress = True
             elif r.contribution not in ("own", "shared"):
                 changes.append(f"citation {eid} has contribution {r.contribution!r}; own or shared needed")
             elif not _BASIS_FIELD_OK[basis](r):
@@ -141,9 +152,11 @@ def _check_row(aid: str, raw: dict, by_eid: dict, reg_terms: list[str] | None):
                 changes.append("regulated occupation: no cited role or qualification subject matches the reviewed terms")
             valid = ok
         if not valid:
-            final = _downgrade(ev, by_eid)
+            final = "in_progress_study" if in_progress else _downgrade(ev, by_eid)
             changes.append(f"downgraded {cls} -> {final}: no valid supporting citation left")
-            if final != "domain_exposure_only":
+            if final == "in_progress_study":
+                ev = [(e, b) for e, b in ev if _ongoing(by_eid[e])]
+            elif final != "domain_exposure_only":
                 ev = []
         else:
             ev = valid
@@ -152,6 +165,11 @@ def _check_row(aid: str, raw: dict, by_eid: dict, reg_terms: list[str] | None):
         if not ev:
             final = "unsupported"
             changes.append("downgraded interest_only -> unsupported: no stated_interest record cited")
+    elif cls == "in_progress_study":
+        ev = [(e, b) for e, b in ev if by_eid[e].evidence_type in ("education", "certification")]
+        if not ev:
+            final = "unsupported"
+            changes.append("downgraded in_progress_study -> unsupported: no education record cited")
     elif cls == "domain_exposure_only":
         ev = [(e, b) for e, b in ev if by_eid[e].domain_context]
         if not ev:
@@ -171,7 +189,7 @@ def _check_row(aid: str, raw: dict, by_eid: dict, reg_terms: list[str] | None):
         if rel is not None:
             changes.append("relevance cleared on a non-supported row")
         rel = None
-    rationale = raw["rationale"] if final in POSITIVE + ("domain_exposure_only",) else None
+    rationale = raw["rationale"] if final in POSITIVE + ("domain_exposure_only", "in_progress_study") else None
     gaps = raw["qualification_gaps"] if final in POSITIVE else []
     return AreaAssessment(aid, final, cls, rel, ev, rationale, gaps, raw["uncertainty"],
                           status="repaired" if changes else "accepted", changes=changes), []

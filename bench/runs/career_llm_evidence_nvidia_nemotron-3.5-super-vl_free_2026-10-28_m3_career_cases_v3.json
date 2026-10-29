@@ -1,0 +1,1209 @@
+{
+ "meta": {
+  "engine": "llm_evidence",
+  "date": "2026-10-28",
+  "git_commit": "0bb422d",
+  "k": 10,
+  "n_cases": 1,
+  "n_failed": 0,
+  "cases_sha256": "eefa23a811e97e10",
+  "catalogue_fingerprint": "11600e8abed14d08",
+  "reference_date": "2026-10-15",
+  "model": "nvidia/nemotron-3.5-super-vl:free",
+  "note": "synthetic design expectations, not expert ratings",
+  "provider": "nvidia",
+  "split": "all",
+  "prompts": "extract_v1+assess_v1",
+  "schema": "evidence_v1",
+  "definitions_status": "draft_unreviewed",
+  "frozen_files": {
+   "src/careerx/evidence/extract_v1.md": "381bcd2b9606",
+   "src/careerx/evidence/assess_v1.md": "745c403c9478",
+   "src/careerx/evidence/validate.py": "1c85a5b0f0ba",
+   "src/careerx/evidence/verify.py": "138ef5a1f944",
+   "src/careerx/evidence/rank.py": "9dcef1889d10",
+   "src/careerx/evidence/engine.py": "e884080e35e0",
+   "data/processed/regulated_areas_v1.yaml": "4e6a2c2f5eac",
+   "data/processed/area_definitions_v1.yaml": "cf2e619748c3"
+  },
+  "use_confusions": false,
+  "zdr": false,
+  "data_collection": "allow",
+  "account": 2,
+  "fallbacks": "none",
+  "runs_per_case": 1,
+  "rescored_from": "career_llm_evidence_nvidia_nemotron-3.5-super-vl_free_2026-10-28.json",
+  "metrics_version": 3,
+  "cases_file": "career_cases_v3.yaml"
+ },
+ "aggregate": {
+  "metrics_version": 3,
+  "k": 10,
+  "overall": {
+   "n_cases": 1,
+   "domain_confusion_cases": "0/0",
+   "domain_confusion_rate": null,
+   "trap_areas_displayed_as_supported": 0,
+   "trap_cases_shown_only_as_exploration": 0,
+   "supported_recall": "2/3",
+   "supported_recall_rate": 0.667,
+   "all_supported_found_cases": "0/1",
+   "mean_areas_displayed": 2.0,
+   "top1_in_authored_ok_set": "1/1",
+   "authored_ok_share_of_displayed_lower_bound": 1.0,
+   "abstained_on_no_support_cases": "0/0",
+   "abstained_cases_total": 0,
+   "overclaim_cases": "0/0",
+   "overclaimed_areas_displayed": 0
+  },
+  "by_category": {
+   "old_experience": {
+    "n_cases": 1,
+    "domain_confusion_cases": "0/0",
+    "domain_confusion_rate": null,
+    "trap_areas_displayed_as_supported": 0,
+    "trap_cases_shown_only_as_exploration": 0,
+    "supported_recall": "2/3",
+    "supported_recall_rate": 0.667,
+    "all_supported_found_cases": "0/1",
+    "mean_areas_displayed": 2.0,
+    "top1_in_authored_ok_set": "1/1",
+    "authored_ok_share_of_displayed_lower_bound": 1.0,
+    "abstained_on_no_support_cases": "0/0",
+    "abstained_cases_total": 0,
+    "overclaim_cases": "0/0",
+    "overclaimed_areas_displayed": 0
+   }
+  },
+  "by_split": {
+   "tune": {
+    "n_cases": 1,
+    "domain_confusion_cases": "0/0",
+    "domain_confusion_rate": null,
+    "trap_areas_displayed_as_supported": 0,
+    "trap_cases_shown_only_as_exploration": 0,
+    "supported_recall": "2/3",
+    "supported_recall_rate": 0.667,
+    "all_supported_found_cases": "0/1",
+    "mean_areas_displayed": 2.0,
+    "top1_in_authored_ok_set": "1/1",
+    "authored_ok_share_of_displayed_lower_bound": 1.0,
+    "abstained_on_no_support_cases": "0/0",
+    "abstained_cases_total": 0,
+    "overclaim_cases": "0/0",
+    "overclaimed_areas_displayed": 0
+   }
+  }
+ },
+ "per_case": {
+  "c20_old_experience_only": {
+   "top": [
+    "A009",
+    "A041"
+   ],
+   "exploration": [
+    "A051",
+    "A057",
+    "A058"
+   ],
+   "n_displayed": 2,
+   "supported_found": [
+    "A009",
+    "A041"
+   ],
+   "supported_missed": [
+    "A058"
+   ],
+   "trap_hits": [],
+   "trap_as_exploration": [],
+   "overclaims": [],
+   "n_in_authored_ok_set": 2,
+   "top1_in_authored_ok_set": true,
+   "rank_of_first_supported": 1,
+   "abstained": false
+  }
+ },
+ "top": {
+  "c20_old_experience_only": [
+   {
+    "area_id": "A009",
+    "name": "Hospitality management",
+    "score": 4.0,
+    "support_class": "direct"
+   },
+   {
+    "area_id": "A041",
+    "name": "Numerical & accounting clerks",
+    "score": 2.0,
+    "support_class": "direct"
+   }
+  ]
+ },
+ "failed": {},
+ "stages": {
+  "c20_old_experience_only": {
+   "status": "accepted",
+   "warnings": [],
+   "validation_log": [],
+   "extraction": {
+    "status": "accepted",
+    "records": [
+     {
+      "evidence_id": "E001",
+      "passage_id": "P003",
+      "section": "experience",
+      "page": null,
+      "quote": "Restaurant Supervisor, Seaview Bistro (2018 - 2026)",
+      "evidence_type": "applied_skill",
+      "role": "Restaurant Supervisor",
+      "candidate_actions": [
+       "Supervised floor staff, managed shift rosters and handled supplier orders."
+      ],
+      "candidate_responsibilities": [],
+      "tools_methods": [],
+      "domain_context": "restaurant",
+      "qualification": null,
+      "contribution": "own",
+      "dates": {
+       "start": "2018",
+       "end": "2026",
+       "duration_months": null,
+       "recency": "recent"
+      },
+      "negation": false,
+      "ambiguities": [],
+      "missing_info": [],
+      "status": "accepted",
+      "changes": [],
+      "flags": []
+     },
+     {
+      "evidence_id": "E002",
+      "passage_id": "P004",
+      "section": "experience",
+      "page": null,
+      "quote": "Accounts Clerk, Commercial Bank branch (2005 - 2009)",
+      "evidence_type": "applied_skill",
+      "role": "Accounts Clerk",
+      "candidate_actions": [
+       "Posted ledger entries and prepared daily cash reconciliations."
+      ],
+      "candidate_responsibilities": [],
+      "tools_methods": [],
+      "domain_context": "banking",
+      "qualification": null,
+      "contribution": "own",
+      "dates": {
+       "start": "2005",
+       "end": "2009",
+       "duration_months": null,
+       "recency": "old"
+      },
+      "negation": false,
+      "ambiguities": [],
+      "missing_info": [],
+      "status": "accepted",
+      "changes": [],
+      "flags": []
+     }
+    ],
+    "rejected": [],
+    "errors": [],
+    "notes": [
+     "P001 is a header containing only a name; no experience, education, certification, volunteering, research, skill, or interest is stated, so no record is extracted from it.",
+     "P002 is a summary that restates restaurant supervision and bank accounting already detailed in P003 and P004 and adds no distinct employer or dates, so it is not recorded separately to avoid duplication.",
+     "No education, certification, volunteering, research, listed skills, stated interests, or negated experience are present in the provided passages."
+    ]
+   },
+   "assessment": {
+    "raw_rows": [
+     {
+      "area_id": "A001",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A002",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A003",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A004",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A005",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A006",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A007",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A008",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A009",
+      "support_class": "direct",
+      "relevance": 4,
+      "evidence": [
+       {
+        "evidence_id": "E001",
+        "basis": "actions"
+       }
+      ],
+      "rationale": "Restaurant Supervisor role involved supervising floor staff and managing shift rosters, directly demonstrating hospitality operations supervision.",
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A010",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A011",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A012",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A013",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A014",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A015",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A016",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A017",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A018",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A019",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A020",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A021",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A022",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A023",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A024",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A025",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A026",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A027",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A028",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A029",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A030",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A031",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A032",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A033",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A034",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A035",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A036",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A037",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A038",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A039",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A040",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A041",
+      "support_class": "direct",
+      "relevance": 2,
+      "evidence": [
+       {
+        "evidence_id": "E002",
+        "basis": "actions"
+       }
+      ],
+      "rationale": "Accounts Clerk role involved posting ledger entries and preparing daily cash reconciliations, directly matching numerical and accounting clerk tasks.",
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A042",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A043",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A044",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A045",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A046",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A047",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A048",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A049",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A050",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A051",
+      "support_class": "domain_exposure_only",
+      "relevance": null,
+      "evidence": [
+       {
+        "evidence_id": "E001",
+        "basis": "domain"
+       }
+      ],
+      "rationale": "Restaurant supervisor experience in the restaurant domain gives exposure to culinary and food service settings but shows no photography, design, or cooking work.",
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A052",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A053",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A054",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A055",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A056",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A057",
+      "support_class": "domain_exposure_only",
+      "relevance": null,
+      "evidence": [
+       {
+        "evidence_id": "E001",
+        "basis": "domain"
+       }
+      ],
+      "rationale": "Restaurant supervisor experience in the restaurant domain gives exposure to food preparation environments but shows no personal cooking or food handling.",
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A058",
+      "support_class": "domain_exposure_only",
+      "relevance": null,
+      "evidence": [
+       {
+        "evidence_id": "E001",
+        "basis": "domain"
+       }
+      ],
+      "rationale": "Restaurant supervisor experience in the restaurant domain gives exposure to food and beverage service operations but shows no personal order-taking or serving.",
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A059",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A060",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A061",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A062",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A063",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A064",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A065",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A066",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A067",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A068",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A069",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A070",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A071",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A072",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A073",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A074",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A075",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A076",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A077",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A078",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A079",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A080",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A081",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A082",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A083",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A084",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A085",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A086",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A087",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A088",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A089",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A090",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A091",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A092",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A093",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     },
+     {
+      "area_id": "A094",
+      "support_class": "unsupported",
+      "relevance": null,
+      "evidence": [],
+      "rationale": null,
+      "qualification_gaps": [],
+      "uncertainty": "low"
+     }
+    ],
+    "errors": [],
+    "rejected": []
+   },
+   "exploration": [
+    {
+     "rank": null,
+     "area_id": "A051",
+     "name": "Photography, design support & culinary arts",
+     "support_class": "domain_exposure_only",
+     "relevance": null,
+     "evidence_ids": [
+      "E001"
+     ],
+     "explanation": "Context - Restaurant Supervisor (2018 - 2026): \"Restaurant Supervisor, Seaview Bistro (2018 - 2026)\"",
+     "qualification_gaps": [],
+     "uncertainty": "low",
+     "status": "accepted",
+     "label": "Industry exposure only: the work served this field, but the evidence does not show doing this occupation's work"
+    },
+    {
+     "rank": null,
+     "area_id": "A057",
+     "name": "Cooking & food preparation",
+     "support_class": "domain_exposure_only",
+     "relevance": null,
+     "evidence_ids": [
+      "E001"
+     ],
+     "explanation": "Context - Restaurant Supervisor (2018 - 2026): \"Restaurant Supervisor, Seaview Bistro (2018 - 2026)\"",
+     "qualification_gaps": [],
+     "uncertainty": "low",
+     "status": "accepted",
+     "label": "Industry exposure only: the work served this field, but the evidence does not show doing this occupation's work"
+    },
+    {
+     "rank": null,
+     "area_id": "A058",
+     "name": "Food & beverage service",
+     "support_class": "domain_exposure_only",
+     "relevance": null,
+     "evidence_ids": [
+      "E001"
+     ],
+     "explanation": "Context - Restaurant Supervisor (2018 - 2026): \"Restaurant Supervisor, Seaview Bistro (2018 - 2026)\"",
+     "qualification_gaps": [],
+     "uncertainty": "low",
+     "status": "accepted",
+     "label": "Industry exposure only: the work served this field, but the evidence does not show doing this occupation's work"
+    }
+   ],
+   "run_meta": {
+    "extraction": {
+     "schema_version": "evidence_v1",
+     "prompt_version": "extract_v1",
+     "model": "nvidia/nemotron-3.5-super-vl:free",
+     "provider": "Nvidia",
+     "request_id": "gen-1793185618-Bn9ZX4R6lsdeyJxvJ051",
+     "finish_reason": "stop",
+     "usage": {
+      "prompt_tokens": 1159,
+      "completion_tokens": 7334,
+      "total_tokens": 8493,
+      "cost": 0,
+      "is_byok": false,
+      "prompt_tokens_details": {
+       "cached_tokens": 0,
+       "cache_write_tokens": 0,
+       "audio_tokens": 0,
+       "video_tokens": 0
+      },
+      "cost_details": {
+       "upstream_inference_cost": 0,
+       "upstream_inference_prompt_cost": 0,
+       "upstream_inference_completions_cost": 0
+      },
+      "completion_tokens_details": {
+       "reasoning_tokens": 6883,
+       "image_tokens": 0,
+       "audio_tokens": 0
+      }
+     },
+     "latency_s": 80.9
+    },
+    "assessment": {
+     "model": "nvidia/nemotron-3.5-super-vl:free",
+     "provider": "Nvidia",
+     "request_id": "gen-1793185699-2PDxkTW9VpbtjDjdsK6L",
+     "finish_reason": "stop",
+     "usage": {
+      "prompt_tokens": 19877,
+      "completion_tokens": 13696,
+      "total_tokens": 33573,
+      "cost": 0,
+      "is_byok": false,
+      "prompt_tokens_details": {
+       "cached_tokens": 0,
+       "cache_write_tokens": 0,
+       "audio_tokens": 0,
+       "video_tokens": 0
+      },
+      "cost_details": {
+       "upstream_inference_cost": 0,
+       "upstream_inference_prompt_cost": 0,
+       "upstream_inference_completions_cost": 0
+      },
+      "completion_tokens_details": {
+       "reasoning_tokens": 8579,
+       "image_tokens": 0,
+       "audio_tokens": 0
+      }
+     },
+     "latency_s": 170.41,
+     "prompt_version": "assess_v1"
+    }
+   }
+  }
+ }
+}

@@ -145,3 +145,82 @@ def test_malformed_detail_row_is_a_handled_failure():
                    cv_text=HOSPITAL_CV)
     with pytest.raises(client.LLMError):
         engine.run_match(payload, CAT, chat=chat, runs=1)
+
+
+# ------------------------------------------------------------------ fresh held-out set v2
+V2_PATH = ROOT / "bench" / "cases" / "career_cases_holdout_v2.yaml"
+
+
+def test_holdout_v2_is_well_formed_and_disjoint_from_the_first_sets():
+    v2 = metrics.load_cases(V2_PATH)
+    old_texts = {c["cv_text"] for c in CASES}
+    valid = set(CAT.area_id)
+    ids = [c["id"] for c in v2]
+    assert len(ids) == len(set(ids)) >= 12 and not set(ids) & {c["id"] for c in CASES}
+    for c in v2:
+        assert c["synthetic"] is True and c["split"] == "holdout_v2" and c["cv_text"] not in old_texts
+        refs = set(c["supported"]) | set(c.get("acceptable", [])) | set(c.get("traps", []))
+        assert refs <= valid, (c["id"], refs - valid)
+        assert not set(c["supported"]) & set(c.get("traps", [])), c["id"]
+        if "sparse" not in c["categories"]:
+            assert len(c["cv_text"].split()) >= 25
+    trio = [c for c in v2 if c.get("pair_group") == "industry_swap_v2"]
+    assert len(trio) == 3 and len({tuple(c["supported"]) for c in trio}) == 1          # same candidate, same expected area
+    lines = [[ln for ln in c["cv_text"].splitlines() if "REST APIs" not in ln] for c in trio]
+    assert lines[0] == lines[1] == lines[2]                                           # only the industry sentence differs
+    assert len({tuple(c["traps"]) for c in trio}) == 3                                # traps differ with the industry
+
+
+# ------------------------------------------------------------------ case expectations v3 (reviewer changes as a new version)
+V3_PATH = ROOT / "bench" / "cases" / "career_cases_v3.yaml"
+
+
+def test_original_case_files_are_never_edited_in_place():
+    import hashlib
+    for name, prefix in (("career_cases.yaml", "3b2bcab6ceb56c"), ("career_cases_holdout_v2.yaml", "acf519b32a1432")):
+        got = hashlib.sha256((ROOT / "bench" / "cases" / name).read_bytes()).hexdigest()[:14]
+        assert got == prefix, f"{name} changed; expectation changes belong in a new case version (see scripts/make_cases_v3.py)"
+
+
+def test_cases_v3_keeps_texts_and_splits_and_records_every_change():
+    v3 = metrics.load_cases(V3_PATH)
+    orig = {c["id"]: c for c in CASES + metrics.load_cases(V2_PATH)}
+    assert [c["id"] for c in v3] == list(orig) and len(v3) == 34
+    valid = set(CAT.area_id)
+    for c in v3:
+        o = orig[c["id"]]
+        assert c["cv_text"] == o["cv_text"] and c["split"] == o["split"] and c["traps"] == o["traps"] and c["cases_version"] == 3
+        assert c["supported_v1"] == o["supported"] and c["v3_change"]
+        refs = set(c["supported"]) | set(c["acceptable"]) | set(c["exploration_only"]) | set(c["traps"])
+        assert refs <= valid, c["id"]
+        assert not set(c["supported"]) & set(c["traps"]) and not set(c["exploration_only"]) & (set(c["supported"]) | set(c["traps"]))
+        assert not set(c["acceptable"]) & set(c["exploration_only"])
+    changed = [c["id"] for c in v3 if set(c["supported"]) != set(c["supported_v1"])]
+    assert set(changed) == {"c05_legal_chatbot_developer", "c20_old_experience_only", "v2_03_construction_site_supervisor",
+                            "v2_05_packaging_designer_pharma"}
+
+
+def test_overclaim_metric_counts_exploration_only_areas_shown_as_supported():
+    c = dict(id="a", supported=["A1"], acceptable=[], exploration_only=["A2", "A3"], traps=["A9"], categories=["x"], split="t")
+    m = metrics.case_metrics(c, ["A1", "A2"], k=5, exploration=["A3"])
+    assert m["overclaims"] == ["A2"] and m["trap_hits"] == [] and m["n_in_authored_ok_set"] == 1
+    agg = metrics.aggregate([c], {"a": m}, k=5)["overall"]
+    assert agg["overclaim_cases"] == "1/1" and agg["overclaimed_areas_displayed"] == 1
+    plain = dict(id="b", supported=["A1"], acceptable=[], traps=[], categories=["x"], split="t")
+    assert metrics.case_metrics(plain, ["A1"], k=5)["overclaims"] == []
+
+
+def test_holdout_v3_is_well_formed_and_new():
+    v3 = metrics.load_cases(ROOT / "bench" / "cases" / "career_cases_holdout_v3.yaml")
+    seen_ids = {c["id"] for c in CASES + metrics.load_cases(V2_PATH)}
+    seen_texts = {c["cv_text"] for c in CASES + metrics.load_cases(V2_PATH)}
+    valid = set(CAT.area_id)
+    assert len(v3) == 12 and not {c["id"] for c in v3} & seen_ids
+    for c in v3:
+        assert c["synthetic"] is True and c["split"] == "holdout_v3" and c["cv_text"] not in seen_texts
+        sets = [set(c[k]) for k in ("supported", "acceptable", "exploration_only", "traps")]
+        assert set().union(*sets) <= valid, c["id"]
+        assert not sets[0] & sets[3] and not sets[2] & (sets[0] | sets[3]) and not sets[1] & sets[2], c["id"]
+        assert len(c["cv_text"].split()) >= 25
+    pair = [c for c in v3 if c["pair_group"] == "law_firm_roles"]
+    assert len(pair) == 2 and pair[0]["traps"] == pair[1]["traps"] and pair[0]["supported"] != pair[1]["supported"]

@@ -18,7 +18,7 @@ from pathlib import Path
 
 import yaml
 
-METRICS_VERSION = 2
+METRICS_VERSION = 3        # v3 adds exploration_only / overclaim metrics; all v2 fields are unchanged
 CASES_PATH = Path(__file__).resolve().parent / "cases" / "career_cases.yaml"
 
 
@@ -40,6 +40,7 @@ def case_metrics(case: dict, ranked: list[str], k: int = 10, exploration: list[s
         supported_missed=sorted(sup - set(top)),
         trap_hits=trap_sup,                                     # traps displayed AS SUPPORTED (alias kept from metrics v1)
         trap_as_exploration=[a for a in exploration if a in traps],
+        overclaims=[a for a in top if a in set(case.get('exploration_only', []))],   # exploration-only areas shown AS supported
         n_in_authored_ok_set=sum(a in sup | acc for a in top),
         top1_in_authored_ok_set=bool(top) and top[0] in sup | acc,
         rank_of_first_supported=next((i + 1 for i, a in enumerate(ranked) if a in sup), None),
@@ -72,6 +73,8 @@ def aggregate(cases: list[dict], per_case: dict[str, dict], k: int = 10) -> dict
                                                            sum(x['n_displayed'] for _, x in ok_cases)),
             abstained_on_no_support_cases=f"{sum(x['abstained'] for _, x in empty_cases)}/{len(empty_cases)}",
             abstained_cases_total=sum(x['abstained'] for _, x in m),
+            overclaim_cases=f"{sum(bool(x.get('overclaims')) for c, x in m if c.get('exploration_only'))}/{sum(bool(c.get('exploration_only')) for c, _ in m)}",
+            overclaimed_areas_displayed=sum(len(x.get('overclaims', [])) for _, x in m),
         )
 
     out = dict(metrics_version=METRICS_VERSION, k=k, overall=block(cases))

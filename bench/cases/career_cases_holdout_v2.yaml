@@ -1,0 +1,273 @@
+# Fresh held-out set v2 (written 2026-10-29 AFTER the first holdout was used for diagnosis). ALL SYNTHETIC.
+# Domains not used by the tune/holdout cases: farming, hospitality, construction, public administration, packaging design,
+# retail, sparse/poor-extraction CVs, coursework-only study, and a minimal industry-swap triple.
+# Rules: expected outcomes below were written before any run of the fixed pipeline on these cases; do not edit supported/traps
+# after seeing output. Expectations are author-written and need an independent reviewer (see docs/REVIEW_GUIDE.md).
+# traps = areas with no supporting evidence that would be an unsupported claim if shown as SUPPORTED (labelled exploration is fine).
+- id: v2_01_dairy_farm_manager
+  synthetic: true
+  split: holdout_v2
+  pair_group: null
+  sector: agriculture
+  stage: established
+  categories: [genuine_positive, incidental_domain_terms]
+  cv_text: |
+    Lasantha Wijeratne
+    SUMMARY
+    Dairy farm manager with ten years of experience running a 120-cow farm.
+
+    EXPERIENCE
+    Farm Manager, Green Valley Dairy (2016 - 2026)
+    - Managed daily milking, feeding and breeding schedules and supervised six farm workers.
+    - Arranged regular visits by the veterinary officer and kept herd health and production records.
+    - Planned fodder cultivation and controlled the farm budget.
+
+    EDUCATION
+    National Diploma in Agriculture, Agricultural Training Institute, 2015
+  supported: [A005]
+  acceptable: [A065, A066, A003]
+  traps: [A022, A014]
+
+- id: v2_02_hospital_kitchen_chef
+  synthetic: true
+  split: holdout_v2
+  pair_group: null
+  sector: hospitality
+  stage: established
+  categories: [domain_confusion, non_degree]
+  cv_text: |
+    Kumudu Fernando
+    SUMMARY
+    Chef with eight years of experience in institutional and hotel kitchens.
+
+    EXPERIENCE
+    Head Cook, Lakeview General Hospital kitchen (2021 - 2026)
+    - Prepared about 400 meals a day for patients and staff, following the dietitian's menu plans.
+    - Supervised four kitchen assistants and managed food stock and hygiene checks.
+
+    Cook, Seaview Hotel (2018 - 2021)
+    - Prepared breakfast and dinner buffets and trained new kitchen staff.
+
+    EDUCATION
+    NVQ Level 4 Professional Cookery, Hotel School, 2018
+  supported: [A057]
+  acceptable: [A076, A009, A060, A058]
+  traps: [A019, A025, A027, A023]
+
+- id: v2_03_construction_site_supervisor
+  synthetic: true
+  split: holdout_v2
+  pair_group: null
+  sector: construction
+  stage: established
+  categories: [domain_confusion]
+  cv_text: |
+    Chaminda Ratnayake
+    SUMMARY
+    Site supervisor with nine years of experience on building and road projects.
+
+    EXPERIENCE
+    Site Supervisor, Highland Construction (2019 - 2026)
+    - Supervised crews of up to thirty labourers on a river bridge project and two apartment buildings.
+    - Followed the engineers' drawings, checked the quality of concrete work and kept daily progress logs.
+    - Ordered materials and managed site safety briefings.
+
+    EDUCATION
+    NVQ Level 3 Building Construction, Technical College, 2016
+  supported: [A070]
+  acceptable: [A006, A085, A060]
+  traps: [A015, A017]
+
+- id: v2_04_council_administrative_officer
+  synthetic: true
+  split: holdout_v2
+  pair_group: null
+  sector: public_administration
+  stage: established
+  categories: [incidental_domain_terms]
+  cv_text: |
+    Shiranthi Perera
+    SUMMARY
+    Administrative officer in a local council with six years of experience.
+
+    EXPERIENCE
+    Administrative Officer, Hill Town Urban Council (2020 - 2026)
+    - Prepared public notices and summaries of council by-laws for residents.
+    - Maintained the council's files, registered incoming letters and arranged committee meetings.
+    - Handled counter enquiries about trade licences and building permits.
+
+    EDUCATION
+    Advanced Level, Hill Town Central College, 2018
+    Diploma in Public Administration, Open Institute, 2021
+  supported: [A038, A037]
+  acceptable: [A042, A052, A001]
+  traps: [A046, A053]
+
+- id: v2_05_packaging_designer_pharma
+  synthetic: true
+  split: holdout_v2
+  pair_group: null
+  sector: creative
+  stage: established
+  categories: [domain_confusion, incidental_domain_terms]
+  cv_text: |
+    Hiruni Samarasinghe
+    SUMMARY
+    Graphic designer with four years of experience in packaging and print design.
+
+    EXPERIENCE
+    Graphic Designer, Pharma Pack Solutions (2022 - 2026)
+    - Designed labels, cartons and leaflets for medicine and supplement packaging using Adobe Illustrator and InDesign.
+    - Prepared print-ready files and worked with printers on colour proofs.
+
+    EDUCATION
+    Diploma in Graphic Design, Art Institute, 2021
+  supported: [A051, A088]
+  acceptable: [A050, A074, A035]
+  traps: [A023, A024, A018]
+
+- id: v2_06_sparse_one_line
+  synthetic: true
+  split: holdout_v2
+  pair_group: null
+  sector: unknown
+  stage: early
+  categories: [sparse]
+  cv_text: |
+    Saman Silva. Looking for any suitable job. Hard working and honest.
+  supported: []
+  acceptable: []
+  traps: []
+  notes: Nothing in the text supports any area; the right behaviour is to show no supported areas.
+
+- id: v2_07_school_leaver_retail
+  synthetic: true
+  split: holdout_v2
+  pair_group: null
+  sector: retail
+  stage: early
+  categories: [non_degree, incidental_domain_terms]
+  cv_text: |
+    Dulani Rajapaksha
+    SUMMARY
+    School leaver with one year of part-time work in a supermarket.
+
+    EXPERIENCE
+    Sales Assistant (part time), City Super Market (2025 - 2026)
+    - Served customers at the shelves and the cash till and handled card and cash payments.
+    - Refilled shelves, counted the till at the end of each shift and reported stock shortages.
+
+    EDUCATION
+    G.C.E. Ordinary Level, Southfield Girls' School, 2024
+  supported: [A062]
+  acceptable: [A010, A069, A055]
+  traps: [A033, A041, A040]
+
+- id: v2_08_accounting_coursework_only
+  synthetic: true
+  split: holdout_v2
+  pair_group: null
+  sector: finance
+  stage: early
+  categories: [coursework_only]
+  cv_text: |
+    Nethmi Karunaratne
+    SUMMARY
+    Second-year accounting student looking for an internship.
+
+    EDUCATION
+    BCom (Accounting), Northfield University, 2025 - present
+    Modules completed: financial accounting, cost accounting, introduction to auditing, business law.
+
+    SKILLS
+    Microsoft Excel, basic bookkeeping
+  supported: []
+  acceptable: [A033, A041, A092, A013, A040]
+  traps: [A046]
+  notes: Coursework only, no work experience; accounting areas may be shown at low strength or as exploration. No area is required.
+
+- id: v2_09_backend_developer_hospital
+  synthetic: true
+  split: holdout_v2
+  pair_group: industry_swap_v2
+  sector: technology
+  stage: established
+  categories: [domain_confusion, minimal_pair]
+  cv_text: |
+    Tilan Abeywickrama
+    SUMMARY
+    Backend developer with five years of experience.
+
+    EXPERIENCE
+    Software Engineer, Brightpath Software (2021 - 2026)
+    - Built and maintained REST APIs in Java and Spring Boot for a hospital patient records platform.
+    - Wrote automated tests, fixed defects and reviewed teammates' code.
+
+    EDUCATION
+    BSc Computer Science, Westgate University, 2020
+  supported: [A043]
+  acceptable: [A044, A090, A088]
+  traps: [A018, A019, A021, A023, A024, A025]
+
+- id: v2_10_backend_developer_bank
+  synthetic: true
+  split: holdout_v2
+  pair_group: industry_swap_v2
+  sector: technology
+  stage: established
+  categories: [domain_confusion, minimal_pair]
+  cv_text: |
+    Tilan Abeywickrama
+    SUMMARY
+    Backend developer with five years of experience.
+
+    EXPERIENCE
+    Software Engineer, Brightpath Software (2021 - 2026)
+    - Built and maintained REST APIs in Java and Spring Boot for a retail bank's customer accounts platform.
+    - Wrote automated tests, fixed defects and reviewed teammates' code.
+
+    EDUCATION
+    BSc Computer Science, Westgate University, 2020
+  supported: [A043]
+  acceptable: [A044, A090, A088]
+  traps: [A033, A040, A041]
+
+- id: v2_11_backend_developer_school
+  synthetic: true
+  split: holdout_v2
+  pair_group: industry_swap_v2
+  sector: technology
+  stage: established
+  categories: [domain_confusion, minimal_pair]
+  cv_text: |
+    Tilan Abeywickrama
+    SUMMARY
+    Backend developer with five years of experience.
+
+    EXPERIENCE
+    Software Engineer, Brightpath Software (2021 - 2026)
+    - Built and maintained REST APIs in Java and Spring Boot for a school management and timetable platform.
+    - Wrote automated tests, fixed defects and reviewed teammates' code.
+
+    EDUCATION
+    BSc Computer Science, Westgate University, 2020
+  supported: [A043]
+  acceptable: [A044, A090, A088]
+  traps: [A028, A029, A030, A031, A032]
+
+- id: v2_12_garbled_text
+  synthetic: true
+  split: holdout_v2
+  pair_group: null
+  sector: unknown
+  stage: established
+  categories: [poor_extraction]
+  cv_text: |
+    ExpÃ©rience â€“ Technicien â€“ â€œUsineâ€ 2018 â€“ 2024
+    â€¢ ContrÃ´le qualitÃ© â€“ rÃ©glage des machines â€“ maintenance prÃ©ventive â€“ â€œÃ©quipeâ€
+    â€¢ Suivi de production â€“ rapports hebdomadaires â€“ sÃ©curitÃ© au travail
+    CompÃ©tences â€“ Maintenance â€“ QualitÃ© â€“ SÃ©curitÃ© â€“ Excel â€“ Travail en Ã©quipe
+  supported: []
+  acceptable: [A067, A072, A081]
+  traps: []
+  notes: Garbled extraction; missing evidence must not be read as absence, and nothing is required to be shown.

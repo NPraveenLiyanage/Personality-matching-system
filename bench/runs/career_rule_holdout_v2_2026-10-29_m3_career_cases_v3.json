@@ -1,0 +1,1193 @@
+{
+ "meta": {
+  "engine": "rule",
+  "date": "2026-10-29",
+  "git_commit": "b2d23c0",
+  "k": 10,
+  "n_cases": 12,
+  "n_failed": 0,
+  "cases_sha256": "eefa23a811e97e10",
+  "catalogue_fingerprint": "11600e8abed14d08",
+  "reference_date": "2026-10-15",
+  "model": null,
+  "note": "synthetic design expectations, not expert ratings",
+  "resumed_cases_from_checkpoint": [],
+  "rescored_from": "career_rule_holdout_v2_2026-10-29.json",
+  "metrics_version": 3,
+  "cases_file": "career_cases_v3.yaml"
+ },
+ "aggregate": {
+  "metrics_version": 3,
+  "k": 10,
+  "overall": {
+   "n_cases": 12,
+   "domain_confusion_cases": "8/10",
+   "domain_confusion_rate": 0.8,
+   "trap_areas_displayed_as_supported": 17,
+   "trap_cases_shown_only_as_exploration": 0,
+   "supported_recall": "7/11",
+   "supported_recall_rate": 0.636,
+   "all_supported_found_cases": "6/9",
+   "mean_areas_displayed": 10.0,
+   "top1_in_authored_ok_set": "4/9",
+   "authored_ok_share_of_displayed_lower_bound": 0.133,
+   "abstained_on_no_support_cases": "0/3",
+   "abstained_cases_total": 0,
+   "overclaim_cases": "6/9",
+   "overclaimed_areas_displayed": 14
+  },
+  "by_category": {
+   "coursework_only": {
+    "n_cases": 1,
+    "domain_confusion_cases": "1/1",
+    "domain_confusion_rate": 1.0,
+    "trap_areas_displayed_as_supported": 1,
+    "trap_cases_shown_only_as_exploration": 0,
+    "supported_recall": "0/0",
+    "supported_recall_rate": null,
+    "all_supported_found_cases": "0/0",
+    "mean_areas_displayed": 10.0,
+    "top1_in_authored_ok_set": "0/0",
+    "authored_ok_share_of_displayed_lower_bound": null,
+    "abstained_on_no_support_cases": "0/1",
+    "abstained_cases_total": 0,
+    "overclaim_cases": "1/1",
+    "overclaimed_areas_displayed": 4
+   },
+   "domain_confusion": {
+    "n_cases": 6,
+    "domain_confusion_cases": "5/6",
+    "domain_confusion_rate": 0.833,
+    "trap_areas_displayed_as_supported": 14,
+    "trap_cases_shown_only_as_exploration": 0,
+    "supported_recall": "5/7",
+    "supported_recall_rate": 0.714,
+    "all_supported_found_cases": "4/6",
+    "mean_areas_displayed": 10.0,
+    "top1_in_authored_ok_set": "4/6",
+    "authored_ok_share_of_displayed_lower_bound": 0.15,
+    "abstained_on_no_support_cases": "0/0",
+    "abstained_cases_total": 0,
+    "overclaim_cases": "3/5",
+    "overclaimed_areas_displayed": 7
+   },
+   "genuine_positive": {
+    "n_cases": 1,
+    "domain_confusion_cases": "1/1",
+    "domain_confusion_rate": 1.0,
+    "trap_areas_displayed_as_supported": 1,
+    "trap_cases_shown_only_as_exploration": 0,
+    "supported_recall": "1/1",
+    "supported_recall_rate": 1.0,
+    "all_supported_found_cases": "1/1",
+    "mean_areas_displayed": 10.0,
+    "top1_in_authored_ok_set": "0/1",
+    "authored_ok_share_of_displayed_lower_bound": 0.1,
+    "abstained_on_no_support_cases": "0/0",
+    "abstained_cases_total": 0,
+    "overclaim_cases": "1/1",
+    "overclaimed_areas_displayed": 2
+   },
+   "incidental_domain_terms": {
+    "n_cases": 4,
+    "domain_confusion_cases": "3/4",
+    "domain_confusion_rate": 0.75,
+    "trap_areas_displayed_as_supported": 3,
+    "trap_cases_shown_only_as_exploration": 0,
+    "supported_recall": "3/6",
+    "supported_recall_rate": 0.5,
+    "all_supported_found_cases": "2/4",
+    "mean_areas_displayed": 10.0,
+    "top1_in_authored_ok_set": "1/4",
+    "authored_ok_share_of_displayed_lower_bound": 0.175,
+    "abstained_on_no_support_cases": "0/0",
+    "abstained_cases_total": 0,
+    "overclaim_cases": "2/3",
+    "overclaimed_areas_displayed": 3
+   },
+   "minimal_pair": {
+    "n_cases": 3,
+    "domain_confusion_cases": "2/3",
+    "domain_confusion_rate": 0.667,
+    "trap_areas_displayed_as_supported": 8,
+    "trap_cases_shown_only_as_exploration": 0,
+    "supported_recall": "3/3",
+    "supported_recall_rate": 1.0,
+    "all_supported_found_cases": "3/3",
+    "mean_areas_displayed": 10.0,
+    "top1_in_authored_ok_set": "3/3",
+    "authored_ok_share_of_displayed_lower_bound": 0.1,
+    "abstained_on_no_support_cases": "0/0",
+    "abstained_cases_total": 0,
+    "overclaim_cases": "3/3",
+    "overclaimed_areas_displayed": 7
+   },
+   "non_degree": {
+    "n_cases": 2,
+    "domain_confusion_cases": "2/2",
+    "domain_confusion_rate": 1.0,
+    "trap_areas_displayed_as_supported": 4,
+    "trap_cases_shown_only_as_exploration": 0,
+    "supported_recall": "2/2",
+    "supported_recall_rate": 1.0,
+    "all_supported_found_cases": "2/2",
+    "mean_areas_displayed": 10.0,
+    "top1_in_authored_ok_set": "0/2",
+    "authored_ok_share_of_displayed_lower_bound": 0.2,
+    "abstained_on_no_support_cases": "0/0",
+    "abstained_cases_total": 0,
+    "overclaim_cases": "0/2",
+    "overclaimed_areas_displayed": 0
+   },
+   "poor_extraction": {
+    "n_cases": 1,
+    "domain_confusion_cases": "0/0",
+    "domain_confusion_rate": null,
+    "trap_areas_displayed_as_supported": 0,
+    "trap_cases_shown_only_as_exploration": 0,
+    "supported_recall": "0/0",
+    "supported_recall_rate": null,
+    "all_supported_found_cases": "0/0",
+    "mean_areas_displayed": 10.0,
+    "top1_in_authored_ok_set": "0/0",
+    "authored_ok_share_of_displayed_lower_bound": null,
+    "abstained_on_no_support_cases": "0/1",
+    "abstained_cases_total": 0,
+    "overclaim_cases": "0/0",
+    "overclaimed_areas_displayed": 0
+   },
+   "sparse": {
+    "n_cases": 1,
+    "domain_confusion_cases": "0/0",
+    "domain_confusion_rate": null,
+    "trap_areas_displayed_as_supported": 0,
+    "trap_cases_shown_only_as_exploration": 0,
+    "supported_recall": "0/0",
+    "supported_recall_rate": null,
+    "all_supported_found_cases": "0/0",
+    "mean_areas_displayed": 10.0,
+    "top1_in_authored_ok_set": "0/0",
+    "authored_ok_share_of_displayed_lower_bound": null,
+    "abstained_on_no_support_cases": "0/1",
+    "abstained_cases_total": 0,
+    "overclaim_cases": "0/0",
+    "overclaimed_areas_displayed": 0
+   }
+  },
+  "by_split": {
+   "holdout_v2": {
+    "n_cases": 12,
+    "domain_confusion_cases": "8/10",
+    "domain_confusion_rate": 0.8,
+    "trap_areas_displayed_as_supported": 17,
+    "trap_cases_shown_only_as_exploration": 0,
+    "supported_recall": "7/11",
+    "supported_recall_rate": 0.636,
+    "all_supported_found_cases": "6/9",
+    "mean_areas_displayed": 10.0,
+    "top1_in_authored_ok_set": "4/9",
+    "authored_ok_share_of_displayed_lower_bound": 0.133,
+    "abstained_on_no_support_cases": "0/3",
+    "abstained_cases_total": 0,
+    "overclaim_cases": "6/9",
+    "overclaimed_areas_displayed": 14
+   }
+  }
+ },
+ "per_case": {
+  "v2_01_dairy_farm_manager": {
+   "top": [
+    "A014",
+    "A005",
+    "A066",
+    "A040",
+    "A034",
+    "A033",
+    "A084",
+    "A030",
+    "A065",
+    "A031"
+   ],
+   "exploration": [],
+   "n_displayed": 10,
+   "supported_found": [
+    "A005"
+   ],
+   "supported_missed": [],
+   "trap_hits": [
+    "A014"
+   ],
+   "trap_as_exploration": [],
+   "overclaims": [
+    "A066",
+    "A065"
+   ],
+   "n_in_authored_ok_set": 1,
+   "top1_in_authored_ok_set": false,
+   "rank_of_first_supported": 2,
+   "abstained": false
+  },
+  "v2_02_hospital_kitchen_chef": {
+   "top": [
+    "A027",
+    "A019",
+    "A055",
+    "A021",
+    "A057",
+    "A018",
+    "A056",
+    "A009",
+    "A025",
+    "A024"
+   ],
+   "exploration": [],
+   "n_displayed": 10,
+   "supported_found": [
+    "A057"
+   ],
+   "supported_missed": [],
+   "trap_hits": [
+    "A027",
+    "A019",
+    "A025"
+   ],
+   "trap_as_exploration": [],
+   "overclaims": [],
+   "n_in_authored_ok_set": 2,
+   "top1_in_authored_ok_set": false,
+   "rank_of_first_supported": 5,
+   "abstained": false
+  },
+  "v2_03_construction_site_supervisor": {
+   "top": [
+    "A015",
+    "A051",
+    "A074",
+    "A088",
+    "A017",
+    "A050",
+    "A082",
+    "A072",
+    "A016",
+    "A026"
+   ],
+   "exploration": [],
+   "n_displayed": 10,
+   "supported_found": [],
+   "supported_missed": [
+    "A067"
+   ],
+   "trap_hits": [
+    "A015",
+    "A017"
+   ],
+   "trap_as_exploration": [],
+   "overclaims": [],
+   "n_in_authored_ok_set": 0,
+   "top1_in_authored_ok_set": false,
+   "rank_of_first_supported": null,
+   "abstained": false
+  },
+  "v2_04_council_administrative_officer": {
+   "top": [
+    "A001",
+    "A002",
+    "A003",
+    "A004",
+    "A005",
+    "A006",
+    "A007",
+    "A008",
+    "A009",
+    "A010"
+   ],
+   "exploration": [],
+   "n_displayed": 10,
+   "supported_found": [],
+   "supported_missed": [
+    "A037",
+    "A038"
+   ],
+   "trap_hits": [],
+   "trap_as_exploration": [],
+   "overclaims": [
+    "A001"
+   ],
+   "n_in_authored_ok_set": 0,
+   "top1_in_authored_ok_set": false,
+   "rank_of_first_supported": null,
+   "abstained": false
+  },
+  "v2_05_packaging_designer_pharma": {
+   "top": [
+    "A088",
+    "A027",
+    "A043",
+    "A074",
+    "A050",
+    "A019",
+    "A051",
+    "A021",
+    "A018",
+    "A045"
+   ],
+   "exploration": [],
+   "n_displayed": 10,
+   "supported_found": [
+    "A088"
+   ],
+   "supported_missed": [
+    "A017"
+   ],
+   "trap_hits": [
+    "A018"
+   ],
+   "trap_as_exploration": [],
+   "overclaims": [],
+   "n_in_authored_ok_set": 4,
+   "top1_in_authored_ok_set": true,
+   "rank_of_first_supported": 1,
+   "abstained": false
+  },
+  "v2_06_sparse_one_line": {
+   "top": [
+    "A001",
+    "A002",
+    "A003",
+    "A004",
+    "A005",
+    "A006",
+    "A007",
+    "A008",
+    "A009",
+    "A010"
+   ],
+   "exploration": [],
+   "n_displayed": 10,
+   "supported_found": [],
+   "supported_missed": [],
+   "trap_hits": [],
+   "trap_as_exploration": [],
+   "overclaims": [],
+   "n_in_authored_ok_set": 0,
+   "top1_in_authored_ok_set": false,
+   "rank_of_first_supported": null,
+   "abstained": false
+  },
+  "v2_07_school_leaver_retail": {
+   "top": [
+    "A035",
+    "A062",
+    "A004",
+    "A092",
+    "A017",
+    "A033",
+    "A055",
+    "A065",
+    "A005",
+    "A048"
+   ],
+   "exploration": [],
+   "n_displayed": 10,
+   "supported_found": [
+    "A062"
+   ],
+   "supported_missed": [],
+   "trap_hits": [
+    "A033"
+   ],
+   "trap_as_exploration": [],
+   "overclaims": [],
+   "n_in_authored_ok_set": 2,
+   "top1_in_authored_ok_set": false,
+   "rank_of_first_supported": 2,
+   "abstained": false
+  },
+  "v2_08_accounting_coursework_only": {
+   "top": [
+    "A033",
+    "A052",
+    "A040",
+    "A046",
+    "A053",
+    "A041",
+    "A037",
+    "A092",
+    "A050",
+    "A003"
+   ],
+   "exploration": [],
+   "n_displayed": 10,
+   "supported_found": [],
+   "supported_missed": [],
+   "trap_hits": [
+    "A046"
+   ],
+   "trap_as_exploration": [],
+   "overclaims": [
+    "A033",
+    "A040",
+    "A041",
+    "A092"
+   ],
+   "n_in_authored_ok_set": 0,
+   "top1_in_authored_ok_set": false,
+   "rank_of_first_supported": null,
+   "abstained": false
+  },
+  "v2_09_backend_developer_hospital": {
+   "top": [
+    "A043",
+    "A019",
+    "A021",
+    "A018",
+    "A088",
+    "A024",
+    "A025",
+    "A023",
+    "A027",
+    "A020"
+   ],
+   "exploration": [],
+   "n_displayed": 10,
+   "supported_found": [
+    "A043"
+   ],
+   "supported_missed": [],
+   "trap_hits": [
+    "A019",
+    "A021",
+    "A018",
+    "A024",
+    "A025",
+    "A023"
+   ],
+   "trap_as_exploration": [],
+   "overclaims": [
+    "A088"
+   ],
+   "n_in_authored_ok_set": 1,
+   "top1_in_authored_ok_set": true,
+   "rank_of_first_supported": 1,
+   "abstained": false
+  },
+  "v2_10_backend_developer_bank": {
+   "top": [
+    "A043",
+    "A088",
+    "A033",
+    "A045",
+    "A087",
+    "A089",
+    "A044",
+    "A090",
+    "A052",
+    "A040"
+   ],
+   "exploration": [],
+   "n_displayed": 10,
+   "supported_found": [
+    "A043"
+   ],
+   "supported_missed": [],
+   "trap_hits": [
+    "A033",
+    "A040"
+   ],
+   "trap_as_exploration": [],
+   "overclaims": [
+    "A088",
+    "A044",
+    "A090"
+   ],
+   "n_in_authored_ok_set": 1,
+   "top1_in_authored_ok_set": true,
+   "rank_of_first_supported": 1,
+   "abstained": false
+  },
+  "v2_11_backend_developer_school": {
+   "top": [
+    "A043",
+    "A088",
+    "A045",
+    "A087",
+    "A089",
+    "A090",
+    "A044",
+    "A016",
+    "A086",
+    "A093"
+   ],
+   "exploration": [],
+   "n_displayed": 10,
+   "supported_found": [
+    "A043"
+   ],
+   "supported_missed": [],
+   "trap_hits": [],
+   "trap_as_exploration": [],
+   "overclaims": [
+    "A088",
+    "A090",
+    "A044"
+   ],
+   "n_in_authored_ok_set": 1,
+   "top1_in_authored_ok_set": true,
+   "rank_of_first_supported": 1,
+   "abstained": false
+  },
+  "v2_12_garbled_text": {
+   "top": [
+    "A001",
+    "A002",
+    "A003",
+    "A004",
+    "A005",
+    "A006",
+    "A007",
+    "A008",
+    "A009",
+    "A010"
+   ],
+   "exploration": [],
+   "n_displayed": 10,
+   "supported_found": [],
+   "supported_missed": [],
+   "trap_hits": [],
+   "trap_as_exploration": [],
+   "overclaims": [],
+   "n_in_authored_ok_set": 0,
+   "top1_in_authored_ok_set": false,
+   "rank_of_first_supported": null,
+   "abstained": false
+  }
+ },
+ "top": {
+  "v2_01_dairy_farm_manager": [
+   {
+    "area_id": "A014",
+    "name": "Life sciences, biology & laboratory science",
+    "score": 55.0
+   },
+   {
+    "area_id": "A005",
+    "name": "Agricultural production & farm management",
+    "score": 48.0
+   },
+   {
+    "area_id": "A066",
+    "name": "Subsistence farming, fishing & agricultural labour",
+    "score": 34.1
+   },
+   {
+    "area_id": "A040",
+    "name": "Banking & payment services clerks",
+    "score": 31.1
+   },
+   {
+    "area_id": "A034",
+    "name": "Management analysis, HR & organisational development",
+    "score": 26.5
+   },
+   {
+    "area_id": "A033",
+    "name": "Finance, accounting & financial analysis",
+    "score": 24.7
+   },
+   {
+    "area_id": "A084",
+    "name": "Mobile plant & marine deck operation",
+    "score": 22.3
+   },
+   {
+    "area_id": "A030",
+    "name": "Secondary school teaching",
+    "score": 21.9
+   },
+   {
+    "area_id": "A065",
+    "name": "Forestry, fishery & hunting",
+    "score": 19.6
+   },
+   {
+    "area_id": "A031",
+    "name": "Primary & early-childhood teaching and child care",
+    "score": 19.5
+   }
+  ],
+  "v2_02_hospital_kitchen_chef": [
+   {
+    "area_id": "A027",
+    "name": "Personal care & care assistance",
+    "score": 54.3
+   },
+   {
+    "area_id": "A019",
+    "name": "Nursing & midwifery",
+    "score": 39.7
+   },
+   {
+    "area_id": "A055",
+    "name": "Client information & contact-centre services",
+    "score": 38.5
+   },
+   {
+    "area_id": "A021",
+    "name": "Paramedic & emergency care",
+    "score": 31.8
+   },
+   {
+    "area_id": "A057",
+    "name": "Cooking & food preparation",
+    "score": 31.2
+   },
+   {
+    "area_id": "A018",
+    "name": "Medicine",
+    "score": 27.3
+   },
+   {
+    "area_id": "A056",
+    "name": "Travel, tourism & guiding",
+    "score": 20.2
+   },
+   {
+    "area_id": "A009",
+    "name": "Hospitality management",
+    "score": 19.2
+   },
+   {
+    "area_id": "A025",
+    "name": "Community health & health support",
+    "score": 18.9
+   },
+   {
+    "area_id": "A024",
+    "name": "Medical & pharmaceutical technology",
+    "score": 16.5
+   }
+  ],
+  "v2_03_construction_site_supervisor": [
+   {
+    "area_id": "A015",
+    "name": "Engineering & engineering technology",
+    "score": 55.0
+   },
+   {
+    "area_id": "A051",
+    "name": "Photography, design support & culinary arts",
+    "score": 44.3
+   },
+   {
+    "area_id": "A074",
+    "name": "Printing trades",
+    "score": 43.8
+   },
+   {
+    "area_id": "A088",
+    "name": "UX, product & digital design",
+    "score": 42.0
+   },
+   {
+    "area_id": "A017",
+    "name": "Architecture, planning, surveying & design",
+    "score": 41.0
+   },
+   {
+    "area_id": "A050",
+    "name": "Creative & performing arts",
+    "score": 39.2
+   },
+   {
+    "area_id": "A082",
+    "name": "Assembly work",
+    "score": 39.1
+   },
+   {
+    "area_id": "A072",
+    "name": "Machinery mechanics, toolmaking & repair",
+    "score": 37.2
+   },
+   {
+    "area_id": "A016",
+    "name": "Electrical, electronics & telecom engineering",
+    "score": 33.3
+   },
+   {
+    "area_id": "A026",
+    "name": "Sports coaching & fitness",
+    "score": 31.4
+   }
+  ],
+  "v2_04_council_administrative_officer": [
+   {
+    "area_id": "A001",
+    "name": "Government & public-sector leadership",
+    "score": 0.0
+   },
+   {
+    "area_id": "A002",
+    "name": "Executive leadership & general management",
+    "score": 0.0
+   },
+   {
+    "area_id": "A003",
+    "name": "Business services & administration management",
+    "score": 0.0
+   },
+   {
+    "area_id": "A004",
+    "name": "Sales, marketing & R&D management",
+    "score": 0.0
+   },
+   {
+    "area_id": "A005",
+    "name": "Agricultural production & farm management",
+    "score": 0.0
+   },
+   {
+    "area_id": "A006",
+    "name": "Manufacturing, construction & logistics management",
+    "score": 0.0
+   },
+   {
+    "area_id": "A007",
+    "name": "ICT service management",
+    "score": 0.0
+   },
+   {
+    "area_id": "A008",
+    "name": "Professional services management",
+    "score": 0.0
+   },
+   {
+    "area_id": "A009",
+    "name": "Hospitality management",
+    "score": 0.0
+   },
+   {
+    "area_id": "A010",
+    "name": "Retail & wholesale management",
+    "score": 0.0
+   }
+  ],
+  "v2_05_packaging_designer_pharma": [
+   {
+    "area_id": "A088",
+    "name": "UX, product & digital design",
+    "score": 55.0
+   },
+   {
+    "area_id": "A027",
+    "name": "Personal care & care assistance",
+    "score": 37.5
+   },
+   {
+    "area_id": "A043",
+    "name": "Software & applications development",
+    "score": 27.5
+   },
+   {
+    "area_id": "A074",
+    "name": "Printing trades",
+    "score": 26.5
+   },
+   {
+    "area_id": "A050",
+    "name": "Creative & performing arts",
+    "score": 24.5
+   },
+   {
+    "area_id": "A019",
+    "name": "Nursing & midwifery",
+    "score": 23.5
+   },
+   {
+    "area_id": "A051",
+    "name": "Photography, design support & culinary arts",
+    "score": 22.4
+   },
+   {
+    "area_id": "A021",
+    "name": "Paramedic & emergency care",
+    "score": 22.1
+   },
+   {
+    "area_id": "A018",
+    "name": "Medicine",
+    "score": 19.4
+   },
+   {
+    "area_id": "A045",
+    "name": "ICT operations, user support & telecoms",
+    "score": 15.4
+   }
+  ],
+  "v2_06_sparse_one_line": [
+   {
+    "area_id": "A001",
+    "name": "Government & public-sector leadership",
+    "score": 0.0
+   },
+   {
+    "area_id": "A002",
+    "name": "Executive leadership & general management",
+    "score": 0.0
+   },
+   {
+    "area_id": "A003",
+    "name": "Business services & administration management",
+    "score": 0.0
+   },
+   {
+    "area_id": "A004",
+    "name": "Sales, marketing & R&D management",
+    "score": 0.0
+   },
+   {
+    "area_id": "A005",
+    "name": "Agricultural production & farm management",
+    "score": 0.0
+   },
+   {
+    "area_id": "A006",
+    "name": "Manufacturing, construction & logistics management",
+    "score": 0.0
+   },
+   {
+    "area_id": "A007",
+    "name": "ICT service management",
+    "score": 0.0
+   },
+   {
+    "area_id": "A008",
+    "name": "Professional services management",
+    "score": 0.0
+   },
+   {
+    "area_id": "A009",
+    "name": "Hospitality management",
+    "score": 0.0
+   },
+   {
+    "area_id": "A010",
+    "name": "Retail & wholesale management",
+    "score": 0.0
+   }
+  ],
+  "v2_07_school_leaver_retail": [
+   {
+    "area_id": "A035",
+    "name": "Sales, marketing & public relations",
+    "score": 35.8
+   },
+   {
+    "area_id": "A062",
+    "name": "Retail, shop & street sales",
+    "score": 27.6
+   },
+   {
+    "area_id": "A004",
+    "name": "Sales, marketing & R&D management",
+    "score": 19.2
+   },
+   {
+    "area_id": "A092",
+    "name": "Economics & public policy analysis",
+    "score": 18.4
+   },
+   {
+    "area_id": "A017",
+    "name": "Architecture, planning, surveying & design",
+    "score": 18.2
+   },
+   {
+    "area_id": "A033",
+    "name": "Finance, accounting & financial analysis",
+    "score": 16.9
+   },
+   {
+    "area_id": "A055",
+    "name": "Client information & contact-centre services",
+    "score": 16.8
+   },
+   {
+    "area_id": "A065",
+    "name": "Forestry, fishery & hunting",
+    "score": 11.4
+   },
+   {
+    "area_id": "A005",
+    "name": "Agricultural production & farm management",
+    "score": 11.2
+   },
+   {
+    "area_id": "A048",
+    "name": "Social sciences, psychology & counselling",
+    "score": 11.0
+   }
+  ],
+  "v2_08_accounting_coursework_only": [
+   {
+    "area_id": "A033",
+    "name": "Finance, accounting & financial analysis",
+    "score": 100.0
+   },
+   {
+    "area_id": "A052",
+    "name": "Government regulation & compliance",
+    "score": 49.7
+   },
+   {
+    "area_id": "A040",
+    "name": "Banking & payment services clerks",
+    "score": 47.4
+   },
+   {
+    "area_id": "A046",
+    "name": "Law & justice",
+    "score": 35.8
+   },
+   {
+    "area_id": "A053",
+    "name": "Paralegal, social work & community support",
+    "score": 31.2
+   },
+   {
+    "area_id": "A041",
+    "name": "Numerical & accounting clerks",
+    "score": 25.8
+   },
+   {
+    "area_id": "A037",
+    "name": "Administrative & executive support",
+    "score": 15.5
+   },
+   {
+    "area_id": "A092",
+    "name": "Economics & public policy analysis",
+    "score": 12.8
+   },
+   {
+    "area_id": "A050",
+    "name": "Creative & performing arts",
+    "score": 9.8
+   },
+   {
+    "area_id": "A003",
+    "name": "Business services & administration management",
+    "score": 9.7
+   }
+  ],
+  "v2_09_backend_developer_hospital": [
+   {
+    "area_id": "A043",
+    "name": "Software & applications development",
+    "score": 100.0
+   },
+   {
+    "area_id": "A019",
+    "name": "Nursing & midwifery",
+    "score": 94.2
+   },
+   {
+    "area_id": "A021",
+    "name": "Paramedic & emergency care",
+    "score": 86.5
+   },
+   {
+    "area_id": "A018",
+    "name": "Medicine",
+    "score": 78.4
+   },
+   {
+    "area_id": "A088",
+    "name": "UX, product & digital design",
+    "score": 73.1
+   },
+   {
+    "area_id": "A024",
+    "name": "Medical & pharmaceutical technology",
+    "score": 53.6
+   },
+   {
+    "area_id": "A025",
+    "name": "Community health & health support",
+    "score": 51.2
+   },
+   {
+    "area_id": "A023",
+    "name": "Dentistry, pharmacy & allied health therapies",
+    "score": 45.8
+   },
+   {
+    "area_id": "A027",
+    "name": "Personal care & care assistance",
+    "score": 44.0
+   },
+   {
+    "area_id": "A020",
+    "name": "Traditional & complementary medicine",
+    "score": 43.2
+   }
+  ],
+  "v2_10_backend_developer_bank": [
+   {
+    "area_id": "A043",
+    "name": "Software & applications development",
+    "score": 100.0
+   },
+   {
+    "area_id": "A088",
+    "name": "UX, product & digital design",
+    "score": 73.1
+   },
+   {
+    "area_id": "A033",
+    "name": "Finance, accounting & financial analysis",
+    "score": 61.1
+   },
+   {
+    "area_id": "A045",
+    "name": "ICT operations, user support & telecoms",
+    "score": 40.4
+   },
+   {
+    "area_id": "A087",
+    "name": "AI & machine learning engineering",
+    "score": 37.0
+   },
+   {
+    "area_id": "A089",
+    "name": "IoT, embedded & smart systems",
+    "score": 31.2
+   },
+   {
+    "area_id": "A044",
+    "name": "Database, systems & network administration",
+    "score": 27.3
+   },
+   {
+    "area_id": "A090",
+    "name": "Cybersecurity & information security",
+    "score": 27.2
+   },
+   {
+    "area_id": "A052",
+    "name": "Government regulation & compliance",
+    "score": 26.5
+   },
+   {
+    "area_id": "A040",
+    "name": "Banking & payment services clerks",
+    "score": 26.3
+   }
+  ],
+  "v2_11_backend_developer_school": [
+   {
+    "area_id": "A043",
+    "name": "Software & applications development",
+    "score": 100.0
+   },
+   {
+    "area_id": "A088",
+    "name": "UX, product & digital design",
+    "score": 73.1
+   },
+   {
+    "area_id": "A045",
+    "name": "ICT operations, user support & telecoms",
+    "score": 40.0
+   },
+   {
+    "area_id": "A087",
+    "name": "AI & machine learning engineering",
+    "score": 36.4
+   },
+   {
+    "area_id": "A089",
+    "name": "IoT, embedded & smart systems",
+    "score": 31.2
+   },
+   {
+    "area_id": "A090",
+    "name": "Cybersecurity & information security",
+    "score": 27.1
+   },
+   {
+    "area_id": "A044",
+    "name": "Database, systems & network administration",
+    "score": 27.1
+   },
+   {
+    "area_id": "A016",
+    "name": "Electrical, electronics & telecom engineering",
+    "score": 20.2
+   },
+   {
+    "area_id": "A086",
+    "name": "Data science & analytics",
+    "score": 13.1
+   },
+   {
+    "area_id": "A093",
+    "name": "Training, learning & development",
+    "score": 12.3
+   }
+  ],
+  "v2_12_garbled_text": [
+   {
+    "area_id": "A001",
+    "name": "Government & public-sector leadership",
+    "score": 0.0
+   },
+   {
+    "area_id": "A002",
+    "name": "Executive leadership & general management",
+    "score": 0.0
+   },
+   {
+    "area_id": "A003",
+    "name": "Business services & administration management",
+    "score": 0.0
+   },
+   {
+    "area_id": "A004",
+    "name": "Sales, marketing & R&D management",
+    "score": 0.0
+   },
+   {
+    "area_id": "A005",
+    "name": "Agricultural production & farm management",
+    "score": 0.0
+   },
+   {
+    "area_id": "A006",
+    "name": "Manufacturing, construction & logistics management",
+    "score": 0.0
+   },
+   {
+    "area_id": "A007",
+    "name": "ICT service management",
+    "score": 0.0
+   },
+   {
+    "area_id": "A008",
+    "name": "Professional services management",
+    "score": 0.0
+   },
+   {
+    "area_id": "A009",
+    "name": "Hospitality management",
+    "score": 0.0
+   },
+   {
+    "area_id": "A010",
+    "name": "Retail & wholesale management",
+    "score": 0.0
+   }
+  ]
+ },
+ "failed": {},
+ "stages": {}
+}

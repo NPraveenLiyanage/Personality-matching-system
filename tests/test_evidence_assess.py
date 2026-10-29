@@ -301,3 +301,91 @@ def test_no_reask_when_every_positive_row_is_cited():
     calls = []
     engine.run(CV, "A", DEFS, fake_chat(data(A043=row("A043", "direct", 3, [("E001", "actions")], "dev")), calls=calls), regulated=REG)
     assert len(calls) == 2
+
+
+# ------------------------------------------------------------------ replay and the pilot page
+def test_replay_reproduces_stored_runs_without_any_model_call():
+    from careerx.evidence import replay
+    defs, reg = assess.load_definitions(), assess.load_regulated()
+    runs = [ROOT / "bench" / "runs" / n for n in (
+        "career_llm_evidence_nvidia_nemotron-3.5-super-vl_free_tune_2026-10-27.json",
+        "career_llm_evidence_nvidia_nemotron-3.5-super-vl_free_holdout_2026-10-29.json")]
+    checked = 0
+    for p in runs:
+        if not p.exists():
+            continue
+        run = json.loads(p.read_text(encoding="utf-8"))
+        for cid, st in run["stages"].items():
+            rb = replay.rebuild(st, defs, reg)
+            assert rb["ok"], cid
+            assert [s["area_id"] for s in rb["supported"]] == [t["area_id"] for t in run["top"][cid]], cid
+            assert [e["area_id"] for e in rb["exploration"]] == [e["area_id"] for e in st["exploration"]], cid
+            assert len(rb["classes"]) == 94
+            checked += 1
+    assert checked >= 10 or not any(p.exists() for p in runs)
+
+
+def test_replay_of_an_unusable_run_is_not_ok():
+    from careerx.evidence import replay
+    assert replay.rebuild({"extraction": {"records": []}}, DEFS, REG)["ok"] is False
+
+
+def test_pilot_page_loads_and_shows_recorded_examples():
+    from streamlit.testing.v1 import AppTest
+    at = AppTest.from_file(str(ROOT / "app" / "pages" / "pilot.py"), default_timeout=180).run()
+    assert not at.exception, at.exception
+    assert any("Pilot for demonstration" in w.value for w in at.warning)
+    assert [h.value for h in at.subheader][:3] == ["1. Career areas backed by the evidence", "2. Worth exploring (not backed by experience)",
+                                                   "3. What the checker changed"]
+    at.selectbox[0].select("c01_hospital_app_developer").run()
+    assert not at.exception
+    body = " ".join(m.value for m in at.markdown)
+    assert "Software & applications development" in body
+    at.radio[0].set_value("Try your own invented example text (live, 3-5 minutes)").run()
+    assert not at.exception
+    at.text_area[0].set_value("Jane Roe jane@example.com +94 77 123 4567 Nurse").run()
+    assert any("email address, phone number or link" in e.value for e in at.error)
+
+
+# ------------------------------------------------------------------ reviewer-based v2 files, in-progress study, scope notes
+def test_study_still_in_progress_never_supports_direct_and_becomes_exploration():
+    student = rec("E040", "education", qual={"subject": "Accounting", "level": "BCom"}, quote="BCom (Accounting), 2025 - present")
+    student.dates = dict(start="2025", end="present", duration_months=None, recency="recent")
+    v = verify.verify(data(A033=row("A033", "direct", 3, [("E040", "qualification")], "studying accounting")), [student], AREAS, REG)
+    a = v.rows["A033"]
+    assert a.support_class == "in_progress_study" and a.relevance is None and a.status == "repaired"
+    assert any("still in progress" in c for c in a.changes) and [e for e, _ in a.evidence] == ["E040"]
+    out = rank.rank(v.rows, [student], NAMES)
+    assert out["supported"] == [] and out["exploration"][0]["support_class"] == "in_progress_study" and out["exploration"][0]["label"]
+    # a completed degree still supports; a student who also worked in the area keeps the work-based support
+    done = rec("E041", "education", qual={"subject": "Accounting", "level": "BCom"}, quote="BCom (Accounting), 2019")
+    done.dates = dict(start="2016", end="2019", duration_months=None, recency="mid")
+    assert verify.verify(data(A033=row("A033", "direct", 3, [("E041", "qualification")], "x")), [done], AREAS, REG).rows["A033"].support_class == "direct"
+    intern = rec("E042", "internship", role="Accounting Intern", actions=["posted ledger entries"], quote="Accounting Intern, posted ledger entries")
+    v = verify.verify(data(A033=row("A033", "direct", 2, [("E040", "qualification"), ("E042", "role")], "intern")), [student, intern], AREAS, REG)
+    assert v.rows["A033"].support_class == "direct" and [e for e, _ in v.rows["A033"].evidence] == ["E042"]
+
+
+def test_in_progress_study_row_must_cite_education_records():
+    v = run(A033=row("A033", "in_progress_study", None, [("E001", "qualification")], "x"))
+    assert v.rows["A033"].support_class == "unsupported"
+    v = run(A033=row("A033", "in_progress_study", None, [("E003", "qualification")], "nursing diploma in progress"))
+    assert v.rows["A033"].support_class == "in_progress_study"
+
+
+def test_scope_notes_reach_the_assessor_and_v2_files_are_valid_and_versioned():
+    valid = set(pipeline.get_catalogue().area_id)
+    d2 = assess.load_definitions(ROOT / "data" / "processed" / "area_definitions_v2.yaml")
+    r2 = assess.load_regulated(ROOT / "data" / "processed" / "regulated_areas_v2.yaml")
+    d1 = assess.load_definitions(ROOT / "data" / "processed" / "area_definitions_v1.yaml")
+    r1 = assess.load_regulated(ROOT / "data" / "processed" / "regulated_areas_v1.yaml")
+    assert set(d2["areas"]) == valid == set(d1["areas"]) and set(r2) == set(r1)
+    assert sum(1 for a in d2["areas"].values() if a.get("reviewer_scope_note")) == 44
+    assert not any(a.get("reviewer_scope_note") for a in d1["areas"].values())         # v1 untouched
+    assert all(set(r1[a]) <= set(r2[a]) for a in r1) and len(r2["A019"]) > len(r1["A019"])
+    assert d1["areas"]["A018"]["formal_qualification_required"] is False and d2["areas"]["A018"]["formal_qualification_required"] is True
+    note = d2["areas"]["A043"]["reviewer_scope_note"]
+    user = json.loads(assess.build_user([DEV], [], d2))
+    assert next(a for a in user["areas"] if a["area_id"] == "A043")["scope_note"] == note
+    assert "scope_note" not in next(a for a in json.loads(assess.build_user([DEV], [], d1))["areas"] if a["area_id"] == "A043")
+    assert assess.PROMPT_VERSION == "assess_v2" and "in_progress_study" in assess.system_prompt() and "scope_note" in assess.system_prompt()
