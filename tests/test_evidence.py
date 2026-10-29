@@ -338,3 +338,19 @@ def test_second_account_is_used_only_for_auth_or_credit_failures(monkeypatch):
     assert set(seen) == {"Bearer K1"}                      # a rate limit never moves to the other account
     monkeypatch.setattr(client.requests, "post", post_factory({"Bearer K1": R(200, ok)}))
     assert client.chat("s", "u", {}, dict(cfg, api_key_2="")).account == 1
+
+
+def test_quote_joining_adjacent_bullets_without_the_marker_is_accepted_but_not_across_passages():
+    text = "\n".join(["PROJECTS", "Skin classifier (2025)", "- Trained a network in Python to classify images.",
+                      "- Evaluated accuracy and wrote the preprocessing pipeline.", "", "SKILLS", "Python, PyTorch, scikit-learn"])
+    ing = ingest.ingest_text(text)
+    proj = next(p for p in ing.sendable() if p.section == "projects")
+    q = "Trained a network in Python to classify images. Evaluated accuracy and wrote the preprocessing pipeline."
+    d = dict(records=[gold_record(proj.id, dict(quote=q, type="project", contribution="own", actions=["trained a network"]))], extraction_notes=[])
+    assert extract.run_extraction(ing, fake(d)).status == "accepted"
+    skills = next(p for p in ing.sendable() if p.section == "skills")
+    stitched = dict(records=[gold_record(proj.id, dict(quote="preprocessing pipeline. Python, PyTorch, scikit-learn", type="project",
+                                                       contribution="own", actions=["x"]))], extraction_notes=[])
+    assert extract.run_extraction(ing, fake(stitched)).status == "rejected"
+    assert validate.norm("- Built it\n  - and tested") == validate.norm("Built it and tested")
+    assert validate.norm("2022 - 2026") == "2022 - 2026"             # mid-line dashes untouched

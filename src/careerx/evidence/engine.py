@@ -57,8 +57,10 @@ def run(cv_text: str, name: str, defs: dict, chat=None, cfg: dict | None = None,
         return res
     try:
         data = json.loads(raw.content.strip())
-    except ValueError:
+    except ValueError as e:
         res["errors"] = ["assessment is not valid JSON"]
+        c = raw.content or ""      # synthetic benchmark text only; kept so a parse failure can be diagnosed
+        res["stages"]["assessment"] = dict(parse_error=str(e)[:200], content_chars=len(c), head=c[:200], tail=c[-200:])
         return res
     v = verify.verify(data, ex.records, area_ids, regulated)
     res["stages"]["assessment"] = dict(raw_rows=data.get("assessments") if isinstance(data, dict) else None,

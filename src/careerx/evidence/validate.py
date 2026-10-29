@@ -26,6 +26,7 @@ _REQUIRED = ("passage_id", "quote", "evidence_type", "role", "candidate_actions"
 def norm(s: str) -> str:
     """Matching form for quotes: NFKC, typographic quotes/dashes/bullets folded, whitespace collapsed, case-insensitive."""
     s = unicodedata.normalize("NFKC", s).translate(_TYPOGRAPHY)
+    s = re.sub(r"(?m)^[ \t]*[-*][ \t]+", "", s)      # leading bullet markers: a quote may join adjacent bullets without them
     return re.sub(r"\s+", " ", s).strip().casefold()
 
 

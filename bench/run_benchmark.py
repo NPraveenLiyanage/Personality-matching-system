@@ -96,10 +96,12 @@ def main():
     ap.add_argument("--data-collection", default="deny", choices=["deny", "allow"],
                     help="llm_evidence: 'allow' is needed for free endpoints; only ever used with synthetic cases")
     ap.add_argument("--max-tokens", type=int, default=12000, help="llm_evidence: output limit per call (reasoning models need more)")
+    ap.add_argument("--account", type=int, default=1, choices=[1, 2], help="llm_evidence: which configured OpenRouter key is primary (recorded in the run metadata, never the key)")
     ap.add_argument("--split", default="", choices=["", "tune", "holdout"], help="only run cases of this split")
     ap.add_argument("--definitions", default="", help="llm_evidence: area definitions file (default data/processed/area_definitions_v1.yaml)")
     ap.add_argument("--use-confusions", action="store_true", help="llm_evidence ablation: show common_contextual_confusions to the assessor")
     ap.add_argument("--run-live", action="store_true")
+    ap.add_argument("--resume", action="store_true", help="keep finished cases from the checkpoint of a killed run; re-run the rest")
     ap.add_argument("--rescore", default="", help="recompute metrics for a stored run file with the current metrics/case file (no API calls)")
     a = ap.parse_args()
     if a.rescore:
@@ -117,6 +119,10 @@ def main():
         cfg = ev_client.settings()
         cfg.update(model=a.model, provider=a.provider, max_tokens=a.max_tokens, require_zdr=False, temperature="",
                    data_collection=a.data_collection, max_price="")
+        if a.account == 2:
+            if not cfg.get("api_key_2"):
+                sys.exit("--account 2 needs OPENROUTER_API_KEY_2 in .env")
+            cfg.update(api_key=cfg["api_key_2"], api_key_2="")
         _EVIDENCE_CTX.update(cfg=cfg, definitions=a.definitions or None, use_confusions=a.use_confusions)
     cases = metrics.load_cases(a.cases)
     if a.only:
@@ -125,8 +131,21 @@ def main():
         cases = [c for c in cases if c.get("split") == a.split]
     cat = pipeline.get_catalogue()
     per_case, ranked_out, failed, stage_out = {}, {}, {}, {}
+    rd = ROOT / "bench" / "runs"
+    rd.mkdir(parents=True, exist_ok=True)
+    tag = a.engine + (("_" + a.model.replace("/", "_")) if a.model else "") + (f"_{a.split}" if a.split else "")
+    tag = re.sub(r"[^A-Za-z0-9._-]", "_", tag)          # model ids contain ":" (an NTFS stream separator) and "/"
+    ckpt = rd / f"_checkpoint_{tag}.json"
+    resumed = []
+    if a.resume and ckpt.exists():                      # a killed run keeps its finished cases; failed ones are run again
+        prev = json.loads(ckpt.read_text(encoding="utf-8"))
+        per_case, ranked_out, stage_out = prev["per_case"], prev["top"], prev["stages"]
+        resumed = sorted(per_case)
+        print(f"resuming: {len(resumed)} finished cases kept from {ckpt.name}")
     for c in cases:
         assert c["synthetic"] is True, "refusing to run a non-synthetic case"
+        if c["id"] in per_case:
+            continue
         try:
             got = ENGINES[a.engine](c, cat)
         except Exception as e:                      # record the failure; never substitute another engine's result
@@ -140,6 +159,7 @@ def main():
         m = metrics.case_metrics(c, ids, a.k, exploration)
         per_case[c["id"]] = m
         ranked_out[c["id"]] = ranking[:a.k]
+        ckpt.write_text(json.dumps(dict(per_case=per_case, top=ranked_out, stages=stage_out), ensure_ascii=False), encoding="utf-8")
         print(f"{c['id']:<44} shown {m['n_displayed']:>2} found {len(m['supported_found'])}/{len(c['supported'])}  traps {m['trap_hits'] or '-'}"
               f"{('  (as exploration: ' + ','.join(m['trap_as_exploration']) + ')') if m['trap_as_exploration'] else ''}")
     agg = metrics.aggregate([c for c in cases if c["id"] in per_case], per_case, a.k)
@@ -156,14 +176,17 @@ def main():
     if a.engine == "llm_evidence":
         meta.update(provider=a.provider, split=a.split or "all", prompts="extract_v1+assess_v1", schema="evidence_v1",
                     definitions_status=(__import__("yaml").safe_load(open(a.definitions or str(ROOT / "data/processed/area_definitions_v1.yaml"), encoding="utf-8")).get("status")),
-                    use_confusions=a.use_confusions, zdr=False, data_collection=a.data_collection, fallbacks="none", runs_per_case=1)
+                    frozen_files={f: hashlib.sha256((ROOT / f).read_bytes()).hexdigest()[:12] for f in (
+                        "src/careerx/evidence/extract_v1.md", "src/careerx/evidence/assess_v1.md", "src/careerx/evidence/validate.py",
+                        "src/careerx/evidence/verify.py", "src/careerx/evidence/rank.py", "src/careerx/evidence/engine.py",
+                        "data/processed/regulated_areas_v1.yaml", "data/processed/area_definitions_v1.yaml")},
+                    use_confusions=a.use_confusions, zdr=False, data_collection=a.data_collection, account=a.account, fallbacks="none", runs_per_case=1)
+    meta["resumed_cases_from_checkpoint"] = resumed
     out = dict(meta=meta, aggregate=agg, per_case=per_case, top=ranked_out, failed=failed, stages=stage_out)
-    rd = ROOT / "bench" / "runs"
-    rd.mkdir(parents=True, exist_ok=True)
-    tag = a.engine + (("_" + a.model.replace("/", "_")) if a.model else "") + (f"_{a.split}" if a.split else "")
-    tag = re.sub(r"[^A-Za-z0-9._-]", "_", tag)          # model ids contain ":" (an NTFS stream separator) and "/"
     path = rd / f"career_{tag}_{date.today()}.json"
     path.write_text(json.dumps(out, indent=1, ensure_ascii=False), encoding="utf-8")
+    if not failed and ckpt.exists():
+        ckpt.unlink()
     o = agg["overall"]
     print(f"\n{a.engine}: domain-confusion cases {o['domain_confusion_cases']}, supported recall {o['supported_recall']}, "
           f"mean shown {o['mean_areas_displayed']}, top-1 ok {o['top1_in_authored_ok_set']}, abstained on no-support {o['abstained_on_no_support_cases']}, failed {len(failed)}  -> {path.relative_to(ROOT)}")

@@ -1,5 +1,13 @@
 # Open decisions and data status
 
+## Confirmed model strategy (2026-10-28)
+- Free OpenRouter models only for now; paid calls need explicit owner authorisation.
+- Current work is prompted inference and pipeline evaluation; model weights have not been fine-tuned.
+- Build interchangeable model adapters around stable evidence/result schemas, catalogue IDs, backend validation and deterministic ranking.
+- A future paid model must be compared on the frozen benchmark before switching; capability alone does not establish better task quality.
+- Reviewed synthetic examples, rubrics and evaluation cases can be reused. Fine-tuned weights generally do not transfer between base models.
+- Fine-tuning stays optional and gated on baseline evaluation, reviewed labels and suitable licensing/serving resources.
+
 Last updated: 2026-10-27. Referenced from `docs/MASTER_PLAN.md` (section 14).
 
 ## Data status (answers from the project owner)

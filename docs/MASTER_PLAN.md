@@ -1,5 +1,8 @@
 # Master Plan — Evidence-First Career-Area Matching (Phase 1 product)
 
+## Current development constraint (confirmed 2026-10-28)
+Use free OpenRouter models only until the owner explicitly authorises paid calls. Current development uses prompted inference; no model weights have been fine-tuned. Keep model/provider selection configurable and preserve model-independent evidence schemas, catalogue IDs, validation, ranking and evaluation contracts so a more capable paid model can be compared and substituted later. Pin and record the actual model/provider for each run; evaluate a replacement on the same frozen benchmark before adopting it. Reuse reviewed examples and evaluation assets across models; actual fine-tuned weights generally cannot transfer to another base model. Fine-tuning remains optional after a measured prompted baseline and reviewed training data. Never describe prompt iteration or API inference as fine-tuning.
+
 Status: APPROVED PLAN (2026-10-27), revised 2026-10-27 after inspecting `PERSONAMAP_RESPONSES_MASKED.xlsx` (see §13). Nothing implemented yet; phases execute one at a time on instruction.
 
 ## Context
@@ -169,3 +172,6 @@ Assessment stage (`assess`, `verify`, `rank`, `engine`), regulated-area guard, m
 
 ## 18. Phase 3 update (2026-10-27, later) — partial live data, gate NOT passed
 Definitions drafted (free Nemotron-3.5-super-vl, draft_unreviewed). Tune split: 2 of 12 cases completed before the free tier's 50 requests/day ran out; c01 (hospital developer) shows no trap area as supported, c02 (nurse) lost Nursing due to an extraction typing error and an uncited assessor claim; fixes added (section-based qualification typing, one targeted re-ask for uncited rows). Next: continue tune after the daily reset (or with credit), review definitions/regulated terms, run holdout once. Details: `docs/PHASE3_STATUS.md`.
+
+## 19. Phase 3 results (2026-10-29) — gate NOT passed, evidence mixed
+Evidence pipeline (free Nemotron-3.5-super-vl, unreviewed definitions) on 22 synthetic cases: no trap area shown as supported in 18 trap cases (tune 0/8, holdout 0/10; baselines 7/8 and 1/10 rule, 5/8 and 2/10 direct), but holdout recall 8/12 vs 12/12 and only ~1 area shown per case. Two empty holdout cases traced to quote matching rejecting joined bullets; fixed after seeing them, so the holdout is now used and fresh held-out cases are needed. Details: `docs/PHASE3_RESULTS.md`.
