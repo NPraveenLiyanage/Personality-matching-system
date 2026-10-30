@@ -2,13 +2,44 @@
 
 
 
-Career exploration: evidence-first career-area matching. Last updated: 2026-10-29 (fresh held-out set v2 results added; reviewer notes preserved).
+Career exploration: evidence-first career-area matching. Last updated: 2026-10-30 (owner decisions Q1–Q8 recorded; historical reviews, pipeline v2 results and held-out v3 results preserved).
 
 
 
 **How to use this file.** Read sections 1-6 for the picture. Edit anything directly: change a decision, tick a box `[x]`, fill the ✏️ cells in section 7, add comments anywhere starting with `>> YOUR NOTE:`. Then tell me "read PROJECT_REVIEW.md" and I will apply your changes to the real files (cases, definitions, rules), re-run the checks, and update this file. I keep this file current after each piece of work. Nothing in it is a claim of accuracy; limits are in section 5.
 
 
+
+---
+
+## Owner decisions and coding-agent instructions — 2026-10-30
+
+**Status/provenance:** The following are project-owner instructions, **not proof that repository changes or system actions occurred**. Apply them to the actual project only after checking the current code and run artifacts. Historical result tables below retain their original dates and methods. **Do not mark Phase 0, 1, 2 or 5 independence gates passed because an AI reviewed the material.**
+
+| Item | Owner decision / instruction | Action for coding agent |
+|---|---|---|
+| Reviewer sections 7c and 7d | Owner reports that the proposed regulated-role terms and area-definition corrections have been filled; proceed with them. | **First inspect current state.** The appended 2026-10-29 log already reports `area_definitions_v2` (44 scope notes), `regulated_areas_v2` (57 new words), pipeline v2, a tune re-run and held-out v3 runs. If those versioned files and outputs exist and match the proposals, **do not duplicate, overwrite v1 or pretend a re-run is pending**. If additions are still missing, apply them in a new version, rerun tests and benchmarks, and label all changed test sets appropriately. Keep regulated-role verification separate from word matching. |
+| Q1 — reviewer | The owner authorizes **ChatGPT to provide an additional AI-assisted desk review** of 7a–7d, examples, rubrics and errors. | Treat this as **provisional machine review, not an independent human/domain expert**. Keep external-career-practitioner sign-off open for Phase 0/1/2 and independent human raters for Phase 5. Maintain reviewer provenance and blind-review separation; do not open the hidden key before judging new calibration items. |
+| Q8 — in-progress degrees | **Consider students fairly, but do not equate unfinished study with professional work experience or licensure.** | Study alone = `in_progress_study` / **education-based exploration** of the relevant area. Demonstrated **individual** course project, lab, supervised placement, internship, volunteering or paid work can support the **specific tasks actually performed**, explicitly labelled `academic_project`, `internship` etc.; never convert that into an unqualified claim of professional practice. Details and test cases below. |
+| Number of areas | Owner has **not decided a minimum count**. **Proposed pilot policy, pending confirmation:** try up to 3 useful areas with clear evidence labels, but **never force 3**; fewer than 3 or zero is legitimate. | Do not hard-code a mandatory minimum. Compare top-1 and up-to-3 labelled displays offline; preserve abstention and do not pad unsupported recommendations. Keep the final display-count decision open. |
+| Q3 — API credit / Phase 4 | **Free models only now.** A possible later paid allowance is **US$10 total maximum**, **not approved for spending now**. | Do not purchase credits, use paid endpoints, or incur fees without later explicit owner approval. Continue comparable free-model runs, log provider/model/account/quota/data policy and errors. Keep paid direct-prompt comparison as blocked; do not claim it was run. A $10 future ceiling is a budget cap, not permission to spend. |
+| Q6 — key | Owner says key rotation is done. | Record as **owner-reported complete, technically unverified**. Verify old key revoked, search tracked files and history for secret exposure and check whether rewriting history/incident actions are needed; never print keys in logs or this document. |
+| Q5 — experience summaries | Do not wait for user-supplied CV summaries: **start with realistic synthetic summaries** derived from publicly accessible occupational *task descriptions*, not copied personal CVs. | Section 9 contains examples, official sources and a reusable research prompt. These examples are **fictional author-created fixtures**, not independent accuracy evidence. Version them and obtain domain review before using for evaluation or fine-tuning. |
+| Q7 — commit | Owner reports **all current changes committed**. | Do not claim this is verified; check `git status`/history locally. **No new commit without a subsequent request**. A newly modified review file itself may need a separate commit when requested. |
+| Q4 — real-world data | Owner permits considering **publicly available datasets for model training** now, without waiting for privately contributed participant CVs. | Identify and audit suitable public datasets **before using**: public availability alone does not establish consent, lawful processing, or model-training rights. Record source, licence, permitted commercial/ML use, attribution, personal-data status, jurisdiction and legal/privacy clearance. Use rights-cleared datasets where allowed, plus invented synthetic cases; do not scrape identifiable CVs or send them to free logging endpoints without clearance. Private participant consent for inference/training remains open. |
+| Q2 — supervisor demo | **Do not prepare the demo yet.** Owner will request it and supply the date when ready. | Keep demo preparation parked; no one-page summary/slides now. |
+
+### Q8: evidence and display rules (implementation guidance)
+
+1. Store distinct fields for `education_status` (`in_progress`, `completed`, `unknown`), `education_evidence`, `role_or_project_type`, `personally_performed_tasks`, `work_experience`, `recency`, `credential_claim` and `credential_verified` (if verification exists). Preserve exact CV spans as evidence; missing details remain unknown.
+2. An in-progress degree/course title or a course/module list **does not, by itself, satisfy `direct` professional/occupational support**. Match it to a labelled *study-related exploration* area. Even a completed degree is not automatically evidence of doing the occupation's tasks; professional licensing is assessed separately.
+3. Substantive personally completed academic projects **can evidence direct performance of those specific tasks** (e.g. a student personally programmed and tested an application has evidence of software-development tasks), but label the source as `academic_project`; do not describe the person as a practising professional or assert job readiness. A supervised accounting internship can evidence ledger/reconciliation tasks even while the degree remains in progress; a classroom accounting module alone cannot.
+4. When project work was completed by a team but the individual contribution is unspecified, mark `insufficient_info` for the asserted tasks; software built *for* a hospital is not clinical experience. Claimed practice in a regulated occupation must not be presented as credential-verified; distinguish observed/self-reported role evidence, recognized qualification, registration/licence and local legal eligibility.
+5. Candidate display labels: **Supported by demonstrated tasks** (`professional_work`, `internship`, `academic_project`, `volunteer`, etc. shown explicitly); **Transferable skills** (relevant performed tasks from a different area); **Exploration based on study or interest** (no corresponding work tasks shown). A historical professional role may be supported as *past evidence* while ranked separately for present fit.
+6. **Proposed pilot experiment (count not yet approved):** compare showing the top 1 against showing **up to 3** distinct areas as warranted, never a hard floor or 3 unsupported 'direct' recommendations. If weak evidence, say **'Not enough evidence for a supported career area'** and request activities/tasks; optional exploration can still appear with a conspicuous label. Preserve deterministic ranking and test whether changing display count increases unsupported claims.
+7. Update `docs/RUBRIC.md`, `docs/OPEN_DECISIONS.md`, assessor/verifier/ranking/UI code, and regression tests only where inspection shows a gap. Explicit checks: `v2_08` (accounting coursework), nursing student, software final-year individual project, unspecified team contribution, accounting internship, historic clerk work, and academic healthcare-app domain swap. Record new results separately; v3 already seen by the developer is **not fresh** for changes made after this decision.
+
+**Important evaluation boundary:** An AI desk review (including ChatGPT's review) improves consistency but cannot be counted as an independent human career-guidance reviewer or as a second human rater. The Phase 0/1 sign-off and Phase 5 independent rating gates remain open until documented human review occurs.
 
 ---
 
@@ -20,7 +51,7 @@ Career exploration: evidence-first career-area matching. Last updated: 2026-10-2
 - **Safety-relevant fixes:** Practising doctors require professional qualification and SLMC registration in Sri Lanka. Several other clinical professions need their own credential checks, and some composite career areas contain both regulated and unregulated roles.
 - **Benchmark review:** The 7b judgments are conditional because only one-line case summaries, not the full CV texts or test-run records, were supplied. Historical/direct evidence should be recorded separately from current-fit ranking; optional pathways must never be labelled supported automatically.
 - **Unverified internal claims retained:** Reported rates, run counts, cost to date, execution states, git changes, privacy settings, benchmark outcomes and current pilot status cannot be checked from this standalone Markdown. None were silently certified as true.
-- **User-only decisions retained open:** reviewer identity, demo schedule, API credit approval, consent, experience-summary availability, key rotation status, commit permission, and minimum recommendations are not provided.
+- **Historical as-of-2026-10-29 note:** owner decisions were not yet provided when this block was written. **Superseded by the 2026-10-30 decisions above.** Human reviewer sign-off, consent/lawful real-CV processing, and demo scheduling remain open.
 
 ## Reviewer changes: what was applied (2026-10-29, later)
 
@@ -28,8 +59,8 @@ Career exploration: evidence-first career-area matching. Last updated: 2026-10-2
 |---|---|
 | 7a calibration pairs | The ten answers match the author's key 10 of 10. This is not independent evidence: the review is provisional and AI-assisted, and says it did not validate the hidden key. |
 | 7b case expectations | **Applied as a new version, "cases v3"** (`bench/cases/career_cases_v3.yaml`, built by `scripts/make_cases_v3.py`). The two original case files are unchanged and a test pins their hashes. Each change records its reason in a `v3_change` field. New field `exploration_only`: fine to show only as labelled exploration; showing one as a supported recommendation is counted as an **overclaim**. Four cases changed their supported set: `c05` (A087 moved to exploration), `c20` (old accounts-clerk work now supported), `v2_03` (A067 instead of A070) and `v2_05` (A088 and A017 instead of A051). |
-| 7c regulated words | **Not applied.** It changes the pipeline, so it needs a re-run; waiting for your go-ahead. |
-| 7d area definitions | **Not applied** (same reason). The proposals stay in the table above. |
+| 7c regulated words | **Historical status superseded:** the later appended 2026-10-29 log reports `regulated_areas_v2` with 57 added words and tune/holdout runs. Owner authorizes applying missing corrections. Verify files/results before deciding whether a further re-run is required. |
+| 7d area definitions | **Historical status superseded:** appended 2026-10-29 log reports `area_definitions_v2` with 44 reviewer scope notes, plus tune/holdout runs. Verify corrections in versioned files; retain frozen v1. |
 | Findings block at the top | Kept as written. Numbers it says cannot be checked from this file can be checked in `bench/runs/` and `docs/PHASE*_RESULTS.md`. |
 
 Two catalogue facts (not from the reviewer) decided `v2_03` and `v2_05`: in the project's own ISCO data, construction supervisors (ISCO 3123) are in A067 and graphic designers (2166) are in both A017 and A088; chefs (3434) are in A051, which is why A051 became acceptable for the hospital chef. Please check these assignments.
@@ -118,7 +149,7 @@ Full detail: `docs/PHASE1_RESULTS.md`, `PHASE2_RESULTS.md`, `PHASE3_RESULTS.md`,
 
 - [x] Catalogue IDs `A001`-`A094` are frozen (`catalogue_v1`); changes go in a new versioned file.
 
-- [x] ****Synthetic data only**** for any external call. No real CVs exist yet. Experience summaries are frozen until you supply them.
+- [x] ****Synthetic CVs only for external free-model calls for now.**** User supplied permission to prepare **synthetic** experience summaries using public occupational-task references; see section 9. Public personal CVs or public datasets require independent licence/privacy review before using in inference or training.
 
 - [x] The PersonaMap workbook is not training data for the career models (no CVs, no labels, consent covers aggregate research use only). Fine-tuning later uses synthetic CVs seeded from its sector/title mix, reviewed by a human.
 
@@ -130,7 +161,7 @@ Full detail: `docs/PHASE1_RESULTS.md`, `PHASE2_RESULTS.md`, `PHASE3_RESULTS.md`,
 
 - [x] Test discipline: tune on dev cases, one run on a held-out set, and a held-out set that has influenced a change is retired and replaced by fresh cases.
 
-- [ ] Number of areas to show: the pipeline shows about 1. Do you want a minimum (for example always show at least 3 with labels)? >> YOUR ANSWER:
+- [ ] Number of areas to show: **not yet decided by owner**. Suggested test: **up to 3** distinct areas with Supported by demonstrated tasks / Transferable skills / Exploration based on study or interest clearly labelled, but **no minimum**. Do not change production display count until the choice is confirmed; do not pad results. >> YOUR ANSWER: pending.
 
 
 
@@ -142,21 +173,21 @@ Full detail: `docs/PHASE1_RESULTS.md`, `PHASE2_RESULTS.md`, `PHASE3_RESULTS.md`,
 
 
 
-- [ ] ****Q1. Reviewer.**** Who can independently review sections 7a-7d? A career-guidance practitioner is ideal; two people for 7a and 7b would be better. >> YOUR ANSWER:
+- [x] ****Q1. Reviewer.**** >> YOUR ANSWER (2026-10-30): Use ChatGPT as an **AI-assisted provisional reviewer** now. **Independent human reviewer not yet identified; the formal Phase 0/1/2 gates remain open.** Obtain a career-guidance/domain specialist and ideally two independent raters later. Keep blind review and provenance.
 
-- [ ] ****Q2. Supervisor demo.**** When is the demo, and should I prepare a short slide or one-page summary from this file? >> YOUR ANSWER:
+- [x] ****Q2. Supervisor demo.**** >> YOUR ANSWER (2026-10-30): Owner will request demo preparation and provide the date later. **Do not prepare now; schedule remains open.**
 
-- [ ] ****Q3. Paid credit.**** Phase 4 (model comparison/repeats) may require paid credits. A total purchase of around US$10 raises eligible free-model limits to 1,000 requests/day; paid models charge separately by usage. Do you approve spending, or should work stay on free models? >> YOUR ANSWER:
+- [x] ****Q3. Paid credit.**** >> YOUR ANSWER (2026-10-30): **Do not spend now: free models only.** Potential **future lifetime/total cap US$10** if separately approved. No paid model calls or credit purchase without explicit approval; Phase 4 paid baseline remains blocked. Do not assume quotas/prices stay constant.
 
-- [ ] ****Q4. Real data.**** Do any participants consent to external processing of their CV (inference) and separately to training use? Needed before anything real is sent anywhere. >> YOUR ANSWER:
+- [x] ****Q4. Real data.**** >> YOUR ANSWER (2026-10-30): **Publicly available datasets may be researched and used for training after source-specific rights and privacy clearance.** No participant-specific consent has been supplied for privately obtained CV inference/training. Build invented synthetic CVs alongside **verified, reuse-permitted public data**; public personal CVs are **not automatically cleared** for training merely by appearing online.
 
-- [ ] ****Q5. Experience summaries.**** You said you will supply them later; tell me when. >> YOUR ANSWER:
+- [x] ****Q5. Experience summaries.**** >> YOUR ANSWER (2026-10-30): Create **realistic invented** summaries now from official job-duty references. **Starter examples and a reusable web-research prompt are in section 9**. Owner does not need to supply real experience summaries for this synthetic test-data step.
 
-- [ ] ****Q6. API key.**** The first key was pasted into a tracked file earlier. It now lives in `.env` (ignored by git). Rotate the exposed key now, revoke the old key and review git history (moving it into an ignored `.env` does not remove earlier exposure). Done? >> YOUR ANSWER:
+- [x] ****Q6. API key.**** >> YOUR ANSWER (2026-10-30): **Done, according to owner.** Technical verification still needed: confirm previous key revoked and assess git history/secret exposure; never echo secrets.
 
-- [ ] ****Q8. Unfinished degrees.**** Should an in-progress degree (second-year accounting student) count as "direct" support for that area, or only as exploration until completed? The rubric is silent and the pipeline currently says direct (`v2_08`). >> YOUR ANSWER:
+- [x] ****Q8. Unfinished degrees.**** >> YOUR ANSWER (2026-10-30): **An unfinished degree by itself = education-based exploration, not direct occupational experience.** Real individual coursework projects, internships, volunteer work, placements or paid tasks can demonstrate particular tasks, with source type and limitations labelled; no professional/regulated eligibility inferred. Full guidance above.
 
-- [ ] ****Q7. Commit.**** Several new files are uncommitted. Say when you want a commit (I do not commit unless asked).
+- [x] ****Q7. Commit.**** >> YOUR ANSWER (2026-10-30): **All changes have been committed, per owner.** Verify with git before making status claims. Do not make new commits unless separately asked.
 
 
 
@@ -166,6 +197,7 @@ Full detail: `docs/PHASE1_RESULTS.md`, `PHASE2_RESULTS.md`, `PHASE3_RESULTS.md`,
 
 ## 5. Honest limits (read before showing anyone)
 
+**Historical note:** items below were written before the appended 2026-10-29 v2 pipeline/held-out v3 runs and the 2026-10-30 owner decisions. Interpret old sample sizes and “not done” statuses at their original date; **do not replace the later v3 first-attempt failure rate (3/12 = 25%) with the eventual 12/12 retry-completed figure**. Outcomes remain author-labelled and not independently human-verified.
 
 
 1. Expected outcomes were written by the project team. No independent expert has rated anything yet.
@@ -457,3 +489,69 @@ Run file: `bench/runs/career_llm_evidence_nvidia_nemotron-3.5-super-vl_free_hold
 ### Update: v3 held-out set after retrying the 3 failures (2026-10-29)
 First attempt: 9 of 12 completed, 3 failed (saved as `..._pipe2_2026-10-29_attempt1.json`). Retry, with no change to the pipeline: v3_04 completed on account 2; v3_08 and v3_11 hit HTTP 429 on account 2 and completed on account 1 (`..._attempt2.json` holds the intermediate state). **v3_04, v3_08 and v3_11 are second-attempt results, not clean first runs.**
 Final, 12 of 12 completed: trap cases shown as supported 0/12 (4 showed a trap only as labelled exploration), expected areas found 10/10, overclaims 0/6, mean areas shown 1.33, top area in the expected set 10/12, abstained on the 2 no-support cases 2/2. Caveats unchanged: author-written unreviewed expectations, small n, free model with a 25% first-attempt failure rate, no baselines run on this set.
+
+
+---
+
+## 9. Realistic synthetic experience summaries: research sources, examples and reusable prompt (2026-10-30)
+
+**Purpose:** Provide enough diversity to test career exploration for students, workers, technicians, trades, service workers, professionals, career changers and sparse/ambiguous CVs. **All examples below are fictional**, contain no real individual's CV, and are not claims of verified qualifications or job readiness. Their tasks are newly paraphrased from public occupational profiles. Do not copy actual personal CVs, job applicants' narratives, names, contact data or professional identifiers.
+
+### 9a. Reusable authoritative source set (checked 2026-10-30)
+
+| Priority | Reference | What to extract | Licence/privacy caution |
+|---|---|---|---|
+| 1 | ILO ISCO-08: https://isco.ilo.org/en/isco-08/ | Occupational boundaries, scope and unit-group tasks; distinguish role from employer industry. | ILO says ISCO is free to use: https://isco.ilo.org/en/faq/. Attribute reference appropriately. |
+| 2 | O*NET occupational tasks, e.g. software developers: https://www.onetonline.org/link/summary/15-1252.00 and textile machine operators: https://www.onetonline.org/link/summary/51-6062.00 | Specific realistic tasks, tools, work activities; avoid using US requirements as Sri Lankan law. | O*NET content normally CC BY 4.0 with exceptions; check exact dataset/content and give attribution: https://www.onetonline.org/help/license. |
+| 3 | ESCO occupations/skills: https://esco.ec.europa.eu/en/about-esco and downloads https://esco.ec.europa.eu/uk/use-esco/download | Complementary occupation/skill descriptions and alternate terminology. | Check data terms, version and attribution before reusing any dataset. |
+| 4 | UK National Careers Service profiles: https://nationalcareers.service.gov.uk/explore-careers | Task lists and early-career job descriptions (e.g. accounting technician, retail sales assistant, mechanic, nurse). | Use to **learn/paraphrase facts**, not bulk copy protected wording or assume UK licensing applies to Sri Lanka. |
+| 5 | Sri Lankan regulators (example health): https://slmc.gov.lk/en/registration | Verify requirements of particular locally regulated roles before any eligibility statement. | Licensing/status needs actual evidence; a person's CV claim or keyword cannot verify registration. |
+
+**Concrete task examples cross-checked:** accounting technician https://nationalcareers.service.gov.uk/job-profiles/accounting-technician ; retail assistant https://nationalcareers.service.gov.uk/job-profiles/sales-assistant ; motor mechanic https://nationalcareers.service.gov.uk/job-profiles/motor-mechanic ; nurse https://nationalcareers.service.gov.uk/job-profiles/nurse ; textile operator https://www.onetonline.org/link/summary/51-6062.00 ; software developer https://www.onetonline.org/link/summary/15-1252.00 . References guide task plausibility only, **not** CV facts or verified applicant ability.
+
+### 9b. Synthetic CV/experience snippets ready to use as draft fixtures
+
+The quoted sentences are invented; the labels are **suggested review expectations**, not automatically accepted gold labels. Have a domain reviewer check area membership against the project's *versioned* catalogue and actual YAML before using in scored benchmarks. All named organizations, dates, credentials and roles are hypothetical where included.
+
+| ID | Candidate profile | Fictional CV experience summary | Expected treatment / likely relevant area |
+|---|---|---|---|
+| `syn01` | Second-year accounting student, no job | "Currently studying financial accounting and auditing. Completed lectures and textbook exercises, but I have not worked in an accounts department or completed an internship." | A033 **study-based exploration only**. Do **not** claim accountant experience; no A041 as supported from a course title. |
+| `syn02` | Computing student, own project | "During a second-year project I personally built the login API, designed three database tables and wrote integration tests for a student attendance web app. The project was graded but not used by a company." | A043 **demonstrated academic-project software tasks**, not professional employment; A044 requires actual administration evidence. No teaching from education domain. |
+| `syn03` | Accounting student with placement | "I am studying for a degree and spent eight weeks assisting an accounts team. I entered supplier invoices, reconciled bank transactions under supervision and prepared a weekly outstanding-payments spreadsheet." | A041 **supervised internship task evidence**; possible limited A033 exploration/partial task alignment, **not** chartered or licensed accountant. |
+| `syn04` | School leaver / part-time supermarket worker | "For nine months I restocked shelves, checked displayed prices, handled checkout transactions and helped customers find products. I did not manage staff or prepare financial accounts." | A062 **part-time direct retail-task evidence**. No A010 management, A033 accountancy or A041 clerk role solely for operating the till. |
+| `syn05` | Experienced heavy-vehicle driver | "For four years I drove delivery lorries on assigned routes, inspected tyres and lights before departures and completed delivery and trip logs. I did not repair vehicle engines." | A083 **historical/current driving-task evidence**; do not infer A072 mechanical repair. Driving authorisation still separate. |
+| `syn06` | Bus-depot mechanical technician | "As a depot technician I inspected braking systems, investigated engine faults, replaced worn mechanical parts and recorded maintenance work. I have not designed vehicles or managed the workshop." | A072 **hands-on repair evidence**; do not promote to A015 professional engineering or A006 management without tasks. |
+| `syn07` | Apparel factory cutting-machine operator | "For two years I set cutting-machine parameters, loaded fabric, checked cut pieces against specifications and informed the supervisor when the machine jammed." | A081 **manufacturing machine-operation evidence**, not A078 tailoring/design or A067 supervision. |
+| `syn08` | Municipal waste-collection worker | "I worked on a refuse-collection crew, emptied household bins into a collection vehicle, separated rejected items and cleaned assigned collection points." | A064 **waste collection evidence**; do not infer environmental science or management. |
+| `syn09` | Qualified nursing professional (self-reported) | "I worked as a ward nurse for three years, recorded vital signs, supported wound care and documented treatment notes. My CV says I completed a nursing diploma, but provides no independently verified registration." | A019 **claimed direct nursing duties**. `credential_verified=false/unknown`; never assert legal registration or fitness to practise. |
+| `syn10` | Engineering student, team assignment only | "Our six-person university team developed a basic irrigation controller, but the report does not identify my individual contribution. I am interested in IoT devices." | A089 **interest/academic exposure only or insufficient info for personally performed design tasks**; ask what the student personally built. |
+| `syn11` | Packaging graphic designer | "I created product-label layouts, edited illustrations and prepared print-ready artwork in design software for consumer-goods packaging." | A088 **graphic/digital design tasks**, with A017 overlap depending on frozen ISCO mapping; product industry does not prove consumer-goods production or pharmacy. |
+| `syn12` | Career changer with old bank bookkeeping | "I currently supervise restaurant shifts and coordinate staff coverage. Twelve years ago I posted ledger transactions and reconciled daily cash in a bank branch." | A041 **direct but historical clerical evidence**. A009/A058 depend on specific restaurant duties; past evidence and current ranking are separate. |
+| `syn13` | University student, no task details | "Final-year information technology undergraduate. Familiar with Python, TensorFlow and SQL. Looking for my first opportunity." | **Not enough task evidence for a supported occupation.** A043/A086/A087 can appear only as labelled education/interest exploration where context justifies them. |
+| `syn14` | Healthcare-themed developer trap | "I programmed and tested REST endpoints for a clinic scheduling application and fixed database-query errors. I have never assessed or treated patients." | A043 **software task evidence**; A018/A019/A023 unsupported despite clinical domain. Respect explicit negation. |
+
+### 9c. Prompt to run in future web-backed research sessions
+
+> **Role:** You are a research assistant creating **fictional** CV experience summaries for an evidence-first career-area exploration benchmark covering Sri Lanka and a wide range of employment and student backgrounds.
+>
+> **Research first:** Browse reliable **public occupational task descriptions**. Prioritize ILO ISCO-08, O*NET occupational task data, ESCO, recognized career services, and appropriate Sri Lankan professional regulators. Search both professional and non-degree roles: retail shop selling, heavy road driving, waste collection, mechanical repairs, textile/factory machine operation, software, accounting, site supervision, service jobs, healthcare, design, junior internships, university coursework, apprenticeships, part-time work, volunteering, career changes and unemployment. Where feasible record current version and last update. Use job ads only to corroborate typical tasks, not to assume experience/credentials or copy personal applicant text.
+>
+> **Safety and rights:** Do **not** scrape real CVs/LinkedIn profiles or copy identifiable people. Do not use publicly visible personal data as automatic permission for model training. For any downloaded dataset, record URL, licence, allowed adaptation/training/commercial uses, privacy/lawful basis and attribution; mark sources **not cleared** if uncertain. No real personal data should be submitted to free-model endpoints. Distinguish jurisdiction-dependent credential rules and do not infer Sri Lankan licences from foreign career pages.
+>
+> **Create 30–50 original synthetic examples**, with diverse backgrounds, varying clarity, contradictory/negative statements, CV formatting and differing evidence strength. Ensure at least 25% are students/school leavers/people without formal work history; also include diploma holders, trades, shop workers, technical staff, professional workers, old experience, regulated roles, and career changers. Include positive and adversarial pairs such as hospital-software app vs nurse, banking app vs accountant, bus driver vs bus mechanic, retailer cashier vs accounting clerk, machine operator vs engineer, and individual university project vs unspecified team project.
+>
+> **For each example provide:** unique synthetic ID; invented 2–5-sentence CV snippet; education status; explicit **first-person tasks actually performed**; whether tasks occurred in professional employment, internship, supervised placement, volunteer work, personal or academic project, or are only coursework/aspiration; career-area IDs from the **provided** A001–A094 catalogue (do not invent IDs); separate `supported_by_tasks`, `transferable`, `exploration_only`, `must_not_claim_supported`; `credential_claimed` vs `credential_verified`; evidence span; ambiguity flags; time/recency; job-domain trap; source URL(s), source version/date, rights notes, and a one-sentence rationale. Use `unknown` rather than invent missing qualifications or experience.
+>
+> **Validation:** Cross-check the chosen tasks against at least one relevant occupational reference, and confirm the exact area-to-ISCO mapping in the supplied repository before assigning supported labels. The source supports the **plausibility of a synthetic task**, not its occurrence in a real person. Propose expert-review questions. Keep train/dev/holdout splits separate, de-duplicate near variants, freeze the holdout **before** model runs, report error/timeout/invalid-JSON rates and explicit retries. Never call these examples independently validated ground truth until human raters check them.
+>
+> **Output:** (1) concise source/audit table with working links, (2) JSONL or YAML fixtures with clear synthetic provenance and label rationale, (3) coverage table across career areas and evidence types, (4) a separate untouched evaluation candidate set, and (5) a list of legal/licensing/credential uncertainties needing human review. Do not run paid models or incur charges without explicit approval.
+
+### 9d. Training/evaluation handoff and remaining blockers
+
+- **Immediate:** Version synthetic snippets, review mapping and Q8 classifications, run free-model-only checks; keep fixed historical benchmarks and track first-attempt failures, retry success and total attempted calls separately.
+- **Later:** Domain specialist independently evaluates 7a–7d and the case labels; independent blinded raters adjudicate **100–200** synthetic and/or separately cleared real cases. The current AI reviewer does **not** satisfy this requirement.
+- **Fine-tuning:** Do not use identifiable real CVs without source-specific data rights and privacy clearance. Owner allows consideration of **publicly available, training-permitted datasets**; audit the licence, legal basis and provider terms before use. Synthetic data and properly cleared public datasets can be candidates after label review, baseline comparison and a documented evaluation split. Merely being online does **not** clear a CV for training.
+- **Costs:** Stay on free models. US$10 is only a possible future **overall cap** subject to owner approval; do not purchase credits or call paid endpoints now.
+- **Demo and commit:** Both are deferred to an explicit new request; the owner reports the previous changes committed.
+
+**Research/legal reference notes (not jurisdiction-specific legal advice):** O*NET details and licence: https://www.onetonline.org/help/license ; ILO ISCO scope and availability: https://isco.ilo.org/en/isco-08/ ; ESCO download: https://esco.ec.europa.eu/uk/use-esco/download ; Creative Commons BY 4.0 attribution: https://creativecommons.org/licenses/by/4.0/ ; guidance on lawful basis for processing personal information: https://ico.org.uk/consent . Check Sri Lanka-specific and source-specific rules before processing real applicants' information.
