@@ -66,9 +66,19 @@ def run_extraction(ing: Ingest, chat=None, cfg: dict | None = None) -> Extractio
         return res
     try:
         data = _parse(raw.content)
-    except ValueError:
-        res.errors.append("response is not valid JSON")
-        return res
+    except ValueError:                           # one bounded retry of the identical request; both attempts are recorded
+        res.meta["json_retries"] = 1
+        try:
+            raw = chat(system_prompt(), build_user(ing), RESPONSE_SCHEMA, cfg)
+            if isinstance(raw, str):
+                raw = ev_client.ChatResult(content=raw)
+            res.meta.update(finish_reason=raw.finish_reason, usage=raw.usage, latency_s=raw.latency_s)
+            data = None if raw.finish_reason == "length" else _parse(raw.content)
+        except (ev_client.EvidenceLLMError, ValueError):
+            data = None
+        if data is None:
+            res.errors.append("response is not valid JSON (after one retry)")
+            return res
     out: Outcome = validate_response(data, ing.passages)
     res.records, res.rejected, res.errors = out.records, out.rejected, out.errors
     res.status = "failed" if out.errors else out.status

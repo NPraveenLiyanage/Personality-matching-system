@@ -389,3 +389,29 @@ def test_scope_notes_reach_the_assessor_and_v2_files_are_valid_and_versioned():
     assert next(a for a in user["areas"] if a["area_id"] == "A043")["scope_note"] == note
     assert "scope_note" not in next(a for a in json.loads(assess.build_user([DEV], [], d1))["areas"] if a["area_id"] == "A043")
     assert assess.PROMPT_VERSION == "assess_v2" and "in_progress_study" in assess.system_prompt() and "scope_note" in assess.system_prompt()
+
+
+# ------------------------------------------------------------------ one bounded retry on invalid JSON
+def test_invalid_json_gets_one_recorded_retry_for_each_stage():
+    good = data(A043=row("A043", "direct", 3, [("E001", "actions")], "dev"))
+    seq = {"extract": ["not json", json.dumps(_extraction_payload())], "assess": ["{broken", json.dumps(good)]}
+    calls = []
+
+    def chat(system, user, schema_, cfg=None):
+        kind = "extract" if system.startswith("You extract") else "assess"
+        calls.append(kind)
+        return client.ChatResult(content=seq[kind].pop(0), finish_reason="stop", model="fake")
+    res = engine.run(CV, "A", DEFS, chat, regulated=REG)
+    assert calls == ["extract", "extract", "assess", "assess"]
+    assert res["status"] in ("accepted", "repaired") and [s["area_id"] for s in res["supported"]] == ["A043"]
+    assert res["run_meta"]["extraction"]["json_retries"] == 1 and res["run_meta"]["assessment"]["json_retries"] == 1
+
+
+def test_persistent_invalid_json_is_a_failure_after_exactly_one_retry():
+    calls = []
+
+    def chat(system, user, schema_, cfg=None):
+        calls.append(system[:12])
+        return client.ChatResult(content="still not json", finish_reason="stop", model="fake")
+    res = engine.run(CV, "A", DEFS, chat, regulated=REG)
+    assert res["status"] == "failed" and "after one retry" in res["errors"][0] and len(calls) == 2 and res["supported"] == []

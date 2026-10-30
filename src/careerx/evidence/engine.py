@@ -58,9 +58,20 @@ def run(cv_text: str, name: str, defs: dict, chat=None, cfg: dict | None = None,
     try:
         data = json.loads(raw.content.strip())
     except ValueError as e:
-        res["errors"] = ["assessment is not valid JSON"]
+        parse_err = str(e)
+        res["run_meta"]["assessment"]["json_retries"] = 1     # one bounded retry of the identical request; recorded
+        try:
+            raw = chat(assess.system_prompt(), assess.build_user(ex.records, ex.warnings, defs, use_confusions),
+                       assess.RESPONSE_SCHEMA, cfg)
+            if isinstance(raw, str):
+                raw = ev_client.ChatResult(content=raw)
+            data = json.loads(raw.content.strip()) if raw.finish_reason != "length" else None
+        except (ev_client.EvidenceLLMError, ValueError):
+            data = None
+    if data is None:
+        res["errors"] = ["assessment is not valid JSON (after one retry)"]
         c = raw.content or ""      # synthetic benchmark text only; kept so a parse failure can be diagnosed
-        res["stages"]["assessment"] = dict(parse_error=str(e)[:200], content_chars=len(c), head=c[:200], tail=c[-200:])
+        res["stages"]["assessment"] = dict(parse_error=parse_err[:200], content_chars=len(c), head=c[:200], tail=c[-200:])
         return res
     v = verify.verify(data, ex.records, area_ids, regulated)
     res["stages"]["assessment"] = dict(raw_rows=data.get("assessments") if isinstance(data, dict) else None,

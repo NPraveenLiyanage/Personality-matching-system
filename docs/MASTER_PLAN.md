@@ -184,3 +184,8 @@ Reviewer 7b changes applied as a new case version (`bench/cases/career_cases_v3.
 
 ## 22. Reviewer-based pipeline v2 (2026-10-29)
 Tune re-run done (0/8 trap cases, 13/14 expected areas, 0 overclaims). Fresh held-out v3 set: 9 of 12 completed first time (3 failed on invalid JSON); after retrying them (second attempts) 12 of 12: 0 trap cases shown as supported, 10/10 expected areas found, 0 overclaims, 1.33 areas shown. See docs/PHASE3_RESULTS.md.
+
+## 23. Engineering follow-ups after held-out v3 (2026-10-29)
+- Reliability: both pipeline stages now retry the identical request once when the model returns invalid JSON; the retry is recorded (`json_retries`) and a second failure is a failure. Added because 3 of 12 held-out v3 runs failed first time on invalid JSON. Benchmarks run before this change were not affected; later runs include it and must be labelled as such.
+- Phase 6 started (default unchanged): `src/careerx/engines.py` gives one `EngineResult` shape, a registry (`rule`, `llm_evidence`), an env switch `CAREERX_ENGINE` (default `rule`, the rollback), and explicit failure with no fallback between engines. The frozen direct-prompt engine is not wrapped yet. The Evidence test bench page (`app/pages/evidence_bench.py`) is the app entry for the new engine. Narrowing/report/feedback do not consume the contract yet.
+- Still blocked or open: independent review of expectations and definitions (needs a practitioner), paid-model comparison (Phase 4, needs approval), Phase 5 independent evaluation (needs raters and consent), experience summaries (user to supply), key rotation, real-data consent. Fine-tuning not started; no data suitable for it exists.
