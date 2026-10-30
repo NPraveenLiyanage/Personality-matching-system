@@ -7481,40 +7481,61 @@
    "title": "Accounting student, coursework only",
    "cv_text": "Nethmi Karunaratne\nSUMMARY\nSecond-year accounting student looking for an internship.\n\nEDUCATION\nBCom (Accounting), Northfield University, 2025 - present\nModules completed: financial accounting, cost accounting, introduction to auditing, business law.\n\nSKILLS\nMicrosoft Excel, basic bookkeeping\n",
    "split": "holdout_v2",
-   "supported": [
+   "supported": [],
+   "exploration": [
     {
-     "rank": 1,
+     "rank": null,
      "area_id": "A033",
      "name": "Finance, accounting & financial analysis",
-     "support_class": "direct",
-     "relevance": 3,
+     "support_class": "in_progress_study",
+     "relevance": null,
      "evidence_ids": [
       "E001"
      ],
-     "explanation": "Direct evidence - Accounting (2025 - present): \"BCom (Accounting), Northfield University, 2025 - present\"",
+     "explanation": "Context - Accounting (2025 - present): \"BCom (Accounting), Northfield University, 2025 - present\"",
      "qualification_gaps": [],
      "uncertainty": "low",
-     "status": "accepted",
-     "label": null
+     "status": "repaired",
+     "label": "Study in progress: a pathway to explore, not yet established practice"
     },
     {
-     "rank": 2,
+     "rank": null,
      "area_id": "A041",
      "name": "Numerical & accounting clerks",
-     "support_class": "direct",
-     "relevance": 2,
+     "support_class": "in_progress_study",
+     "relevance": null,
      "evidence_ids": [
       "E001"
      ],
-     "explanation": "Direct evidence - Accounting (2025 - present): \"BCom (Accounting), Northfield University, 2025 - present\"",
+     "explanation": "Context - Accounting (2025 - present): \"BCom (Accounting), Northfield University, 2025 - present\"",
      "qualification_gaps": [],
      "uncertainty": "low",
-     "status": "accepted",
-     "label": null
+     "status": "repaired",
+     "label": "Study in progress: a pathway to explore, not yet established practice"
     }
    ],
-   "exploration": [],
-   "validation_log": [],
+   "validation_log": [
+    {
+     "area_id": "A033",
+     "original_class": "direct",
+     "final_class": "in_progress_study",
+     "changes": [
+      "citation E001 is study still in progress and cannot support direct",
+      "downgraded direct -> in_progress_study: no valid supporting citation left",
+      "relevance cleared on a non-supported row"
+     ]
+    },
+    {
+     "area_id": "A041",
+     "original_class": "direct",
+     "final_class": "in_progress_study",
+     "changes": [
+      "citation E001 is study still in progress and cannot support direct",
+      "downgraded direct -> in_progress_study: no valid supporting citation left",
+      "relevance cleared on a non-supported row"
+     ]
+    }
+   ],
    "classes": {
     "A001": "unsupported",
     "A002": "unsupported",
@@ -7548,7 +7569,7 @@
     "A030": "unsupported",
     "A031": "unsupported",
     "A032": "unsupported",
-    "A033": "direct",
+    "A033": "in_progress_study",
     "A034": "unsupported",
     "A035": "unsupported",
     "A036": "unsupported",
@@ -7556,7 +7577,7 @@
     "A038": "unsupported",
     "A039": "unsupported",
     "A040": "unsupported",
-    "A041": "direct",
+    "A041": "in_progress_study",
     "A042": "unsupported",
     "A043": "unsupported",
     "A044": "unsupported",
@@ -8684,6 +8705,2724 @@
     "provider": "Nvidia",
     "latency_s": 219.7,
     "completion_tokens": 20534
+   }
+  },
+  "v3_01_pharmacist": {
+   "id": "v3_01_pharmacist",
+   "title": "Pharmacist",
+   "cv_text": "Anura Dissanayake\nSUMMARY\nPharmacist with six years of experience in community pharmacy.\n\nEXPERIENCE\nPharmacist, Lakeview Community Pharmacy (2020 - 2026)\n- Dispensed prescriptions, counselled patients on how to take their medicines and checked for interactions.\n- Managed the controlled-drug register and supervised two pharmacy assistants.\n\nEDUCATION\nB.Pharm, Eastbridge University, 2019\nRegistered Pharmacist, State Pharmacy Council, 2020\n",
+   "split": "holdout_v3",
+   "supported": [
+    {
+     "rank": 1,
+     "area_id": "A023",
+     "name": "Dentistry, pharmacy & allied health therapies",
+     "support_class": "direct",
+     "relevance": 4,
+     "evidence_ids": [
+      "E002"
+     ],
+     "explanation": "Direct evidence - Pharmacist (2020 - 2026): \"Dispensed prescriptions, counselled patients on how to take their medicines and checked for interactions.\"",
+     "qualification_gaps": [
+      "Relevant professional degree or diploma",
+      "Registration or licence for dentists, pharmacists, therapists and related roles"
+     ],
+     "uncertainty": "low",
+     "status": "accepted",
+     "label": null
+    }
+   ],
+   "exploration": [],
+   "validation_log": [],
+   "classes": {
+    "A001": "unsupported",
+    "A002": "unsupported",
+    "A003": "unsupported",
+    "A004": "unsupported",
+    "A005": "unsupported",
+    "A006": "unsupported",
+    "A007": "unsupported",
+    "A008": "unsupported",
+    "A009": "unsupported",
+    "A010": "unsupported",
+    "A011": "unsupported",
+    "A012": "unsupported",
+    "A013": "unsupported",
+    "A014": "unsupported",
+    "A015": "unsupported",
+    "A016": "unsupported",
+    "A017": "unsupported",
+    "A018": "unsupported",
+    "A019": "unsupported",
+    "A020": "unsupported",
+    "A021": "unsupported",
+    "A022": "unsupported",
+    "A023": "direct",
+    "A024": "unsupported",
+    "A025": "unsupported",
+    "A026": "unsupported",
+    "A027": "unsupported",
+    "A028": "unsupported",
+    "A029": "unsupported",
+    "A030": "unsupported",
+    "A031": "unsupported",
+    "A032": "unsupported",
+    "A033": "unsupported",
+    "A034": "unsupported",
+    "A035": "unsupported",
+    "A036": "unsupported",
+    "A037": "unsupported",
+    "A038": "unsupported",
+    "A039": "unsupported",
+    "A040": "unsupported",
+    "A041": "unsupported",
+    "A042": "unsupported",
+    "A043": "unsupported",
+    "A044": "unsupported",
+    "A045": "unsupported",
+    "A046": "unsupported",
+    "A047": "unsupported",
+    "A048": "unsupported",
+    "A049": "unsupported",
+    "A050": "unsupported",
+    "A051": "unsupported",
+    "A052": "unsupported",
+    "A053": "unsupported",
+    "A054": "unsupported",
+    "A055": "unsupported",
+    "A056": "unsupported",
+    "A057": "unsupported",
+    "A058": "unsupported",
+    "A059": "unsupported",
+    "A060": "unsupported",
+    "A061": "unsupported",
+    "A062": "unsupported",
+    "A063": "unsupported",
+    "A064": "unsupported",
+    "A065": "unsupported",
+    "A066": "unsupported",
+    "A067": "unsupported",
+    "A068": "unsupported",
+    "A069": "unsupported",
+    "A070": "unsupported",
+    "A071": "unsupported",
+    "A072": "unsupported",
+    "A073": "unsupported",
+    "A074": "unsupported",
+    "A075": "unsupported",
+    "A076": "unsupported",
+    "A077": "unsupported",
+    "A078": "unsupported",
+    "A079": "unsupported",
+    "A080": "unsupported",
+    "A081": "unsupported",
+    "A082": "unsupported",
+    "A083": "unsupported",
+    "A084": "unsupported",
+    "A085": "unsupported",
+    "A086": "unsupported",
+    "A087": "unsupported",
+    "A088": "unsupported",
+    "A089": "unsupported",
+    "A090": "unsupported",
+    "A091": "unsupported",
+    "A092": "unsupported",
+    "A093": "unsupported",
+    "A094": "unsupported"
+   },
+   "warnings": [],
+   "records": [
+    {
+     "evidence_id": "E001",
+     "evidence_type": "employment",
+     "role": "Pharmacist",
+     "contribution": "unknown",
+     "domain_context": "community pharmacy",
+     "quote": "Pharmacist with six years of experience in community pharmacy.",
+     "status": "repaired"
+    },
+    {
+     "evidence_id": "E002",
+     "evidence_type": "employment",
+     "role": "Pharmacist",
+     "contribution": "own",
+     "domain_context": "community pharmacy",
+     "quote": "Dispensed prescriptions, counselled patients on how to take their medicines and checked for interactions.",
+     "status": "accepted"
+    },
+    {
+     "evidence_id": "E003",
+     "evidence_type": "education",
+     "role": null,
+     "contribution": "own",
+     "domain_context": null,
+     "quote": "B.Pharm, Eastbridge University, 2019",
+     "status": "accepted"
+    },
+    {
+     "evidence_id": "E004",
+     "evidence_type": "certification",
+     "role": null,
+     "contribution": "own",
+     "domain_context": null,
+     "quote": "Registered Pharmacist, State Pharmacy Council, 2020",
+     "status": "accepted"
+    }
+   ],
+   "rule_top10": [
+    {
+     "area_id": "A019",
+     "name": "Nursing & midwifery"
+    },
+    {
+     "area_id": "A018",
+     "name": "Medicine"
+    },
+    {
+     "area_id": "A021",
+     "name": "Paramedic & emergency care"
+    },
+    {
+     "area_id": "A091",
+     "name": "Psychology & behavioural research"
+    },
+    {
+     "area_id": "A025",
+     "name": "Community health & health support"
+    },
+    {
+     "area_id": "A023",
+     "name": "Dentistry, pharmacy & allied health therapies"
+    },
+    {
+     "area_id": "A020",
+     "name": "Traditional & complementary medicine"
+    },
+    {
+     "area_id": "A027",
+     "name": "Personal care & care assistance"
+    },
+    {
+     "area_id": "A048",
+     "name": "Social sciences, psychology & counselling"
+    },
+    {
+     "area_id": "A024",
+     "name": "Medical & pharmaceutical technology"
+    }
+   ],
+   "direct_top10": [],
+   "run_meta": {
+    "model": "nvidia/nemotron-3.5-super-vl:free",
+    "provider": "Nvidia",
+    "latency_s": 254.2,
+    "completion_tokens": 24328
+   }
+  },
+  "v3_02_nursing_student_coursework": {
+   "id": "v3_02_nursing_student_coursework",
+   "title": "Nursing student (study in progress)",
+   "cv_text": "Madhavi Kulasekara\nSUMMARY\nSecond-year nursing student looking for a part-time healthcare support job.\n\nEDUCATION\nBSc Nursing, Eastbridge University, 2025 - present\nModules completed: anatomy, fundamentals of nursing, pharmacology, communication skills.\n\nSKILLS\nFirst aid certificate, communication, teamwork\n",
+   "split": "holdout_v3",
+   "supported": [],
+   "exploration": [
+    {
+     "rank": null,
+     "area_id": "A025",
+     "name": "Community health & health support",
+     "support_class": "interest_only",
+     "relevance": null,
+     "evidence_ids": [
+      "E001"
+     ],
+     "explanation": "Context - stated interest: \"looking for a part-time healthcare support job\"",
+     "qualification_gaps": [],
+     "uncertainty": "low",
+     "status": "accepted",
+     "label": "Stated interest: not yet backed by experience"
+    },
+    {
+     "rank": null,
+     "area_id": "A019",
+     "name": "Nursing & midwifery",
+     "support_class": "in_progress_study",
+     "relevance": null,
+     "evidence_ids": [
+      "E002"
+     ],
+     "explanation": "Context - Nursing (2025 - present): \"BSc Nursing, Eastbridge University, 2025 - present\"",
+     "qualification_gaps": [],
+     "uncertainty": "low",
+     "status": "accepted",
+     "label": "Study in progress: a pathway to explore, not yet established practice"
+    }
+   ],
+   "validation_log": [],
+   "classes": {
+    "A001": "unsupported",
+    "A002": "unsupported",
+    "A003": "unsupported",
+    "A004": "unsupported",
+    "A005": "unsupported",
+    "A006": "unsupported",
+    "A007": "unsupported",
+    "A008": "unsupported",
+    "A009": "unsupported",
+    "A010": "unsupported",
+    "A011": "unsupported",
+    "A012": "unsupported",
+    "A013": "unsupported",
+    "A014": "unsupported",
+    "A015": "unsupported",
+    "A016": "unsupported",
+    "A017": "unsupported",
+    "A018": "unsupported",
+    "A019": "in_progress_study",
+    "A020": "unsupported",
+    "A021": "unsupported",
+    "A022": "unsupported",
+    "A023": "unsupported",
+    "A024": "unsupported",
+    "A025": "interest_only",
+    "A026": "unsupported",
+    "A027": "unsupported",
+    "A028": "unsupported",
+    "A029": "unsupported",
+    "A030": "unsupported",
+    "A031": "unsupported",
+    "A032": "unsupported",
+    "A033": "unsupported",
+    "A034": "unsupported",
+    "A035": "unsupported",
+    "A036": "unsupported",
+    "A037": "unsupported",
+    "A038": "unsupported",
+    "A039": "unsupported",
+    "A040": "unsupported",
+    "A041": "unsupported",
+    "A042": "unsupported",
+    "A043": "unsupported",
+    "A044": "unsupported",
+    "A045": "unsupported",
+    "A046": "unsupported",
+    "A047": "unsupported",
+    "A048": "unsupported",
+    "A049": "unsupported",
+    "A050": "unsupported",
+    "A051": "unsupported",
+    "A052": "unsupported",
+    "A053": "unsupported",
+    "A054": "unsupported",
+    "A055": "unsupported",
+    "A056": "unsupported",
+    "A057": "unsupported",
+    "A058": "unsupported",
+    "A059": "unsupported",
+    "A060": "unsupported",
+    "A061": "unsupported",
+    "A062": "unsupported",
+    "A063": "unsupported",
+    "A064": "unsupported",
+    "A065": "unsupported",
+    "A066": "unsupported",
+    "A067": "unsupported",
+    "A068": "unsupported",
+    "A069": "unsupported",
+    "A070": "unsupported",
+    "A071": "unsupported",
+    "A072": "unsupported",
+    "A073": "unsupported",
+    "A074": "unsupported",
+    "A075": "unsupported",
+    "A076": "unsupported",
+    "A077": "unsupported",
+    "A078": "unsupported",
+    "A079": "unsupported",
+    "A080": "unsupported",
+    "A081": "unsupported",
+    "A082": "unsupported",
+    "A083": "unsupported",
+    "A084": "unsupported",
+    "A085": "unsupported",
+    "A086": "unsupported",
+    "A087": "unsupported",
+    "A088": "unsupported",
+    "A089": "unsupported",
+    "A090": "unsupported",
+    "A091": "unsupported",
+    "A092": "unsupported",
+    "A093": "unsupported",
+    "A094": "unsupported"
+   },
+   "warnings": [],
+   "records": [
+    {
+     "evidence_id": "E001",
+     "evidence_type": "stated_interest",
+     "role": null,
+     "contribution": "unknown",
+     "domain_context": null,
+     "quote": "looking for a part-time healthcare support job",
+     "status": "accepted"
+    },
+    {
+     "evidence_id": "E002",
+     "evidence_type": "education",
+     "role": null,
+     "contribution": "own",
+     "domain_context": null,
+     "quote": "BSc Nursing, Eastbridge University, 2025 - present",
+     "status": "accepted"
+    },
+    {
+     "evidence_id": "E003",
+     "evidence_type": "certification",
+     "role": null,
+     "contribution": "own",
+     "domain_context": null,
+     "quote": "First aid certificate",
+     "status": "accepted"
+    },
+    {
+     "evidence_id": "E004",
+     "evidence_type": "listed_skill_only",
+     "role": null,
+     "contribution": "unknown",
+     "domain_context": null,
+     "quote": "First aid certificate, communication",
+     "status": "accepted"
+    },
+    {
+     "evidence_id": "E005",
+     "evidence_type": "listed_skill_only",
+     "role": null,
+     "contribution": "unknown",
+     "domain_context": null,
+     "quote": "communication, teamwork",
+     "status": "accepted"
+    }
+   ],
+   "rule_top10": [
+    {
+     "area_id": "A019",
+     "name": "Nursing & midwifery"
+    },
+    {
+     "area_id": "A018",
+     "name": "Medicine"
+    },
+    {
+     "area_id": "A021",
+     "name": "Paramedic & emergency care"
+    },
+    {
+     "area_id": "A020",
+     "name": "Traditional & complementary medicine"
+    },
+    {
+     "area_id": "A025",
+     "name": "Community health & health support"
+    },
+    {
+     "area_id": "A023",
+     "name": "Dentistry, pharmacy & allied health therapies"
+    },
+    {
+     "area_id": "A091",
+     "name": "Psychology & behavioural research"
+    },
+    {
+     "area_id": "A027",
+     "name": "Personal care & care assistance"
+    },
+    {
+     "area_id": "A024",
+     "name": "Medical & pharmaceutical technology"
+    },
+    {
+     "area_id": "A048",
+     "name": "Social sciences, psychology & counselling"
+    }
+   ],
+   "direct_top10": [],
+   "run_meta": {
+    "model": "nvidia/nemotron-3.5-super-vl:free",
+    "provider": "Nvidia",
+    "latency_s": 304.7,
+    "completion_tokens": 23386
+   }
+  },
+  "v3_03_medical_centre_receptionist": {
+   "id": "v3_03_medical_centre_receptionist",
+   "title": "Receptionist at a medical centre",
+   "cv_text": "Ishara Gunasekara\nSUMMARY\nReceptionist with five years of front-desk experience, the last three in a medical centre.\n\nEXPERIENCE\nReceptionist, Greenfield Medical Centre (2023 - 2026)\n- Greeted patients, booked appointments by phone and updated the appointment system.\n- Answered billing questions and routed urgent calls to the nursing staff.\n\nReceptionist, Seaview Hotel (2021 - 2023)\n- Checked guests in and out and handled room bookings and complaints.\n\nEDUCATION\nAdvanced Level, Southfield Girls' School, 2020\n",
+   "split": "holdout_v3",
+   "supported": [
+    {
+     "rank": 1,
+     "area_id": "A055",
+     "name": "Client information & contact-centre services",
+     "support_class": "direct",
+     "relevance": 3,
+     "evidence_ids": [
+      "E001",
+      "E002"
+     ],
+     "explanation": "Direct evidence - Receptionist (2023 - 2026): \"Greeted patients, booked appointments by phone and updated the appointment system.\" | Receptionist (2021 - 2023): \"Checked guests in and out and handled room bookings and complaints.\"",
+     "qualification_gaps": [],
+     "uncertainty": "low",
+     "status": "accepted",
+     "label": null
+    },
+    {
+     "rank": 2,
+     "area_id": "A038",
+     "name": "Office administration",
+     "support_class": "direct",
+     "relevance": 2,
+     "evidence_ids": [
+      "E001",
+      "E002"
+     ],
+     "explanation": "Direct evidence - Receptionist (2023 - 2026): \"Greeted patients, booked appointments by phone and updated the appointment system.\" | Receptionist (2021 - 2023): \"Checked guests in and out and handled room bookings and complaints.\"",
+     "qualification_gaps": [],
+     "uncertainty": "low",
+     "status": "accepted",
+     "label": null
+    }
+   ],
+   "exploration": [
+    {
+     "rank": null,
+     "area_id": "A008",
+     "name": "Professional services management",
+     "support_class": "domain_exposure_only",
+     "relevance": null,
+     "evidence_ids": [
+      "E001"
+     ],
+     "explanation": "Context - Receptionist (2023 - 2026): \"Greeted patients, booked appointments by phone and updated the appointment system.\"",
+     "qualification_gaps": [],
+     "uncertainty": "low",
+     "status": "accepted",
+     "label": "Industry exposure only: the work served this field, but the evidence does not show doing this occupation's work"
+    },
+    {
+     "rank": null,
+     "area_id": "A009",
+     "name": "Hospitality management",
+     "support_class": "domain_exposure_only",
+     "relevance": null,
+     "evidence_ids": [
+      "E002"
+     ],
+     "explanation": "Context - Receptionist (2021 - 2023): \"Checked guests in and out and handled room bookings and complaints.\"",
+     "qualification_gaps": [],
+     "uncertainty": "low",
+     "status": "accepted",
+     "label": "Industry exposure only: the work served this field, but the evidence does not show doing this occupation's work"
+    },
+    {
+     "rank": null,
+     "area_id": "A018",
+     "name": "Medicine",
+     "support_class": "domain_exposure_only",
+     "relevance": null,
+     "evidence_ids": [
+      "E001"
+     ],
+     "explanation": "Context - Receptionist (2023 - 2026): \"Greeted patients, booked appointments by phone and updated the appointment system.\"",
+     "qualification_gaps": [],
+     "uncertainty": "low",
+     "status": "accepted",
+     "label": "Industry exposure only: the work served this field, but the evidence does not show doing this occupation's work"
+    },
+    {
+     "rank": null,
+     "area_id": "A019",
+     "name": "Nursing & midwifery",
+     "support_class": "domain_exposure_only",
+     "relevance": null,
+     "evidence_ids": [
+      "E001"
+     ],
+     "explanation": "Context - Receptionist (2023 - 2026): \"Greeted patients, booked appointments by phone and updated the appointment system.\"",
+     "qualification_gaps": [],
+     "uncertainty": "low",
+     "status": "accepted",
+     "label": "Industry exposure only: the work served this field, but the evidence does not show doing this occupation's work"
+    },
+    {
+     "rank": null,
+     "area_id": "A020",
+     "name": "Traditional & complementary medicine",
+     "support_class": "domain_exposure_only",
+     "relevance": null,
+     "evidence_ids": [
+      "E001"
+     ],
+     "explanation": "Context - Receptionist (2023 - 2026): \"Greeted patients, booked appointments by phone and updated the appointment system.\"",
+     "qualification_gaps": [],
+     "uncertainty": "low",
+     "status": "accepted",
+     "label": "Industry exposure only: the work served this field, but the evidence does not show doing this occupation's work"
+    },
+    {
+     "rank": null,
+     "area_id": "A021",
+     "name": "Paramedic & emergency care",
+     "support_class": "domain_exposure_only",
+     "relevance": null,
+     "evidence_ids": [
+      "E001"
+     ],
+     "explanation": "Context - Receptionist (2023 - 2026): \"Greeted patients, booked appointments by phone and updated the appointment system.\"",
+     "qualification_gaps": [],
+     "uncertainty": "low",
+     "status": "accepted",
+     "label": "Industry exposure only: the work served this field, but the evidence does not show doing this occupation's work"
+    },
+    {
+     "rank": null,
+     "area_id": "A023",
+     "name": "Dentistry, pharmacy & allied health therapies",
+     "support_class": "domain_exposure_only",
+     "relevance": null,
+     "evidence_ids": [
+      "E001"
+     ],
+     "explanation": "Context - Receptionist (2023 - 2026): \"Greeted patients, booked appointments by phone and updated the appointment system.\"",
+     "qualification_gaps": [],
+     "uncertainty": "low",
+     "status": "accepted",
+     "label": "Industry exposure only: the work served this field, but the evidence does not show doing this occupation's work"
+    },
+    {
+     "rank": null,
+     "area_id": "A024",
+     "name": "Medical & pharmaceutical technology",
+     "support_class": "domain_exposure_only",
+     "relevance": null,
+     "evidence_ids": [
+      "E001"
+     ],
+     "explanation": "Context - Receptionist (2023 - 2026): \"Greeted patients, booked appointments by phone and updated the appointment system.\"",
+     "qualification_gaps": [],
+     "uncertainty": "low",
+     "status": "accepted",
+     "label": "Industry exposure only: the work served this field, but the evidence does not show doing this occupation's work"
+    },
+    {
+     "rank": null,
+     "area_id": "A025",
+     "name": "Community health & health support",
+     "support_class": "domain_exposure_only",
+     "relevance": null,
+     "evidence_ids": [
+      "E001"
+     ],
+     "explanation": "Context - Receptionist (2023 - 2026): \"Greeted patients, booked appointments by phone and updated the appointment system.\"",
+     "qualification_gaps": [],
+     "uncertainty": "low",
+     "status": "accepted",
+     "label": "Industry exposure only: the work served this field, but the evidence does not show doing this occupation's work"
+    }
+   ],
+   "validation_log": [],
+   "classes": {
+    "A001": "unsupported",
+    "A002": "unsupported",
+    "A003": "unsupported",
+    "A004": "unsupported",
+    "A005": "unsupported",
+    "A006": "unsupported",
+    "A007": "unsupported",
+    "A008": "domain_exposure_only",
+    "A009": "domain_exposure_only",
+    "A010": "unsupported",
+    "A011": "unsupported",
+    "A012": "unsupported",
+    "A013": "unsupported",
+    "A014": "unsupported",
+    "A015": "unsupported",
+    "A016": "unsupported",
+    "A017": "unsupported",
+    "A018": "domain_exposure_only",
+    "A019": "domain_exposure_only",
+    "A020": "domain_exposure_only",
+    "A021": "domain_exposure_only",
+    "A022": "unsupported",
+    "A023": "domain_exposure_only",
+    "A024": "domain_exposure_only",
+    "A025": "domain_exposure_only",
+    "A026": "unsupported",
+    "A027": "unsupported",
+    "A028": "unsupported",
+    "A029": "unsupported",
+    "A030": "unsupported",
+    "A031": "unsupported",
+    "A032": "unsupported",
+    "A033": "unsupported",
+    "A034": "unsupported",
+    "A035": "unsupported",
+    "A036": "unsupported",
+    "A037": "unsupported",
+    "A038": "direct",
+    "A039": "unsupported",
+    "A040": "unsupported",
+    "A041": "unsupported",
+    "A042": "unsupported",
+    "A043": "unsupported",
+    "A044": "unsupported",
+    "A045": "unsupported",
+    "A046": "unsupported",
+    "A047": "unsupported",
+    "A048": "unsupported",
+    "A049": "unsupported",
+    "A050": "unsupported",
+    "A051": "unsupported",
+    "A052": "unsupported",
+    "A053": "unsupported",
+    "A054": "unsupported",
+    "A055": "direct",
+    "A056": "unsupported",
+    "A057": "unsupported",
+    "A058": "unsupported",
+    "A059": "unsupported",
+    "A060": "unsupported",
+    "A061": "unsupported",
+    "A062": "unsupported",
+    "A063": "unsupported",
+    "A064": "unsupported",
+    "A065": "unsupported",
+    "A066": "unsupported",
+    "A067": "unsupported",
+    "A068": "unsupported",
+    "A069": "unsupported",
+    "A070": "unsupported",
+    "A071": "unsupported",
+    "A072": "unsupported",
+    "A073": "unsupported",
+    "A074": "unsupported",
+    "A075": "unsupported",
+    "A076": "unsupported",
+    "A077": "unsupported",
+    "A078": "unsupported",
+    "A079": "unsupported",
+    "A080": "unsupported",
+    "A081": "unsupported",
+    "A082": "unsupported",
+    "A083": "unsupported",
+    "A084": "unsupported",
+    "A085": "unsupported",
+    "A086": "unsupported",
+    "A087": "unsupported",
+    "A088": "unsupported",
+    "A089": "unsupported",
+    "A090": "unsupported",
+    "A091": "unsupported",
+    "A092": "unsupported",
+    "A093": "unsupported",
+    "A094": "unsupported"
+   },
+   "warnings": [],
+   "records": [
+    {
+     "evidence_id": "E001",
+     "evidence_type": "applied_skill",
+     "role": "Receptionist",
+     "contribution": "own",
+     "domain_context": "healthcare",
+     "quote": "Greeted patients, booked appointments by phone and updated the appointment system.",
+     "status": "accepted"
+    },
+    {
+     "evidence_id": "E002",
+     "evidence_type": "applied_skill",
+     "role": "Receptionist",
+     "contribution": "own",
+     "domain_context": "hospitality",
+     "quote": "Checked guests in and out and handled room bookings and complaints.",
+     "status": "accepted"
+    },
+    {
+     "evidence_id": "E003",
+     "evidence_type": "education",
+     "role": null,
+     "contribution": "own",
+     "domain_context": null,
+     "quote": "Advanced Level, Southfield Girls' School, 2020",
+     "status": "repaired"
+    }
+   ],
+   "rule_top10": [
+    {
+     "area_id": "A027",
+     "name": "Personal care & care assistance"
+    },
+    {
+     "area_id": "A019",
+     "name": "Nursing & midwifery"
+    },
+    {
+     "area_id": "A021",
+     "name": "Paramedic & emergency care"
+    },
+    {
+     "area_id": "A018",
+     "name": "Medicine"
+    },
+    {
+     "area_id": "A025",
+     "name": "Community health & health support"
+    },
+    {
+     "area_id": "A024",
+     "name": "Medical & pharmaceutical technology"
+    },
+    {
+     "area_id": "A023",
+     "name": "Dentistry, pharmacy & allied health therapies"
+    },
+    {
+     "area_id": "A020",
+     "name": "Traditional & complementary medicine"
+    },
+    {
+     "area_id": "A055",
+     "name": "Client information & contact-centre services"
+    },
+    {
+     "area_id": "A057",
+     "name": "Cooking & food preparation"
+    }
+   ],
+   "direct_top10": [],
+   "run_meta": {
+    "model": "nvidia/nemotron-3.5-super-vl:free",
+    "provider": "Nvidia",
+    "latency_s": 472.0,
+    "completion_tokens": 32997
+   }
+  },
+  "v3_05_primary_school_teacher": {
+   "id": "v3_05_primary_school_teacher",
+   "title": "Primary school teacher",
+   "cv_text": "Kaushalya Premadasa\nSUMMARY\nPrimary school teacher with seven years of classroom experience.\n\nEXPERIENCE\nClass Teacher, St Mary's Primary School (2019 - 2026)\n- Taught grade 3 pupils language, mathematics and environmental studies and planned weekly lessons.\n- Assessed pupils' progress, ran parent meetings and organised the annual sports day.\n\nEDUCATION\nDiploma in Teaching (Primary), Teacher Training College, 2018\n",
+   "split": "holdout_v3",
+   "supported": [
+    {
+     "rank": 1,
+     "area_id": "A031",
+     "name": "Primary & early-childhood teaching and child care",
+     "support_class": "direct",
+     "relevance": 4,
+     "evidence_ids": [
+      "E001",
+      "E001"
+     ],
+     "explanation": "Direct evidence - Class Teacher (2019 - 2026): \"Taught grade 3 pupils language, mathematics and environmental studies and planned weekly lessons.\" | Class Teacher (2019 - 2026): \"Taught grade 3 pupils language, mathematics and environmental studies and planned weekly lessons.\"",
+     "qualification_gaps": [],
+     "uncertainty": "low",
+     "status": "accepted",
+     "label": null
+    }
+   ],
+   "exploration": [],
+   "validation_log": [],
+   "classes": {
+    "A001": "unsupported",
+    "A002": "unsupported",
+    "A003": "unsupported",
+    "A004": "unsupported",
+    "A005": "unsupported",
+    "A006": "unsupported",
+    "A007": "unsupported",
+    "A008": "unsupported",
+    "A009": "unsupported",
+    "A010": "unsupported",
+    "A011": "unsupported",
+    "A012": "unsupported",
+    "A013": "unsupported",
+    "A014": "unsupported",
+    "A015": "unsupported",
+    "A016": "unsupported",
+    "A017": "unsupported",
+    "A018": "unsupported",
+    "A019": "unsupported",
+    "A020": "unsupported",
+    "A021": "unsupported",
+    "A022": "unsupported",
+    "A023": "unsupported",
+    "A024": "unsupported",
+    "A025": "unsupported",
+    "A026": "unsupported",
+    "A027": "unsupported",
+    "A028": "unsupported",
+    "A029": "unsupported",
+    "A030": "unsupported",
+    "A031": "direct",
+    "A032": "unsupported",
+    "A033": "unsupported",
+    "A034": "unsupported",
+    "A035": "unsupported",
+    "A036": "unsupported",
+    "A037": "unsupported",
+    "A038": "unsupported",
+    "A039": "unsupported",
+    "A040": "unsupported",
+    "A041": "unsupported",
+    "A042": "unsupported",
+    "A043": "unsupported",
+    "A044": "unsupported",
+    "A045": "unsupported",
+    "A046": "unsupported",
+    "A047": "unsupported",
+    "A048": "unsupported",
+    "A049": "unsupported",
+    "A050": "unsupported",
+    "A051": "unsupported",
+    "A052": "unsupported",
+    "A053": "unsupported",
+    "A054": "unsupported",
+    "A055": "unsupported",
+    "A056": "unsupported",
+    "A057": "unsupported",
+    "A058": "unsupported",
+    "A059": "unsupported",
+    "A060": "unsupported",
+    "A061": "unsupported",
+    "A062": "unsupported",
+    "A063": "unsupported",
+    "A064": "unsupported",
+    "A065": "unsupported",
+    "A066": "unsupported",
+    "A067": "unsupported",
+    "A068": "unsupported",
+    "A069": "unsupported",
+    "A070": "unsupported",
+    "A071": "unsupported",
+    "A072": "unsupported",
+    "A073": "unsupported",
+    "A074": "unsupported",
+    "A075": "unsupported",
+    "A076": "unsupported",
+    "A077": "unsupported",
+    "A078": "unsupported",
+    "A079": "unsupported",
+    "A080": "unsupported",
+    "A081": "unsupported",
+    "A082": "unsupported",
+    "A083": "unsupported",
+    "A084": "unsupported",
+    "A085": "unsupported",
+    "A086": "unsupported",
+    "A087": "unsupported",
+    "A088": "unsupported",
+    "A089": "unsupported",
+    "A090": "unsupported",
+    "A091": "unsupported",
+    "A092": "unsupported",
+    "A093": "unsupported",
+    "A094": "unsupported"
+   },
+   "warnings": [],
+   "records": [
+    {
+     "evidence_id": "E001",
+     "evidence_type": "applied_skill",
+     "role": "Class Teacher",
+     "contribution": "own",
+     "domain_context": "primary education",
+     "quote": "Taught grade 3 pupils language, mathematics and environmental studies and planned weekly lessons.",
+     "status": "accepted"
+    },
+    {
+     "evidence_id": "E002",
+     "evidence_type": "education",
+     "role": null,
+     "contribution": "unknown",
+     "domain_context": null,
+     "quote": "Diploma in Teaching (Primary), Teacher Training College, 2018",
+     "status": "repaired"
+    }
+   ],
+   "rule_top10": [
+    {
+     "area_id": "A031",
+     "name": "Primary & early-childhood teaching and child care"
+    },
+    {
+     "area_id": "A030",
+     "name": "Secondary school teaching"
+    },
+    {
+     "area_id": "A032",
+     "name": "Specialist teaching & education advisory"
+    },
+    {
+     "area_id": "A029",
+     "name": "Vocational education & training"
+    },
+    {
+     "area_id": "A093",
+     "name": "Training, learning & development"
+    },
+    {
+     "area_id": "A091",
+     "name": "Psychology & behavioural research"
+    },
+    {
+     "area_id": "A028",
+     "name": "University & higher education teaching"
+    },
+    {
+     "area_id": "A027",
+     "name": "Personal care & care assistance"
+    },
+    {
+     "area_id": "A018",
+     "name": "Medicine"
+    },
+    {
+     "area_id": "A048",
+     "name": "Social sciences, psychology & counselling"
+    }
+   ],
+   "direct_top10": [],
+   "run_meta": {
+    "model": "nvidia/nemotron-3.5-super-vl:free",
+    "provider": "Nvidia",
+    "latency_s": 244.2,
+    "completion_tokens": 20715
+   }
+  },
+  "v3_06_bank_data_analyst": {
+   "id": "v3_06_bank_data_analyst",
+   "title": "Data analyst at a bank",
+   "cv_text": "Pasan Wijesundara\nSUMMARY\nData analyst with four years of experience in retail banking analytics.\n\nEXPERIENCE\nData Analyst, Crestline Bank (2022 - 2026)\n- Wrote SQL queries and built dashboards of branch performance for the regional managers.\n- Analysed customer churn using Python and presented the monthly findings.\n\nEDUCATION\nBSc Statistics, Westgate University, 2021\n",
+   "split": "holdout_v3",
+   "supported": [
+    {
+     "rank": 1,
+     "area_id": "A086",
+     "name": "Data science & analytics",
+     "support_class": "direct",
+     "relevance": 4,
+     "evidence_ids": [
+      "E001"
+     ],
+     "explanation": "Direct evidence - Data Analyst (2022 - 2026): \"Wrote SQL queries and built dashboards of branch performance for the regional managers.\"",
+     "qualification_gaps": [],
+     "uncertainty": "low",
+     "status": "accepted",
+     "label": null
+    },
+    {
+     "rank": 2,
+     "area_id": "A013",
+     "name": "Mathematics, statistics & actuarial science",
+     "support_class": "transferable",
+     "relevance": 2,
+     "evidence_ids": [
+      "E001"
+     ],
+     "explanation": "Transferable evidence - Data Analyst (2022 - 2026): \"Wrote SQL queries and built dashboards of branch performance for the regional managers.\"",
+     "qualification_gaps": [],
+     "uncertainty": "medium",
+     "status": "repaired",
+     "label": null
+    }
+   ],
+   "exploration": [
+    {
+     "rank": null,
+     "area_id": "A033",
+     "name": "Finance, accounting & financial analysis",
+     "support_class": "domain_exposure_only",
+     "relevance": null,
+     "evidence_ids": [
+      "E001"
+     ],
+     "explanation": "Context - Data Analyst (2022 - 2026): \"Wrote SQL queries and built dashboards of branch performance for the regional managers.\"",
+     "qualification_gaps": [],
+     "uncertainty": "low",
+     "status": "accepted",
+     "label": "Industry exposure only: the work served this field, but the evidence does not show doing this occupation's work"
+    },
+    {
+     "rank": null,
+     "area_id": "A040",
+     "name": "Banking & payment services clerks",
+     "support_class": "domain_exposure_only",
+     "relevance": null,
+     "evidence_ids": [
+      "E001"
+     ],
+     "explanation": "Context - Data Analyst (2022 - 2026): \"Wrote SQL queries and built dashboards of branch performance for the regional managers.\"",
+     "qualification_gaps": [],
+     "uncertainty": "low",
+     "status": "accepted",
+     "label": "Industry exposure only: the work served this field, but the evidence does not show doing this occupation's work"
+    }
+   ],
+   "validation_log": [
+    {
+     "area_id": "A013",
+     "original_class": "transferable",
+     "final_class": "transferable",
+     "changes": [
+      "citation E002 has no qualification content on the record"
+     ]
+    }
+   ],
+   "classes": {
+    "A001": "unsupported",
+    "A002": "unsupported",
+    "A003": "unsupported",
+    "A004": "unsupported",
+    "A005": "unsupported",
+    "A006": "unsupported",
+    "A007": "unsupported",
+    "A008": "unsupported",
+    "A009": "unsupported",
+    "A010": "unsupported",
+    "A011": "unsupported",
+    "A012": "unsupported",
+    "A013": "transferable",
+    "A014": "unsupported",
+    "A015": "unsupported",
+    "A016": "unsupported",
+    "A017": "unsupported",
+    "A018": "unsupported",
+    "A019": "unsupported",
+    "A020": "unsupported",
+    "A021": "unsupported",
+    "A022": "unsupported",
+    "A023": "unsupported",
+    "A024": "unsupported",
+    "A025": "unsupported",
+    "A026": "unsupported",
+    "A027": "unsupported",
+    "A028": "unsupported",
+    "A029": "unsupported",
+    "A030": "unsupported",
+    "A031": "unsupported",
+    "A032": "unsupported",
+    "A033": "domain_exposure_only",
+    "A034": "unsupported",
+    "A035": "unsupported",
+    "A036": "unsupported",
+    "A037": "unsupported",
+    "A038": "unsupported",
+    "A039": "unsupported",
+    "A040": "domain_exposure_only",
+    "A041": "unsupported",
+    "A042": "unsupported",
+    "A043": "unsupported",
+    "A044": "unsupported",
+    "A045": "unsupported",
+    "A046": "unsupported",
+    "A047": "unsupported",
+    "A048": "unsupported",
+    "A049": "unsupported",
+    "A050": "unsupported",
+    "A051": "unsupported",
+    "A052": "unsupported",
+    "A053": "unsupported",
+    "A054": "unsupported",
+    "A055": "unsupported",
+    "A056": "unsupported",
+    "A057": "unsupported",
+    "A058": "unsupported",
+    "A059": "unsupported",
+    "A060": "unsupported",
+    "A061": "unsupported",
+    "A062": "unsupported",
+    "A063": "unsupported",
+    "A064": "unsupported",
+    "A065": "unsupported",
+    "A066": "unsupported",
+    "A067": "unsupported",
+    "A068": "unsupported",
+    "A069": "unsupported",
+    "A070": "unsupported",
+    "A071": "unsupported",
+    "A072": "unsupported",
+    "A073": "unsupported",
+    "A074": "unsupported",
+    "A075": "unsupported",
+    "A076": "unsupported",
+    "A077": "unsupported",
+    "A078": "unsupported",
+    "A079": "unsupported",
+    "A080": "unsupported",
+    "A081": "unsupported",
+    "A082": "unsupported",
+    "A083": "unsupported",
+    "A084": "unsupported",
+    "A085": "unsupported",
+    "A086": "direct",
+    "A087": "unsupported",
+    "A088": "unsupported",
+    "A089": "unsupported",
+    "A090": "unsupported",
+    "A091": "unsupported",
+    "A092": "unsupported",
+    "A093": "unsupported",
+    "A094": "unsupported"
+   },
+   "warnings": [],
+   "records": [
+    {
+     "evidence_id": "E001",
+     "evidence_type": "employment",
+     "role": "Data Analyst",
+     "contribution": "own",
+     "domain_context": "banking",
+     "quote": "Wrote SQL queries and built dashboards of branch performance for the regional managers.",
+     "status": "accepted"
+    },
+    {
+     "evidence_id": "E002",
+     "evidence_type": "education",
+     "role": null,
+     "contribution": "own",
+     "domain_context": null,
+     "quote": "BSc Statistics, Westgate University, 2021",
+     "status": "repaired"
+    }
+   ],
+   "rule_top10": [
+    {
+     "area_id": "A086",
+     "name": "Data science & analytics"
+    },
+    {
+     "area_id": "A092",
+     "name": "Economics & public policy analysis"
+    },
+    {
+     "area_id": "A033",
+     "name": "Finance, accounting & financial analysis"
+    },
+    {
+     "area_id": "A044",
+     "name": "Database, systems & network administration"
+    },
+    {
+     "area_id": "A087",
+     "name": "AI & machine learning engineering"
+    },
+    {
+     "area_id": "A013",
+     "name": "Mathematics, statistics & actuarial science"
+    },
+    {
+     "area_id": "A090",
+     "name": "Cybersecurity & information security"
+    },
+    {
+     "area_id": "A043",
+     "name": "Software & applications development"
+    },
+    {
+     "area_id": "A088",
+     "name": "UX, product & digital design"
+    },
+    {
+     "area_id": "A091",
+     "name": "Psychology & behavioural research"
+    }
+   ],
+   "direct_top10": [],
+   "run_meta": {
+    "model": "nvidia/nemotron-3.5-super-vl:free",
+    "provider": "Nvidia",
+    "latency_s": 278.1,
+    "completion_tokens": 23444
+   }
+  },
+  "v3_07_social_worker": {
+   "id": "v3_07_social_worker",
+   "title": "Social worker (child protection)",
+   "cv_text": "Dilrukshi Amarasekara\nSUMMARY\nSocial worker with eight years of experience in child protection.\n\nEXPERIENCE\nSocial Worker, District Child Protection Office (2018 - 2026)\n- Assessed family situations, prepared case reports for the juvenile court and referred children to support services.\n- Visited families, coordinated with schools and health staff and kept case records.\n\nEDUCATION\nBA Social Work, Eastbridge University, 2017\n",
+   "split": "holdout_v3",
+   "supported": [
+    {
+     "rank": 1,
+     "area_id": "A053",
+     "name": "Paralegal, social work & community support",
+     "support_class": "direct",
+     "relevance": 4,
+     "evidence_ids": [
+      "E002",
+      "E002",
+      "E003"
+     ],
+     "explanation": "Direct evidence - Social Worker (2018 - 2026): \"Assessed family situations, prepared case reports for the juvenile court and referred children to support services.\" | Social Worker (2018 - 2026): \"Assessed family situations, prepared case reports for the juvenile court and referred children to support services.\" | Social Work (2017): \"BA Social Work, Eastbridge University, 2017\"",
+     "qualification_gaps": [],
+     "uncertainty": "low",
+     "status": "accepted",
+     "label": null
+    }
+   ],
+   "exploration": [],
+   "validation_log": [],
+   "classes": {
+    "A001": "unsupported",
+    "A002": "unsupported",
+    "A003": "unsupported",
+    "A004": "unsupported",
+    "A005": "unsupported",
+    "A006": "unsupported",
+    "A007": "unsupported",
+    "A008": "unsupported",
+    "A009": "unsupported",
+    "A010": "unsupported",
+    "A011": "unsupported",
+    "A012": "unsupported",
+    "A013": "unsupported",
+    "A014": "unsupported",
+    "A015": "unsupported",
+    "A016": "unsupported",
+    "A017": "unsupported",
+    "A018": "unsupported",
+    "A019": "unsupported",
+    "A020": "unsupported",
+    "A021": "unsupported",
+    "A022": "unsupported",
+    "A023": "unsupported",
+    "A024": "unsupported",
+    "A025": "unsupported",
+    "A026": "unsupported",
+    "A027": "unsupported",
+    "A028": "unsupported",
+    "A029": "unsupported",
+    "A030": "unsupported",
+    "A031": "unsupported",
+    "A032": "unsupported",
+    "A033": "unsupported",
+    "A034": "unsupported",
+    "A035": "unsupported",
+    "A036": "unsupported",
+    "A037": "unsupported",
+    "A038": "unsupported",
+    "A039": "unsupported",
+    "A040": "unsupported",
+    "A041": "unsupported",
+    "A042": "unsupported",
+    "A043": "unsupported",
+    "A044": "unsupported",
+    "A045": "unsupported",
+    "A046": "unsupported",
+    "A047": "unsupported",
+    "A048": "unsupported",
+    "A049": "unsupported",
+    "A050": "unsupported",
+    "A051": "unsupported",
+    "A052": "unsupported",
+    "A053": "direct",
+    "A054": "unsupported",
+    "A055": "unsupported",
+    "A056": "unsupported",
+    "A057": "unsupported",
+    "A058": "unsupported",
+    "A059": "unsupported",
+    "A060": "unsupported",
+    "A061": "unsupported",
+    "A062": "unsupported",
+    "A063": "unsupported",
+    "A064": "unsupported",
+    "A065": "unsupported",
+    "A066": "unsupported",
+    "A067": "unsupported",
+    "A068": "unsupported",
+    "A069": "unsupported",
+    "A070": "unsupported",
+    "A071": "unsupported",
+    "A072": "unsupported",
+    "A073": "unsupported",
+    "A074": "unsupported",
+    "A075": "unsupported",
+    "A076": "unsupported",
+    "A077": "unsupported",
+    "A078": "unsupported",
+    "A079": "unsupported",
+    "A080": "unsupported",
+    "A081": "unsupported",
+    "A082": "unsupported",
+    "A083": "unsupported",
+    "A084": "unsupported",
+    "A085": "unsupported",
+    "A086": "unsupported",
+    "A087": "unsupported",
+    "A088": "unsupported",
+    "A089": "unsupported",
+    "A090": "unsupported",
+    "A091": "unsupported",
+    "A092": "unsupported",
+    "A093": "unsupported",
+    "A094": "unsupported"
+   },
+   "warnings": [],
+   "records": [
+    {
+     "evidence_id": "E001",
+     "evidence_type": "employment",
+     "role": "Social worker",
+     "contribution": "unknown",
+     "domain_context": "child protection",
+     "quote": "Social worker with eight years of experience in child protection.",
+     "status": "repaired"
+    },
+    {
+     "evidence_id": "E002",
+     "evidence_type": "employment",
+     "role": "Social Worker",
+     "contribution": "own",
+     "domain_context": "child protection",
+     "quote": "Assessed family situations, prepared case reports for the juvenile court and referred children to support services.",
+     "status": "accepted"
+    },
+    {
+     "evidence_id": "E003",
+     "evidence_type": "education",
+     "role": null,
+     "contribution": "own",
+     "domain_context": null,
+     "quote": "BA Social Work, Eastbridge University, 2017",
+     "status": "repaired"
+    }
+   ],
+   "rule_top10": [
+    {
+     "area_id": "A091",
+     "name": "Psychology & behavioural research"
+    },
+    {
+     "area_id": "A048",
+     "name": "Social sciences, psychology & counselling"
+    },
+    {
+     "area_id": "A053",
+     "name": "Paralegal, social work & community support"
+    },
+    {
+     "area_id": "A019",
+     "name": "Nursing & midwifery"
+    },
+    {
+     "area_id": "A025",
+     "name": "Community health & health support"
+    },
+    {
+     "area_id": "A018",
+     "name": "Medicine"
+    },
+    {
+     "area_id": "A023",
+     "name": "Dentistry, pharmacy & allied health therapies"
+    },
+    {
+     "area_id": "A008",
+     "name": "Professional services management"
+    },
+    {
+     "area_id": "A032",
+     "name": "Specialist teaching & education advisory"
+    },
+    {
+     "area_id": "A031",
+     "name": "Primary & early-childhood teaching and child care"
+    }
+   ],
+   "direct_top10": [],
+   "run_meta": {
+    "model": "nvidia/nemotron-3.5-super-vl:free",
+    "provider": "Nvidia",
+    "latency_s": 230.9,
+    "completion_tokens": 17547
+   }
+  },
+  "v3_09_school_leaver_wants_to_be_a_doctor": {
+   "id": "v3_09_school_leaver_wants_to_be_a_doctor",
+   "title": "School leaver who wants to be a doctor",
+   "cv_text": "Thilini Weerakoon\nSUMMARY\nSchool leaver. I want to become a doctor and plan to apply to medical school next year.\n\nEDUCATION\nG.C.E. Advanced Level, Southfield Girls' School, 2025: biology, chemistry, physics.\n\nINTERESTS\nVolunteering at school health clubs, reading about medicine.\n",
+   "split": "holdout_v3",
+   "supported": [],
+   "exploration": [
+    {
+     "rank": null,
+     "area_id": "A018",
+     "name": "Medicine",
+     "support_class": "interest_only",
+     "relevance": null,
+     "evidence_ids": [
+      "E001",
+      "E004"
+     ],
+     "explanation": "Context - stated interest: \"I want to become a doctor and plan to apply to medical school next year.\" | stated interest: \"reading about medicine.\"",
+     "qualification_gaps": [],
+     "uncertainty": "low",
+     "status": "accepted",
+     "label": "Stated interest: not yet backed by experience"
+    }
+   ],
+   "validation_log": [],
+   "classes": {
+    "A001": "unsupported",
+    "A002": "unsupported",
+    "A003": "unsupported",
+    "A004": "unsupported",
+    "A005": "unsupported",
+    "A006": "unsupported",
+    "A007": "unsupported",
+    "A008": "unsupported",
+    "A009": "unsupported",
+    "A010": "unsupported",
+    "A011": "unsupported",
+    "A012": "unsupported",
+    "A013": "unsupported",
+    "A014": "unsupported",
+    "A015": "unsupported",
+    "A016": "unsupported",
+    "A017": "unsupported",
+    "A018": "interest_only",
+    "A019": "unsupported",
+    "A020": "unsupported",
+    "A021": "unsupported",
+    "A022": "unsupported",
+    "A023": "unsupported",
+    "A024": "unsupported",
+    "A025": "unsupported",
+    "A026": "unsupported",
+    "A027": "unsupported",
+    "A028": "unsupported",
+    "A029": "unsupported",
+    "A030": "unsupported",
+    "A031": "unsupported",
+    "A032": "unsupported",
+    "A033": "unsupported",
+    "A034": "unsupported",
+    "A035": "unsupported",
+    "A036": "unsupported",
+    "A037": "unsupported",
+    "A038": "unsupported",
+    "A039": "unsupported",
+    "A040": "unsupported",
+    "A041": "unsupported",
+    "A042": "unsupported",
+    "A043": "unsupported",
+    "A044": "unsupported",
+    "A045": "unsupported",
+    "A046": "unsupported",
+    "A047": "unsupported",
+    "A048": "unsupported",
+    "A049": "unsupported",
+    "A050": "unsupported",
+    "A051": "unsupported",
+    "A052": "unsupported",
+    "A053": "unsupported",
+    "A054": "unsupported",
+    "A055": "unsupported",
+    "A056": "unsupported",
+    "A057": "unsupported",
+    "A058": "unsupported",
+    "A059": "unsupported",
+    "A060": "unsupported",
+    "A061": "unsupported",
+    "A062": "unsupported",
+    "A063": "unsupported",
+    "A064": "unsupported",
+    "A065": "unsupported",
+    "A066": "unsupported",
+    "A067": "unsupported",
+    "A068": "unsupported",
+    "A069": "unsupported",
+    "A070": "unsupported",
+    "A071": "unsupported",
+    "A072": "unsupported",
+    "A073": "unsupported",
+    "A074": "unsupported",
+    "A075": "unsupported",
+    "A076": "unsupported",
+    "A077": "unsupported",
+    "A078": "unsupported",
+    "A079": "unsupported",
+    "A080": "unsupported",
+    "A081": "unsupported",
+    "A082": "unsupported",
+    "A083": "unsupported",
+    "A084": "unsupported",
+    "A085": "unsupported",
+    "A086": "unsupported",
+    "A087": "unsupported",
+    "A088": "unsupported",
+    "A089": "unsupported",
+    "A090": "unsupported",
+    "A091": "unsupported",
+    "A092": "unsupported",
+    "A093": "unsupported",
+    "A094": "unsupported"
+   },
+   "warnings": [],
+   "records": [
+    {
+     "evidence_id": "E001",
+     "evidence_type": "stated_interest",
+     "role": null,
+     "contribution": "own",
+     "domain_context": "medicine",
+     "quote": "I want to become a doctor and plan to apply to medical school next year.",
+     "status": "accepted"
+    },
+    {
+     "evidence_id": "E002",
+     "evidence_type": "education",
+     "role": null,
+     "contribution": "own",
+     "domain_context": null,
+     "quote": "G.C.E. Advanced Level, Southfield Girls' School, 2025: biology, chemistry, physics.",
+     "status": "accepted"
+    },
+    {
+     "evidence_id": "E003",
+     "evidence_type": "volunteering",
+     "role": null,
+     "contribution": "unknown",
+     "domain_context": "healthcare",
+     "quote": "Volunteering at school health clubs",
+     "status": "repaired"
+    },
+    {
+     "evidence_id": "E004",
+     "evidence_type": "stated_interest",
+     "role": null,
+     "contribution": "own",
+     "domain_context": "medicine",
+     "quote": "reading about medicine.",
+     "status": "accepted"
+    }
+   ],
+   "rule_top10": [
+    {
+     "area_id": "A027",
+     "name": "Personal care & care assistance"
+    },
+    {
+     "area_id": "A019",
+     "name": "Nursing & midwifery"
+    },
+    {
+     "area_id": "A018",
+     "name": "Medicine"
+    },
+    {
+     "area_id": "A014",
+     "name": "Life sciences, biology & laboratory science"
+    },
+    {
+     "area_id": "A021",
+     "name": "Paramedic & emergency care"
+    },
+    {
+     "area_id": "A012",
+     "name": "Physical & earth sciences"
+    },
+    {
+     "area_id": "A020",
+     "name": "Traditional & complementary medicine"
+    },
+    {
+     "area_id": "A023",
+     "name": "Dentistry, pharmacy & allied health therapies"
+    },
+    {
+     "area_id": "A025",
+     "name": "Community health & health support"
+    },
+    {
+     "area_id": "A091",
+     "name": "Psychology & behavioural research"
+    }
+   ],
+   "direct_top10": [],
+   "run_meta": {
+    "model": "nvidia/nemotron-3.5-super-vl:free",
+    "provider": "Nvidia",
+    "latency_s": 377.1,
+    "completion_tokens": 24366
+   }
+  },
+  "v3_10_law_firm_software_developer": {
+   "id": "v3_10_law_firm_software_developer",
+   "title": "Software developer at a law firm",
+   "cv_text": "Janith Perera\nSUMMARY\nSoftware developer with five years of experience in internal business systems.\n\nEXPERIENCE\nSoftware Developer, Harbour and Fernando Law Associates (2021 - 2026)\n- Built the firm's case-tracking web application in Django and PostgreSQL and added document search.\n- Supported the lawyers' day-to-day IT needs and fixed defects.\n\nEDUCATION\nBSc Computer Science, Westgate University, 2020\n",
+   "split": "holdout_v3",
+   "supported": [
+    {
+     "rank": 1,
+     "area_id": "A043",
+     "name": "Software & applications development",
+     "support_class": "direct",
+     "relevance": 4,
+     "evidence_ids": [
+      "E001",
+      "E002"
+     ],
+     "explanation": "Direct evidence - Software Developer (2021 - 2026): \"Built the firm's case-tracking web application in Django and PostgreSQL and added document search. Supported the lawyers' day-to-day IT needs and fixed defects.\" | Computer Science (2020): \"BSc Computer Science, Westgate University, 2020\"",
+     "qualification_gaps": [],
+     "uncertainty": "low",
+     "status": "accepted",
+     "label": null
+    },
+    {
+     "rank": 2,
+     "area_id": "A045",
+     "name": "ICT operations, user support & telecoms",
+     "support_class": "direct",
+     "relevance": 2,
+     "evidence_ids": [
+      "E001"
+     ],
+     "explanation": "Direct evidence - Software Developer (2021 - 2026): \"Built the firm's case-tracking web application in Django and PostgreSQL and added document search. Supported the lawyers' day-to-day IT needs and fixed defects.\"",
+     "qualification_gaps": [],
+     "uncertainty": "low",
+     "status": "accepted",
+     "label": null
+    }
+   ],
+   "exploration": [
+    {
+     "rank": null,
+     "area_id": "A046",
+     "name": "Law & justice",
+     "support_class": "domain_exposure_only",
+     "relevance": null,
+     "evidence_ids": [
+      "E001"
+     ],
+     "explanation": "Context - Software Developer (2021 - 2026): \"Built the firm's case-tracking web application in Django and PostgreSQL and added document search. Supported the lawyers' day-to-day IT needs and fixed defects.\"",
+     "qualification_gaps": [],
+     "uncertainty": "low",
+     "status": "accepted",
+     "label": "Industry exposure only: the work served this field, but the evidence does not show doing this occupation's work"
+    }
+   ],
+   "validation_log": [],
+   "classes": {
+    "A001": "unsupported",
+    "A002": "unsupported",
+    "A003": "unsupported",
+    "A004": "unsupported",
+    "A005": "unsupported",
+    "A006": "unsupported",
+    "A007": "unsupported",
+    "A008": "unsupported",
+    "A009": "unsupported",
+    "A010": "unsupported",
+    "A011": "unsupported",
+    "A012": "unsupported",
+    "A013": "unsupported",
+    "A014": "unsupported",
+    "A015": "unsupported",
+    "A016": "unsupported",
+    "A017": "unsupported",
+    "A018": "unsupported",
+    "A019": "unsupported",
+    "A020": "unsupported",
+    "A021": "unsupported",
+    "A022": "unsupported",
+    "A023": "unsupported",
+    "A024": "unsupported",
+    "A025": "unsupported",
+    "A026": "unsupported",
+    "A027": "unsupported",
+    "A028": "unsupported",
+    "A029": "unsupported",
+    "A030": "unsupported",
+    "A031": "unsupported",
+    "A032": "unsupported",
+    "A033": "unsupported",
+    "A034": "unsupported",
+    "A035": "unsupported",
+    "A036": "unsupported",
+    "A037": "unsupported",
+    "A038": "unsupported",
+    "A039": "unsupported",
+    "A040": "unsupported",
+    "A041": "unsupported",
+    "A042": "unsupported",
+    "A043": "direct",
+    "A044": "unsupported",
+    "A045": "direct",
+    "A046": "domain_exposure_only",
+    "A047": "unsupported",
+    "A048": "unsupported",
+    "A049": "unsupported",
+    "A050": "unsupported",
+    "A051": "unsupported",
+    "A052": "unsupported",
+    "A053": "unsupported",
+    "A054": "unsupported",
+    "A055": "unsupported",
+    "A056": "unsupported",
+    "A057": "unsupported",
+    "A058": "unsupported",
+    "A059": "unsupported",
+    "A060": "unsupported",
+    "A061": "unsupported",
+    "A062": "unsupported",
+    "A063": "unsupported",
+    "A064": "unsupported",
+    "A065": "unsupported",
+    "A066": "unsupported",
+    "A067": "unsupported",
+    "A068": "unsupported",
+    "A069": "unsupported",
+    "A070": "unsupported",
+    "A071": "unsupported",
+    "A072": "unsupported",
+    "A073": "unsupported",
+    "A074": "unsupported",
+    "A075": "unsupported",
+    "A076": "unsupported",
+    "A077": "unsupported",
+    "A078": "unsupported",
+    "A079": "unsupported",
+    "A080": "unsupported",
+    "A081": "unsupported",
+    "A082": "unsupported",
+    "A083": "unsupported",
+    "A084": "unsupported",
+    "A085": "unsupported",
+    "A086": "unsupported",
+    "A087": "unsupported",
+    "A088": "unsupported",
+    "A089": "unsupported",
+    "A090": "unsupported",
+    "A091": "unsupported",
+    "A092": "unsupported",
+    "A093": "unsupported",
+    "A094": "unsupported"
+   },
+   "warnings": [],
+   "records": [
+    {
+     "evidence_id": "E001",
+     "evidence_type": "employment",
+     "role": "Software Developer",
+     "contribution": "own",
+     "domain_context": "legal",
+     "quote": "Built the firm's case-tracking web application in Django and PostgreSQL and added document search. Supported the lawyers' day-to-day IT needs and fixed defects.",
+     "status": "accepted"
+    },
+    {
+     "evidence_id": "E002",
+     "evidence_type": "education",
+     "role": null,
+     "contribution": "own",
+     "domain_context": null,
+     "quote": "BSc Computer Science, Westgate University, 2020",
+     "status": "accepted"
+    }
+   ],
+   "rule_top10": [
+    {
+     "area_id": "A043",
+     "name": "Software & applications development"
+    },
+    {
+     "area_id": "A088",
+     "name": "UX, product & digital design"
+    },
+    {
+     "area_id": "A044",
+     "name": "Database, systems & network administration"
+    },
+    {
+     "area_id": "A090",
+     "name": "Cybersecurity & information security"
+    },
+    {
+     "area_id": "A086",
+     "name": "Data science & analytics"
+    },
+    {
+     "area_id": "A046",
+     "name": "Law & justice"
+    },
+    {
+     "area_id": "A087",
+     "name": "AI & machine learning engineering"
+    },
+    {
+     "area_id": "A045",
+     "name": "ICT operations, user support & telecoms"
+    },
+    {
+     "area_id": "A089",
+     "name": "IoT, embedded & smart systems"
+    },
+    {
+     "area_id": "A016",
+     "name": "Electrical, electronics & telecom engineering"
+    }
+   ],
+   "direct_top10": [],
+   "run_meta": {
+    "model": "nvidia/nemotron-3.5-super-vl:free",
+    "provider": "Nvidia",
+    "latency_s": 227.6,
+    "completion_tokens": 21569
+   }
+  },
+  "v3_12_newspaper_reporter": {
+   "id": "v3_12_newspaper_reporter",
+   "title": "Newspaper reporter",
+   "cv_text": "Nilanthi Hettiarachchi\nSUMMARY\nReporter with six years of experience in a daily newspaper.\n\nEXPERIENCE\nReporter, Daily Island Newspaper (2020 - 2026)\n- Wrote news stories on health, the courts and education and interviewed doctors, judges and teachers.\n- Edited copy for the daily edition and met daily deadlines.\n\nEDUCATION\nBA Mass Communication, Eastbridge University, 2019\n",
+   "split": "holdout_v3",
+   "supported": [
+    {
+     "rank": 1,
+     "area_id": "A049",
+     "name": "Writing, journalism & languages",
+     "support_class": "direct",
+     "relevance": 4,
+     "evidence_ids": [
+      "E002",
+      "E002",
+      "E003"
+     ],
+     "explanation": "Direct evidence - Reporter (2020 - 2026): \"Reporter, Daily Island Newspaper (2020 - 2026)\" | Reporter (2020 - 2026): \"Reporter, Daily Island Newspaper (2020 - 2026)\" | Mass Communication (2019): \"BA Mass Communication, Eastbridge University, 2019\"",
+     "qualification_gaps": [],
+     "uncertainty": "low",
+     "status": "accepted",
+     "label": null
+    }
+   ],
+   "exploration": [],
+   "validation_log": [],
+   "classes": {
+    "A001": "unsupported",
+    "A002": "unsupported",
+    "A003": "unsupported",
+    "A004": "unsupported",
+    "A005": "unsupported",
+    "A006": "unsupported",
+    "A007": "unsupported",
+    "A008": "unsupported",
+    "A009": "unsupported",
+    "A010": "unsupported",
+    "A011": "unsupported",
+    "A012": "unsupported",
+    "A013": "unsupported",
+    "A014": "unsupported",
+    "A015": "unsupported",
+    "A016": "unsupported",
+    "A017": "unsupported",
+    "A018": "unsupported",
+    "A019": "unsupported",
+    "A020": "unsupported",
+    "A021": "unsupported",
+    "A022": "unsupported",
+    "A023": "unsupported",
+    "A024": "unsupported",
+    "A025": "unsupported",
+    "A026": "unsupported",
+    "A027": "unsupported",
+    "A028": "unsupported",
+    "A029": "unsupported",
+    "A030": "unsupported",
+    "A031": "unsupported",
+    "A032": "unsupported",
+    "A033": "unsupported",
+    "A034": "unsupported",
+    "A035": "unsupported",
+    "A036": "unsupported",
+    "A037": "unsupported",
+    "A038": "unsupported",
+    "A039": "unsupported",
+    "A040": "unsupported",
+    "A041": "unsupported",
+    "A042": "unsupported",
+    "A043": "unsupported",
+    "A044": "unsupported",
+    "A045": "unsupported",
+    "A046": "unsupported",
+    "A047": "unsupported",
+    "A048": "unsupported",
+    "A049": "direct",
+    "A050": "unsupported",
+    "A051": "unsupported",
+    "A052": "unsupported",
+    "A053": "unsupported",
+    "A054": "unsupported",
+    "A055": "unsupported",
+    "A056": "unsupported",
+    "A057": "unsupported",
+    "A058": "unsupported",
+    "A059": "unsupported",
+    "A060": "unsupported",
+    "A061": "unsupported",
+    "A062": "unsupported",
+    "A063": "unsupported",
+    "A064": "unsupported",
+    "A065": "unsupported",
+    "A066": "unsupported",
+    "A067": "unsupported",
+    "A068": "unsupported",
+    "A069": "unsupported",
+    "A070": "unsupported",
+    "A071": "unsupported",
+    "A072": "unsupported",
+    "A073": "unsupported",
+    "A074": "unsupported",
+    "A075": "unsupported",
+    "A076": "unsupported",
+    "A077": "unsupported",
+    "A078": "unsupported",
+    "A079": "unsupported",
+    "A080": "unsupported",
+    "A081": "unsupported",
+    "A082": "unsupported",
+    "A083": "unsupported",
+    "A084": "unsupported",
+    "A085": "unsupported",
+    "A086": "unsupported",
+    "A087": "unsupported",
+    "A088": "unsupported",
+    "A089": "unsupported",
+    "A090": "unsupported",
+    "A091": "unsupported",
+    "A092": "unsupported",
+    "A093": "unsupported",
+    "A094": "unsupported"
+   },
+   "warnings": [],
+   "records": [
+    {
+     "evidence_id": "E001",
+     "evidence_type": "applied_skill",
+     "role": "Reporter",
+     "contribution": "unknown",
+     "domain_context": "newspaper",
+     "quote": "Reporter with six years of experience in a daily newspaper.",
+     "status": "repaired"
+    },
+    {
+     "evidence_id": "E002",
+     "evidence_type": "applied_skill",
+     "role": "Reporter",
+     "contribution": "own",
+     "domain_context": "newspaper",
+     "quote": "Reporter, Daily Island Newspaper (2020 - 2026)",
+     "status": "accepted"
+    },
+    {
+     "evidence_id": "E003",
+     "evidence_type": "education",
+     "role": null,
+     "contribution": "own",
+     "domain_context": null,
+     "quote": "BA Mass Communication, Eastbridge University, 2019",
+     "status": "repaired"
+    }
+   ],
+   "rule_top10": [
+    {
+     "area_id": "A019",
+     "name": "Nursing & midwifery"
+    },
+    {
+     "area_id": "A030",
+     "name": "Secondary school teaching"
+    },
+    {
+     "area_id": "A021",
+     "name": "Paramedic & emergency care"
+    },
+    {
+     "area_id": "A018",
+     "name": "Medicine"
+    },
+    {
+     "area_id": "A032",
+     "name": "Specialist teaching & education advisory"
+    },
+    {
+     "area_id": "A029",
+     "name": "Vocational education & training"
+    },
+    {
+     "area_id": "A093",
+     "name": "Training, learning & development"
+    },
+    {
+     "area_id": "A031",
+     "name": "Primary & early-childhood teaching and child care"
+    },
+    {
+     "area_id": "A025",
+     "name": "Community health & health support"
+    },
+    {
+     "area_id": "A024",
+     "name": "Medical & pharmaceutical technology"
+    }
+   ],
+   "direct_top10": [],
+   "run_meta": {
+    "model": "nvidia/nemotron-3.5-super-vl:free",
+    "provider": "Nvidia",
+    "latency_s": 161.4,
+    "completion_tokens": 17382
+   }
+  },
+  "v3_04_heavy_truck_driver_medical_supplies": {
+   "id": "v3_04_heavy_truck_driver_medical_supplies",
+   "title": "Truck driver delivering medical supplies",
+   "cv_text": "Roshan Jayawardena\nSUMMARY\nHeavy vehicle driver with nine years of experience.\n\nEXPERIENCE\nHeavy Truck Driver, Highland Logistics (2017 - 2026)\n- Drove 12-tonne trucks delivering medical supplies and pharmaceuticals to hospitals and clinics across the island.\n- Loaded and checked cargo, kept delivery logs and reported vehicle faults.\n\nLICENCES\nHeavy Vehicle Driving Licence, valid to 2028\n",
+   "split": "holdout_v3",
+   "supported": [
+    {
+     "rank": 1,
+     "area_id": "A083",
+     "name": "Professional driving & rail operation",
+     "support_class": "direct",
+     "relevance": 4,
+     "evidence_ids": [
+      "E002"
+     ],
+     "explanation": "Direct evidence - Heavy Truck Driver (2017 - 2026): \"Drove 12-tonne trucks delivering medical supplies and pharmaceuticals to hospitals and clinics across the island.\"",
+     "qualification_gaps": [],
+     "uncertainty": "low",
+     "status": "accepted",
+     "label": null
+    }
+   ],
+   "exploration": [],
+   "validation_log": [],
+   "classes": {
+    "A001": "unsupported",
+    "A002": "unsupported",
+    "A003": "unsupported",
+    "A004": "unsupported",
+    "A005": "unsupported",
+    "A006": "unsupported",
+    "A007": "unsupported",
+    "A008": "unsupported",
+    "A009": "unsupported",
+    "A010": "unsupported",
+    "A011": "unsupported",
+    "A012": "unsupported",
+    "A013": "unsupported",
+    "A014": "unsupported",
+    "A015": "unsupported",
+    "A016": "unsupported",
+    "A017": "unsupported",
+    "A018": "unsupported",
+    "A019": "unsupported",
+    "A020": "unsupported",
+    "A021": "unsupported",
+    "A022": "unsupported",
+    "A023": "unsupported",
+    "A024": "unsupported",
+    "A025": "unsupported",
+    "A026": "unsupported",
+    "A027": "unsupported",
+    "A028": "unsupported",
+    "A029": "unsupported",
+    "A030": "unsupported",
+    "A031": "unsupported",
+    "A032": "unsupported",
+    "A033": "unsupported",
+    "A034": "unsupported",
+    "A035": "unsupported",
+    "A036": "unsupported",
+    "A037": "unsupported",
+    "A038": "unsupported",
+    "A039": "unsupported",
+    "A040": "unsupported",
+    "A041": "unsupported",
+    "A042": "unsupported",
+    "A043": "unsupported",
+    "A044": "unsupported",
+    "A045": "unsupported",
+    "A046": "unsupported",
+    "A047": "unsupported",
+    "A048": "unsupported",
+    "A049": "unsupported",
+    "A050": "unsupported",
+    "A051": "unsupported",
+    "A052": "unsupported",
+    "A053": "unsupported",
+    "A054": "unsupported",
+    "A055": "unsupported",
+    "A056": "unsupported",
+    "A057": "unsupported",
+    "A058": "unsupported",
+    "A059": "unsupported",
+    "A060": "unsupported",
+    "A061": "unsupported",
+    "A062": "unsupported",
+    "A063": "unsupported",
+    "A064": "unsupported",
+    "A065": "unsupported",
+    "A066": "unsupported",
+    "A067": "unsupported",
+    "A068": "unsupported",
+    "A069": "unsupported",
+    "A070": "unsupported",
+    "A071": "unsupported",
+    "A072": "unsupported",
+    "A073": "unsupported",
+    "A074": "unsupported",
+    "A075": "unsupported",
+    "A076": "unsupported",
+    "A077": "unsupported",
+    "A078": "unsupported",
+    "A079": "unsupported",
+    "A080": "unsupported",
+    "A081": "unsupported",
+    "A082": "unsupported",
+    "A083": "direct",
+    "A084": "unsupported",
+    "A085": "unsupported",
+    "A086": "unsupported",
+    "A087": "unsupported",
+    "A088": "unsupported",
+    "A089": "unsupported",
+    "A090": "unsupported",
+    "A091": "unsupported",
+    "A092": "unsupported",
+    "A093": "unsupported",
+    "A094": "unsupported"
+   },
+   "warnings": [],
+   "records": [
+    {
+     "evidence_id": "E001",
+     "evidence_type": "applied_skill",
+     "role": "Heavy vehicle driver",
+     "contribution": "unknown",
+     "domain_context": null,
+     "quote": "Heavy vehicle driver with nine years of experience.",
+     "status": "repaired"
+    },
+    {
+     "evidence_id": "E002",
+     "evidence_type": "applied_skill",
+     "role": "Heavy Truck Driver",
+     "contribution": "own",
+     "domain_context": "healthcare (hospitals and clinics; medical supplies and pharmaceuticals)",
+     "quote": "Drove 12-tonne trucks delivering medical supplies and pharmaceuticals to hospitals and clinics across the island.",
+     "status": "accepted"
+    },
+    {
+     "evidence_id": "E003",
+     "evidence_type": "certification",
+     "role": null,
+     "contribution": "unknown",
+     "domain_context": null,
+     "quote": "Heavy Vehicle Driving Licence, valid to 2028",
+     "status": "repaired"
+    }
+   ],
+   "rule_top10": [
+    {
+     "area_id": "A027",
+     "name": "Personal care & care assistance"
+    },
+    {
+     "area_id": "A019",
+     "name": "Nursing & midwifery"
+    },
+    {
+     "area_id": "A021",
+     "name": "Paramedic & emergency care"
+    },
+    {
+     "area_id": "A018",
+     "name": "Medicine"
+    },
+    {
+     "area_id": "A069",
+     "name": "Stores, logistics & transport clerks"
+    },
+    {
+     "area_id": "A025",
+     "name": "Community health & health support"
+    },
+    {
+     "area_id": "A024",
+     "name": "Medical & pharmaceutical technology"
+    },
+    {
+     "area_id": "A023",
+     "name": "Dentistry, pharmacy & allied health therapies"
+    },
+    {
+     "area_id": "A020",
+     "name": "Traditional & complementary medicine"
+    },
+    {
+     "area_id": "A062",
+     "name": "Retail, shop & street sales"
+    }
+   ],
+   "direct_top10": [],
+   "run_meta": {
+    "model": "nvidia/nemotron-3.5-super-vl:free",
+    "provider": "Nvidia",
+    "latency_s": 199.0,
+    "completion_tokens": 18718
+   }
+  },
+  "v3_08_mechanical_technician_bus_depot": {
+   "id": "v3_08_mechanical_technician_bus_depot",
+   "title": "Bus-depot mechanical technician",
+   "cv_text": "Saliya Bandara\nSUMMARY\nMechanical technician with seven years of experience in vehicle maintenance.\n\nEXPERIENCE\nMechanical Technician, Metro Bus Depot (2019 - 2026)\n- Serviced engines and brakes, diagnosed faults and carried out scheduled maintenance on a fleet of 40 buses.\n- Kept maintenance records and ordered spare parts.\n\nEDUCATION\nNVQ Level 4 Automotive Technology, Technical College, 2018\n",
+   "split": "holdout_v3",
+   "supported": [
+    {
+     "rank": 1,
+     "area_id": "A072",
+     "name": "Machinery mechanics, toolmaking & repair",
+     "support_class": "direct",
+     "relevance": 4,
+     "evidence_ids": [
+      "E001",
+      "E001",
+      "E002"
+     ],
+     "explanation": "Direct evidence - Mechanical Technician (2019 - 2026): \"Serviced engines and brakes, diagnosed faults and carried out scheduled maintenance on a fleet of 40 buses.\" | Mechanical Technician (2019 - 2026): \"Serviced engines and brakes, diagnosed faults and carried out scheduled maintenance on a fleet of 40 buses.\" | Automotive Technology (2018): \"NVQ Level 4 Automotive Technology, Technical College, 2018\"",
+     "qualification_gaps": [],
+     "uncertainty": "low",
+     "status": "accepted",
+     "label": null
+    }
+   ],
+   "exploration": [],
+   "validation_log": [],
+   "classes": {
+    "A001": "unsupported",
+    "A002": "unsupported",
+    "A003": "unsupported",
+    "A004": "unsupported",
+    "A005": "unsupported",
+    "A006": "unsupported",
+    "A007": "unsupported",
+    "A008": "unsupported",
+    "A009": "unsupported",
+    "A010": "unsupported",
+    "A011": "unsupported",
+    "A012": "unsupported",
+    "A013": "unsupported",
+    "A014": "unsupported",
+    "A015": "unsupported",
+    "A016": "unsupported",
+    "A017": "unsupported",
+    "A018": "unsupported",
+    "A019": "unsupported",
+    "A020": "unsupported",
+    "A021": "unsupported",
+    "A022": "unsupported",
+    "A023": "unsupported",
+    "A024": "unsupported",
+    "A025": "unsupported",
+    "A026": "unsupported",
+    "A027": "unsupported",
+    "A028": "unsupported",
+    "A029": "unsupported",
+    "A030": "unsupported",
+    "A031": "unsupported",
+    "A032": "unsupported",
+    "A033": "unsupported",
+    "A034": "unsupported",
+    "A035": "unsupported",
+    "A036": "unsupported",
+    "A037": "unsupported",
+    "A038": "unsupported",
+    "A039": "unsupported",
+    "A040": "unsupported",
+    "A041": "unsupported",
+    "A042": "unsupported",
+    "A043": "unsupported",
+    "A044": "unsupported",
+    "A045": "unsupported",
+    "A046": "unsupported",
+    "A047": "unsupported",
+    "A048": "unsupported",
+    "A049": "unsupported",
+    "A050": "unsupported",
+    "A051": "unsupported",
+    "A052": "unsupported",
+    "A053": "unsupported",
+    "A054": "unsupported",
+    "A055": "unsupported",
+    "A056": "unsupported",
+    "A057": "unsupported",
+    "A058": "unsupported",
+    "A059": "unsupported",
+    "A060": "unsupported",
+    "A061": "unsupported",
+    "A062": "unsupported",
+    "A063": "unsupported",
+    "A064": "unsupported",
+    "A065": "unsupported",
+    "A066": "unsupported",
+    "A067": "unsupported",
+    "A068": "unsupported",
+    "A069": "unsupported",
+    "A070": "unsupported",
+    "A071": "unsupported",
+    "A072": "direct",
+    "A073": "unsupported",
+    "A074": "unsupported",
+    "A075": "unsupported",
+    "A076": "unsupported",
+    "A077": "unsupported",
+    "A078": "unsupported",
+    "A079": "unsupported",
+    "A080": "unsupported",
+    "A081": "unsupported",
+    "A082": "unsupported",
+    "A083": "unsupported",
+    "A084": "unsupported",
+    "A085": "unsupported",
+    "A086": "unsupported",
+    "A087": "unsupported",
+    "A088": "unsupported",
+    "A089": "unsupported",
+    "A090": "unsupported",
+    "A091": "unsupported",
+    "A092": "unsupported",
+    "A093": "unsupported",
+    "A094": "unsupported"
+   },
+   "warnings": [],
+   "records": [
+    {
+     "evidence_id": "E001",
+     "evidence_type": "applied_skill",
+     "role": "Mechanical Technician",
+     "contribution": "own",
+     "domain_context": "transportation",
+     "quote": "Serviced engines and brakes, diagnosed faults and carried out scheduled maintenance on a fleet of 40 buses.",
+     "status": "accepted"
+    },
+    {
+     "evidence_id": "E002",
+     "evidence_type": "education",
+     "role": null,
+     "contribution": "own",
+     "domain_context": null,
+     "quote": "NVQ Level 4 Automotive Technology, Technical College, 2018",
+     "status": "repaired"
+    }
+   ],
+   "rule_top10": [
+    {
+     "area_id": "A015",
+     "name": "Engineering & engineering technology"
+    },
+    {
+     "area_id": "A082",
+     "name": "Assembly work"
+    },
+    {
+     "area_id": "A072",
+     "name": "Machinery mechanics, toolmaking & repair"
+    },
+    {
+     "area_id": "A016",
+     "name": "Electrical, electronics & telecom engineering"
+    },
+    {
+     "area_id": "A075",
+     "name": "Electrical & electronics installation & repair"
+    },
+    {
+     "area_id": "A085",
+     "name": "Labouring in mining, construction, manufacturing & transport"
+    },
+    {
+     "area_id": "A068",
+     "name": "Aviation & maritime operations"
+    },
+    {
+     "area_id": "A070",
+     "name": "Building & construction trades"
+    },
+    {
+     "area_id": "A012",
+     "name": "Physical & earth sciences"
+    },
+    {
+     "area_id": "A017",
+     "name": "Architecture, planning, surveying & design"
+    }
+   ],
+   "direct_top10": [],
+   "run_meta": {
+    "model": "nvidia/nemotron-3.5-super-vl:free",
+    "provider": "Nvidia",
+    "latency_s": 269.6,
+    "completion_tokens": 24360
+   }
+  },
+  "v3_11_law_firm_legal_secretary": {
+   "id": "v3_11_law_firm_legal_secretary",
+   "title": "Legal secretary at a law firm",
+   "cv_text": "Chathurika Ranasinghe\nSUMMARY\nLegal secretary with seven years of experience in a commercial law firm.\n\nEXPERIENCE\nLegal Secretary, Harbour and Fernando Law Associates (2019 - 2026)\n- Typed and formatted pleadings and contracts and managed the attorneys' diaries and court dates.\n- Filed documents at the court registry and kept the firm's case files in order.\n\nEDUCATION\nDiploma in Secretarial Studies, Technical College, 2018\n",
+   "split": "holdout_v3",
+   "supported": [
+    {
+     "rank": 1,
+     "area_id": "A037",
+     "name": "Administrative & executive support",
+     "support_class": "direct",
+     "relevance": 4,
+     "evidence_ids": [
+      "E001"
+     ],
+     "explanation": "Direct evidence - Legal Secretary (2019 - 2026): \"Typed and formatted pleadings and contracts and managed the attorneys' diaries and court dates.\"",
+     "qualification_gaps": [],
+     "uncertainty": "low",
+     "status": "accepted",
+     "label": null
+    },
+    {
+     "rank": 2,
+     "area_id": "A038",
+     "name": "Office administration",
+     "support_class": "direct",
+     "relevance": 3,
+     "evidence_ids": [
+      "E001"
+     ],
+     "explanation": "Direct evidence - Legal Secretary (2019 - 2026): \"Typed and formatted pleadings and contracts and managed the attorneys' diaries and court dates.\"",
+     "qualification_gaps": [],
+     "uncertainty": "low",
+     "status": "accepted",
+     "label": null
+    },
+    {
+     "rank": 3,
+     "area_id": "A039",
+     "name": "Data entry & keyboard operation",
+     "support_class": "direct",
+     "relevance": 3,
+     "evidence_ids": [
+      "E001"
+     ],
+     "explanation": "Direct evidence - Legal Secretary (2019 - 2026): \"Typed and formatted pleadings and contracts and managed the attorneys' diaries and court dates.\"",
+     "qualification_gaps": [],
+     "uncertainty": "low",
+     "status": "accepted",
+     "label": null
+    },
+    {
+     "rank": 4,
+     "area_id": "A042",
+     "name": "Records, mail & other clerical support",
+     "support_class": "direct",
+     "relevance": 3,
+     "evidence_ids": [
+      "E001"
+     ],
+     "explanation": "Direct evidence - Legal Secretary (2019 - 2026): \"Typed and formatted pleadings and contracts and managed the attorneys' diaries and court dates.\"",
+     "qualification_gaps": [],
+     "uncertainty": "low",
+     "status": "accepted",
+     "label": null
+    }
+   ],
+   "exploration": [
+    {
+     "rank": null,
+     "area_id": "A046",
+     "name": "Law & justice",
+     "support_class": "domain_exposure_only",
+     "relevance": null,
+     "evidence_ids": [
+      "E001"
+     ],
+     "explanation": "Context - Legal Secretary (2019 - 2026): \"Typed and formatted pleadings and contracts and managed the attorneys' diaries and court dates.\"",
+     "qualification_gaps": [],
+     "uncertainty": "low",
+     "status": "accepted",
+     "label": "Industry exposure only: the work served this field, but the evidence does not show doing this occupation's work"
+    }
+   ],
+   "validation_log": [],
+   "classes": {
+    "A001": "unsupported",
+    "A002": "unsupported",
+    "A003": "unsupported",
+    "A004": "unsupported",
+    "A005": "unsupported",
+    "A006": "unsupported",
+    "A007": "unsupported",
+    "A008": "unsupported",
+    "A009": "unsupported",
+    "A010": "unsupported",
+    "A011": "unsupported",
+    "A012": "unsupported",
+    "A013": "unsupported",
+    "A014": "unsupported",
+    "A015": "unsupported",
+    "A016": "unsupported",
+    "A017": "unsupported",
+    "A018": "unsupported",
+    "A019": "unsupported",
+    "A020": "unsupported",
+    "A021": "unsupported",
+    "A022": "unsupported",
+    "A023": "unsupported",
+    "A024": "unsupported",
+    "A025": "unsupported",
+    "A026": "unsupported",
+    "A027": "unsupported",
+    "A028": "unsupported",
+    "A029": "unsupported",
+    "A030": "unsupported",
+    "A031": "unsupported",
+    "A032": "unsupported",
+    "A033": "unsupported",
+    "A034": "unsupported",
+    "A035": "unsupported",
+    "A036": "unsupported",
+    "A037": "direct",
+    "A038": "direct",
+    "A039": "direct",
+    "A040": "unsupported",
+    "A041": "unsupported",
+    "A042": "direct",
+    "A043": "unsupported",
+    "A044": "unsupported",
+    "A045": "unsupported",
+    "A046": "domain_exposure_only",
+    "A047": "unsupported",
+    "A048": "unsupported",
+    "A049": "unsupported",
+    "A050": "unsupported",
+    "A051": "unsupported",
+    "A052": "unsupported",
+    "A053": "unsupported",
+    "A054": "unsupported",
+    "A055": "unsupported",
+    "A056": "unsupported",
+    "A057": "unsupported",
+    "A058": "unsupported",
+    "A059": "unsupported",
+    "A060": "unsupported",
+    "A061": "unsupported",
+    "A062": "unsupported",
+    "A063": "unsupported",
+    "A064": "unsupported",
+    "A065": "unsupported",
+    "A066": "unsupported",
+    "A067": "unsupported",
+    "A068": "unsupported",
+    "A069": "unsupported",
+    "A070": "unsupported",
+    "A071": "unsupported",
+    "A072": "unsupported",
+    "A073": "unsupported",
+    "A074": "unsupported",
+    "A075": "unsupported",
+    "A076": "unsupported",
+    "A077": "unsupported",
+    "A078": "unsupported",
+    "A079": "unsupported",
+    "A080": "unsupported",
+    "A081": "unsupported",
+    "A082": "unsupported",
+    "A083": "unsupported",
+    "A084": "unsupported",
+    "A085": "unsupported",
+    "A086": "unsupported",
+    "A087": "unsupported",
+    "A088": "unsupported",
+    "A089": "unsupported",
+    "A090": "unsupported",
+    "A091": "unsupported",
+    "A092": "unsupported",
+    "A093": "unsupported",
+    "A094": "unsupported"
+   },
+   "warnings": [],
+   "records": [
+    {
+     "evidence_id": "E001",
+     "evidence_type": "applied_skill",
+     "role": "Legal Secretary",
+     "contribution": "own",
+     "domain_context": "legal services",
+     "quote": "Typed and formatted pleadings and contracts and managed the attorneys' diaries and court dates.",
+     "status": "accepted"
+    },
+    {
+     "evidence_id": "E002",
+     "evidence_type": "education",
+     "role": null,
+     "contribution": "unknown",
+     "domain_context": null,
+     "quote": "Diploma in Secretarial Studies, Technical College, 2018",
+     "status": "repaired"
+    }
+   ],
+   "rule_top10": [
+    {
+     "area_id": "A046",
+     "name": "Law & justice"
+    },
+    {
+     "area_id": "A037",
+     "name": "Administrative & executive support"
+    },
+    {
+     "area_id": "A053",
+     "name": "Paralegal, social work & community support"
+    },
+    {
+     "area_id": "A052",
+     "name": "Government regulation & compliance"
+    },
+    {
+     "area_id": "A054",
+     "name": "Protective services (police, fire, security)"
+    },
+    {
+     "area_id": "A017",
+     "name": "Architecture, planning, surveying & design"
+    },
+    {
+     "area_id": "A021",
+     "name": "Paramedic & emergency care"
+    },
+    {
+     "area_id": "A016",
+     "name": "Electrical, electronics & telecom engineering"
+    },
+    {
+     "area_id": "A091",
+     "name": "Psychology & behavioural research"
+    },
+    {
+     "area_id": "A015",
+     "name": "Engineering & engineering technology"
+    }
+   ],
+   "direct_top10": [],
+   "run_meta": {
+    "model": "nvidia/nemotron-3.5-super-vl:free",
+    "provider": "Nvidia",
+    "latency_s": 213.8,
+    "completion_tokens": 23018
    }
   }
  }

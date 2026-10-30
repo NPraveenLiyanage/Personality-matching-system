@@ -183,4 +183,4 @@ Fresh 12-case set (untouched by fixes): evidence pipeline 1/10 trap cases vs rul
 Reviewer 7b changes applied as a new case version (`bench/cases/career_cases_v3.yaml`) without editing the originals; new `exploration_only` field and overclaim metric (metrics v3); all stored runs re-scored; comparison in `docs/CASES_V3_COMPARISON.md`. Trap results unchanged; expected-area recall for the evidence pipeline rose on tune and fresh sets partly because expectations changed after outputs were known, so not independent. Regulated-term and definition proposals (7c, 7d) not yet applied.
 
 ## 22. Reviewer-based pipeline v2 (2026-10-29)
-Tune re-run done (0/8 trap cases, 13/14 expected areas, 0 overclaims). Fresh held-out v3 set written, not yet run. See docs/PHASE3_RESULTS.md.
+Tune re-run done (0/8 trap cases, 13/14 expected areas, 0 overclaims). Fresh held-out v3 set: 9 of 12 completed first time (3 failed on invalid JSON); after retrying them (second attempts) 12 of 12: 0 trap cases shown as supported, 10/10 expected areas found, 0 overclaims, 1.33 areas shown. See docs/PHASE3_RESULTS.md.

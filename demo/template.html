@@ -145,14 +145,14 @@ var EX = D.examples, NAMES = D.area_names;
 var LABEL = {direct:"Supported by evidence",transferable:"Supported (transferable skills)",domain_exposure_only:"Industry exposure only",
   interest_only:"Stated interest only",in_progress_study:"Study in progress",unsupported:"Not supported by the text",insufficient_info:"Not enough information"};
 var STRENGTH = ["none","weak","moderate","strong","very strong"];
-var GROUP = {tune:"Development set",holdout:"Earlier held-out set",holdout_v2:"Fresh held-out set"};
+var GROUP = {tune:"Development set",holdout:"Earlier held-out set",holdout_v2:"Fresh held-out set (round 2)",holdout_v3:"Fresh held-out set (round 3, latest pipeline)"};
 
 function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
 function badge(c){return '<span class="badge b-'+esc(c)+'">'+esc(LABEL[c]||c)+'</span>';}
 function nm(id){return NAMES[id]||id;}
 
 var keys = Object.keys(EX).sort(function(a,b){
-  var o={tune:0,holdout:1,holdout_v2:2};
+  var o={tune:0,holdout:1,holdout_v2:2,holdout_v3:3};
   return (o[EX[a].split]-o[EX[b].split])||(a<b?-1:1);});
 var current = keys[0];
 
@@ -231,6 +231,7 @@ function progress(){
     ["Fresh held-out set (never used for fixes)","Cases where a wrong-profession area is shown as supported",1,10,"Older rule engine: 8 of 10"],
     ["Fresh held-out set","Top suggestion is an expected area",9,11,"Older rule engine: 6 of 11"],
     ["Development set (12 cases)","Cases where a wrong-profession area is shown as supported",0,8,"Older rule engine: 7 of 8 · older direct AI prompt: 5 of 8 (not an independent test)"],
+    ["Round 3 fresh held-out set (12 cases, latest pipeline; 3 needed a retry)","Cases where a wrong-profession area is shown as supported",0,12,"Expected areas found 10 of 10 · older engines not run on this set"],
     ["Development set, latest pipeline version","Expected areas found",13,14,"Not independent: these cases guided the design"]
   ];
   var h=rows.map(function(r){return '<div><b>'+esc(r[0])+'</b><div class="small">'+esc(r[1])+'</div><div class="bar"><div style="width:'+(r[2]/r[3]*100)+'%"></div></div><b>'+r[2]+' of '+r[3]+'</b> <span class="small">· '+esc(r[4])+'</span></div><hr style="border:0;border-top:1px solid var(--line)">';}).join("");
@@ -240,7 +241,7 @@ function progress(){
     '<li>Known failure on the fresh set: a school leaver was given a transferable software area they should not have had.</li>'+
     '<li>A free AI model was used, one run per case. Results can vary between runs.</li>'+
     '<li>The 94 area definitions and the regulated-occupation list are AI-drafted and await expert review.</li>'+
-    '<li>A further untouched set of 12 cases is written and will be run once before any new claims.</li></ul>';
+    '<li>Round 3: 3 of 12 cases failed on the first attempt (free model returned invalid JSON) and were retried; results are reported as retried, not as a clean first run.</li></ul>';
   document.getElementById("progress").innerHTML=h;
 }
 

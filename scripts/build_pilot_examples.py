@@ -20,6 +20,7 @@ EVIDENCE_RUNS = ["career_llm_evidence_nvidia_nemotron-3.5-super-vl_free_tune_202
                  "career_llm_evidence_nvidia_nemotron-3.5-super-vl_free_holdout_2026-10-29.json",
                  "career_llm_evidence_nvidia_nemotron-3.5-super-vl_free_2026-10-28.json",       # holds c20
                  "career_llm_evidence_nvidia_nemotron-3.5-super-vl_free_holdout_v2_2026-10-29.json"]
+V3_RUN = "career_llm_evidence_nvidia_nemotron-3.5-super-vl_free_holdout_v3_pipe2_2026-10-29.json"   # pipeline v2 (definitions/regulated v2)
 TITLES = {  # short human titles for the selector
     "c01_hospital_app_developer": "Student who built a hospital app", "c02_practising_nurse": "Practising nurse",
     "c03_bank_app_developer": "Developer on a banking platform", "c04_accountant": "Accountant",
@@ -37,16 +38,24 @@ TITLES = {  # short human titles for the selector
     "v2_05_packaging_designer_pharma": "Packaging designer for a pharma company", "v2_06_sparse_one_line": "Sparse one-line CV",
     "v2_07_school_leaver_retail": "School leaver, part-time supermarket", "v2_08_accounting_coursework_only": "Accounting student, coursework only",
     "v2_09_backend_developer_hospital": "Backend developer: hospital client", "v2_10_backend_developer_bank": "Backend developer: bank client",
-    "v2_11_backend_developer_school": "Backend developer: school client", "v2_12_garbled_text": "Garbled-text CV"}
+    "v2_11_backend_developer_school": "Backend developer: school client", "v2_12_garbled_text": "Garbled-text CV",
+    "v3_01_pharmacist": "Pharmacist", "v3_02_nursing_student_coursework": "Nursing student (study in progress)",
+    "v3_03_medical_centre_receptionist": "Receptionist at a medical centre", "v3_04_heavy_truck_driver_medical_supplies": "Truck driver delivering medical supplies",
+    "v3_05_primary_school_teacher": "Primary school teacher", "v3_06_bank_data_analyst": "Data analyst at a bank",
+    "v3_07_social_worker": "Social worker (child protection)", "v3_08_mechanical_technician_bus_depot": "Bus-depot mechanical technician",
+    "v3_09_school_leaver_wants_to_be_a_doctor": "School leaver who wants to be a doctor", "v3_10_law_firm_software_developer": "Software developer at a law firm",
+    "v3_11_law_firm_legal_secretary": "Legal secretary at a law firm", "v3_12_newspaper_reporter": "Newspaper reporter"}
 
 
 def main():
-    cases = {c["id"]: c for c in metrics.load_cases() + metrics.load_cases(ROOT / "bench" / "cases" / "career_cases_holdout_v2.yaml")}
+    cases = {c["id"]: c for c in metrics.load_cases() + metrics.load_cases(ROOT / "bench" / "cases" / "career_cases_holdout_v2.yaml")
+             } | {c["id"]: c for c in metrics.load_cases(ROOT / "bench" / "cases" / "career_cases_holdout_v3.yaml")}
     defs, reg = assess.load_definitions(), assess.load_regulated()
     cat = pipeline.get_catalogue()
     direct = json.loads((RUNS / "career_llm_direct_anthropic_claude-haiku-5.5_2026-10-27_m2.json").read_text(encoding="utf-8"))
     examples = {}
-    for fn in EVIDENCE_RUNS:
+    defs2, reg2 = assess.load_definitions(ROOT / "data/processed/area_definitions_v2.yaml"), assess.load_regulated(ROOT / "data/processed/regulated_areas_v2.yaml")
+    for fn in EVIDENCE_RUNS + [V3_RUN]:
         p = RUNS / fn
         if not p.exists():
             continue
@@ -54,7 +63,7 @@ def main():
         for cid, st in run["stages"].items():
             if cid in examples or cid not in cases:
                 continue
-            rb = replay.rebuild(st, defs, reg)
+            rb = replay.rebuild(st, *( (defs2, reg2) if fn == V3_RUN else (defs, reg) ))
             if not rb["ok"]:
                 continue
             c = cases[cid]
