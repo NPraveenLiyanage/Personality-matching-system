@@ -1,3 +1,9 @@
+# CHANGELOG (pre-run label corrections from scripts/check_case_labels.py, 2026-10-30; file sha256[:16] before edit 388f38810c48f5d4):
+#  - s2_21 refs: ISCO 3434 (chef, A051) -> 5120 (cook, A057), matching the CV.  s2_18 refs: 2341 (primary) -> 2330 (secondary), matching the CV.
+#  - s2_09 refs: 2523 -> 2529 (security shares the unit with A044/A090).  s2_26 refs: vet codes removed (farm hand, A066).
+#  - s2_23 (pharmacy assistant): ISCO 3213 maps to A024 in the catalogue, so A024 was added as acceptable (reference only; supported stays A062).
+#  - s2_24 (dental assistant): ISCO 3251 maps to A025, not A023: supported A023 -> A025; A023 is now a trap. Both cases had NOT been run yet.
+#  - The 9 cases already run (s2_01 to s2_09) have unchanged CV text and labels; only the file hash differs from that run's metadata.
 # Synthetic fixtures set 2 (32 invented CVs, written 2026-10-30). ALL INVENTED: no real person, employer record or dataset text.
 # Generation method: for each occupation the task wording was paraphrased from public occupational descriptions (ILO ISCO-08, O*NET
 # OnLine, UK National Careers Service job profiles; see `refs` per case and docs/SYNTHETIC_DATA_METHOD.md). Names, employers and dates
@@ -193,7 +199,7 @@
   sector: technology
   stage: early
   categories: [in_progress_study, domain_confusion]
-  refs: [ISCO-08 2523, O*NET 15-1212.00]
+  refs: [ISCO-08 2529, O*NET 15-1212.00]
   cv_text: |
     Ruvindu Alwis
     SUMMARY
@@ -378,7 +384,7 @@
   sector: technology
   stage: established
   categories: [career_changer, in_progress_study]
-  refs: [ISCO-08 2341, ISCO-08 2512]
+  refs: [ISCO-08 2330, ISCO-08 2512]
   cv_text: |
     Gayan Madushanka
     SUMMARY
@@ -444,7 +450,7 @@
   sector: hospitality
   stage: established
   categories: [career_changer]
-  refs: [ISCO-08 3434, ISCO-08 5212]
+  refs: [ISCO-08 5120, ISCO-08 5212]
   cv_text: |
     Prabath Wickramanayake
     SUMMARY
@@ -487,7 +493,7 @@
   sector: health
   stage: established
   categories: [regulated_role, domain_confusion]
-  refs: [ISCO-08 5321, ISCO-08 2262]
+  refs: [ISCO-08 3213, ISCO-08 2262]
   cv_text: |
     Kavindi Mendis
     SUMMARY
@@ -496,7 +502,7 @@
     Pharmacy assistant, Lakeview Pharmacy (2024 - 2026)
     - Stocked shelves, took payments, and handed prepared medicines to customers after the pharmacist had checked them. I do not dispense.
   supported: [A062]
-  acceptable: [A025]
+  acceptable: [A024, A025]
   exploration_only: []
   traps: [A023, A018]
 
@@ -515,10 +521,10 @@
     EXPERIENCE
     Dental assistant, Smile Care Clinic (2022 - 2026)
     - Prepared instruments, passed tools to the dentist during treatment, sterilised equipment and booked appointments.
-  supported: [A023]
-  acceptable: [A025]
+  supported: [A025]
+  acceptable: []
   exploration_only: []
-  traps: [A018, A019]
+  traps: [A018, A019, A023]
 
 - id: s2_25_junior_doctor_claimed
   synthetic: true
@@ -549,7 +555,7 @@
   sector: agriculture
   stage: established
   categories: [regulated_role, domain_confusion]
-  refs: [ISCO-08 3240, ISCO-08 2250]
+  refs: [ISCO-08 9212]
   cv_text: |
     Chathura Fonseka
     SUMMARY
