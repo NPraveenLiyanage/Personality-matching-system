@@ -1,0 +1,2413 @@
+definitions_version: v3
+catalogue_fingerprint: 11600e8abed14d08
+status: reviewer_provisional
+drafted_on: '2026-10-27'
+drafted_by:
+  model: nvidia/nemotron-3.5-super-vl:free
+  provider: nvidia
+  data_collection: allow
+note: 'v1 (LLM-drafted) + reviewer scope notes from docs/PROJECT_REVIEW.md 7d. The reviewer was AI-assisted,
+  not a practitioner. v3 (2026-10-30): owner-requested scope notes on A040 and A044 (see docs/PROJECT_REVIEW.md
+  section 10).'
+areas:
+  A001:
+    name: Government & public-sector leadership
+    cluster: Education, Social & Public Service
+    status: draft_unreviewed
+    definition: Legislators and senior officials determine, formulate, advise on and direct implementation
+      of government or community policies; make, amend or repeal laws and rules; plan, organize, direct,
+      control and evaluate government departments, agencies and special-interest organizations.
+    typical_activities:
+    - preside over or participate in legislative and council proceedings
+    - make, ratify, amend or repeal laws and public rules
+    - direct policy formulation and implementation for government departments and agencies
+    - plan, organize, direct, control and evaluate overall activities of public bodies or special-interest
+      organizations
+    - represent government or community in official proceedings and negotiations
+    evidence_examples:
+    - Chaired council meetings and voted on local laws, budgets and bylaws.
+    - Drafted and secured passage of a legislative amendment affecting regional planning.
+    - Directed a state agency’s strategic plan, annual budget and performance review.
+    - Negotiated an intergovernmental agreement on behalf of a ministry or administration.
+    common_contextual_confusions:
+    - policy researcher advising government without decision-making authority
+    - senior civil servant implementing ministers’ decisions rather than determining policy
+    - journalist or commentator covering legislative proceedings without holding office
+    qualification_gaps: []
+    formal_qualification_required: false
+  A002:
+    name: Executive leadership & general management
+    cluster: Business, Finance & Management
+    status: draft_unreviewed
+    definition: Managing directors and chief executives formulate and review policies and plan, direct,
+      coordinate and evaluate the overall activities of enterprises or organizations other than government
+      departments and special-interest organizations, usually answerable to a board or governing body.
+    typical_activities:
+    - formulate and review organizational policies with other managers
+    - plan, direct and coordinate overall enterprise activities
+    - review operations and results and report to the board or governing body
+    - set standards and remain answerable for operational results
+    - appoint and direct senior managers across business functions
+    evidence_examples:
+    - Formulated a three-year business strategy and obtained board approval.
+    - Directed the annual operating plan and coordinated regional managers to meet revenue targets.
+    - Reviewed divisional results and presented performance reports to the governing body.
+    - Appraised and appointed heads of finance, operations and human resources.
+    common_contextual_confusions:
+    - public-sector department head managing a government agency instead of an enterprise
+    - functional director controlling one department rather than overall enterprise activities
+    - non-executive board member governing without executive responsibility for operations
+    qualification_gaps: []
+    formal_qualification_required: false
+  A003:
+    name: Business services & administration management
+    cluster: Business, Finance & Management
+    status: draft_unreviewed
+    definition: Business services and administration managers plan, organize, direct, control and coordinate
+      financial, administrative, human-resource, policy and planning activities of organizations or service
+      providers to other enterprises.
+    typical_activities:
+    - formulate and administer policy advice, strategic and financial plans
+    - establish and direct operational and administrative procedures
+    - implement, monitor and evaluate strategies and policies
+    - advise senior managers and boards on financial, administrative and policy matters
+    - coordinate corporate services such as HR, finance, facilities or cleaning operations
+    evidence_examples:
+    - Administered a corporate expenses policy and audited compliance across business units.
+    - Prepared the annual financial plan and reported budget variances to senior management.
+    - Designed recruitment and induction procedures used by three regional offices.
+    - Advised the board on outsourcing facilities management and managed the resulting contract.
+    common_contextual_confusions:
+    - payroll administrator processing transactions under a personnel manager
+    - accountant preparing reports for a finance manager rather than directing financial planning
+    - executive assistant supporting managers without authority over administrative services
+    qualification_gaps: []
+    formal_qualification_required: false
+  A004:
+    name: Sales, marketing & R&D management
+    cluster: Business, Finance & Management
+    status: draft_unreviewed
+    definition: Sales, marketing and development managers plan, organize, direct, control and coordinate
+      advertising, public relations, research and development, and sales and marketing activities for
+      enterprises or service providers to other organizations.
+    typical_activities:
+    - formulate advertising, PR, product development, sales and marketing policies
+    - direct new product development or scientific research initiatives
+    - manage marketing, public relations and advertising campaigns
+    - set sales targets, pricing and distribution arrangements
+    - coordinate market research and product launch activities
+    evidence_examples:
+    - Led the advertising and launch campaign for a new product and met the first-year sales target.
+    - Directed an R&D programme to develop a product prototype and coordinate pilot testing.
+    - Set regional sales quotas and negotiated supply agreements with key distributors.
+    - Handled media relations during a product recall and monitored campaign coverage.
+    common_contextual_confusions:
+    - sales representative achieving personal quotas rather than managing sales activity
+    - advertising copywriter producing materials under a marketing manager’s direction
+    - market interviewer collecting survey data rather than directing research and development
+    qualification_gaps: []
+    formal_qualification_required: false
+  A005:
+    name: Agricultural production & farm management
+    cluster: Agriculture, Forestry & Fisheries
+    status: draft_unreviewed
+    definition: Plan, direct and coordinate production in agricultural, forestry, horticulture, aquaculture
+      or fishery operations; grow and harvest crops, breed and raise livestock, and catch or harvest aquatic
+      life to meet market or contract demand.
+    typical_activities:
+    - monitor markets and plan production to meet contract and demand requirements
+    - establish and manage production budgets, output and costs
+    - organize crop planting, livestock breeding, harvesting or aquatic harvesting cycles
+    - supervise farm, forestry, aquaculture or fishing staff and equipment
+    - record production information and ensure compliance with quality or quota requirements
+    evidence_examples:
+    - Planned a 200-hectare cereal rotation to meet a supply contract and monitored yield and input costs.
+    - Managed a ranch breeding programme, herd health, feed budget and livestock sales.
+    - Coordinated trawler operations, catch records and fishing-quota compliance.
+    - Oversaw plantation irrigation, harvesting and packing to meet export orders.
+    common_contextual_confusions:
+    - farm shop assistant selling produce without managing production
+    - agronomist advising growers on crops without running the farm operation
+    - food processing manager converting harvested products rather than producing them on the farm
+    qualification_gaps: []
+    formal_qualification_required: false
+    reviewer_scope_note: Distinguish farm and other production managers from workers doing agricultural
+      tasks. Require management or production-planning duties for a management recommendation.
+  A006:
+    name: Manufacturing, construction & logistics management
+    cluster: Production, Trades, Transport & Operations
+    status: draft_unreviewed
+    definition: Manufacturing, mining, construction and distribution managers plan, organize and coordinate
+      manufacturing, mineral extraction, construction, supply, storage and transportation operations as
+      department or general managers of enterprises without multiple management layers.
+    typical_activities:
+    - plan output quality, quantity, cost, timeliness and labour requirements
+    - control plant operation and quality procedures through maintenance and operating schedules
+    - coordinate supply, storage and transportation of materials or products
+    - manage construction or extraction project schedules, contractors and budgets
+    - monitor production output, costs and quality standards
+    evidence_examples:
+    - Planned monthly assembly-plant output targets, labour rosters and maintenance shutdowns.
+    - Controlled quarry product quality by setting operating hours and monitoring crushing schedules.
+    - Coordinated civil construction subcontractors, materials delivery and project budget.
+    - Managed bus station timetables, staffing and passenger operations.
+    common_contextual_confusions:
+    - machine operator running plant equipment under a production manager
+    - civil engineer designing works without managing construction operations
+    - shipping clerk processing documents rather than coordinating distribution and transport
+    qualification_gaps: []
+    formal_qualification_required: false
+  A007:
+    name: ICT service management
+    cluster: Technology & Data
+    status: draft_unreviewed
+    definition: Plan, direct, and coordinate the acquisition, development, maintenance, and use of computer
+      and telecommunication systems; consult with users, vendors, and technicians to assess needs and
+      specify technology; formulate ICT strategies, policies, and plans.
+    typical_activities:
+    - Assess computing needs and system requirements with users and technicians
+    - Specify technology to meet organisational needs
+    - Formulate and direct ICT strategies, policies, and plans
+    - Direct selection and installation of computer and telecommunication systems
+    - Coordinate maintenance and use of ICT systems
+    - Manage vendors and internal technical staff
+    evidence_examples:
+    - Led the selection and installation of a new enterprise telephony system across three office sites
+    - Developed an ICT strategy and annual technology plan aligned with business objectives
+    - Consulted with department heads to assess computing requirements and specify hardware and software
+      solutions
+    - Managed vendor contracts and coordinated system maintenance for a 200-user network
+    common_contextual_confusions:
+    - Providing desktop support as an IT help desk technician
+    - Writing software code as an application developer
+    - Selling hardware or software as a vendor account representative
+    qualification_gaps: []
+    formal_qualification_required: false
+  A008:
+    name: Professional services management
+    cluster: Business, Finance & Management
+    status: draft_unreviewed
+    definition: Plan, direct, and coordinate provision of childcare, health, welfare, education, or other
+      professional services; formulate policies, set standards, develop programmes, allocate resources,
+      and liaise with boards, funding bodies, and community agencies.
+    typical_activities:
+    - Formulate service policies and operational plans
+    - Set standards and objectives for service delivery
+    - Develop and implement programmes to meet client needs
+    - Direct allocation of budgets, staff, and facilities
+    - Liaise with parents, boards, funding bodies, and related agencies
+    evidence_examples:
+    - Developed and implemented a new patient admission programme at a community health centre
+    - Set service standards and annual objectives for a childcare centre serving 80 families
+    - Managed annual budget and staffing roster for a residential aged care facility
+    - Liaised with government funding bodies and community agencies to secure service partnerships
+    common_contextual_confusions:
+    - Delivering direct nursing care as a registered nurse
+    - Teaching classes as a school teacher
+    - Processing insurance claims as a financial services clerk
+    qualification_gaps: []
+    formal_qualification_required: false
+  A009:
+    name: Hospitality management
+    cluster: Hospitality, Retail & Personal Services
+    status: draft_unreviewed
+    definition: Plan, organize, and direct operations of accommodation, food, and beverage establishments;
+      oversee reservations, reception, housekeeping, and functions; monitor quality, ensure legal compliance,
+      and control staff recruitment, training, and supervision.
+    typical_activities:
+    - Plan and organize special functions, events, and entertainment
+    - Direct reservation, reception, room service, and housekeeping operations
+    - Monitor food quality and service standards at all stages
+    - Ensure compliance with liquor, gaming, health, and safety regulations
+    - Control recruitment, training, and supervision of hospitality staff
+    evidence_examples:
+    - Planned and delivered weekly themed events for a 120-room hotel
+    - Supervised front desk, housekeeping, and catering teams across two shifts
+    - Implemented health and safety compliance checks across kitchen and dining areas
+    - Recruited and trained 15 restaurant staff and maintained service quality standards
+    common_contextual_confusions:
+    - Preparing and cooking meals as a chef
+    - Cleaning guest rooms as a housekeeper
+    - Taking bookings as a receptionist
+    qualification_gaps: []
+    formal_qualification_required: false
+  A010:
+    name: Retail & wholesale management
+    cluster: Hospitality, Retail & Personal Services
+    status: draft_unreviewed
+    definition: Plan, organize, coordinate, and control retail or wholesale operations; manage budgets,
+      staffing, and strategic direction; determine product mix and stock levels; set purchasing, marketing,
+      and pricing policies; maintain financial and stock records.
+    typical_activities:
+    - Determine product mix, stock levels, and service standards
+    - Formulate purchasing, marketing, and pricing policies
+    - Promote and advertise goods and services
+    - Maintain records of stock levels and financial transactions
+    - Manage budgets and staffing for retail or wholesale units
+    evidence_examples:
+    - Set pricing and purchasing policies for a supermarket chain’s produce department
+    - Managed annual stock budget and reduced shrinkage by 8 percent
+    - Planned in-store promotions that increased weekly foot traffic by 12 percent
+    - Maintained financial transaction records and reconciled daily takings across multiple registers
+    common_contextual_confusions:
+    - Assisting customers and processing sales as a retail sales assistant
+    - Delivering goods as a wholesale delivery driver
+    - Creating advertising copy as a marketing officer
+    qualification_gaps: []
+    formal_qualification_required: false
+  A011:
+    name: Sports, culture & other services management
+    cluster: Hospitality, Retail & Personal Services
+    status: draft_unreviewed
+    definition: Plan, organize, and control operations of sporting, cultural, recreational, travel, or
+      amenity establishments; manage service range, facility upkeep, budgets, cash receipts, stock, and
+      publicity; monitor trends and control expenditure.
+    typical_activities:
+    - Plan and organize the range and mix of services or activities offered
+    - Ensure facilities are clean and in good condition
+    - Check cash receipts, custody, and conduct regular stock checks
+    - Establish and manage budgets and control expenditure
+    - Advise on facilities and promote activities through publicity
+    evidence_examples:
+    - Managed operating budget and controlled expenditure for a regional leisure centre
+    - Organized seasonal sports programmes and facility bookings for a community centre
+    - Conducted weekly cash reconciliation and stock audits at a cinema complex
+    - Promoted upcoming events through local publicity and facility tours
+    common_contextual_confusions:
+    - Coaching athletes as a sports coach
+    - Selling tickets as a box office cashier
+    - Cleaning venues as a facilities attendant
+    qualification_gaps: []
+    formal_qualification_required: false
+  A012:
+    name: Physical & earth sciences
+    cluster: Science, Engineering & Built Environment
+    status: draft_unreviewed
+    definition: Conduct research and experiments; develop concepts, theories, and methods in physics,
+      astronomy, meteorology, chemistry, geology, or geophysics; apply scientific knowledge to fields
+      such as manufacturing, agriculture, medicine, navigation, or space exploration.
+    typical_activities:
+    - Design and carry out scientific research and experiments
+    - Develop or improve concepts, theories, and operational methods
+    - Analyse physical phenomena in chemistry, geology, meteorology, or related fields
+    - Advise on applying scientific knowledge to industry, medicine, or navigation
+    - Publish or report findings from experimental investigations
+    evidence_examples:
+    - Designed and conducted laboratory experiments to analyse atmospheric samples
+    - Developed a geological model to support mineral exploration in a specific region
+    - Advised a manufacturing client on applying materials science to improve product durability
+    - Authored a research report on seismic activity for a government agency
+    common_contextual_confusions:
+    - Operating lab equipment as a science technician
+    - Teaching science subjects as a secondary school teacher
+    - Writing science articles as a journalist
+    qualification_gaps: []
+    formal_qualification_required: false
+  A013:
+    name: Mathematics, statistics & actuarial science
+    cluster: Science, Engineering & Built Environment
+    status: draft_unreviewed
+    definition: Professionals conduct research and develop mathematical, actuarial and statistical concepts,
+      models and techniques, applying them to engineering, business, natural and social sciences.
+    typical_activities:
+    - Develop mathematical, actuarial and statistical theories and techniques
+    - Apply mathematical principles and models to engineering, natural or social science tasks
+    - Conduct logical analyses of management problems
+    - Advise on statistical or actuarial methods for business and science
+    - Build operational models for decision support
+    evidence_examples:
+    - Developed a statistical model to forecast claim costs for an insurance portfolio
+    - Applied operations research techniques to reduce logistics costs by 12%
+    - Authored a paper on new actuarial methods for risk valuation
+    - Designed mathematical algorithms to optimise production scheduling
+    common_contextual_confusions:
+    - Bookkeeping or data entry using spreadsheets without statistical analysis
+    - Teaching school-level mathematics without research or model development
+    - IT support for statistical software without designing models
+    qualification_gaps: []
+    formal_qualification_required: false
+    reviewer_scope_note: Emphasize mathematical, statistical and actuarial professional work. Distinguish
+      research/method development from applied business analytics (A086).
+  A014:
+    name: Life sciences, biology & laboratory science
+    cluster: Science, Engineering & Built Environment
+    status: draft_unreviewed
+    definition: Professionals apply research into human, animal and plant life and environmental interactions
+      to develop knowledge, improve production and solve health and environmental problems.
+    typical_activities:
+    - Collect and analyse experimental and field data
+    - Develop new processes and techniques from life science research
+    - Advise organisations on ecological sustainable development of natural resources
+    - Evaluate biological samples in laboratory or field settings
+    - Investigate interactions between organisms and their environments
+    evidence_examples:
+    - Isolated and characterised bacterial strains from soil samples to identify antibiotic properties
+    - Designed field surveys to monitor marine species population trends
+    - Developed a plant propagation protocol that increased crop yield by 8%
+    - Provided ecological impact assessments for a forestry management plan
+    common_contextual_confusions:
+    - Working as a laboratory assistant preparing samples under direction, without designing research
+    - Selling scientific equipment to research labs without conducting life science studies
+    - Writing science journalism about biology without performing research
+    qualification_gaps: []
+    formal_qualification_required: false
+    reviewer_scope_note: Clarify that work is life-science research and professional laboratory science;
+      routine lab support or clinical diagnostics may belong elsewhere.
+  A015:
+    name: Engineering & engineering technology
+    cluster: Science, Engineering & Built Environment
+    status: draft_unreviewed
+    definition: Professionals design, plan and organise testing, construction, installation and maintenance
+      of structures, machines, components, production systems and plants, and plan production schedules
+      for safe, efficient projects.
+    typical_activities:
+    - Design civil, mechanical or chemical process systems and equipment
+    - Specify and interpret engineering drawings and plans
+    - Organise testing, construction, installation and maintenance of plant and machinery
+    - Plan production schedules and work procedures for engineering projects
+    - Determine cost-effective and safe methods for project delivery
+    evidence_examples:
+    - Designed a wastewater treatment process serving 50,000 users
+    - Prepared structural drawings and specifications for a multi-storey building
+    - Planned production schedules that reduced plant downtime by 15%
+    - Supervised installation and commissioning of industrial milling equipment
+    common_contextual_confusions:
+    - Operating CNC machines or other production equipment without engineering design responsibility
+    - Managing construction site logistics as a site supervisor without engineering design input
+    - Selling industrial equipment without specifying system designs
+    qualification_gaps: []
+    formal_qualification_required: false
+    reviewer_scope_note: Separate professional engineering design/testing from hands-on construction and
+      maintenance trades. Do not infer engineer from technician title.
+  A016:
+    name: Electrical, electronics & telecom engineering
+    cluster: Science, Engineering & Built Environment
+    status: draft_unreviewed
+    definition: Engineers research, design, advise, plan and direct construction and operation of electrical,
+      electronic and telecommunications systems, components, motors and equipment, and establish performance
+      and safety control systems.
+    typical_activities:
+    - Design electrical, electronic and telecommunications systems and components
+    - Advise on power generation, transmission and distribution systems
+    - Establish control systems to monitor performance and safety of electronic assemblies
+    - Direct maintenance and repair of electrical and electronic products
+    - Conduct research on electrotechnology applications
+    evidence_examples:
+    - Designed a telecommunications network linking four regional offices
+    - Specified control panels for an automated manufacturing line
+    - Directed upgrade of a 132 kV substation to improve grid reliability
+    - Researched electromagnetic compatibility for consumer electronics products
+    common_contextual_confusions:
+    - Installing domestic wiring as an electrician without engineering design authority
+    - Repairing consumer electronics as a technician without system design work
+    - Selling electrical components without advising on system architecture
+    qualification_gaps: []
+    formal_qualification_required: false
+  A017:
+    name: Architecture, planning, surveying & design
+    cluster: Science, Engineering & Built Environment
+    status: draft_unreviewed
+    definition: Professionals plan and design landscapes, buildings, interiors, products and visual content,
+      conduct survey work to position geographical features, prepare maps, and develop land-use plans
+      and policies.
+    typical_activities:
+    - Consult clients to determine design objectives and constraints
+    - Prepare design concepts, drawings and plans balancing aesthetics, function and technical needs
+    - Conduct surveys to establish precise positions of geographical features
+    - Draft and revise maps and spatial plans
+    - Develop land-use policies and planning controls
+    evidence_examples:
+    - Designed interior layouts for a 200-room hospitality development
+    - Prepared cadastral survey plans for a rural subdivision
+    - Created an urban transport plan to reduce central-city congestion
+    - Produced fashion garment specifications for manufacture
+    common_contextual_confusions:
+    - Decorating rooms as an interior stylist without architectural design or technical documentation
+    - Drawing maps as a GIS technician without surveying or planning authority
+    - Constructing buildings as a contractor without creating design plans
+    qualification_gaps: []
+    formal_qualification_required: false
+    reviewer_scope_note: Clarify licensed architecture/surveying roles versus other planning and design
+      professions; training and registration depend on the exact role and jurisdiction.
+  A018:
+    name: Medicine
+    cluster: Health, Care & Wellbeing
+    status: draft_unreviewed
+    definition: Doctors study, diagnose, treat and prevent illness, disease, injury and impairments in
+      humans using modern medicine, supervise care plans and conduct medical education and research.
+    typical_activities:
+    - Examine patients and take medical histories to determine health status
+    - Order and analyse diagnostic tests
+    - Prescribe and administer curative and preventive treatments
+    - Perform surgery and other clinical procedures
+    - Supervise and evaluate care delivered by other health professionals
+    evidence_examples:
+    - Managed a caseload of 25 general practice patients per day
+    - Performed laparoscopic appendectomy procedures in a hospital theatre
+    - Ordered and interpreted blood tests to adjust chronic disease treatment plans
+    - Led ward rounds and supervised junior medical staff on patient care
+    common_contextual_confusions:
+    - Working as a medical receptionist or practice manager without clinical duties
+    - Assisting in surgery as a surgical technician without diagnosing or treating patients
+    - Providing wellness coaching or nutritional advice without medical diagnosis
+    qualification_gaps: []
+    formal_qualification_required: true
+    reviewer_scope_note: Doctors diagnose, prevent and treat human illness and injury, prescribe or perform
+      clinical treatment and supervise medical care. Practising doctors in Sri Lanka require an accepted
+      qualification and SLMC registration; the qualification flag has been corrected to yes (medical practice).
+  A019:
+    name: Nursing & midwifery
+    cluster: Health, Care & Wellbeing
+    status: draft_unreviewed
+    definition: Nurses and midwives assess, plan, provide and evaluate care for people who are ill, disabled,
+      infirm or need support before, during and after childbirth, working with doctors and supervising
+      other care staff.
+    typical_activities:
+    - Assess patient health needs and develop care plans
+    - Provide nursing and midwifery care before, during and after childbirth
+    - Administer medications and monitor patient responses
+    - Supervise and coordinate other healthcare workers
+    - Evaluate and document patient care outcomes
+    evidence_examples:
+    - Assessed and planned nursing care for a caseload of 20 post-operative patients
+    - Provided antenatal, intrapartum and postnatal care for 15 expectant mothers
+    - Administered IV medications and recorded patient responses daily
+    - Supervised three healthcare assistants on a surgical ward
+    common_contextual_confusions:
+    - Working as a ward clerk or hospital administrator in a nursing department
+    - Caring for a relative at home without clinical responsibility
+    - Assisting a nurse as a volunteer without assessing or planning care
+    qualification_gaps:
+    - Nursing or midwifery degree or diploma
+    - Professional registration or licence
+    formal_qualification_required: true
+    reviewer_scope_note: Nurses and midwives plan, provide, monitor and evaluate nursing/midwifery care.
+      Distinguish nurse/midwife from healthcare assistant; confirm legal credential/registration requirements
+      for each exact role.
+  A020:
+    name: Traditional & complementary medicine
+    cluster: Health, Care & Wellbeing
+    status: draft_unreviewed
+    definition: Practitioners examine patients and prevent or treat illness and injury using culturally
+      specific theories and practices such as acupuncture, herbal medicine or homeopathy, developing and
+      implementing individual treatment plans.
+    typical_activities:
+    - Interview patients and families to determine health status
+    - Conduct physical examinations using traditional diagnostic methods
+    - Develop and implement treatment plans using acupuncture, herbs or other modalities
+    - Monitor client progress and adjust treatments
+    - Advise on lifestyle, diet and preventive health practices
+    evidence_examples:
+    - Performed acupuncture treatment for 30 clients with chronic pain
+    - Prepared and dispensed individualised Ayurvedic herbal formulations
+    - Conducted homeopathic consultations and prescribed remedies
+    - Provided cupping therapy sessions and recorded patient outcomes
+    common_contextual_confusions:
+    - Selling herbal supplements in a retail shop without patient examination
+    - Receiving a massage at a spa for relaxation
+    - Studying traditional medicine theory without practising on patients
+    qualification_gaps:
+    - Extensive study in a specific traditional medicine system
+    - Registration or licence where required by jurisdiction
+    formal_qualification_required: true
+    reviewer_scope_note: Practitioners provide traditional or complementary care using defined methods.
+      Qualification and legal authorization vary by practice and jurisdiction; do not claim all modalities
+      share one licence.
+  A021:
+    name: Paramedic & emergency care
+    cluster: Health, Care & Wellbeing
+    status: draft_unreviewed
+    definition: Paramedical practitioners provide diagnostic, curative and preventive medical services
+      with a limited scope compared to doctors, examining patients, recording information and performing
+      clinical procedures under limited medical supervision.
+    typical_activities:
+    - Conduct physical examinations and record patient medical information
+    - Diagnose and treat common community illnesses and injuries
+    - Perform basic medical and surgical procedures
+    - Provide preventive care and health advice
+    - Work autonomously or with limited doctor supervision
+    evidence_examples:
+    - Examined and treated 40 patients at a rural health clinic
+    - Sutured minor wounds and administered vaccinations under limited supervision
+    - Recorded patient histories and maintained medical records
+    - Delivered emergency obstetric care in a community setting
+    common_contextual_confusions:
+    - Driving an ambulance without providing clinical assessment
+    - Working as a hospital porter or emergency department administrative assistant
+    - Completing a first-aid course and volunteering at events
+    qualification_gaps:
+    - Paramedical or clinical officer training
+    - Registration or licence where required
+    formal_qualification_required: true
+    reviewer_scope_note: Include prehospital/emergency assessment, stabilization and transport care alongside
+      paramedical practice. Credential requirements depend on precise emergency clinical role and jurisdiction.
+  A022:
+    name: Veterinary science & animal health
+    cluster: Health, Care & Wellbeing
+    status: draft_unreviewed
+    definition: Veterinarians and veterinary staff diagnose, prevent and treat animal diseases and injuries
+      using examination, laboratory tests, imaging, medicine and surgery, sometimes specialising by species
+      or area.
+    typical_activities:
+    - Examine animals and use laboratory tests or imaging to diagnose conditions
+    - Treat animals medically or surgically
+    - Administer and prescribe drugs, analgesics and anaesthetics
+    - Advise owners on animal health and disease prevention
+    - Provide care for commercial or companion animals
+    evidence_examples:
+    - Diagnosed lameness in horses using radiography and ultrasound
+    - Performed spay and neuter surgeries on dogs and cats
+    - Administered vaccines and prescribed medications to livestock
+    - Treated wound infections in a companion animal clinic
+    common_contextual_confusions:
+    - Grooming or boarding animals without clinical diagnosis
+    - Working as a pet store assistant selling pet food
+    - Volunteering at an animal shelter without performing treatment
+    qualification_gaps:
+    - Veterinary degree or veterinary technician diploma
+    - Registration or licence to practise
+    formal_qualification_required: true
+    reviewer_scope_note: Veterinarians diagnose and treat animals; animal-health technicians/assistants
+      support clinical and preventive care. Distinguish licensed veterinary doctors from support workers
+      before using one qualification flag.
+  A023:
+    name: Dentistry, pharmacy & allied health therapies
+    cluster: Health, Care & Wellbeing
+    status: draft_unreviewed
+    definition: Professionals assess and treat disorders in dentistry, pharmacy, physiotherapy, nutrition,
+      speech, vision, rehabilitation and related fields, developing plans and documenting client progress.
+    typical_activities:
+    - Assess patients to identify dental, physical, nutritional or sensory disorders
+    - Develop and implement treatment or therapy plans
+    - Evaluate and document client progress
+    - Dispense medications or fit devices under professional guidance
+    - Provide rehabilitation, hearing, speech or vision therapy
+    evidence_examples:
+    - Fitted orthodontic appliances and adjusted treatment plans for 25 patients
+    - Designed physiotherapy programmes and recorded recovery outcomes
+    - Assessed speech disorders and delivered weekly therapy sessions
+    - Dispensed prescriptions and counselled patients on medication use
+    common_contextual_confusions:
+    - Working as a pharmacy sales assistant without assessing patients
+    - Providing fitness or nutrition coaching without clinical assessment
+    - Assisting a dentist as a receptionist or sterilisation technician
+    qualification_gaps:
+    - Relevant professional degree or diploma
+    - Registration or licence for dentists, pharmacists, therapists and related roles
+    formal_qualification_required: true
+    reviewer_scope_note: Separate dentistry, pharmacy and allied health professions in credentials and
+      task examples; many are regulated clinical roles requiring profession-specific qualifications/registration
+      in Sri Lanka.
+  A024:
+    name: Medical & pharmaceutical technology
+    cluster: Health, Care & Wellbeing
+    status: draft_unreviewed
+    definition: Technicians operate imaging and testing equipment, prepare medications and process specimens
+      to support diagnosis and treatment under professional guidance.
+    typical_activities:
+    - Operate radiographic, ultrasound and other medical imaging equipment
+    - Perform clinical tests on bodily fluids and tissue specimens
+    - Prepare medications and pharmaceutical compounds under pharmacist guidance
+    - Administer radiopharmaceuticals or radiation for detection or treatment
+    - Service, fit and repair medical or dental devices
+    evidence_examples:
+    - Operated MRI and X-ray equipment to produce diagnostic images
+    - Processed blood and tissue samples in a pathology laboratory
+    - Prepared intravenous medications under pharmacist supervision
+    - Calibrated and repaired ultrasound machines in a hospital department
+    common_contextual_confusions:
+    - Working as a hospital porter transporting samples
+    - Selling medical devices commercially without fitting or servicing them
+    - Studying radiography theory without operating equipment on patients
+    qualification_gaps:
+    - Diploma or degree in medical or pharmaceutical technology
+    - Registration or licence where required
+    formal_qualification_required: true
+    reviewer_scope_note: Medical/laboratory/imaging technicians operate diagnostic or treatment equipment
+      and process samples; distinguish radiographers/medical laboratory technologists and technical assistants
+      by credential rules.
+  A025:
+    name: Community health & health support
+    cluster: Health, Care & Wellbeing
+    status: draft_unreviewed
+    definition: Provide technical and support services in dentistry, medical records, community health
+      and related fields, including basic oral care, preventive health advice, and compiling or maintaining
+      patient records.
+    typical_activities:
+    - Provide basic dental and oral care support
+    - Advise individuals and communities on hygiene, diet and prevention
+    - Compile and maintain patient medical records
+    - Perform technical tasks supporting diagnosis and treatment
+    - Assist with emergency medical treatment or physiotherapy services
+    - Support health promotion and disease prevention in communities
+    evidence_examples:
+    - Assisted a dentist with basic oral care and preventive treatments for patients
+    - Advised local residents on hygiene, diet and disease prevention measures
+    - Compiled and updated electronic patient records to document medical conditions
+    - Coded clinical information and maintained disease registry entries
+    common_contextual_confusions:
+    - Working as a receptionist in a dental clinic without providing clinical support
+    - Handling general IT or billing tasks in a hospital, not patient records
+    - Distributing health leaflets at an event without advising on prevention or giving care
+    qualification_gaps: []
+    formal_qualification_required: false
+    reviewer_scope_note: Community and health-support personnel support public health, patient care and
+      records; recordkeeping alone does not establish clinical competence. Some subroles may require credentials.
+  A026:
+    name: Sports coaching & fitness
+    cluster: Health, Care & Wellbeing
+    status: draft_unreviewed
+    definition: Compete in sporting events, train athletes to improve performance, promote sport participation,
+      organise and officiate competitions, and instruct or supervise exercise and recreational activities.
+    typical_activities:
+    - Compete in professional or amateur sporting events
+    - Train sportspeople to develop ability and knowledge
+    - Organise and officiate sporting competitions
+    - Instruct and supervise exercise or recreational activities
+    - Promote participation and standards in sport
+    evidence_examples:
+    - Competed in national tennis tournaments and maintained a professional ranking
+    - Coached a youth football team and designed weekly training sessions
+    - Refereed regional basketball matches and enforced competition rules
+    - Led group fitness classes and supervised gym exercise programmes
+    common_contextual_confusions:
+    - Watching sports events as a spectator or fan
+    - Reporting on matches as a sports journalist or commentator
+    - Managing a gym membership desk without coaching or officiating
+    qualification_gaps: []
+    formal_qualification_required: false
+  A027:
+    name: Personal care & care assistance
+    cluster: Health, Care & Wellbeing
+    status: draft_unreviewed
+    definition: Provide personal care and daily living support to patients, older people and people with
+      disabilities, including mobility assistance, observation and reporting, and preparing people for
+      examination or treatment.
+    typical_activities:
+    - Assist patients with mobility, washing, dressing and communication
+    - Sterilise instruments and equipment used in care
+    - Observe patient condition and report concerns to staff
+    - Prepare patients for examination and treatment
+    - Contribute to planning individual care
+    - Support daily living in homes, clinics or residential settings
+    evidence_examples:
+    - Assisted elderly residents with bathing, dressing and mobility each morning
+    - Observed and reported changes in patient condition to nursing staff
+    - Prepared patients for clinical examinations and sterilised instruments
+    - Contributed to care planning for disabled clients in a home setting
+    common_contextual_confusions:
+    - Cleaning hospital rooms or equipment without assisting patients directly
+    - Working as a domestic assistant in a care home, not providing personal care
+    - Providing housekeeping or companionship without health-related personal care
+    qualification_gaps: []
+    formal_qualification_required: false
+  A028:
+    name: University & higher education teaching
+    cluster: Education, Social & Public Service
+    status: draft_unreviewed
+    definition: Teach subjects at university or higher education level, deliver lectures and tutorials,
+      conduct research, supervise student practical work, and publish scholarly papers or books.
+    typical_activities:
+    - Design and modify curricula and courses of study
+    - Prepare and deliver lectures, seminars and tutorials
+    - Supervise student experiments and practical work
+    - Conduct research in an academic field
+    - Write and publish scholarly papers and books
+    - Assess student work and give academic feedback
+    evidence_examples:
+    - Designed and delivered undergraduate lectures in organic chemistry
+    - Supervised final-year student laboratory projects and assessed reports
+    - Published two peer-reviewed articles on contemporary literature
+    - Developed a new curriculum module for a business degree course
+    common_contextual_confusions:
+    - Teaching in a secondary school rather than a higher education institution
+    - Working as a university administrator without teaching or research duties
+    - Serving as a laboratory research assistant without student supervision
+    qualification_gaps: []
+    formal_qualification_required: false
+    reviewer_scope_note: University and higher-education teachers deliver courses, assess learners and
+      may supervise research. Formal education/appointment requirements vary by institution and role;
+      no universal no rule.
+  A029:
+    name: Vocational education & training
+    cluster: Education, Social & Public Service
+    status: draft_unreviewed
+    definition: Teach vocational or occupational subjects to prepare students for specific employment,
+      plan courses, assess training needs, and liaise with industry to deliver relevant further education
+      programmes.
+    typical_activities:
+    - Develop curricula and plan course content for vocational subjects
+    - Determine training needs of students or workers
+    - Liaise with industry and education partners on programmes
+    - Present lectures and conduct discussions in occupational subjects
+    - Assess practical skills and progress toward employment
+    - Prepare learners for specific trades or occupations
+    evidence_examples:
+    - Taught automotive technology to further education students and assessed workshop skills
+    - Developed a cosmetology course curriculum in consultation with local salons
+    - Delivered vocational training sessions for adult learners preparing for employment
+    - Identified training needs of apprentices and adjusted course content accordingly
+    common_contextual_confusions:
+    - Teaching academic subjects in a secondary school rather than vocational subjects
+    - Working as a workplace trainer outside an education institution
+    - Learning a trade as a student rather than instructing others
+    qualification_gaps: []
+    formal_qualification_required: false
+    reviewer_scope_note: Vocational education teachers teach technical occupations and evaluate practical
+      skills. Differentiate trade instructors from generic corporate trainers; qualification requirements
+      vary.
+  A030:
+    name: Secondary school teaching
+    cluster: Education, Social & Public Service
+    status: draft_unreviewed
+    definition: Teach academic subjects to secondary school students, plan lessons and courses, manage
+      classroom behaviour, and assess student progress in line with curriculum guidelines.
+    typical_activities:
+    - Design and modify curricula and courses of study
+    - Prepare and deliver lessons, discussions and demonstrations
+    - Establish and enforce behaviour rules and classroom order
+    - Set lesson objectives and communicate them to students
+    - Prepare teaching materials and classroom resources
+    - Assess student work and report on progress
+    evidence_examples:
+    - Planned and delivered Year 10 history lessons in line with the national curriculum
+    - Established classroom behaviour routines and maintained a safe learning environment
+    - Designed and marked assessments to measure student progress in biology
+    - Prepared teaching materials and set up laboratories for science demonstrations
+    common_contextual_confusions:
+    - Teaching vocational subjects intended for specific employment preparation
+    - Working as a teaching assistant without planning or delivering lessons
+    - Tutoring privately outside a secondary school setting
+    qualification_gaps: []
+    formal_qualification_required: false
+    reviewer_scope_note: Secondary teachers plan and deliver subject instruction and assess secondary-level
+      students. Teaching qualification requirements vary by education system; the blanket no flag is unsafe.
+  A031:
+    name: Primary & early-childhood teaching and child care
+    cluster: Education, Social & Public Service
+    status: draft_unreviewed
+    definition: Teach subjects at primary level and organise educational activities for young children.
+      Plan learning programmes and activities to develop language, physical and social skills, prepare
+      reports, and may supervise other workers.
+    typical_activities:
+    - Prepare programmes of learning and give instruction in primary subjects
+    - Plan and organise activities to support children's language, physical and social development
+    - Supervise children in early childhood or child care settings
+    - Prepare reports on children's progress and development
+    - Supervise other teaching or child care support workers
+    evidence_examples:
+    - Planned and delivered daily literacy and numeracy lessons to a Year 2 class.
+    - Designed play-based activities to develop toddlers' language and motor skills.
+    - Wrote progress reports for parents on children's social and physical development.
+    - Supervised two preschool assistants during daily routines and activities.
+    common_contextual_confusions:
+    - Worked in a school office handling admissions and attendance records
+    - Entertained children at parties as a party host
+    - Sold children's books and educational toys in a retail store
+    qualification_gaps: []
+    formal_qualification_required: false
+    reviewer_scope_note: Split primary-school teaching from early-childhood teaching and childcare for
+      qualification rules and evidence. Teacher and childcare worker are not interchangeable.
+  A032:
+    name: Specialist teaching & education advisory
+    cluster: Education, Social & Public Service
+    status: draft_unreviewed
+    definition: Conduct research and advise on teaching methods, courses and aids. Teach people with learning
+      difficulties, disabilities or special needs, or provide specialist tuition such as language, arts
+      or ICT outside mainstream systems.
+    typical_activities:
+    - Research and develop teaching methods, courses and learning aids
+    - Advise schools and teachers on curriculum and instructional approaches
+    - Teach children or adults with learning difficulties or disabilities
+    - Provide specialist tuition for gifted, hearing-impaired or sight-impaired learners
+    evidence_examples:
+    - Developed a remedial reading programme for students with dyslexia.
+    - Advised primary schools on adapting science materials for visually impaired pupils.
+    - Delivered one-to-one English tuition to adult migrants.
+    - Researched and wrote a guide on inclusive classroom practices.
+    common_contextual_confusions:
+    - Taught general secondary school history for five years
+    - Managed a school's daily operations as a deputy principal
+    - Sold assistive technology to schools as a supplier representative
+    qualification_gaps: []
+    formal_qualification_required: false
+    reviewer_scope_note: Distinguish specialist teaching (special-needs, language, arts, ICT) from education-methods
+      research/advice. Qualifications vary by exact teaching/counselling role.
+  A033:
+    name: Finance, accounting & financial analysis
+    cluster: Business, Finance & Management
+    status: draft_unreviewed
+    definition: Plan, organise and administer financial accounting systems or funds. Prepare financial
+      statements, review financial materials, provide financial advice and conduct quantitative analysis
+      of the economy or organisational segments.
+    typical_activities:
+    - Prepare and organise financial statements for organisations
+    - Review financial materials and records
+    - Provide financial advice to individuals or organisations
+    - Conduct quantitative analysis of financial data
+    - Prepare analytic reports on economic segments or industries
+    evidence_examples:
+    - Prepared monthly management accounts and financial statements for a mid-sized retailer.
+    - Reviewed client investment portfolios and recommended asset allocation changes.
+    - Produced quarterly economic analysis reports covering the manufacturing sector.
+    - Designed and administered a payroll accounting system for 200 employees.
+    common_contextual_confusions:
+    - Processed customer deposits and withdrawals as a bank teller
+    - Managed daily cash takings for a small retail shop
+    - Completed an economics degree but worked in retail sales
+    qualification_gaps: []
+    formal_qualification_required: false
+    reviewer_scope_note: Accountants maintain/report/audit accounts and financial analysts evaluate financial
+      data and decisions. Move broad economic forecasting/policy to A092; accountant licensing/title protections
+      vary by role.
+  A034:
+    name: Management analysis, HR & organisational development
+    cluster: Business, Finance & Management
+    status: draft_unreviewed
+    definition: Evaluate organisational structure and suggest improvements. Align operational activities
+      with policy objectives, and recruit, train, develop and counsel personnel to improve organisational
+      and individual effectiveness.
+    typical_activities:
+    - Evaluate organisational structure and recommend improvements
+    - Align operational activities with policy objectives
+    - Recruit, train and develop personnel
+    - Counsel employees on work or career issues
+    - Analyse business processes to solve organisational problems
+    evidence_examples:
+    - Restructured the customer service department to reduce response times by 20%.
+    - Recruited and onboarded 15 graduate trainees across three regional offices.
+    - Designed and delivered a leadership development programme for middle managers.
+    - Advised senior leadership on aligning branch operations with corporate policy.
+    common_contextual_confusions:
+    - Supervised daily shift rotas as a team leader in a warehouse
+    - Processed payroll records as an accounts assistant
+    - Earned a business degree but worked in retail sales
+    qualification_gaps: []
+    formal_qualification_required: false
+  A035:
+    name: Sales, marketing & public relations
+    cluster: Business, Finance & Management
+    status: draft_unreviewed
+    definition: Plan and implement marketing, advertising and public relations programmes to promote organisations,
+      goods and services. Commission market research, analyse findings, and represent companies in selling
+      technical or specialist goods and services.
+    typical_activities:
+    - Commission and analyse market research to plan campaigns
+    - Prepare and execute marketing objectives and publicity programmes
+    - Write press releases and manage public relations copy
+    - Sell industrial, medical, pharmaceutical or ICT products to business customers
+    - Coordinate advertising and promotional activities
+    evidence_examples:
+    - Launched a social media publicity campaign that increased product enquiries by 30%.
+    - Presented pharmaceutical products to hospital procurement teams and secured three supply contracts.
+    - Analysed survey findings and recommended a new advertising strategy for a consumer brand.
+    - Wrote press releases and managed media enquiries for a corporate rebrand.
+    common_contextual_confusions:
+    - Helped individual customers on a shop floor as a retail assistant
+    - Designed a company logo as a freelance graphic designer
+    - Managed a personal social media account with many followers
+    qualification_gaps: []
+    formal_qualification_required: false
+  A036:
+    name: 'Business services: events, recruitment & real estate'
+    cluster: Business, Finance & Management
+    status: draft_unreviewed
+    definition: Sell business services such as advertising space. Carry out customs clearance and check
+      documents. Match jobseekers with vacancies and find workers for employers. Arrange contracts for
+      artists or performers, and plan and organise conferences and events.
+    typical_activities:
+    - Plan and organise conferences, weddings or similar events
+    - Match jobseekers with vacancies and place workers with employers
+    - Carry out customs clearance and check import or export documents
+    - Arrange contracts for entertainers, authors or performers
+    - Sell advertising space or other business services to media clients
+    evidence_examples:
+    - Organised a three-day industry conference for 400 delegates, including venue and catering.
+    - Placed 25 temporary administrative staff with local businesses over six months.
+    - Completed customs clearance documentation for imported machinery shipments.
+    - Negotiated performance contracts for three musical acts at a regional festival.
+    common_contextual_confusions:
+    - Attended industry conferences as a delegate or participant
+    - Checked incoming stock as a warehouse clerk
+    - Submitted a CV to a recruitment agency as a jobseeker
+    qualification_gaps: []
+    formal_qualification_required: false
+  A037:
+    name: Administrative & executive support
+    cluster: Business, Finance & Management
+    status: draft_unreviewed
+    definition: Provide organizational, communication and documentation support using specialized business
+      knowledge; supervise clerical staff, coordinate work, prepare legal documents such as deeds and
+      wills, and support internal managerial coordination.
+    typical_activities:
+    - Coordinate, assign and review clerical support work
+    - Provide organizational and communication support
+    - Prepare and process legal documents such as deeds and wills
+    - Support internal managerial coordination
+    - Perform desktop publishing
+    evidence_examples:
+    - Coordinated and reviewed the daily work of four clerical support staff
+    - Prepared and processed legal documents including deeds, wills and affidavits
+    - Managed executive correspondence and internal managerial documentation
+    - Produced desktop-published reports and office communications
+    common_contextual_confusions:
+    - Working as a manager who uses office software rather than providing administrative support
+    - Working as a general office clerk without supervisory or specialized secretary duties
+    - Owning a legal practice rather than preparing documents as a legal secretary
+    qualification_gaps: []
+    formal_qualification_required: false
+    reviewer_scope_note: Administrative/executive support workers manage office information, schedules
+      and specialised documents. Legal secretary work does not establish lawyer status.
+  A038:
+    name: Office administration
+    cluster: Business, Finance & Management
+    status: draft_unreviewed
+    definition: General office clerks perform routine clerical tasks such as filing, mail handling, photocopying,
+      preparing invoices, transcribing information and responding to telephone and electronic enquiries.
+    typical_activities:
+    - Record, sort, classify and file information
+    - Sort, open and send mail
+    - Prepare routine reports and correspondence
+    - Check figures and prepare invoices
+    - Respond to telephone and electronic enquiries
+    - Transcribe information and proofread copy
+    evidence_examples:
+    - Filed and classified personnel records according to office procedures
+    - Prepared routine invoices and recorded financial transaction details
+    - Answered and forwarded telephone and email enquiries
+    - Transcribed documents onto computer and proofread corrected copy
+    common_contextual_confusions:
+    - Working as a manager in a busy office rather than performing clerical tasks
+    - Handling mail in a courier mailroom rather than general office administration
+    - Using filing software as an end user rather than maintaining office records
+    qualification_gaps: []
+    formal_qualification_required: false
+  A039:
+    name: Data entry & keyboard operation
+    cluster: Business, Finance & Management
+    status: draft_unreviewed
+    definition: Keyboard operators input and process text and data, prepare and edit documents, take shorthand
+      records, transcribe recordings, and produce captions for cinema and television.
+    typical_activities:
+    - Enter data and codes for information processing
+    - Retrieve, confirm and update stored data
+    - Take proceedings in rapid shorthand using computerized equipment
+    - Transcribe shorthand and sound recordings
+    - Proofread and correct copied documents
+    - Produce captions for cinema and television
+    evidence_examples:
+    - Entered and updated customer data in a database system
+    - Took shorthand minutes at board meetings using computerized equipment
+    - Transcribed audio recordings into written documents
+    - Created captions for television programming
+    common_contextual_confusions:
+    - Working as a data analyst interpreting data rather than entering it
+    - Using a keyboard as a writer or journalist rather than working as a keyboard operator
+    - Managing a database as an IT administrator rather than performing data entry
+    qualification_gaps: []
+    formal_qualification_required: false
+  A040:
+    name: Banking & payment services clerks
+    cluster: Business, Finance & Management
+    status: draft_unreviewed
+    definition: Clerks handle money operations for clients in banks, post offices, betting, gambling,
+      pawnbroking and debt collection, including taking bets, conducting games, issuing loans against
+      security and collecting payments.
+    typical_activities:
+    - Deal with bank or post office clients on money operations
+    - Receive and pay off bets on sporting events
+    - Conduct gambling games
+    - Lend money against deposited articles or securities
+    - Collect debts and other payments
+    evidence_examples:
+    - Served bank customers receiving and paying cash transactions
+    - Paid out winning bets on sporting event results
+    - Collected overdue payments from debtors
+    - Issued small loans against deposited jewellery
+    common_contextual_confusions:
+    - Working as a bank manager approving loans rather than handling counter transactions
+    - Selling insurance or financial advice rather than processing money operations
+    - Running a betting shop as an owner rather than working as a clerk taking bets
+    qualification_gaps: []
+    formal_qualification_required: false
+    reviewer_scope_note: Counts only duties serving bank, post-office or payment customers (counter cash,
+      deposits, payments, small loans, collections). Back-office ledger posting or cash reconciliation,
+      even in a bank branch, is clerical accounting work (A041) and does not by itself support this area.
+  A041:
+    name: Numerical & accounting clerks
+    cluster: Business, Finance & Management
+    status: draft_unreviewed
+    definition: Numerical clerks compile and compute accounting, bookkeeping, statistical and financial
+      data, calculate costs and wages, handle cash transactions, and perform clerical financial tasks
+      for banks, insurers and similar establishments.
+    typical_activities:
+    - Maintain accounting and bookkeeping records
+    - Calculate unit production costs and wages
+    - Take charge of cash transactions
+    - Compile statistical or actuarial data
+    - Process financial transactions for insurance or banking establishments
+    evidence_examples:
+    - Updated bookkeeping records and computed monthly accounts
+    - Calculated weekly wages and prepared wage packets for staff
+    - Handled daily cash transactions for the business
+    - Compiled statistical data for actuarial reports
+    common_contextual_confusions:
+    - Working as an accountant preparing audited statements rather than clerical bookkeeping
+    - Acting as a financial adviser recommending investments rather than processing numerical data
+    - Managing payroll as an HR manager rather than calculating wages as a clerk
+    qualification_gaps: []
+    formal_qualification_required: false
+  A042:
+    name: Records, mail & other clerical support
+    cluster: Business, Finance & Management
+    status: draft_unreviewed
+    definition: Other clerical support workers sort and deliver mail, file documents, maintain personnel
+      records, code and correct proofs, check material against sources, and assist with specialized clerical
+      duties such as library records.
+    typical_activities:
+    - Sort, record and deliver mail within or from post offices
+    - Classify and file documents and records
+    - Maintain personnel records
+    - Code documents and correct proofs
+    - Record acquisition, issue and return of library books
+    evidence_examples:
+    - Sorted and delivered internal enterprise mail daily
+    - Maintained personnel files and recorded staff changes
+    - Coded documents and corrected proofs for publication
+    - Managed library book acquisition and return records
+    common_contextual_confusions:
+    - Working as a librarian providing information services rather than clerical library support
+    - Delivering mail as a courier driver rather than sorting and recording office mail
+    - Working as an HR officer advising staff rather than maintaining clerical personnel records
+    qualification_gaps: []
+    formal_qualification_required: false
+  A043:
+    name: Software & applications development
+    cluster: Technology & Data
+    status: draft_unreviewed
+    definition: People research, plan, design, write, test, advise on, and improve IT systems, hardware,
+      software and applications to meet specific requirements and improve business effectiveness.
+    typical_activities:
+    - Research IT use in business functions
+    - Plan and design software applications
+    - Write and test code
+    - Advise on IT system improvements
+    - Improve existing software and applications
+    - Identify efficiency improvements in business processes
+    evidence_examples:
+    - Researched IT use in business functions and identified areas for improving effectiveness and efficiency.
+    - Designed and wrote software applications to meet specific requirements.
+    - Tested new applications and provided advice on improvements to stakeholders.
+    - Conducted research into operational methods for the use of computers in a business setting.
+    common_contextual_confusions:
+    - Using software applications as a business end user.
+    - Managing IT procurement or budgets without designing or writing applications.
+    - Installing commercial software packages without modifying or developing code.
+    qualification_gaps: []
+    formal_qualification_required: false
+    reviewer_scope_note: Software developers and related specialists analyse requirements, design, program,
+      test, deploy and maintain software/applications. Remove generic hardware design (see A015/A016/A089).
+  A044:
+    name: Database, systems & network administration
+    cluster: Technology & Data
+    status: draft_unreviewed
+    definition: People design, develop, control, maintain and support the performance and security of
+      IT systems and infrastructure, including databases, hardware, software, networks and operating systems.
+    typical_activities:
+    - Design database architecture and data structures
+    - Construct and test database management systems
+    - Develop and implement security plans
+    - Maintain and administer networks and operating systems
+    - Create data administration policies and documentation
+    - Monitor system performance and security
+    evidence_examples:
+    - Designed database architecture, data structures and naming conventions for an information systems
+      project.
+    - Constructed and tested a database management system to support business operations.
+    - Developed and implemented a security plan and data administration policy for IT infrastructure.
+    - Maintained and administered operating systems and networks to support optimal performance.
+    common_contextual_confusions:
+    - Entering data into a database without administering or designing it.
+    - Selling network hardware without maintaining system security or performance.
+    - Supporting users with basic software queries without managing infrastructure.
+    qualification_gaps: []
+    formal_qualification_required: false
+    reviewer_scope_note: Requires administering, securing or maintaining databases, servers or networks
+      (or designing database architecture as the main task). Building an API or application, or writing
+      its tests, is software development (A043) and does not by itself support this area.
+  A045:
+    name: ICT operations, user support & telecoms
+    cluster: Technology & Data
+    status: draft_unreviewed
+    definition: People support the day-to-day running of communications, computer systems and networks,
+      give technical assistance to users, monitor equipment for failures, and load or oversee peripheral
+      equipment.
+    typical_activities:
+    - Provide technical assistance to computer users
+    - Monitor systems for equipment failure or performance errors
+    - Load printers and other peripheral equipment for operating runs
+    - Answer user inquiries about software or hardware
+    - Support day-to-day running of networks and communications systems
+    - Oversee peripheral equipment operation by other staff
+    evidence_examples:
+    - Monitored computer systems and networks for equipment failure or performance errors.
+    - Provided technical assistance to users operating computer and peripheral equipment.
+    - Loaded printers and peripheral equipment for scheduled operating runs.
+    - Answered user inquiries regarding software and hardware operation.
+    common_contextual_confusions:
+    - Developing software applications without providing day-to-day user support.
+    - Purchasing IT equipment without monitoring systems or operating peripherals.
+    - Using standard office software as a general administrator.
+    qualification_gaps: []
+    formal_qualification_required: false
+  A046:
+    name: Law & justice
+    cluster: Education, Social & Public Service
+    status: draft_unreviewed
+    definition: People research legal problems, advise clients, draft legal documents, represent clients
+      before courts or tribunals, plead cases, conduct prosecutions, preside over judicial proceedings,
+      and draft laws and regulations.
+    typical_activities:
+    - Research legal problems and advise clients
+    - Draft legal documents and regulations
+    - Represent clients before courts or tribunals
+    - Plead cases or conduct prosecutions
+    - Preside over judicial proceedings and pronounce judgement
+    - Conduct litigation on clients' behalf
+    evidence_examples:
+    - Researched a legal problem and advised a client on applicable law.
+    - Drafted legal documents and represented a client before a tribunal.
+    - Pleaded a case in court on behalf of a client.
+    - Presided over judicial proceedings and pronounced judgement.
+    common_contextual_confusions:
+    - Enforcing laws as a police officer without advising clients or conducting litigation.
+    - Drafting business contracts as a manager without representing clients in court.
+    - Studying law as a university student without practising as a legal professional.
+    qualification_gaps: []
+    formal_qualification_required: false
+    reviewer_scope_note: Lawyers and legal professionals research, advise, draft legal documents and conduct
+      court work; judges conduct proceedings. Legal practice/admission requirements differ by role and
+      jurisdiction; no blanket no.
+  A047:
+    name: Libraries, archives & museums
+    cluster: Creative, Media & Culture
+    status: draft_unreviewed
+    definition: People develop and maintain collections in archives, libraries, museums and galleries;
+      appraise and preserve artefacts; organise exhibitions; and make recorded and published material
+      available to users.
+    typical_activities:
+    - Appraise and organise archive and artefact collections
+    - Preserve historical and cultural items for safe keeping
+    - Develop and maintain library collections of published material
+    - Organise museum or gallery exhibitions
+    - Make collection material available to users
+    - Prepare scholarly papers and reports on collections
+    evidence_examples:
+    - Appraised and organised archive artefacts of historical and cultural interest.
+    - Developed and maintained a library collection of recorded and published material.
+    - Organised an exhibition at a museum or art gallery.
+    - Prepared scholarly papers and reports on collection items.
+    common_contextual_confusions:
+    - Borrowing books from a library as a member of the public.
+    - Selling artwork in a commercial gallery without curating collections.
+    - Conducting historical research as an academic without maintaining archives or exhibitions.
+    qualification_gaps: []
+    formal_qualification_required: false
+  A048:
+    name: Social sciences, psychology & counselling
+    cluster: Education, Social & Public Service
+    status: draft_unreviewed
+    definition: People conduct research, develop concepts and theories, apply social science knowledge,
+      and provide social services to meet the needs of individuals, families and communities.
+    typical_activities:
+    - Conduct research into social, economic or political issues
+    - Develop concepts, theories and operational methods
+    - Study mental processes and behaviour of individuals and groups
+    - Formulate solutions to social or economic problems
+    - Analyse past events and human evolution
+    - Provide social services to individuals and families
+    evidence_examples:
+    - Conducted research into economic problems and formulated solutions.
+    - Studied mental processes and behaviour of individuals and groups.
+    - Analysed past events to trace the origin and evolution of communities.
+    - Provided social services to meet the needs of individuals and families in a community.
+    common_contextual_confusions:
+    - Delivering social care support without conducting research or developing theories.
+    - Teaching social science topics in a school without applying professional social science practice.
+    - Studying psychology or sociology as a student without practising as a professional.
+    qualification_gaps: []
+    formal_qualification_required: false
+    reviewer_scope_note: Clarify scope across social scientists, psychologists and counsellors; the regulatory/qualification
+      requirements for clinical psychology/counselling differ from research roles.
+  A049:
+    name: Writing, journalism & languages
+    cluster: Creative, Media & Culture
+    status: draft_unreviewed
+    definition: People conceive and create literary works, communicate news and public affairs through
+      media, and translate or interpret written or spoken material between languages.
+    typical_activities:
+    - writing literary works
+    - researching and writing news and current affairs
+    - translating written material between languages
+    - interpreting spoken language simultaneously
+    - appraising literary and artistic works
+    evidence_examples:
+    - Wrote and published a 90,000-word novel.
+    - Investigated and wrote weekly local government stories for a newspaper.
+    - Translated technical manuals from German to English.
+    - Provided simultaneous interpretation at international conferences.
+    common_contextual_confusions:
+    - Managing social media accounts as a marketing officer.
+    - Teaching language classes as a school teacher.
+    - Editing video footage as a film editor.
+    qualification_gaps: []
+    formal_qualification_required: false
+  A050:
+    name: Creative & performing arts
+    cluster: Creative, Media & Culture
+    status: draft_unreviewed
+    definition: People conceive and create visual art or music, interpret and perform scripts or scores,
+      direct rehearsals and productions, and take creative and organisational responsibility for stage,
+      film or television presentations.
+    typical_activities:
+    - conceiving and creating visual art forms
+    - writing original music
+    - directing and rehearsing music, dance or theatre productions
+    - performing in musical, dance, theatrical or film productions
+    - assuming creative and organisational responsibilities for productions
+    evidence_examples:
+    - Composed an original score for a short film.
+    - Directed rehearsals for a community theatre play.
+    - Created oil paintings exhibited at a regional gallery.
+    - Played violin in a professional orchestra.
+    common_contextual_confusions:
+    - Operating stage lighting as a theatre technician.
+    - Selling artwork in a gallery as a retail assistant.
+    - Teaching art techniques as an art instructor.
+    qualification_gaps: []
+    formal_qualification_required: false
+  A051:
+    name: Photography, design support & culinary arts
+    cluster: Creative, Media & Culture
+    status: draft_unreviewed
+    definition: People take and process still photographs, design and decorate sets, displays and interiors,
+      prepare objects and menus, prepare and present food, maintain gallery records, and support stage,
+      film and television production.
+    typical_activities:
+    - operating still cameras to photograph people and events
+    - designing shop displays, window displays and interiors
+    - creating menus and preparing and presenting food
+    - maintaining library and gallery records and cataloguing systems
+    - providing support for stage, film and television production
+    evidence_examples:
+    - Photographed corporate events and delivered edited images to clients.
+    - Designed and installed window displays for a department store.
+    - Prepared and plated dishes for a restaurant service.
+    - Catalogued artefacts for a museum collection.
+    common_contextual_confusions:
+    - Taking product photos as a marketing assistant.
+    - Arranging flowers as a florist.
+    - Building stage sets as a carpenter.
+    qualification_gaps: []
+    formal_qualification_required: false
+    reviewer_scope_note: Describe photography and applied design/art support plus relevant culinary-art
+      roles; clearly distinguish main graphic designers (A088) and occupational cooks (A057).
+  A052:
+    name: Government regulation & compliance
+    cluster: Education, Social & Public Service
+    status: draft_unreviewed
+    definition: People administer, enforce or apply government rules on borders, taxes and social benefits,
+      investigate circumstances, and issue or examine applications for licences and authorisations for
+      travel, trade, business and building activities.
+    typical_activities:
+    - patrolling borders and checking persons, vehicles and goods
+    - examining travel and transport documents
+    - investigating circumstances relating to crimes
+    - issuing or examining licence and authorisation applications
+    - administering tax and social benefits rules
+    evidence_examples:
+    - Inspected passports and travel documents at an international border.
+    - Investigated suspected customs violations and prepared reports.
+    - Processed applications for business licences and permits.
+    - Assessed tax returns and calculated outstanding payments.
+    common_contextual_confusions:
+    - Advising clients on visa applications as an immigration solicitor.
+    - Auditing company accounts as an external accountant.
+    - Working as a court clerk processing legal files.
+    qualification_gaps: []
+    formal_qualification_required: false
+  A053:
+    name: Paralegal, social work & community support
+    cluster: Education, Social & Public Service
+    status: draft_unreviewed
+    definition: People provide technical and practical support in legal processes, social assistance programmes,
+      community services and religious activities, including preparing documents, assisting clients and
+      administering community programmes.
+    typical_activities:
+    - assisting legal and social work professionals
+    - obtaining and analysing evidence and preparing legal documents
+    - serving court orders
+    - administering social assistance and community services
+    - assisting clients with personal and social problems
+    evidence_examples:
+    - Prepared conveyancing documents for property transactions.
+    - Assisted clients in applying for housing benefit.
+    - Served court orders and summonses.
+    - Managed case records for a community support programme.
+    common_contextual_confusions:
+    - Representing clients in court as a solicitor.
+    - Providing counselling as a qualified psychologist.
+    - Filing documents as a court administrative assistant.
+    qualification_gaps: []
+    formal_qualification_required: false
+  A054:
+    name: Protective services (police, fire, security)
+    cluster: Education, Social & Public Service
+    status: draft_unreviewed
+    definition: People protect individuals and property against fire and hazards, maintain law and order,
+      enforce laws and regulations, rescue people, direct traffic, supervise inmates, and patrol or monitor
+      premises.
+    typical_activities:
+    - preventing, fighting and extinguishing fires
+    - rescuing people from buildings and accident sites
+    - patrolling public areas and enforcing laws
+    - arresting suspected offenders
+    - watching over inmates in prisons or detention centres
+    - patrolling or monitoring premises to guard property
+    evidence_examples:
+    - Extinguished a warehouse fire and rescued two occupants.
+    - Patrolled a town centre and responded to public order incidents.
+    - Supervised inmates and maintained security in a prison wing.
+    - Monitored CCTV and guarded museum exhibits after hours.
+    common_contextual_confusions:
+    - Installing alarm systems as a security technician.
+    - Investigating fraud as a private insurance investigator.
+    - Driving an ambulance as a paramedic.
+    qualification_gaps: []
+    formal_qualification_required: false
+  A055:
+    name: Client information & contact-centre services
+    cluster: Hospitality, Retail & Personal Services
+    status: draft_unreviewed
+    definition: Provide or obtain information by phone, email or in person for travel arrangements, reservations,
+      guest registration and appointments, and describe an organisation's goods, services or policies.
+    typical_activities:
+    - Answer client inquiries by telephone, email or in person
+    - Make travel and hotel reservations and prepare itineraries
+    - Greet and register guests or visitors
+    - Connect telephone calls and take messages
+    - Collect information from survey respondents or service applicants
+    - Explain organisational products, services or policies
+    evidence_examples:
+    - Answered telephone and email enquiries about travel packages and hotel availability
+    - Prepared itineraries and made flight and accommodation reservations for corporate clients
+    - Registered arriving guests at a hotel front desk and issued room keys
+    - Conducted telephone surveys and recorded applicant information for service registration
+    common_contextual_confusions:
+    - Selling travel packages as a sales representative rather than providing information and bookings
+    - Handling complaints as a customer relations manager rather than routine information requests
+    - Working in a travel company's marketing department producing brochures instead of client contact
+      work
+    qualification_gaps: []
+    formal_qualification_required: false
+  A056:
+    name: Travel, tourism & guiding
+    cluster: Hospitality, Retail & Personal Services
+    status: draft_unreviewed
+    definition: Ensure passenger comfort and safety on aircraft, trains, ships, buses and other vehicles,
+      serve refreshments, issue or collect tickets, and escort groups on tours while describing points
+      of interest.
+    typical_activities:
+    - Serve meals and refreshments to passengers during journeys
+    - Check tickets and collect fares on public transport
+    - Provide travel information and answer passenger questions
+    - Accompany tour groups on sightseeing excursions
+    - Describe landmarks, attractions and points of interest to visitors
+    - Assist with passenger safety and comfort procedures
+    evidence_examples:
+    - Served food and beverages to passengers on international flights
+    - Collected tickets and issued travel passes on city bus routes
+    - Led guided walking tours of historic districts and described landmarks
+    - Assisted passengers with safety briefings and seating arrangements on cruise ships
+    common_contextual_confusions:
+    - Working as a travel agent booking tours from an office rather than escorting groups
+    - Driving a tour vehicle without providing guiding or passenger services
+    - Writing travel blog content about destinations instead of accompanying travellers
+    qualification_gaps: []
+    formal_qualification_required: false
+  A057:
+    name: Cooking & food preparation
+    cluster: Hospitality, Retail & Personal Services
+    status: draft_unreviewed
+    definition: Plan, prepare and cook meals according to recipes, weigh and mix ingredients, control
+      cooking equipment temperatures, check food quality, and maintain kitchen cleanliness and safe food
+      handling.
+    typical_activities:
+    - Weigh, measure and mix ingredients according to recipes
+    - Cook food using ovens, grills and other kitchen equipment
+    - Check the quality and portioning of prepared dishes
+    - Clean kitchen areas and equipment to meet hygiene standards
+    - Plan meals and coordinate the work of kitchen assistants
+    - Supervise food preparation and storage procedures
+    evidence_examples:
+    - Prepared and cooked à la carte meals for a restaurant dinner service
+    - Weighed and mixed ingredients for daily batch production in a bakery
+    - Supervised two kitchen assistants during a hotel banquet service
+    - Inspected and cleaned cooking equipment to comply with food safety standards
+    common_contextual_confusions:
+    - Waiting tables and taking food orders without cooking the dishes
+    - Washing dishes as a porter without participating in food preparation
+    - Managing restaurant finances and ordering stock without cooking food
+    qualification_gaps: []
+    formal_qualification_required: false
+  A058:
+    name: Food & beverage service
+    cluster: Hospitality, Retail & Personal Services
+    status: draft_unreviewed
+    definition: Set tables, take food and drink orders, serve meals and beverages, advise on wines, present
+      bills and accept payments, and maintain bar stock and glassware cleanliness.
+    typical_activities:
+    - Set tables with linen, cutlery, crockery and glassware
+    - Take food and drink orders and pass them to the kitchen or bar
+    - Serve alcoholic and non-alcoholic drinks at tables or the bar
+    - Advise customers on wine and beverage choices
+    - Present bills and process customer payments
+    - Wash glassware and keep the bar area clean and stocked
+    evidence_examples:
+    - Waited tables and took orders for up to 40 guests per shift
+    - Served cocktails and wines at a hotel bar and advised on pairings
+    - Presented bills and processed cash and card payments in a restaurant
+    - Cleaned glassware and restocked bar supplies after service
+    common_contextual_confusions:
+    - Cooking food in the kitchen instead of serving it to customers
+    - Working as a cashier in a shop without table service duties
+    - Managing bar inventory as a supervisor without serving drinks
+    qualification_gaps: []
+    formal_qualification_required: false
+  A059:
+    name: Hairdressing, beauty & grooming
+    cluster: Hospitality, Retail & Personal Services
+    status: draft_unreviewed
+    definition: Cut, style and treat hair, shave and trim beards, apply cosmetics and make-up, provide
+      manicures and pedicures, and give basic beauty treatments and massage to improve clients' appearance.
+    typical_activities:
+    - Discuss hair and beauty requirements with clients
+    - Cut, style, colour and treat hair
+    - Shave and trim beards and moustaches
+    - Apply cosmetics and make-up for clients
+    - Shape and polish nails and provide basic foot care
+    - Administer elementary massage and attend clients during baths
+    evidence_examples:
+    - Cut and coloured hair for regular clients in a city salon
+    - Applied bridal make-up and styled hair for wedding parties
+    - Provided manicure and pedicure treatments to salon clients
+    - Administered elementary massage and assisted clients with bath treatments
+    common_contextual_confusions:
+    - Selling beauty products in a retail store without applying treatments
+    - Working as a makeup representative demonstrating products rather than applying them to clients
+    - Managing a salon's appointments and bookings without performing hair or beauty services
+    qualification_gaps: []
+    formal_qualification_required: false
+  A060:
+    name: Housekeeping & facilities supervision
+    cluster: Hospitality, Retail & Personal Services
+    status: draft_unreviewed
+    definition: Coordinate, schedule and supervise cleaning and housekeeping staff, inspect premises,
+      manage supplies and inventory, and hire and train housekeeping employees in hotels, offices and
+      residential buildings.
+    typical_activities:
+    - Assign cleaning tasks and inspect completed work for quality
+    - Schedule rotas for cleaners and housekeeping staff
+    - Issue supplies, equipment and monitor inventory stock levels
+    - Screen, hire and train new housekeeping employees
+    - Inspect guest rooms, offices or residential areas for cleanliness
+    - Recommend maintenance or repairs for building facilities
+    evidence_examples:
+    - Supervised a team of ten room attendants in a 200-room hotel
+    - Assigned daily cleaning schedules and inspected office floors for quality
+    - Managed linen and cleaning supply inventory for a residential apartment block
+    - Trained new housekeeping staff on health and safety procedures
+    common_contextual_confusions:
+    - Cleaning rooms as a room attendant without supervising other staff
+    - Working as a security caretaker locking buildings without managing cleaning teams
+    - Purchasing supplies as a procurement officer without overseeing housekeeping operations
+    qualification_gaps: []
+    formal_qualification_required: false
+  A061:
+    name: Other personal services
+    cluster: Hospitality, Retail & Personal Services
+    status: draft_unreviewed
+    definition: Workers recount past and predict future events, provide companionship or valet services,
+      groom and train animals, provide embalming and funeral services, and train people to drive vehicles.
+    typical_activities:
+    - cast horoscopes
+    - provide companionship or valet services to clients
+    - feed, handle, train and groom animals
+    - provide embalming and funeral services
+    - instruct students under actual driving conditions
+    evidence_examples:
+    - Cast horoscopes and predicted future events for private clients.
+    - Provided daily companionship and valet support to an elderly client.
+    - Trained and groomed dogs for obedience and show presentations.
+    - Prepared bodies and coordinated funeral services for bereaved families.
+    common_contextual_confusions:
+    - Writing horoscopes for a newspaper as a journalist rather than giving personal readings.
+    - Selling pet food or accessories in a shop instead of training or grooming animals.
+    - Working as a funeral venue administrator rather than performing embalming or funeral services.
+    qualification_gaps: []
+    formal_qualification_required: false
+    reviewer_scope_note: 'Describe other personal services without implying fortune-telling predicts actual
+      events: it may include providers of fortune-telling services, companionship, animal grooming, funeral
+      care and driving instruction.'
+  A062:
+    name: Retail, shop & street sales
+    cluster: Hospitality, Retail & Personal Services
+    status: draft_unreviewed
+    definition: Street and market salespersons sell goods from stalls, prepare and sell food and drinks
+      for immediate consumption, obtain selling permissions, stock and display items, and accept payment
+      from customers.
+    typical_activities:
+    - obtain permission to set up street or market stands
+    - buy or contract regular product supplies
+    - erect and dismantle stalls
+    - stack, display and sell goods, food and drinks
+    - accept payment and wrap or pack goods sold
+    - prepare food and drinks for immediate sale
+    evidence_examples:
+    - Obtained street trading permits and operated a food stall in a busy market.
+    - Stacked shelves, displayed fresh produce and served customers at a grocery shop.
+    - Prepared and sold hot beverages and snacks from a street cart, handling cash and card payments.
+    - Erected and dismantled market stalls daily and reconciled takings at close of business.
+    common_contextual_confusions:
+    - Managing stock inventory in a warehouse rather than selling directly to customers from a stall.
+    - Working as a cashier in a back-office finance role instead of handling point-of-sale transactions
+      on a shop floor.
+    - Delivering goods to retail outlets without selling them face-to-face to buyers.
+    qualification_gaps: []
+    formal_qualification_required: false
+    reviewer_scope_note: Include retail and wholesale shop sales assistants, shop supervisors, market
+      stall sellers and street food sales workers; do not describe only market/street vendors.
+  A063:
+    name: Cleaning services
+    cluster: Hospitality, Retail & Personal Services
+    status: draft_unreviewed
+    definition: Domestic, hotel and office cleaners sweep, vacuum, wash and polish interiors and fixtures,
+      make beds, supply linen and toiletries, help with meals and dishes, and clean kitchens, bathrooms
+      and vehicles.
+    typical_activities:
+    - sweep, vacuum, wash and polish floors, furniture and objects
+    - make beds and supply towels, soap and related items
+    - clean and disinfect kitchens, bathrooms and toilets
+    - wash, dry and press household linen
+    - clean interiors of aircraft, trains, buses and similar vehicles
+    - purchase household supplies and help with meal preparation and dishwashing
+    evidence_examples:
+    - Swept, mopped and polished office floors and furniture each morning before staff arrived.
+    - Made beds, replenished towels and restocked bathroom supplies in a city hotel.
+    - Laundered, ironed and pressed guest linens for a hospitality establishment.
+    - Vacuumed and cleaned aircraft cabin interiors between flights.
+    common_contextual_confusions:
+    - Managing a cleaning team as a facilities supervisor rather than performing hands-on cleaning tasks.
+    - Working as a laundry machine operator in an industrial plant rather than hand-cleaning or pressing
+      items.
+    - Selling cleaning products to customers instead of using them to clean premises.
+    qualification_gaps: []
+    formal_qualification_required: false
+  A064:
+    name: Street services, waste collection & other elementary work
+    cluster: Hospitality, Retail & Personal Services
+    status: draft_unreviewed
+    definition: Street and related service workers clean shoes and car windows, run errands, look after
+      parked property, hand out leaflets and newspapers, and provide on-the-spot street services for immediate
+      payment.
+    typical_activities:
+    - obtain materials needed to perform street services
+    - approach people on the street to offer services
+    - clean and polish shoes and car windows
+    - run errands and look after parked cars
+    - hand out leaflets and free newspapers
+    - receive immediate payment for services
+    evidence_examples:
+    - Polished shoes for commuters at a busy railway station and collected cash payments.
+    - Washed car windscreens at traffic lights and offered parking watch services to drivers.
+    - Distributed free newspapers and leaflets to pedestrians in the city centre.
+    - Ran errands for local businesses and residents on request.
+    common_contextual_confusions:
+    - Working as a municipal street cleaner employed by the council rather than offering independent on-the-spot
+      services.
+    - Delivering paid newspapers door-to-door as a contracted paper round rather than handing out free
+      sheets on the street.
+    - Selling goods from a fixed market stall instead of providing roving street services.
+    qualification_gaps: []
+    formal_qualification_required: false
+    reviewer_scope_note: Add refuse/waste collection and related elementary services. Distinguish street
+      services, waste handling and other manual elementary occupations.
+  A065:
+    name: Forestry, fishery & hunting
+    cluster: Agriculture, Forestry & Fisheries
+    status: draft_unreviewed
+    definition: Forestry workers plan and perform operations to cultivate, conserve and exploit forests,
+      including planting, felling, sawing and stacking timber; fishery workers cultivate and harvest fish,
+      shellfish and algae.
+    typical_activities:
+    - assess sites and plant seedlings to establish forest stands
+    - operate chainsaws to thin, trim, top and fell trees
+    - saw felled trees into logs and load or float them downstream
+    - keep watch for forest fires and participate in fire control
+    - cultivate fish, oysters, pearls or algae in farm settings
+    - harvest and grade seafood for sale or processing
+    evidence_examples:
+    - Planted and tended seedlings across a reforestation site using manual planting tools.
+    - Operated a chainsaw to fell marked trees and sawed them into logs at the felling site.
+    - Farmed oysters in coastal waters and harvested mature shellfish for market.
+    - Monitored a forest area for fire signs and assisted with fire control operations.
+    common_contextual_confusions:
+    - Working as a forest ranger enforcing regulations rather than performing planting or felling operations.
+    - Processing fish in a canning factory rather than cultivating or harvesting fish on a farm.
+    - Selling timber or seafood as a merchant instead of growing, felling or catching it.
+    qualification_gaps: []
+    formal_qualification_required: false
+    reviewer_scope_note: Describe skilled forestry, fishery, aquaculture and hunting work. Separate hands-on
+      skilled work from management (A005).
+  A066:
+    name: Subsistence farming, fishing & agricultural labour
+    cluster: Agriculture, Forestry & Fisheries
+    status: draft_unreviewed
+    definition: Subsistence farmers and agricultural labourers grow and harvest crops, tend livestock,
+      gather wild foods, store and process produce, build shelters and make household tools for personal
+      or household use.
+    typical_activities:
+    - prepare soil and sow, plant, tend and harvest field, tree and shrub crops
+    - grow vegetables, fruit and other crops for household consumption
+    - fetch water and gather firewood
+    - store produce and carry out basic processing for later use
+    - build and maintain houses and shelters
+    - make tools, clothes and utensils and sell or barter surplus at local markets
+    evidence_examples:
+    - Prepared soil and planted maize, beans and vegetables for household food supply.
+    - Tended a small herd of cattle and harvested milk and meat for family use.
+    - Collected wild plants and shellfish and processed them for household consumption.
+    - Built and repaired a family shelter and made simple tools for farm work.
+    common_contextual_confusions:
+    - Working as a wage labourer on a commercial farm rather than producing primarily for own household
+      subsistence.
+    - Selling produce as a market trader rather than growing or gathering it oneself.
+    - Working as a fisheries inspector rather than catching fish or shellfish for personal use.
+    qualification_gaps: []
+    formal_qualification_required: false
+  A067:
+    name: Industrial production supervision & process control
+    cluster: Production, Trades, Transport & Operations
+    status: draft_unreviewed
+    definition: Supervisors coordinate, schedule and oversee workers in manufacturing, mining and construction,
+      ensuring safety, managing supplies, preparing reports and instructing staff; process operators monitor
+      plant systems.
+    typical_activities:
+    - Coordinate and supervise tradespeople, machine operators and labourers
+    - Organise and plan daily work schedules
+    - Prepare cost estimates, records and reports
+    - Identify staff or supply shortages
+    - Ensure worker safety and instruct new staff
+    - Monitor and adjust process control systems
+    evidence_examples:
+    - Supervised tradespeople and machine operators on a manufacturing production line
+    - Planned daily work schedules and prepared production reports for a mine
+    - Identified staff and supply shortages and arranged replacements on site
+    - Monitored process control equipment and adjusted plant systems from a control room
+    common_contextual_confusions:
+    - Machine operator following instructions rather than planning or supervising work
+    - Office clerk processing production paperwork without coordinating staff or schedules
+    - Site inspector observing safety without directing workers
+    qualification_gaps: []
+    formal_qualification_required: false
+    reviewer_scope_note: Cover site and industrial production supervisors, including coordination, safety
+      and production oversight; keep managerial decision-making (A006) distinct from supervision.
+  A068:
+    name: Aviation & maritime operations
+    cluster: Production, Trades, Transport & Operations
+    status: draft_unreviewed
+    definition: Controllers and technicians command and navigate ships or aircraft, control onboard equipment,
+      direct movements, and develop air control systems to ensure safe and efficient operations.
+    typical_activities:
+    - Command and navigate ships or aircraft
+    - Control mechanical, electrical and electronic equipment on board
+    - Direct movements of ships or aircraft
+    - Develop electrical, electromechanical and computerized air control systems
+    - Perform technical functions for safe and efficient operations
+    evidence_examples:
+    - Commanded and navigated a vessel along scheduled shipping routes
+    - Controlled mechanical and electrical equipment onboard an aircraft
+    - Directed aircraft movements from an air traffic control station
+    - Developed computerized air control system components
+    common_contextual_confusions:
+    - Cabin crew assisting passengers without commanding or navigating the aircraft
+    - Dock worker loading cargo onto a ship without navigating or controlling the vessel
+    - Aircraft designer creating systems without operating or maintaining onboard equipment
+    qualification_gaps: []
+    formal_qualification_required: false
+    reviewer_scope_note: Cover air traffic control, aircraft piloting/navigation and ship operation/deck
+      command where evidenced; distinguish licensed operational roles from support/technical crew.
+  A069:
+    name: Stores, logistics & transport clerks
+    cluster: Production, Trades, Transport & Operations
+    status: draft_unreviewed
+    definition: Clerks keep records of goods produced, stocked, ordered and dispatched, record production
+      materials, compute required quantities, check schedules and coordinate transport timing.
+    typical_activities:
+    - Record goods produced, stocked, ordered and dispatched
+    - Record production materials received, put into stock or issued
+    - Compute quantities of production materials required at specified dates
+    - Check and help prepare production operation schedules
+    - Coordinate timing of passenger and freight transport
+    evidence_examples:
+    - Recorded goods received, put into stock and dispatched from a warehouse
+    - Tracked production materials issued to assembly stations
+    - Computed material quantities required for specified production dates
+    - Coordinated timing of freight deliveries with transport operators
+    common_contextual_confusions:
+    - Forklift driver moving pallets without recording stock movements
+    - Purchasing agent ordering goods without keeping inventory records
+    - Long-distance driver transporting goods without scheduling or coordinating freight timing
+    qualification_gaps: []
+    formal_qualification_required: false
+  A070:
+    name: Building & construction trades
+    cluster: Production, Trades, Transport & Operations
+    status: draft_unreviewed
+    definition: Trades workers construct, maintain and repair buildings and structures, erect brick and
+      stone walls and foundations, and cut, shape and finish stone for building.
+    typical_activities:
+    - Construct, maintain and repair buildings and structures
+    - Erect and repair foundations, walls and structures of brick or stone
+    - Cut, shape and finish stone for building
+    - Break quarried stone into slabs or blocks
+    - Perform building maintenance tasks
+    evidence_examples:
+    - Built brick walls and foundations for residential houses
+    - Cut and shaped stone blocks for building exteriors
+    - Placed and finished concrete floors and foundations
+    - Repaired stonework and building structures on site
+    common_contextual_confusions:
+    - Architect producing building designs without physically constructing walls or structures
+    - Construction supervisor coordinating trades without laying brick or cutting stone
+    - Builders merchant delivering materials to site without installing or finishing them
+    qualification_gaps: []
+    formal_qualification_required: false
+    reviewer_scope_note: Describe hands-on skilled construction trades such as carpentry, bricklaying,
+      plastering and roofing. A site supervisor without trade tasks is not automatically A070.
+  A071:
+    name: Metalwork, welding & fabrication
+    cluster: Production, Trades, Transport & Operations
+    status: draft_unreviewed
+    definition: Workers make moulds and cores for metal casting, weld and cut metal parts, make and repair
+      sheet metal articles, and install, erect, maintain and repair heavy metal structures.
+    typical_activities:
+    - Make moulds and cores for casting metal
+    - Weld and cut metal parts
+    - Make and repair sheet metal articles
+    - Install, erect and repair heavy metal structures
+    - Maintain tackle, cable cars and related equipment
+    evidence_examples:
+    - Welded and cut metal parts for structural frames
+    - Made moulds and cores for metal casting jobs
+    - Fabricated and repaired sheet metal panels and ducts
+    - Installed and maintained heavy metal structures and cable supports
+    common_contextual_confusions:
+    - Metal fabrication engineer creating CAD drawings without welding or cutting metal
+    - Scrap merchant sorting and selling metal without making or repairing articles
+    - Site labourer assisting tradespeople without installing or erecting metal structures
+    qualification_gaps: []
+    formal_qualification_required: false
+  A072:
+    name: Machinery mechanics, toolmaking & repair
+    cluster: Production, Trades, Transport & Operations
+    status: draft_unreviewed
+    definition: Trades workers hammer and forge metals to make and repair tools and equipment, set and
+      operate machine tools to fine tolerances, and polish and sharpen metal surfaces.
+    typical_activities:
+    - Hammer and forge metal to make and repair tools and equipment
+    - Set machine tools for operators
+    - Operate machine tools working to fine tolerances
+    - Polish and sharpen metal surfaces and tools
+    - Make dies, jigs, patterns and locks
+    evidence_examples:
+    - Forged and repaired metal tools and equipment from ingots
+    - Set and operated machine tools working to fine tolerances
+    - Made dies, jigs and patterns for production machinery
+    - Polished and sharpened metal surfaces and cutting tools
+    common_contextual_confusions:
+    - Machine operator running equipment without setting tools or performing maintenance
+    - Mechanical engineer designing machinery without forging, sharpening or repairing tools
+    - Metal supplier delivering raw materials without making dies, jigs or tools
+    qualification_gaps: []
+    formal_qualification_required: false
+    reviewer_scope_note: Include installation, maintenance and repair of industrial machinery, engines
+      and mechanical equipment, alongside toolmaking and precision machining.
+  A073:
+    name: Handicrafts & artisan crafts
+    cluster: Creative, Media & Culture
+    status: draft_unreviewed
+    definition: People design, make, repair, adjust, maintain and decorate precision and musical instruments,
+      jewellery, precious metals, gems, pottery and other crafts using artistic and manual techniques
+      such as carving, moulding and assembling.
+    typical_activities:
+    - design and make musical and precision instruments
+    - repair and maintain jewellery and precious metal items
+    - carve, mould and assemble glass, ceramics, wood or leather articles
+    - calibrate and adjust instruments
+    - fabricate and appraise jewellery, gems and ceremonial items
+    - decorate craft items using traditional or modern techniques
+    evidence_examples:
+    - Designed and handcrafted a series of silver jewellery pieces using traditional metalworking techniques.
+    - Repaired and calibrated antique musical instruments, restoring them to playing condition.
+    - Carved and assembled wooden instrument components to customer specifications.
+    - Cut, filed and polished gemstones for custom jewellery settings.
+    common_contextual_confusions:
+    - Selling handmade crafts in a retail shop without making them.
+    - Designing craft products using software without physically producing them.
+    - Cleaning or maintaining a workshop where artisans work.
+    qualification_gaps: []
+    formal_qualification_required: false
+  A074:
+    name: Printing trades
+    cluster: Production, Trades, Transport & Operations
+    status: draft_unreviewed
+    definition: Workers compose and set type, set up and operate printing presses, bind and finish printed
+      products, prepare stencils and operate screen printing equipment, using graphic cameras and computer
+      equipment to transfer copy to film, plates and digital output.
+    typical_activities:
+    - compose and set type for printing jobs
+    - set up, operate and monitor printing presses
+    - bind and finish printed products
+    - prepare stencils and operate screen printing equipment
+    - scan, colour-correct and retouch copy for plates or digital output
+    - operate graphic cameras to reproduce copy onto film and plates
+    evidence_examples:
+    - Set up and operated offset printing presses to produce weekly magazines.
+    - Prepared film plates and performed colour separation and correction for commercial print jobs.
+    - Bound and finished printed booklets and brochures to client specifications.
+    - Operated screen printing equipment to produce custom signage and apparel.
+    common_contextual_confusions:
+    - Graphic design work that creates artwork but does not operate printing presses.
+    - Handling customer orders and deliveries in a print shop without using machines.
+    - Managing a digital file archive for a publishing company.
+    qualification_gaps: []
+    formal_qualification_required: false
+  A075:
+    name: Electrical & electronics installation & repair
+    cluster: Production, Trades, Transport & Operations
+    status: draft_unreviewed
+    definition: Workers install, fit, maintain and adjust electrical wiring systems, machinery and apparatus,
+      examine blueprints and diagrams, and inspect and test electrical systems, cables and equipment to
+      identify hazards, defects and repair needs.
+    typical_activities:
+    - install and maintain electrical wiring systems and equipment
+    - examine blueprints and wiring diagrams to plan work
+    - inspect and test electrical systems, cables and machinery for hazards
+    - fit and adjust electrical machinery and transmission lines
+    - repair electrical apparatus and identify defects
+    - maintain electrical supply lines and cables
+    evidence_examples:
+    - Installed and maintained wiring systems in commercial buildings according to wiring diagrams.
+    - Inspected and tested electrical machinery to identify hazards and repair needs.
+    - Fitted and adjusted lift electrical systems and components during routine maintenance.
+    - Repaired automotive electrical circuits and diagnosed faults using wiring schematics.
+    common_contextual_confusions:
+    - Electrical engineering design work that creates specifications without installing or repairing systems.
+    - Selling electrical appliances or components in a retail store.
+    - Cleaning or securing electrical sites without working on wiring or equipment.
+    qualification_gaps: []
+    formal_qualification_required: false
+  A076:
+    name: Food processing & baking trades
+    cluster: Production, Trades, Transport & Operations
+    status: draft_unreviewed
+    definition: Workers slaughter animals and treat meat and fish, make bread, cakes and flour products,
+      process and preserve fruit and vegetables, and taste and grade food products and beverages.
+    typical_activities:
+    - slaughter animals and treat meat and fish for consumption
+    - make bread, cakes and other flour products
+    - process and preserve fruit, vegetables and related foods
+    - taste and grade food products and beverages
+    - prepare food items for human and animal consumption
+    evidence_examples:
+    - Slaughtered and dressed livestock, preparing meat cuts for retail and wholesale customers.
+    - Baked breads, cakes and pastries daily using traditional fermentation and oven methods.
+    - Processed and preserved seasonal fruit into jams and preserves for sale.
+    - Tasted and graded batches of cheese and cured meats for quality and consistency.
+    common_contextual_confusions:
+    - Working as a chef or cook preparing meals in a restaurant.
+    - Packing or labelling finished food products on a production line without processing them.
+    - Selling food products in a grocery store or market stall.
+    qualification_gaps: []
+    formal_qualification_required: false
+  A077:
+    name: Woodworking & cabinet-making
+    cluster: Production, Trades, Transport & Operations
+    status: draft_unreviewed
+    definition: Workers preserve and treat wood, make, decorate and repair wooden furniture, vehicles
+      and products, and set up, operate and tend wood seasoning, preserving and woodworking machinery
+      and tools.
+    typical_activities:
+    - preserve and chemically treat wood products with preservatives
+    - set up and operate woodworking machines to cut, shape and form parts
+    - make, decorate and repair wooden furniture and components
+    - dry lumber and season wood using treating equipment
+    - study plans and verify dimensions of articles to be made
+    evidence_examples:
+    - Operated kiln-drying equipment to season lumber for furniture production.
+    - Made and repaired custom wooden cabinets using traditional joinery techniques.
+    - Set up and operated woodworking machines to cut and shape cabinet components.
+    - Treated timber with preservatives and verified dimensions against workshop plans.
+    common_contextual_confusions:
+    - Interior design work that specifies wooden furniture but does not make or repair it.
+    - Delivering or installing finished wooden furniture without constructing it.
+    - Managing a timber yard or lumber supply operation without treating or processing wood.
+    qualification_gaps: []
+    formal_qualification_required: false
+  A078:
+    name: Garment, tailoring & textile trades
+    cluster: Production, Trades, Transport & Operations
+    status: draft_unreviewed
+    definition: Workers fit, alter and repair tailored clothing, design and make textile, fur and leather
+      garments, create patterns, install and repair upholstery, treat animal hides and modify footwear
+      and leather articles.
+    typical_activities:
+    - fit, alter and repair tailored clothing and garments
+    - design and make made-to-measure clothing from textiles, leather or fur
+    - create garment patterns and cut fabric or leather
+    - install, repair and replace upholstery on furniture and vehicle furnishings
+    - trim, scrape, tan, buff and dye animal hides, pelts or skins
+    - modify and repair footwear and leather articles
+    evidence_examples:
+    - Fitted and altered tailored suits and dresses to client measurements.
+    - Designed and made made-to-measure coats from wool and light leather fabrics.
+    - Created garment patterns and cut fabric pieces for a bridal wear collection.
+    - Repaired and reupholstered automotive seat covers and furniture upholstery.
+    common_contextual_confusions:
+    - Fashion design work that sketches collections without sewing or constructing garments.
+    - Working in a clothing retail store fitting customers but not altering garments.
+    - Washing or dry-cleaning textiles and garments.
+    qualification_gaps: []
+    formal_qualification_required: false
+  A079:
+    name: Other craft & specialist trades
+    cluster: Production, Trades, Transport & Operations
+    status: draft_unreviewed
+    definition: People in this area carry out specialist craft tasks not classified elsewhere, such as
+      working underwater with breathing apparatus, positioning and detonating explosives, inspecting and
+      testing materials or products, and removing unwanted organisms from crops, buildings and structures.
+    typical_activities:
+    - Work underwater using breathing apparatus
+    - Position, assemble and detonate explosives
+    - Inspect and test raw materials, components and products
+    - Remove unwanted organisms from crops, buildings and structures
+    - Mix chemicals according to instructions
+    - Operate and monitor spraying equipment
+    evidence_examples:
+    - Conducted underwater inspections using breathing apparatus to assess marine structures
+    - Loaded explosives into blast holes and initiated detonations under safety procedures
+    - Graded wool and inspected product quality against set standards
+    - Applied fumigation treatments to buildings to remove unwanted organisms
+    common_contextual_confusions:
+    - Office-based quality assurance auditing without hands-on inspection or testing of materials
+    - Marine biology research or diving instruction not involving underwater trade tasks
+    - Construction site safety supervision without personally handling explosives or underwater apparatus
+    qualification_gaps: []
+    formal_qualification_required: false
+  A080:
+    name: Mining, metal & chemical plant operation
+    cluster: Production, Trades, Transport & Operations
+    status: draft_unreviewed
+    definition: Operate and monitor mining and mineral processing plant, machinery and hand tools to extract
+      rock and minerals, drill wells and bores, and process stone, cement and related products, including
+      washing, separating and combining equipment to recover materials.
+    typical_activities:
+    - Set up, operate and monitor mining and mineral processing machinery
+    - Drill wells and bores using rigs and auxiliary equipment
+    - Operate crushing, grinding, cutting and mixing plant
+    - Run washing, separating and flotation equipment to recover minerals
+    - Monitor production output and adjust machine settings
+    evidence_examples:
+    - Operated a continuous miner to extract coal from the face
+    - Set up and monitored crushing and grinding plant for mineral processing
+    - Drilled blast holes and operated auxiliary mining equipment
+    - Ran flotation cells to separate valuable minerals from waste
+    common_contextual_confusions:
+    - Geological surveying or sample analysis in a laboratory without operating plant machinery
+    - Mine management or shift supervision without personally operating equipment
+    - Civil engineering construction using similar machines but not for mineral extraction
+    qualification_gaps: []
+    formal_qualification_required: false
+    reviewer_scope_note: Cover machine/plant operators in mining, metal processing and chemical production,
+      not only rock drilling/mineral extraction.
+  A081:
+    name: Manufacturing machine operation
+    cluster: Production, Trades, Transport & Operations
+    status: draft_unreviewed
+    definition: Monitor and operate machines that knead and blend rubber and compounds, or process plastics
+      and paper materials, to make components and products such as tyres, moulded items, paper goods and
+      fibre, and examine outputs for defects and conformity.
+    typical_activities:
+    - Operate and monitor rubber kneading, blending and moulding machines
+    - Run plastics extruding, pressing or bottle-blowing equipment
+    - Produce paper products from paperboard, cardboard and similar materials
+    - Examine machine outputs for defects and conformity to standards
+    - Adjust machine settings during production runs
+    evidence_examples:
+    - Operated a rubber extruder to produce tyre components and inspected output for defects
+    - Ran a plastics bottle blowing machine and monitored product conformity
+    - Operated paper converting equipment to manufacture cardboard products
+    - Adjusted vulcanising press settings and checked cured rubber mouldings
+    common_contextual_confusions:
+    - Product design or materials development for rubber and plastics without machine operation
+    - Quality laboratory testing of samples without operating production machines
+    - Machine maintenance engineering focused on repair rather than daily operation
+    qualification_gaps: []
+    formal_qualification_required: false
+    reviewer_scope_note: Cover operators of manufacturing machines including rubber, plastics, paper,
+      textiles and other material/product processes, not just rubber/plastic/paper.
+  A082:
+    name: Assembly work
+    cluster: Production, Trades, Transport & Operations
+    status: draft_unreviewed
+    definition: Assemble prefabricated parts and components into subassemblies, products and equipment
+      following set procedures, review work orders and drawings, record production data, inspect and test
+      completed assemblies and wiring, and reject faulty items.
+    typical_activities:
+    - Assemble components into products and equipment according to laid-down procedures
+    - Review work orders, specifications, diagrams and drawings
+    - Record production and operational data on specified forms
+    - Inspect and test completed assemblies, wiring installations and circuits
+    - Reject faulty assemblies and components
+    evidence_examples:
+    - Assembled aircraft subassemblies from prefabricated parts following work instructions
+    - Fitted engines and gearboxes into vehicle chassis on the assembly line
+    - Inspected electronic assemblies and wiring circuits, rejecting faulty units
+    - Recorded production data and assembly test results on shop-floor forms
+    common_contextual_confusions:
+    - Assembly line supervision or production planning without personally fitting components
+    - Mechanical repair or servicing of finished products rather than assembling new ones
+    - Kit packing or order picking that does not involve technical assembly to specifications
+    qualification_gaps: []
+    formal_qualification_required: false
+  A083:
+    name: Professional driving & rail operation
+    cluster: Production, Trades, Transport & Operations
+    status: draft_unreviewed
+    definition: Drive or assist in driving locomotive engines to transport passengers and freight, operate
+      railway signals, switch rolling stock, make up trains in yards and mines, and control train movement
+      during runs.
+    typical_activities:
+    - Drive or assist in driving railway engines
+    - Operate railway signals to control traffic
+    - Switch rolling stock and make up trains in yards
+    - Make up and control mine haulage trains
+    - Safeguard freight trains during runs
+    evidence_examples:
+    - Drove a metropolitan railway train transporting passengers along the line
+    - Operated signals and switched rolling stock in a railway yard
+    - Made up freight trains and controlled their movement during runs
+    - Assisted the locomotive driver in hauling mine wagons underground
+    common_contextual_confusions:
+    - Railway station customer service or ticketing without driving or signalling duties
+    - Logistics planning or freight dispatch that does not involve operating trains or signals
+    - Vehicle maintenance or repair without personally driving or controlling train movement
+    qualification_gaps: []
+    formal_qualification_required: false
+    reviewer_scope_note: Include professional car/taxi/van, heavy-truck and bus driving as well as rail/locomotive
+      operation. Professional driving has licensing requirements even if a formal degree is not required.
+  A084:
+    name: Mobile plant & marine deck operation
+    cluster: Production, Trades, Transport & Operations
+    status: draft_unreviewed
+    definition: Drive, tend, operate and monitor special-purpose motorised machinery for clearing land,
+      digging, moving and spreading earth or rock, and lifting heavy objects; prepare and position plant,
+      adjust implements, and service equipment used in construction and similar operations.
+    typical_activities:
+    - Prepare and position mobile plant for operation
+    - Drive and operate bulldozers, excavators, loaders and similar plant
+    - Adjust speed, height and depth of implements
+    - Operate attachments to lift, swing and release trees, logs and earth
+    - Service machinery and perform routine checks
+    evidence_examples:
+    - Operated an excavator to dig trenches and move earth on site
+    - Drove a front-end loader to lift and place heavy materials
+    - Adjusted cutting depth and speed on a harvester during timber operations
+    - Serviced mobile plant and monitored hydraulic attachments during use
+    common_contextual_confusions:
+    - Civil engineering design or site supervision without personally operating plant machinery
+    - Agricultural driving of standard tractors for general farm work rather than specialist plant operation
+    - Crane rigging or slinging loads without operating the crane itself
+    qualification_gaps: []
+    formal_qualification_required: false
+    reviewer_scope_note: Include mobile machinery operators (excavators, cranes, agricultural/construction
+      machinery) AND marine deck crews doing deck, mooring and vessel-maintenance duties.
+  A085:
+    name: Labouring in mining, construction, manufacturing & transport
+    cluster: Production, Trades, Transport & Operations
+    status: draft_unreviewed
+    definition: 'Performs simple routine manual tasks in mining, quarrying, construction, manufacturing
+      and transport: digging/shovelling materials, sorting and moving tools or goods, cleaning machinery
+      and sites, and packing, labelling or wrapping items.'
+    typical_activities:
+    - Dig, fill, shovel and spread excavated materials, sand, soil or gravel
+    - Sort, load, unload, stack, store and transport tools, materials or equipment around sites
+    - Pack, wrap, label or stack goods for manufacturing or transport
+    - Clean machinery, equipment, tools and work sites
+    - Remove obstructions from work areas
+    - Assist with routine mining, quarrying, construction or building tasks
+    evidence_examples:
+    - Dug trenches and backfilled soil using hand tools
+    - Loaded, stacked and stored construction materials and moved them around the site
+    - Packed, labelled and wrapped finished goods for dispatch
+    - Cleaned plant machinery and removed obstructions from the work area
+    common_contextual_confusions:
+    - Operating powered plant or vehicles as a licensed operator rather than undertaking general labouring
+    - Working as a qualified tradesperson such as a bricklayer instead of assisting them
+    - Driving deliveries to a site without unloading, stacking or storing goods on site
+    qualification_gaps: []
+    formal_qualification_required: false
+  A086:
+    name: Data science & analytics
+    cluster: Technology & Data
+    status: draft_unreviewed
+    definition: Analyses data and develops statistical or mathematical methods to produce insights, dashboards,
+      reports and predictive models, and advises on applying these techniques in business, engineering
+      or scientific contexts.
+    typical_activities:
+    - Extract, clean and explore datasets
+    - Apply statistical, predictive or machine-learning modelling techniques
+    - Build dashboards, visualisations and reports for stakeholders
+    - Interpret big-data insights for operational or strategic decisions
+    - Advise on applying mathematical, actuarial or statistical methods
+    - Maintain or query databases and data systems
+    evidence_examples:
+    - Built a predictive demand model from two years of sales data
+    - Created Tableau dashboards that visualised regional performance trends
+    - Wrote SQL queries to clean and merge customer datasets
+    - Delivered a statistical analysis report that supported pricing decisions
+    common_contextual_confusions:
+    - Administering databases or IT systems without analysing the data they contain
+    - Using spreadsheets for routine administration or bookkeeping without statistical analysis
+    - Managing data projects or stakeholders as a project manager rather than producing analysis or models
+    qualification_gaps: []
+    formal_qualification_required: false
+    reviewer_scope_note: Distinguish data collection, analysis, statistics, experimentation and applied
+      predictive modelling from production AI system engineering (A087).
+  A087:
+    name: AI & machine learning engineering
+    cluster: Technology & Data
+    status: draft_unreviewed
+    definition: Designs and builds AI/ML software systems; trains and evaluates prediction and classification
+      models using algorithms such as neural networks and NLP; integrates models into applications and
+      tests system performance.
+    typical_activities:
+    - Prepare and preprocess data for model training
+    - Train, tune and evaluate machine-learning models
+    - Implement neural-network, NLP or classification algorithms in code
+    - Integrate trained models into software applications or APIs
+    - Test, debug and validate AI/ML system performance
+    - Document requirements and designs for intelligent systems
+    evidence_examples:
+    - Trained a random-forest model to predict equipment failure
+    - Built a natural-language processing classifier for customer feedback
+    - Deployed a recommendation model through an API for the product team
+    - Validated model accuracy using held-out test datasets
+    common_contextual_confusions:
+    - Annotating or labelling data without training models
+    - Using AI-powered tools without developing them
+    - General software testing without AI/ML focus
+    qualification_gaps: []
+    formal_qualification_required: false
+    reviewer_scope_note: Specify building, training, evaluating, deploying and monitoring ML models/systems;
+      model use or AI-themed project alone is not sufficient.
+  A088:
+    name: UX, product & digital design
+    cluster: Technology & Data
+    status: draft_unreviewed
+    definition: Researches, designs and builds digital products and interfaces; creates prototypes, graphics,
+      animations and interactive media; assesses usability and works with stakeholders and developers
+      to deliver websites, apps, games or multimedia.
+    typical_activities:
+    - Define digital product requirements with users and stakeholders
+    - Create wireframes, prototypes and visual designs
+    - Design website or application interfaces and user experiences
+    - Produce graphics, animations, illustrations or multimedia content
+    - Test usability and iterate designs based on feedback
+    - Program or modify websites, games or interactive applications
+    evidence_examples:
+    - Designed a checkout flow prototype and tested it with 12 users
+    - Created brand illustrations and animations for a product website
+    - Built an interactive multimedia site using HTML, CSS and script
+    - Converted stakeholder briefs into wireframes and design specifications
+    common_contextual_confusions:
+    - Print-only graphic design without digital product or usability work
+    - Front-end development implementing designs without research or prototyping
+    - Posting marketing content on social media without product design
+    qualification_gaps: []
+    formal_qualification_required: false
+    reviewer_scope_note: Focus on UX research, interaction/product design, graphic/multimedia digital
+      design and prototypes; software implementation alone belongs A043.
+  A089:
+    name: IoT, embedded & smart systems
+    cluster: Technology & Data
+    status: draft_unreviewed
+    definition: Researches, designs, installs, tests and maintains electronic, embedded or telecommunications
+      systems; works with sensors, microcontrollers and connected devices; specifies standards and directs
+      production, installation or repair work.
+    typical_activities:
+    - Design electronic circuits, components or embedded hardware
+    - Program microcontrollers and configure sensors for IoT devices
+    - Install, commission and maintain connected or smart systems
+    - Test performance, diagnose faults and repair electronic equipment
+    - Specify materials, installation methods and quality standards
+    - Direct production or installation work for electronic products
+    evidence_examples:
+    - Designed a sensor interface for a smart metering device
+    - Programmed microcontrollers to collect and transmit machine data
+    - Installed and commissioned connected building-automation devices
+    - Tested embedded systems and repaired faulty circuit boards
+    common_contextual_confusions:
+    - Buying or using smart-home devices as a consumer without installing or configuring them
+    - Assembling electronic kits to instructions without designing or testing systems
+    - Managing telecoms customer accounts or sales without engineering work
+    qualification_gaps: []
+    formal_qualification_required: false
+    reviewer_scope_note: Focus on embedded hardware/firmware, sensors, microcontrollers and connected
+      systems; general telecom engineering belongs A016.
+  A090:
+    name: Cybersecurity & information security
+    cluster: Technology & Data
+    status: draft_unreviewed
+    definition: Protects systems and networks from threats; designs, configures, administers and monitors
+      network and security infrastructure; investigates incidents and recommends risk, compliance and
+      performance improvements.
+    typical_activities:
+    - Monitor networks and systems for security threats and anomalies
+    - Configure firewalls, access controls and network hardware or software
+    - Investigate security incidents and preserve digital forensic evidence
+    - Assess vulnerabilities and recommend risk or compliance measures
+    - Document network architecture, policies and security procedures
+    - Troubleshoot and optimise network performance and availability
+    evidence_examples:
+    - Configured firewalls and VPNs to protect the corporate network
+    - Investigated a phishing incident and preserved forensic logs
+    - Implemented multi-factor access controls and monitored security alerts
+    - Produced a network security risk assessment and compliance report
+    common_contextual_confusions:
+    - Providing general IT help-desk support without security responsibilities
+    - Administering a network without implementing or monitoring protections
+    - Using antivirus or security software as an end user
+    qualification_gaps: []
+    formal_qualification_required: false
+    reviewer_scope_note: Focus on security engineering, identity/access, threat analysis, security operations
+      and risk controls; generic backend coding is insufficient.
+  A091:
+    name: Psychology & behavioural research
+    cluster: Education, Social & Public Service
+    status: draft_unreviewed
+    definition: People in this area research and assess mental processes and human behaviour, individually
+      or in groups, using tests and analysis to support personal, social, educational or occupational
+      adjustment and development.
+    typical_activities:
+    - Plan and carry out psychological or behavioural tests
+    - Measure intelligence, abilities, aptitudes or other characteristics
+    - Interpret and evaluate assessment results
+    - Advise on personal, social, educational or occupational adjustment
+    - Analyse factors affecting thought and behaviour
+    - Conduct research into mental processes and behaviour
+    evidence_examples:
+    - Designed and administered cognitive ability tests for 150 job applicants and interpreted results
+      for selection decisions
+    - Assessed emotional wellbeing in student groups and provided one-to-one advice on personal adjustment
+    - Researched workplace behaviour factors and presented findings on team performance to senior managers
+    - Evaluated aptitude test outcomes and recommended occupational placements for clients
+    common_contextual_confusions:
+    - Working in a mental health clinic in administrative or reception duties without conducting assessment
+      or research
+    - Providing general wellbeing coaching or mentoring without using psychological tests or behavioural
+      analysis
+    - Teaching psychology as a classroom lecturer rather than practising assessment or applied behaviour
+      research
+    qualification_gaps: []
+    formal_qualification_required: false
+    reviewer_scope_note: Distinguish psychology/behavioural research from regulated clinical psychology
+      practice; Sri Lanka SLMC lists clinical psychologists among regulated allied health professions.
+  A092:
+    name: Economics & public policy analysis
+    cluster: Business, Finance & Management
+    status: draft_unreviewed
+    definition: Economists and policy analysts research economic data, build forecasting models, analyse
+      trends and advise businesses, governments or interest groups on economic problems, budgets, investment
+      and public policy.
+    typical_activities:
+    - Monitor and analyse economic and business data
+    - Develop models to forecast economic behaviour and patterns
+    - Prepare reports and plans on economic or public policy issues
+    - Advise business, government or interest groups on economic solutions
+    - Forecast changes for budgeting, planning or investment evaluation
+    - Formulate policy recommendations and corporate strategies
+    evidence_examples:
+    - Built a forecasting model to project regional inflation and published the results in a policy brief
+    - Analysed labour market data and advised a government department on minimum wage impacts
+    - Prepared investment evaluation reports supporting long-term budget planning for a municipal authority
+    - Researched corporate pricing strategies and recommended responses to changing economic conditions
+    common_contextual_confusions:
+    - Processing or entering economic data as a clerk without analysing trends or preparing advice
+    - Writing financial journalism or business news commentary without conducting economic research
+    - Administering government grants or programmes without evaluating policy impact or forecasting outcomes
+    qualification_gaps: []
+    formal_qualification_required: false
+    reviewer_scope_note: Emphasize economic analysis, forecasting and public policy; distinguish from
+      accountant/financial-statement preparation A033.
+  A093:
+    name: Training, learning & development
+    cluster: Business, Finance & Management
+    status: draft_unreviewed
+    definition: Training professionals plan, develop, deliver and evaluate learning programmes so staff
+      and management gain the skills and competencies needed to meet organisational objectives.
+    typical_activities:
+    - Identify training needs for individuals and organisations
+    - Design instructional materials and learning aids
+    - Facilitate workshops and training sessions
+    - Set human resource development and learning objectives
+    - Evaluate learning outcomes and programme effectiveness
+    - Implement staff development programmes
+    evidence_examples:
+    - Conducted a training needs analysis across three departments and produced a staff development plan
+    - Designed and delivered software training workshops for 200 employees
+    - Created instructional handbooks and visual aids for a new employee onboarding programme
+    - Evaluated learning outcomes after a leadership course and reported competency gains
+    common_contextual_confusions:
+    - Delivering a one-off induction talk without designing materials or evaluating learning outcomes
+    - Acting as a guest speaker sharing expertise rather than planning a development programme
+    - Maintaining training records and enrolment databases without developing instructional content
+    qualification_gaps: []
+    formal_qualification_required: false
+  A094:
+    name: Music performance & production
+    cluster: Creative, Media & Culture
+    status: draft_unreviewed
+    definition: Musicians, singers and composers create, arrange, conduct and perform music, writing scores
+      and leading instrumental or vocal groups for performances and recordings.
+    typical_activities:
+    - Write or arrange musical compositions and scores
+    - Play one or more instruments or sing in performance
+    - Conduct instrumental or vocal groups
+    - Adapt music for specific ensembles or occasions
+    - Select repertoire and assign parts to musicians
+    - Perform music live or in recording sessions
+    evidence_examples:
+    - Composed and arranged an original score for a 10-piece jazz ensemble
+    - Performed lead vocals at weekly club residencies over 18 months
+    - Conducted a community orchestra for a seasonal concert programme
+    - Adapted a classical work for school wind band and rehearsed performers
+    common_contextual_confusions:
+    - Working as a sound engineer or stage crew supporting concerts without performing or composing
+    - Managing a music venue or promoting events without creating or performing music
+    - Teaching classroom music as a school teacher rather than practising as a performer or composer
+    qualification_gaps: []
+    formal_qualification_required: false
+    reviewer_scope_note: Include music production and recording alongside composing, arranging, conducting,
+      singing and instrumental performance; music-themed software alone is not performance.

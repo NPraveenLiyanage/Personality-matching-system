@@ -31,10 +31,13 @@ Anything else may appear only as **exploration**, clearly labelled.
 | `transferable` | Evidence of skills used in the area's work, in a different setting | yes |
 | `domain_exposure_only` | Only the industry/subject matches (e.g. built software for a hospital) | optional, shown as context |
 | `interest_only` | Stated interest, no experience evidence | the interest record |
+| `in_progress_study` | Only link is study not yet finished (degree, diploma or course in progress). A pathway to explore, not established practice | the education record |
 | `unsupported` | The CV gives information and none of it supports the area | no |
 | `insufficient_info` | CV too sparse, unreadable or ambiguous to judge | no |
 
-`domain_exposure_only`, `interest_only`, `unsupported` and `insufficient_info` never enter the supported list.
+`domain_exposure_only`, `interest_only`, `in_progress_study`, `unsupported` and `insufficient_info` never enter the supported list.
+
+**Unfinished study (owner decision Q8, 2026-10-30).** An in-progress degree or a module list is education-based exploration, not occupational experience, and never implies professional or licensing status. Real individual coursework projects, supervised placements, internships, volunteering or paid work can support the specific tasks actually performed, labelled by source (`academic_project`, `internship`, ...). Unspecified team contributions stay `insufficient_info`. Past evidence is shown as such and ranked separately from present fit. Draft: the explicit source labels in the UI are not all implemented yet.
 
 ## 4. Relevance score (ordinal, not a probability)
 Applies to `direct` and `transferable` areas only.

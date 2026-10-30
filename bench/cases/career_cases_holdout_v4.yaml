@@ -1,0 +1,264 @@
+# Fresh held-out set v4 (written 2026-10-30 BEFORE any run of pipeline policy v3: assess_v3 prompt, area_definitions_v3, capped ranking
+# with industry exposure kept out of exploration). ALL SYNTHETIC; none of these cases has been run on any pipeline.
+# Probes: domain swap in new industries (legal, agriculture, pharmacy, education), current-vs-historical roles, bank ledger work vs counter
+# duties, API building vs database administration, named-skills exploration, part-time care work beside a nursing degree, sparse CV.
+# Expectation fields follow cases v3: supported / acceptable (fine to show as supported) / exploration_only (fine ONLY as labelled
+# exploration; showing as supported is an overclaim) / traps (unsupported claim if shown as supported).
+# Rules: do not edit expectations after seeing output; expectations are author-written and not independently reviewed.
+- id: h4_01_dev_legal_software
+  synthetic: true
+  split: holdout_v4
+  pair_group: h4_swap_dev
+  sector: technology
+  stage: established
+  categories: [domain_confusion, minimal_pair]
+  cv_text: |
+    Thilina Amarasekara
+    SUMMARY
+    Backend developer with four years of experience.
+
+    EXPERIENCE
+    Backend developer, Lexgrid Software (2022 - 2026)
+    - Built and tested APIs in Java for a case-tracking application used by law firms.
+    - Fixed performance problems in SQL queries and reviewed teammates' code.
+  supported: [A043]
+  acceptable: []
+  exploration_only: []
+  traps: [A046, A053]
+
+- id: h4_02_dev_farm_supply_software
+  synthetic: true
+  split: holdout_v4
+  pair_group: h4_swap_dev
+  sector: technology
+  stage: established
+  categories: [domain_confusion, minimal_pair]
+  cv_text: |
+    Thilina Amarasekara
+    SUMMARY
+    Backend developer with four years of experience.
+
+    EXPERIENCE
+    Backend developer, Harvestline Software (2022 - 2026)
+    - Built and tested APIs in Java for an order-tracking application used by farm-supply shops.
+    - Fixed performance problems in SQL queries and reviewed teammates' code.
+  supported: [A043]
+  acceptable: []
+  exploration_only: []
+  traps: [A005, A062]
+
+- id: h4_03_student_pharmacy_app_project
+  synthetic: true
+  split: holdout_v4
+  pair_group: null
+  sector: technology
+  stage: early
+  categories: [in_progress_study, academic_project, domain_confusion]
+  cv_text: |
+    Dinuka Wijesundara
+    SUMMARY
+    Third-year software engineering student looking for an internship.
+
+    PROJECTS
+    Pharmacy stock-tracking web app (course project, graded, never used in a pharmacy)
+    - I personally wrote the stock-update service in Python and the unit tests. A teammate built the screens.
+
+    EDUCATION
+    BSc Software Engineering, Eastbridge University, 2023 - present
+  supported: [A043]
+  acceptable: []
+  exploration_only: []
+  traps: [A023, A024, A018]
+
+- id: h4_04_retail_supervisor_old_bank_teller
+  synthetic: true
+  split: holdout_v4
+  pair_group: null
+  sector: retail
+  stage: established
+  categories: [old_experience, career_changer]
+  cv_text: |
+    Roshani Karunaratne
+    SUMMARY
+    Retail shift supervisor with earlier bank counter experience.
+
+    EXPERIENCE
+    Shift supervisor, Citymart Stores (2021 - 2026)
+    - Led a team of six shop assistants, set daily shift rosters and handled stock orders and customer complaints.
+
+    Bank teller, Eastbridge Bank branch (2011 - 2014)
+    - Served customers at the counter: cash deposits, withdrawals and bill payments.
+  supported: [A010, A040]
+  acceptable: [A062]
+  exploration_only: []
+  traps: [A033]
+
+- id: h4_05_stores_clerk_old_ledger_work
+  synthetic: true
+  split: holdout_v4
+  pair_group: null
+  sector: logistics
+  stage: established
+  categories: [old_experience, domain_confusion]
+  cv_text: |
+    Manoj Ekanayake
+    SUMMARY
+    Warehouse stores clerk who earlier worked in a bank back office.
+
+    EXPERIENCE
+    Stores clerk, Southern Distribution (2020 - 2026)
+    - Received goods, checked them against delivery notes, updated the stock register and issued items to departments.
+
+    Clerk, Eastbridge Bank back office (2010 - 2013)
+    - Posted ledger entries and reconciled the daily cash records. No contact with customers.
+  supported: [A069, A041]
+  acceptable: []
+  exploration_only: []
+  traps: [A040, A033]
+
+- id: h4_06_data_student_named_skills_only
+  synthetic: true
+  split: holdout_v4
+  pair_group: null
+  sector: technology
+  stage: early
+  categories: [in_progress_study, skills_list_only]
+  cv_text: |
+    Sachini Rathnayake
+    SUMMARY
+    Second-year data science undergraduate looking for a first opportunity.
+
+    SKILLS
+    Python, R, TensorFlow, SQL
+
+    EDUCATION
+    BSc Data Science, Eastbridge University, 2024 - present
+    Modules so far: statistics, programming fundamentals, databases, introduction to machine learning.
+  supported: []
+  acceptable: []
+  exploration_only: [A086, A087]
+  traps: [A044, A090]
+
+- id: h4_07_student_own_api_course_project
+  synthetic: true
+  split: holdout_v4
+  pair_group: null
+  sector: technology
+  stage: early
+  categories: [in_progress_study, academic_project]
+  cv_text: |
+    Pradeep Gunasekara
+    SUMMARY
+    Second-year computing student seeking a software internship.
+
+    PROJECTS
+    Course booking system (course project, graded)
+    - I personally built the REST API for bookings in Node.js and wrote its tests.
+
+    EDUCATION
+    BSc Computing, Eastbridge University, 2024 - present
+  supported: [A043]
+  acceptable: []
+  exploration_only: []
+  traps: [A044, A090, A030]
+
+- id: h4_08_database_administrator_at_bank
+  synthetic: true
+  split: holdout_v4
+  pair_group: null
+  sector: technology
+  stage: established
+  categories: [genuine_positive, domain_confusion]
+  cv_text: |
+    Kumudu Siriwardena
+    SUMMARY
+    Database administrator with five years of experience.
+
+    EXPERIENCE
+    Database administrator, Eastbridge Bank IT department (2021 - 2026)
+    - Administered PostgreSQL servers: scheduled backups, managed user access and tuned slow queries.
+    - Monitored server health and restored databases after faults.
+  supported: [A044]
+  acceptable: [A045]
+  exploration_only: []
+  traps: [A033, A040, A041]
+
+- id: h4_09_nursing_student_care_assistant_work
+  synthetic: true
+  split: holdout_v4
+  pair_group: null
+  sector: health
+  stage: early
+  categories: [in_progress_study, regulated_role, part_time_work]
+  cv_text: |
+    Ishara Mendis
+    SUMMARY
+    Second-year nursing student working part-time as a care assistant.
+
+    EXPERIENCE
+    Care assistant (part-time), Sunrise Elder Care Home (2025 - 2026)
+    - Helped residents with washing, dressing and meals, and recorded their daily activity notes.
+
+    EDUCATION
+    BSc Nursing, Eastbridge University, 2024 - present
+  supported: [A027]
+  acceptable: [A025]
+  exploration_only: [A019]
+  traps: [A018]
+
+- id: h4_10_dev_school_software
+  synthetic: true
+  split: holdout_v4
+  pair_group: null
+  sector: technology
+  stage: established
+  categories: [domain_confusion]
+  cv_text: |
+    Ravindu Jayawardena
+    SUMMARY
+    Mobile developer with three years of experience.
+
+    EXPERIENCE
+    Mobile developer, Learnwell Apps (2023 - 2026)
+    - Built and released Android screens for a homework-tracking app for secondary schools, in Kotlin.
+    - Fixed crash reports and wrote UI tests.
+  supported: [A043]
+  acceptable: [A088]
+  exploration_only: []
+  traps: [A030, A031, A028, A032]
+
+- id: h4_11_sparse_looking_for_work
+  synthetic: true
+  split: holdout_v4
+  pair_group: null
+  sector: unknown
+  stage: early
+  categories: [sparse]
+  cv_text: |
+    Yasodha Perera
+    Looking for any suitable job. Flexible, willing to learn and a good team player.
+  supported: []
+  acceptable: []
+  exploration_only: []
+  traps: [A018, A043, A033]
+
+- id: h4_12_hospital_security_guard
+  synthetic: true
+  split: holdout_v4
+  pair_group: null
+  sector: health
+  stage: established
+  categories: [genuine_positive, domain_confusion, non_degree]
+  cv_text: |
+    Nalaka Hettiarachchi
+    SUMMARY
+    Security guard with six years of experience.
+
+    EXPERIENCE
+    Security guard, Lakeview General Hospital (2020 - 2026)
+    - Controlled entry at the main gate, checked visitor passes and patrolled the wards and car park at night.
+    - Wrote incident reports and called for help in emergencies.
+  supported: [A054]
+  acceptable: []
+  exploration_only: []
+  traps: [A018, A019, A021, A025]

@@ -55,7 +55,7 @@ def rank_llm_evidence(case: dict, cat):
         ctx["defs"], ctx["reg"] = assess.load_definitions(ctx.get("definitions")), assess.load_regulated(ctx.get("regulated"))
     first_line = case["cv_text"].strip().splitlines()[0]
     res = ev_engine.run(case["cv_text"], first_line, ctx["defs"], cfg=ctx["cfg"], regulated=ctx["reg"],
-                        use_confusions=ctx.get("use_confusions", False))
+                        use_confusions=ctx.get("use_confusions", False), policy=ctx.get("policy", "v2"))
     if res["status"] == "failed":
         raise RuntimeError("; ".join(res["errors"])[:300])
     ranking = [dict(area_id=s["area_id"], name=s["name"], score=float(s["relevance"] or 0), support_class=s["support_class"])
@@ -102,6 +102,7 @@ def main():
     ap.add_argument("--split", default="", help="only run cases of this split (tune, holdout, holdout_v2, ...)")
     ap.add_argument("--definitions", default="", help="llm_evidence: area definitions file (default data/processed/area_definitions_v1.yaml)")
     ap.add_argument("--regulated", default="", help="llm_evidence: regulated-areas file (default data/processed/regulated_areas_v1.yaml)")
+    ap.add_argument("--policy", default="v2", choices=["v2", "v3"], help="llm_evidence: v2 = frozen pipeline; v3 = assess_v3 prompt + exposure-free, capped ranking (2026-10-30)")
     ap.add_argument("--use-confusions", action="store_true", help="llm_evidence ablation: show common_contextual_confusions to the assessor")
     ap.add_argument("--run-live", action="store_true")
     ap.add_argument("--label", default="", help="suffix for output/checkpoint file names, e.g. pipe2")
@@ -127,7 +128,7 @@ def main():
             if not cfg.get("api_key_2"):
                 sys.exit("--account 2 needs OPENROUTER_API_KEY_2 in .env")
             cfg.update(api_key=cfg["api_key_2"], api_key_2="")
-        _EVIDENCE_CTX.update(cfg=cfg, definitions=a.definitions or None, regulated=a.regulated or None, use_confusions=a.use_confusions)
+        _EVIDENCE_CTX.update(cfg=cfg, definitions=a.definitions or None, regulated=a.regulated or None, use_confusions=a.use_confusions, policy=a.policy)
     cases = metrics.load_cases(a.cases)
     if a.only:
         cases = [c for c in cases if c["id"] in a.only.split(",")]
@@ -178,10 +179,10 @@ def main():
     if a.engine == "llm_direct":
         meta.update(prompt="llm/prompt_v1.md", runs_per_case=1, fallbacks="none", provider="unpinned (frozen client)")
     if a.engine == "llm_evidence":
-        meta.update(provider=a.provider, split=a.split or "all", prompts="extract_v1+assess_v2", schema="evidence_v1",
+        meta.update(provider=a.provider, split=a.split or "all", prompts="extract_v1+" + ("assess_v3" if a.policy == "v3" else "assess_v2"), policy=a.policy, schema="evidence_v1",
                     definitions_status=(__import__("yaml").safe_load(open(a.definitions or str(ROOT / "data/processed/area_definitions_v1.yaml"), encoding="utf-8")).get("status")),
                     frozen_files={f: hashlib.sha256((ROOT / f).read_bytes()).hexdigest()[:12] for f in (
-                        "src/careerx/evidence/extract_v1.md", "src/careerx/evidence/assess_v2.md", "src/careerx/evidence/validate.py",
+                        "src/careerx/evidence/extract_v1.md", "src/careerx/evidence/assess_v2.md", "src/careerx/evidence/assess_v3.md", "src/careerx/evidence/validate.py",
                         "src/careerx/evidence/verify.py", "src/careerx/evidence/rank.py", "src/careerx/evidence/engine.py",
                         a.regulated or "data/processed/regulated_areas_v1.yaml", a.definitions or "data/processed/area_definitions_v1.yaml")},
                     label=a.label or None, use_confusions=a.use_confusions, zdr=False, data_collection=a.data_collection, account=a.account, fallbacks="none", runs_per_case=1)

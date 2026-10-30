@@ -181,6 +181,27 @@ def test_ranking_is_deterministic_tiered_and_exploration_is_separate():
     assert out == rank.rank(v.rows, [DEV, NURSE, old, INTEREST], NAMES)
 
 
+def test_v3_policy_keeps_industry_exposure_out_of_exploration_and_caps_lists():
+    recs = [DEV, NURSE, INTEREST]
+    v = verify.verify(data(
+        A043=row("A043", "transferable", 4, [("E001", "actions")], "x"),
+        A019=row("A019", "direct", 2, [("E002", "role")], "x"),
+        A018=row("A018", "domain_exposure_only", None, [("E001", "domain")], "setting"),
+        A033=row("A033", "interest_only", None, [("E005", "interest")])), recs, AREAS, {"A019": ["nurse"], "A018": ["doctor"]})
+    v2 = rank.rank(v.rows, recs, NAMES)
+    v3 = rank.rank(v.rows, recs, NAMES, "v3")
+    assert [e["area_id"] for e in v2["exploration"]] == ["A033", "A018"] and "context_only" not in v2      # frozen v2 unchanged
+    assert [e["area_id"] for e in v3["exploration"]] == ["A033"] and [c["area_id"] for c in v3["context_only"]] == ["A018"]
+    assert v3["supported"] == v2["supported"] and len(v3["supported"]) <= rank.MAX_SUPPORTED_V3
+
+
+def test_v3_prompt_is_separate_and_v2_prompt_is_unchanged():
+    p3, p2 = assess.system_prompt("v3"), assess.system_prompt()
+    assert p2 == assess.system_prompt("v2") and "Industry exposure is not a pathway" in p3 and "Industry exposure is not a pathway" not in p2
+    d3 = yaml.safe_load(open(assess.DEFINITIONS_PATH.with_name("area_definitions_v3.yaml"), encoding="utf-8"))
+    assert d3["definitions_version"] == "v3" and "A041" in d3["areas"]["A040"]["reviewer_scope_note"] and "A043" in d3["areas"]["A044"]["reviewer_scope_note"]
+
+
 def test_nothing_supported_gives_an_empty_list_not_ten():
     out = rank.rank(run().rows, ALL, NAMES)
     assert out["supported"] == [] and out["exploration"] == []

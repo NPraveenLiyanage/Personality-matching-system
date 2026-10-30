@@ -1,0 +1,319 @@
+# Synthetic fixtures syn01-syn14 from docs/PROJECT_REVIEW.md section 9b (written 2026-10-30). ALL INVENTED: no real person, CV or dataset.
+# Task wording is paraphrased from public occupational profiles (ILO ISCO-08, O*NET, UK National Careers Service); the sources support the
+# plausibility of a task, not its occurrence in a real person.
+# Split "synth_dev_v1": a DEVELOPMENT set, not a fresh held-out set (the labels came from the Q8 guidance, which also shaped the pipeline).
+# Expectation fields follow cases v3: supported / acceptable (fine to show as supported) / exploration_only (fine ONLY as labelled
+# exploration; showing as supported is an overclaim) / traps (unsupported claim if shown as supported).
+# Expectations are author-written, AI-assisted and NOT reviewed by a human domain specialist. Area membership must still be checked
+# against the frozen catalogue_v1 ISCO mapping. Do not edit expectations after seeing output; add a new version instead.
+- id: syn01_accounting_student_no_work
+  synthetic: true
+  split: synth_dev_v1
+  pair_group: syn_accounting
+  sector: finance
+  stage: early
+  categories: [in_progress_study]
+  cv_text: |
+    Kasun Wickramasinghe
+    SUMMARY
+    Second-year accounting student looking for an internship.
+
+    EDUCATION
+    BSc Accounting, Eastbridge University, 2024 - present
+    Currently studying financial accounting and auditing. Completed lectures and textbook exercises.
+
+    NOTE
+    I have not worked in an accounts department or completed an internship.
+  supported: []
+  acceptable: []
+  exploration_only: [A033]
+  traps: [A041]
+
+- id: syn02_student_own_api_project
+  synthetic: true
+  split: synth_dev_v1
+  pair_group: null
+  sector: technology
+  stage: early
+  categories: [in_progress_study, academic_project]
+  cv_text: |
+    Tharushi Ranasinghe
+    SUMMARY
+    Second-year computing student looking for a software internship.
+
+    PROJECTS
+    Student attendance web app (second-year project, graded, not used by any company)
+    - I personally built the login API, designed three database tables and wrote integration tests.
+
+    EDUCATION
+    BSc Computing, Eastbridge University, 2024 - present
+  supported: [A043]
+  acceptable: []
+  exploration_only: [A044]
+  traps: [A030, A028]
+
+- id: syn03_accounting_student_placement
+  synthetic: true
+  split: synth_dev_v1
+  pair_group: syn_accounting
+  sector: finance
+  stage: early
+  categories: [in_progress_study, internship]
+  cv_text: |
+    Dilani Perera
+    SUMMARY
+    Accounting degree student with a short placement, seeking an accounts assistant role.
+
+    EXPERIENCE
+    Accounts Assistant (placement), Harbour Trading (8 weeks, 2026)
+    - Assisted an accounts team: entered supplier invoices and reconciled bank transactions under supervision.
+    - Prepared a weekly outstanding-payments spreadsheet.
+
+    EDUCATION
+    BSc Accounting, Eastbridge University, 2024 - present
+  supported: [A041]
+  acceptable: []
+  exploration_only: [A033]
+  traps: [A046]
+
+- id: syn04_school_leaver_supermarket
+  synthetic: true
+  split: synth_dev_v1
+  pair_group: null
+  sector: retail
+  stage: early
+  categories: [non_degree, genuine_positive, domain_confusion]
+  cv_text: |
+    Nuwan Jayasekara
+    SUMMARY
+    School leaver with part-time supermarket experience.
+
+    EXPERIENCE
+    Shop assistant (part-time), Greenfield Supermarket (9 months, 2025 - 2026)
+    - Restocked shelves, checked displayed prices, handled checkout transactions and helped customers find products.
+    - I did not manage staff or prepare financial accounts.
+
+    EDUCATION
+    G.C.E. Advanced Level, 2025
+  supported: [A062]
+  acceptable: []
+  exploration_only: []
+  traps: [A010, A033, A041]
+
+- id: syn05_lorry_driver_not_mechanic
+  synthetic: true
+  split: synth_dev_v1
+  pair_group: syn_vehicles
+  sector: transport
+  stage: established
+  categories: [non_degree, genuine_positive, domain_confusion]
+  cv_text: |
+    Prasanna Gunawardena
+    SUMMARY
+    Delivery lorry driver with four years of experience.
+
+    EXPERIENCE
+    Lorry driver, Island Freight Services (2022 - 2026)
+    - Drove delivery lorries on assigned routes.
+    - Inspected tyres and lights before departures and completed delivery and trip logs.
+    - I did not repair vehicle engines.
+  supported: [A083]
+  acceptable: []
+  exploration_only: []
+  traps: [A072]
+
+- id: syn06_depot_technician_not_engineer
+  synthetic: true
+  split: synth_dev_v1
+  pair_group: syn_vehicles
+  sector: transport
+  stage: established
+  categories: [non_degree, genuine_positive, technician_not_engineer]
+  cv_text: |
+    Sampath Fernando
+    SUMMARY
+    Bus depot technician with several years of workshop experience.
+
+    EXPERIENCE
+    Depot technician, Central Bus Depot (2021 - 2026)
+    - Inspected braking systems, investigated engine faults and replaced worn mechanical parts.
+    - Recorded maintenance work on job cards.
+    - I have not designed vehicles or managed the workshop.
+  supported: [A072]
+  acceptable: []
+  exploration_only: []
+  traps: [A015, A006]
+
+- id: syn07_cutting_machine_operator
+  synthetic: true
+  split: synth_dev_v1
+  pair_group: null
+  sector: manufacturing
+  stage: established
+  categories: [non_degree, genuine_positive]
+  cv_text: |
+    Chamari Liyanage
+    SUMMARY
+    Cutting-machine operator in an apparel factory.
+
+    EXPERIENCE
+    Machine operator, Bluewave Apparel (2024 - 2026)
+    - Set cutting-machine parameters, loaded fabric and checked cut pieces against specifications.
+    - Told the supervisor when the machine jammed.
+  supported: [A081]
+  acceptable: []
+  exploration_only: []
+  traps: [A078, A067]
+
+- id: syn08_waste_collection_crew
+  synthetic: true
+  split: synth_dev_v1
+  pair_group: null
+  sector: public_services
+  stage: established
+  categories: [non_degree, genuine_positive]
+  cv_text: |
+    Ruwan Madushanka
+    SUMMARY
+    Municipal waste-collection worker.
+
+    EXPERIENCE
+    Collection crew member, Eastbridge Municipal Council (2023 - 2026)
+    - Worked on a refuse-collection crew, emptied household bins into a collection vehicle and separated rejected items.
+    - Cleaned assigned collection points.
+  supported: [A064]
+  acceptable: []
+  exploration_only: []
+  traps: [A006, A014]
+
+- id: syn09_nurse_credential_self_reported
+  synthetic: true
+  split: synth_dev_v1
+  pair_group: null
+  sector: health
+  stage: established
+  categories: [genuine_positive, regulated_role]
+  cv_text: |
+    Hiruni Samarasinghe
+    SUMMARY
+    Ward nurse with three years of experience.
+
+    EXPERIENCE
+    Ward nurse, Lakeview General Hospital (2023 - 2026)
+    - Recorded vital signs, supported wound care and documented treatment notes.
+
+    EDUCATION
+    Diploma in Nursing (stated by the candidate; no registration details given)
+  supported: [A019]
+  acceptable: []
+  exploration_only: []
+  traps: [A018, A023]
+
+- id: syn10_team_project_unspecified_role
+  synthetic: true
+  split: synth_dev_v1
+  pair_group: null
+  sector: technology
+  stage: early
+  categories: [in_progress_study, team_project_unspecified]
+  cv_text: |
+    Isuru Bandara
+    SUMMARY
+    Engineering student interested in IoT devices.
+
+    PROJECTS
+    Irrigation controller (university team assignment)
+    - Our six-person team developed a basic irrigation controller. The report does not identify my individual contribution.
+
+    EDUCATION
+    BSc Engineering, Eastbridge University, 2024 - present
+  supported: []
+  acceptable: []
+  exploration_only: [A089]
+  traps: [A015, A043]
+
+- id: syn11_packaging_graphic_designer
+  synthetic: true
+  split: synth_dev_v1
+  pair_group: null
+  sector: manufacturing
+  stage: established
+  categories: [genuine_positive, domain_confusion]
+  cv_text: |
+    Ayesha Rajapaksa
+    SUMMARY
+    Graphic designer for consumer-goods packaging.
+
+    EXPERIENCE
+    Graphic designer, Brightpack Printing (2022 - 2026)
+    - Created product-label layouts, edited illustrations and prepared print-ready artwork in design software.
+  supported: [A088]
+  acceptable: [A017]
+  exploration_only: []
+  traps: [A023, A024, A018]
+
+- id: syn12_career_changer_old_bookkeeping
+  synthetic: true
+  split: synth_dev_v1
+  pair_group: null
+  sector: hospitality
+  stage: established
+  categories: [old_experience, career_changer]
+  cv_text: |
+    Mahesh Abeywickrama
+    SUMMARY
+    Restaurant shift supervisor with earlier bank bookkeeping experience.
+
+    EXPERIENCE
+    Shift supervisor, Harbour View Restaurant (2022 - 2026)
+    - Supervised restaurant shifts and coordinated staff coverage.
+
+    Bank clerk, Eastbridge Bank branch (2012 - 2014)
+    - Posted ledger transactions and reconciled daily cash.
+  supported: [A041]
+  acceptable: [A009, A058]
+  exploration_only: []
+  traps: [A033]
+
+- id: syn13_it_graduate_skills_only
+  synthetic: true
+  split: synth_dev_v1
+  pair_group: null
+  sector: technology
+  stage: early
+  categories: [skills_list_only, in_progress_study]
+  cv_text: |
+    Lakmal Dissanayake
+    SUMMARY
+    Final-year information technology undergraduate. Looking for my first opportunity.
+
+    SKILLS
+    Python, TensorFlow, SQL
+
+    EDUCATION
+    BSc Information Technology, Eastbridge University, 2023 - present
+  supported: []
+  acceptable: []
+  exploration_only: [A043, A086, A087]
+  traps: []
+
+- id: syn14_clinic_app_developer_negation
+  synthetic: true
+  split: synth_dev_v1
+  pair_group: null
+  sector: technology
+  stage: established
+  categories: [domain_confusion, explicit_negation]
+  cv_text: |
+    Janaka Weerasinghe
+    SUMMARY
+    Developer on a clinic scheduling application.
+
+    EXPERIENCE
+    Software developer, Medibook Systems (2022 - 2026)
+    - Programmed and tested REST endpoints for a clinic scheduling application and fixed database-query errors.
+    - I have never assessed or treated patients.
+  supported: [A043]
+  acceptable: []
+  exploration_only: []
+  traps: [A018, A019, A023]

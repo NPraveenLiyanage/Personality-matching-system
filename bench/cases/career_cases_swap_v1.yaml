@@ -1,0 +1,94 @@
+# Targeted diagnostic: healthcare-app domain swap (written 2026-10-30, owner-approved). ALL INVENTED.
+# Pairs hold the candidate's skills and actual tasks constant and change only the application industry.
+# Pair 1: professional developer, clinic vs logistics. Pair 2: final-year student with an academic project, healthcare vs library.
+# Split "swap_v1": a DIAGNOSTIC set, not a held-out set. Any pipeline change made after seeing these outputs must be evaluated on a new frozen set.
+# Expectation fields follow cases v3 (supported / acceptable / exploration_only / traps). Author-written, not human-reviewed.
+# Owner rule: industry exposure must not become a career recommendation (medicine/nursing/health areas are traps, and are not
+# wanted even as exploration on the strength of the domain alone).
+- id: swap01_dev_clinic_app
+  synthetic: true
+  split: swap_v1
+  pair_group: swap_professional
+  sector: technology
+  stage: established
+  categories: [domain_confusion, minimal_pair]
+  cv_text: |
+    Sanjeewa Kodikara
+    SUMMARY
+    Software developer with three years of experience.
+
+    EXPERIENCE
+    Software developer, Medibook Systems (2023 - 2026)
+    - Built and tested REST endpoints for a clinic appointment application in Python and fixed database-query errors.
+    - Wrote unit tests and reviewed teammates' code.
+  supported: [A043]
+  acceptable: []
+  exploration_only: []
+  traps: [A018, A019, A021, A023, A024, A025]
+
+- id: swap02_dev_logistics_app
+  synthetic: true
+  split: swap_v1
+  pair_group: swap_professional
+  sector: technology
+  stage: established
+  categories: [domain_confusion, minimal_pair]
+  cv_text: |
+    Sanjeewa Kodikara
+    SUMMARY
+    Software developer with three years of experience.
+
+    EXPERIENCE
+    Software developer, Routeline Systems (2023 - 2026)
+    - Built and tested REST endpoints for a delivery scheduling application in Python and fixed database-query errors.
+    - Wrote unit tests and reviewed teammates' code.
+  supported: [A043]
+  acceptable: []
+  exploration_only: []
+  traps: [A069, A083, A006]
+
+- id: swap03_student_health_app_project
+  synthetic: true
+  split: swap_v1
+  pair_group: swap_student
+  sector: technology
+  stage: early
+  categories: [in_progress_study, academic_project, domain_confusion, minimal_pair]
+  cv_text: |
+    Nimali Gamage
+    SUMMARY
+    Final-year computer science student looking for a graduate software role.
+
+    PROJECTS
+    Patient appointment web app (final-year project, graded, not used by a hospital)
+    - I personally built the booking API in Python, designed the database tables and wrote the tests.
+
+    EDUCATION
+    BSc Computer Science, Eastbridge University, 2023 - present
+  supported: [A043]
+  acceptable: []
+  exploration_only: []
+  traps: [A018, A019, A021, A023, A024, A025]
+
+- id: swap04_student_library_app_project
+  synthetic: true
+  split: swap_v1
+  pair_group: swap_student
+  sector: technology
+  stage: early
+  categories: [in_progress_study, academic_project, domain_confusion, minimal_pair]
+  cv_text: |
+    Nimali Gamage
+    SUMMARY
+    Final-year computer science student looking for a graduate software role.
+
+    PROJECTS
+    Library book reservation web app (final-year project, graded, not used by a library)
+    - I personally built the reservation API in Python, designed the database tables and wrote the tests.
+
+    EDUCATION
+    BSc Computer Science, Eastbridge University, 2023 - present
+  supported: [A043]
+  acceptable: []
+  exploration_only: []
+  traps: [A030, A028, A042]

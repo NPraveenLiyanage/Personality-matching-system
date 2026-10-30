@@ -37,6 +37,14 @@ Re-open these questions then, not before:
 5. Where the files live (local only, git-ignored, never in repo).
 Then rework Phase 5 (evaluation) and, only if justified, Phase 7 (fine-tuning) around them.
 
+## Decisions recorded 2026-10-30 (owner)
+- Q8 unfinished degrees: education-based exploration only; real tasks from projects, placements or work can support those tasks, labelled by source. See `docs/RUBRIC.md` section 3.
+- Q3: free models only; a possible future US$10 total cap is not approved for spending.
+- Number of areas shown (owner, 2026-10-30): up to 3 supported areas, no minimum, never pad; exploration shown in a separate, capped list; industry exposure is context, not a pathway. Implemented as pipeline policy v3 (untested live; held-out v4 blocked by rate limits).
+- Current role first, older relevant work kept as direct historical evidence; banking-clerk area only for explicit banking or payment-service duties.
+- Open: whether to use the second OpenRouter account when the first hits its free limit (terms section 7(3)).
+- Q4: public datasets may be considered for training only after source-specific licence and privacy clearance.
+
 ## Other unresolved decisions
 - Stable catalogue IDs / `catalogue_v2` (split A015 engineering? treat management A001-A011? overlapping tech lenses A086-A090).
 - Final model/provider choice (needs live verification with a key, synthetic data only).

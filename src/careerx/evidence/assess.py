@@ -54,8 +54,10 @@ def load_regulated(path=None) -> dict:
     return yaml.safe_load(Path(path or REGULATED_PATH).read_text(encoding="utf-8"))["areas"]
 
 
-def system_prompt() -> str:
-    return PROMPT_PATH.read_text(encoding="utf-8")
+def system_prompt(policy: str = "v2") -> str:
+    """policy "v2" is the frozen prompt; "v3" (2026-10-30) adds the industry-exposure, exploration-cap and neighbouring-area rules."""
+    path = PROMPT_PATH.with_name("assess_v3.md") if policy == "v3" else PROMPT_PATH
+    return path.read_text(encoding="utf-8")
 
 
 def record_view(r: EvidenceRecord) -> dict:

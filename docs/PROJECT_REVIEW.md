@@ -555,3 +555,54 @@ The quoted sentences are invented; the labels are **suggested review expectation
 - **Demo and commit:** Both are deferred to an explicit new request; the owner reports the previous changes committed.
 
 **Research/legal reference notes (not jurisdiction-specific legal advice):** O*NET details and licence: https://www.onetonline.org/help/license ; ILO ISCO scope and availability: https://isco.ilo.org/en/isco-08/ ; ESCO download: https://esco.ec.europa.eu/uk/use-esco/download ; Creative Commons BY 4.0 attribution: https://creativecommons.org/licenses/by/4.0/ ; guidance on lawful basis for processing personal information: https://ico.org.uk/consent . Check Sri Lanka-specific and source-specific rules before processing real applicants' information.
+
+
+---
+
+## 10. Synthetic dev set `synth_dev_v1`: first run (2026-10-30, account 1, free Nemotron, pipeline v2 unchanged)
+
+Cases: `bench/cases/career_cases_synth_v1.yaml` (14 invented CVs from section 9b; split `synth_dev_v1`; expectations author-written, AI-assisted, not human-reviewed; ISCO membership not yet cross-checked). One run per case, no retries, no pipeline change. Run file: `bench/runs/career_llm_evidence_nvidia_nemotron-3.5-super-vl_free_pipe2_2026-10-30.json`.
+
+**Result (14 of 14 completed, 0 failures):** trap areas shown as supported 0; supported areas found 11/11; top area in the expected set 11/11; overclaims (exploration-only area shown as supported) 0/5; abstained on the 3 no-support cases (syn01, syn10, syn13) 3/3; mean areas shown 0.93.
+
+**Not a fresh test.** The Q8 guidance shaped these labels and the pipeline, so treat this as a development check. Free-model, one run each, small n.
+
+**Things to look at:**
+- `syn12` (restaurant supervisor, old bank clerk): shows three areas, all `direct`: A009, A040 and A041, with A009 first. A040 (banking clerks) was not in the expected or trap lists. The old clerk work is probably what supports it, but ranking the current role above the historical one, and the A040 label, need a decision.
+- `syn10` (team project, unspecified role): A015 appears as labelled exploration, which is a trap shown only as exploration. `syn14`: A018 likewise.
+- **Exploration lists (checked offline from the saved run):** the expected exploration area was shown for `syn01` (A033), `syn03` (A033) and `syn10` (A089). Missing: `syn02` A044 (the student's own database tables were not offered as exploration) and `syn13` A086 and A087. `syn13` instead lists A007, A043, A044, A045 and A090 as `in_progress_study`, so the IT graduate's pathways are broad rather than tied to the named skills. `syn14` lists A018 (medicine) as `domain_exposure_only`, so the clinic-app developer still sees a medicine entry, labelled "industry exposure only". `syn12` also lists A051, A057 and A058 as industry exposure (restaurant).
+- **Top-1 vs up-to-3 display (offline):** the ranked list already holds at most 3 areas, and only `syn12` shows more than 1. Showing only the top-1 there would give A009 (current role) and drop the expected A041 historical clerk work, so top-1 would lose recall on this case, while up-to-3 added A040, which was not an expected area. One case is not enough to decide the display count; Q8's display-count item stays open.
+- Done: Q8 wording added to `docs/RUBRIC.md` (section 3) and `docs/OPEN_DECISIONS.md`. Not yet done: the domain-swap check for an academic healthcare app (needs a new case pair and a live run).
+
+
+## 11. Owner decisions of 2026-10-30 (later), healthcare-swap diagnostic, pipeline policy v3 (status: held-out run blocked by rate limit)
+
+**Record correction for section 10.** The raw run file of the first `synth_dev_v1` run was overwritten by the swap diagnostic (same output name; the runner does not put the case file in the name). The section 10 numbers were read from that run before it was lost and are unchanged, but the raw file no longer exists. A re-run was attempted under a new label (`pipe2_synth_rerun`): only 3 of 14 cases completed, 11 failed with HTTP 429. Treat section 10 as reported-but-unarchived. **Always pass a distinct `--label` per case file.**
+
+**Owner decisions recorded.** (1) Run the healthcare-app swap on the free model only. (2) Current supported role (A009) is prioritised; older clerk work (A041) stays direct historical evidence with recency; A040 is not supported without explicit banking or payment-service duties. (3) Exploration: unfinished-degree students stay eligible; named skills may point to A086/A087 as exploration only; building an API does not add A044; fewer, better-justified exploration areas; industry exposure is never a career pathway. (4) Up to 3 supported areas, no minimum; exploration shown separately; every item carries an evidence label. (5) Diagnostic first, then fix, then test on a newly frozen held-out set. (6) Free models only; no purchases; US$10 is a ceiling, not approval. Human-review gates stay open.
+
+**Healthcare-app swap diagnostic** (`bench/cases/career_cases_swap_v1.yaml`, 4 invented cases, pipeline v2, first attempt, 4 of 4 completed; run file `..._pipe2_swap_v1_2026-10-30.json`). The supported answer was right in all four (A043 only; no trap shown as supported). **But the owner's rule failed:** the clinic-app developer was shown 7 health areas (A018, A019, A020, A021, A023, A024, A025) as "industry exposure only" exploration, and the logistics-app developer was shown A006, A069 and A083 the same way. The student's health-app project showed none, while the library-app student got one unrelated area (A047). So industry exposure still reached the user as a pathway list, and inconsistently between versions of the same candidate.
+
+**Changes made (policy v3; v2 files and behaviour are frozen and still the default):**
+- `src/careerx/evidence/assess_v3.md`: v2 plus rules 11-14 (exposure is not a pathway; at most 3 study-based areas tied to listed skills or study; no neighbouring-area inference such as API to database administration or bank ledger work to banking-clerk; current and older roles are both cited).
+- `data/processed/area_definitions_v3.yaml`: v2 plus reviewer scope notes for A040 and A044.
+- `rank.py` policy `v3`: `domain_exposure_only` moves out of exploration into a separate `context_only` list (not a recommendation); supported capped at 3; exploration capped at 3, ordered by amount of cited evidence; no padding.
+- Plumbing: `engine.run(policy=...)` and `bench/run_benchmark.py --policy v3` (records the policy in run metadata). Two unit tests added; 138 pass, 11 xfail as before.
+- Not changed: ranking order. Current role first already follows from the existing recency key (A009 was ranked first in `syn12`); A040 depends on the new prompt rule and scope note, which are untested until a live run completes.
+
+**Fresh held-out set v4** (`bench/cases/career_cases_holdout_v4.yaml`, 12 invented cases, never run, fingerprint `7d6984acb64e3bfe`, frozen before any v3 run): legal-vs-farm-supply developer swap, pharmacy-app student, retail supervisor with old bank-teller work (A040 *should* be supported here), stores clerk with old back-office ledger work (A040 should not), data-science student with named skills, student API project (A044 trap), real database administrator at a bank, nursing student with care-assistant work, ed-tech developer, sparse CV, hospital security guard.
+
+**Result of the first v3 attempt on v4: 0 of 12 completed. All 12 failed at extraction with HTTP 429 (free-model rate limit on account 1, two attempts each).** No model output was produced, so v4 is still untouched and fresh; the failures are recorded as failures and the later run will be reported as a retry, not a first attempt. Nothing in this section is evidence that v3 works.
+
+**Blocked on:** free quota. Options: wait for the account-1 quota to reset and retry; or use account 2 (the owner confirmed both accounts belong to the same entity, but OpenRouter terms section 7(3) prohibit using multiple accounts to get around use limits, so this needs the owner's explicit decision for this case).
+
+### Update: held-out v4 retry on account 2 (2026-10-30, owner-approved switch, free Nemotron, policy v3, no change to code or cases)
+The first attempt (account 1) completed 0 of 12 (all HTTP 429). **This is the retry:** 12 of 12 completed, 0 failures, on account 2 (the owner explicitly approved using account 2 here; OpenRouter terms section 7(3) still apply to multiple-account use). Run file: `bench/runs/career_llm_evidence_nvidia_nemotron-3.5-super-vl_free_pipe3_holdout_v4_retry_acct2_2026-10-30.json`.
+
+**Results:** wrong-field (trap) areas shown as supported 0/12; expected supported areas found 12/12 (every case with an expectation was fully matched); top area in the expected set 10/10; overclaims (exploration-only area shown as supported) 0/2; abstained on the 2 no-support cases (data-science student with only listed skills, sparse CV) 2/2; mean areas shown 1.0; trap areas as exploration 0.
+- Owner rules observed: legal-software and farm-supply developer both got A043 only (no A046/A053, no A005/A062); pharmacy-app student got A043 only; student API project did not add A044 or A090; the real bank database administrator still got A044 (not A033/A040/A041); school-app developer got A043 only.
+- `h4_04` (current retail supervisor, old counter teller): A010 and A040 shown, A040 because explicit counter duties were stated, as intended. `h4_05` (stores clerk, old back-office ledger work): A069 and A041 shown, A040 not shown (the v2 behaviour on the matching `syn12` case was to show A040).
+- Named skills: the data-science student got A086 as labelled exploration; the expected A087 (TensorFlow) was not offered. The nursing student got A027 as supported and A019 as exploration, as expected.
+- Not visible in this run: whether the model still proposes industry-exposure areas (they are now moved to `context_only`, which the benchmark does not store). The swap cases (`swap_v1`) were **not** re-run under v3, so the clinic-app exposure list is fixed by construction in `rank.py` but not yet checked on a live run.
+
+**Caveats:** 12 cases, one run each, author-written and AI-assisted (not human-reviewed) expectations, free model, a retry on a different account than the first attempt, and the v4 expectations were written knowing the v3 rules, so this is a check that the rules work, not independent accuracy evidence. v4 is now seen: any further pipeline change needs a new frozen set. The v2 baselines were not run on v4. Human-review gates (Phase 0/1/2 sign-off and Phase 5 raters) remain open.

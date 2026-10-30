@@ -36,15 +36,28 @@ def explain(a: AreaAssessment, by_eid: dict) -> str:
     return f"{lead} - " + " | ".join(parts) if parts else lead
 
 
-def rank(rows: dict[str, AreaAssessment], records: list[EvidenceRecord], names: dict[str, str]) -> dict:
+MAX_SUPPORTED_V3 = 3
+MAX_EXPLORATION_V3 = 3
+
+
+def rank(rows: dict[str, AreaAssessment], records: list[EvidenceRecord], names: dict[str, str], policy: str = "v2") -> dict:
     by_eid = {r.evidence_id: r for r in records}
     sup = sorted((a for a in rows.values() if a.support_class in _TIER), key=lambda a: sort_key(a, by_eid))
     exp = sorted((a for a in rows.values() if a.support_class in EXPLORATION_LABEL),
                  key=lambda a: (a.support_class != "interest_only", a.area_id))
+    context = []
+    if policy == "v3":      # industry exposure is context, not a pathway; supported and exploration lists are capped, never padded
+        context = [a for a in exp if a.support_class == "domain_exposure_only"]
+        exp = sorted((a for a in exp if a.support_class != "domain_exposure_only"),
+                     key=lambda a: (-len({e for e, _ in a.evidence}), a.support_class != "interest_only", a.area_id))[:MAX_EXPLORATION_V3]
+        sup = sup[:MAX_SUPPORTED_V3]
 
     def item(i: int | None, a: AreaAssessment) -> dict:
         return dict(rank=i, area_id=a.area_id, name=names.get(a.area_id, a.area_id), support_class=a.support_class,
                     relevance=a.relevance, evidence_ids=[e for e, _ in a.evidence], explanation=explain(a, by_eid),
                     qualification_gaps=a.qualification_gaps, uncertainty=a.uncertainty, status=a.status,
                     label=EXPLORATION_LABEL.get(a.support_class))
-    return dict(supported=[item(i, a) for i, a in enumerate(sup, 1)], exploration=[item(None, a) for a in exp])
+    out = dict(supported=[item(i, a) for i, a in enumerate(sup, 1)], exploration=[item(None, a) for a in exp])
+    if policy == "v3":
+        out["context_only"] = [item(None, a) for a in context]
+    return out

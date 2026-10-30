@@ -23,7 +23,7 @@ def _result(**kw) -> dict:
 
 
 def run(cv_text: str, name: str, defs: dict, chat=None, cfg: dict | None = None, regulated: dict | None = None,
-        use_confusions: bool = False) -> dict:
+        use_confusions: bool = False, policy: str = "v2") -> dict:
     chat = chat or ev_client.chat
     ing = ingest.ingest_text(cv_text, [name] if name else None)
     ex = extract.run_extraction(ing, chat, cfg)
@@ -42,7 +42,7 @@ def run(cv_text: str, name: str, defs: dict, chat=None, cfg: dict | None = None,
 
     area_ids = list(defs["areas"])
     try:
-        raw = chat(assess.system_prompt(), assess.build_user(ex.records, ex.warnings, defs, use_confusions),
+        raw = chat(assess.system_prompt(policy), assess.build_user(ex.records, ex.warnings, defs, use_confusions),
                    assess.RESPONSE_SCHEMA, cfg)
     except ev_client.EvidenceLLMError as e:
         res["errors"] = [f"assessment failed: {e}"]
@@ -51,7 +51,7 @@ def run(cv_text: str, name: str, defs: dict, chat=None, cfg: dict | None = None,
         raw = ev_client.ChatResult(content=raw)
     res["run_meta"]["assessment"] = dict(model=raw.model, provider=raw.provider, request_id=raw.request_id,
                                          finish_reason=raw.finish_reason, usage=raw.usage, latency_s=raw.latency_s,
-                                         prompt_version=assess.PROMPT_VERSION)
+                                         prompt_version=assess.PROMPT_VERSION if policy == "v2" else "assess_v3", policy=policy)
     if raw.finish_reason == "length":
         res["errors"] = ["assessment truncated (finish_reason=length); not parsed"]
         return res
@@ -61,7 +61,7 @@ def run(cv_text: str, name: str, defs: dict, chat=None, cfg: dict | None = None,
         parse_err = str(e)
         res["run_meta"]["assessment"]["json_retries"] = 1     # one bounded retry of the identical request; recorded
         try:
-            raw = chat(assess.system_prompt(), assess.build_user(ex.records, ex.warnings, defs, use_confusions),
+            raw = chat(assess.system_prompt(policy), assess.build_user(ex.records, ex.warnings, defs, use_confusions),
                        assess.RESPONSE_SCHEMA, cfg)
             if isinstance(raw, str):
                 raw = ev_client.ChatResult(content=raw)
@@ -83,7 +83,7 @@ def run(cv_text: str, name: str, defs: dict, chat=None, cfg: dict | None = None,
     if uncited:                                  # one bounded targeted re-ask; the answer goes through the same verification
         res["stages"]["assessment"]["reask_areas"] = uncited
         try:
-            raw2 = chat(assess.system_prompt(), assess.build_reask_user(ex.records, defs, uncited), assess.RESPONSE_SCHEMA, cfg)
+            raw2 = chat(assess.system_prompt(policy), assess.build_reask_user(ex.records, defs, uncited), assess.RESPONSE_SCHEMA, cfg)
             if isinstance(raw2, str):
                 raw2 = ev_client.ChatResult(content=raw2)
             res["run_meta"]["reask"] = dict(model=raw2.model, finish_reason=raw2.finish_reason, usage=raw2.usage,
@@ -102,6 +102,6 @@ def run(cv_text: str, name: str, defs: dict, chat=None, cfg: dict | None = None,
             res["stages"]["assessment"]["reask_error"] = [str(e)[:160]]
     res["validation_log"] = [dict(area_id=a.area_id, original_class=a.original_class, final_class=a.support_class,
                                   changes=a.changes) for a in v.rows.values() if a.changes]
-    res.update(rank.rank(v.rows, ex.records, names))
+    res.update(rank.rank(v.rows, ex.records, names, policy))
     res["status"] = "accepted" if ex.status == "accepted" and v.status == "accepted" else "repaired"
     return res
