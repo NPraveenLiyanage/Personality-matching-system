@@ -39,6 +39,26 @@ Anything else may appear only as **exploration**, clearly labelled.
 
 **Unfinished study (owner decision Q8, 2026-10-30).** An in-progress degree or a module list is education-based exploration, not occupational experience, and never implies professional or licensing status. Real individual coursework projects, supervised placements, internships, volunteering or paid work can support the specific tasks actually performed, labelled by source (`academic_project`, `internship`, ...). Unspecified team contributions stay `insufficient_info`. Past evidence is shown as such and ranked separately from present fit. Draft: the explicit source labels in the UI are not all implemented yet.
 
+
+## 3a. Display policy v3 (owner decisions 2026-10-30; experimental, v2 stays the default until the swap tests pass)
+
+The pipeline returns three separate things. They answer different questions and must never be merged in a display or a metric.
+
+| Section | What it holds | Rule | Label shown |
+|---|---|---|---|
+| **Supported** | Areas with `direct` or `transferable` support | At most 3, ordered by tier, evidence strength, recency, amount of evidence. No minimum and no padding: 0, 1 or 2 is a valid answer. | "Supported by demonstrated tasks" or "Transferable skills", plus the source type (professional work, internship, academic project, volunteer) |
+| **Exploration** | `in_progress_study` and `interest_only` areas | At most 3, each tied to a cited education record, listed skill or stated interest. Study alone is education-based exploration, never occupational experience. Named skills may point to a matching area as exploration only. | "Exploration based on study or interest" |
+| **Industry exposure** | `domain_exposure_only` areas (returned as `context_only`) | Context about where the person worked or studied. **Not a pathway and not a suitability statement.** Shown separately and visibly, never in the exploration list, never ranked. | "Industry exposure only: not evidence of doing this occupation" |
+
+Further rules in v3:
+1. Building healthcare, banking, legal or school software supports software areas; the health, finance, law or teaching areas appear at most as industry exposure.
+2. A tool or artefact does not imply a neighbouring area: building an API is software development, not database or network administration (A043, not A044); bank back-office ledger work is clerical accounting work (A041) unless the CV states serving customers, payments or loans (A040).
+3. A current role and an older role can both be `direct`. Each is cited from its own record and recency orders them; an older role is never dropped because a newer one exists.
+4. Every shown item needs a justified label and its cited evidence. A regulated role is a self-reported claim: registration or licence is never verified by the tool.
+5. Abstaining is legitimate: "Not enough evidence for a supported career area" plus a request for activities or tasks.
+
+Status: implemented as `assess_v3.md`, `area_definitions_v3.yaml`, `rank.rank(policy="v3")` and the pilot page sections. One clean held-out run (v4: 0 traps, 12/12 expected found) and the swap diagnostic are recorded in `docs/PROJECT_REVIEW.md` section 11-12. All expectations are provisional, AI-assisted and not human-reviewed.
+
 ## 4. Relevance score (ordinal, not a probability)
 Applies to `direct` and `transferable` areas only.
 - **4** core: sustained or central direct work, or the relevant qualification plus applied use.

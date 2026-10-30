@@ -62,7 +62,7 @@ def rank_llm_evidence(case: dict, cat):
                for s in res["supported"]]
     stages = dict(status=res["status"], warnings=[w["code"] for w in res["warnings"]], validation_log=res["validation_log"],
                   extraction=res["stages"].get("extraction"), assessment=res["stages"].get("assessment"),
-                  exploration=res["exploration"], run_meta=res["run_meta"])
+                  exploration=res["exploration"], context_only=res.get("context_only"), run_meta=res["run_meta"])
     return ranking, [e["area_id"] for e in res["exploration"]], stages
 
 

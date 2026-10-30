@@ -1,0 +1,95 @@
+﻿area_id,name
+A001,Government & public-sector leadership
+A002,Executive leadership & general management
+A003,Business services & administration management
+A004,"Sales, marketing & R&D management"
+A005,Agricultural production & farm management
+A006,"Manufacturing, construction & logistics management"
+A007,ICT service management
+A008,Professional services management
+A009,Hospitality management
+A010,Retail & wholesale management
+A011,"Sports, culture & other services management"
+A012,Physical & earth sciences
+A013,"Mathematics, statistics & actuarial science"
+A014,"Life sciences, biology & laboratory science"
+A015,Engineering & engineering technology
+A016,"Electrical, electronics & telecom engineering"
+A017,"Architecture, planning, surveying & design"
+A018,Medicine
+A019,Nursing & midwifery
+A020,Traditional & complementary medicine
+A021,Paramedic & emergency care
+A022,Veterinary science & animal health
+A023,"Dentistry, pharmacy & allied health therapies"
+A024,Medical & pharmaceutical technology
+A025,Community health & health support
+A026,Sports coaching & fitness
+A027,Personal care & care assistance
+A028,University & higher education teaching
+A029,Vocational education & training
+A030,Secondary school teaching
+A031,Primary & early-childhood teaching and child care
+A032,Specialist teaching & education advisory
+A033,"Finance, accounting & financial analysis"
+A034,"Management analysis, HR & organisational development"
+A035,"Sales, marketing & public relations"
+A036,"Business services: events, recruitment & real estate"
+A037,Administrative & executive support
+A038,Office administration
+A039,Data entry & keyboard operation
+A040,Banking & payment services clerks
+A041,Numerical & accounting clerks
+A042,"Records, mail & other clerical support"
+A043,Software & applications development
+A044,"Database, systems & network administration"
+A045,"ICT operations, user support & telecoms"
+A046,Law & justice
+A047,"Libraries, archives & museums"
+A048,"Social sciences, psychology & counselling"
+A049,"Writing, journalism & languages"
+A050,Creative & performing arts
+A051,"Photography, design support & culinary arts"
+A052,Government regulation & compliance
+A053,"Paralegal, social work & community support"
+A054,"Protective services (police, fire, security)"
+A055,Client information & contact-centre services
+A056,"Travel, tourism & guiding"
+A057,Cooking & food preparation
+A058,Food & beverage service
+A059,"Hairdressing, beauty & grooming"
+A060,Housekeeping & facilities supervision
+A061,Other personal services
+A062,"Retail, shop & street sales"
+A063,Cleaning services
+A064,"Street services, waste collection & other elementary work"
+A065,"Forestry, fishery & hunting"
+A066,"Subsistence farming, fishing & agricultural labour"
+A067,Industrial production supervision & process control
+A068,Aviation & maritime operations
+A069,"Stores, logistics & transport clerks"
+A070,Building & construction trades
+A071,"Metalwork, welding & fabrication"
+A072,"Machinery mechanics, toolmaking & repair"
+A073,Handicrafts & artisan crafts
+A074,Printing trades
+A075,Electrical & electronics installation & repair
+A076,Food processing & baking trades
+A077,Woodworking & cabinet-making
+A078,"Garment, tailoring & textile trades"
+A079,Other craft & specialist trades
+A080,"Mining, metal & chemical plant operation"
+A081,Manufacturing machine operation
+A082,Assembly work
+A083,Professional driving & rail operation
+A084,Mobile plant & marine deck operation
+A085,"Labouring in mining, construction, manufacturing & transport"
+A086,Data science & analytics
+A087,AI & machine learning engineering
+A088,"UX, product & digital design"
+A089,"IoT, embedded & smart systems"
+A090,Cybersecurity & information security
+A091,Psychology & behavioural research
+A092,Economics & public policy analysis
+A093,"Training, learning & development"
+A094,Music performance & production

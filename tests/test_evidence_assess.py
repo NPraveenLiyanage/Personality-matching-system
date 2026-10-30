@@ -356,12 +356,17 @@ def test_pilot_page_loads_and_shows_recorded_examples():
     at = AppTest.from_file(str(ROOT / "app" / "pages" / "pilot.py"), default_timeout=180).run()
     assert not at.exception, at.exception
     assert any("Pilot for demonstration" in w.value for w in at.warning)
-    assert [h.value for h in at.subheader][:3] == ["1. Career areas backed by the evidence", "2. Worth exploring (not backed by experience)",
-                                                   "3. What the checker changed"]
+    assert [h.value for h in at.subheader][:4] == ["1. Supported: career areas backed by the evidence",
+                                                   "2. Exploration pathways (study or interest, not backed by work)",
+                                                   "3. Industry exposure (context only, not a career suggestion)",
+                                                   "4. What the checker changed"]
     at.selectbox[0].select("c01_hospital_app_developer").run()
     assert not at.exception
     body = " ".join(m.value for m in at.markdown)
     assert "Software & applications development" in body
+    # industry exposure never appears as an exploration pathway: every "industry exposure only" line sits under section 3
+    expl = body.split("Exploration pathways")[0] if "Exploration pathways" in body else body
+    assert "Industry exposure only" not in " ".join(m.value for m in at.markdown if m.value.startswith("- **"))
     at.radio[0].set_value("Try your own invented example text (live, 3-5 minutes)").run()
     assert not at.exception
     at.text_area[0].set_value("Jane Roe jane@example.com +94 77 123 4567 Nurse").run()

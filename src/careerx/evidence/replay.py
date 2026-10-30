@@ -18,7 +18,7 @@ def records_from_dicts(dicts: list[dict]) -> list[EvidenceRecord]:
     return [EvidenceRecord(**{k: v for k, v in d.items() if k in _FIELDS}) for d in dicts]
 
 
-def rebuild(stages: dict, defs: dict, regulated: dict | None = None) -> dict:
+def rebuild(stages: dict, defs: dict, regulated: dict | None = None, policy: str = "v2") -> dict:
     """stages: the `stages` dict of an engine result / a benchmark run entry (needs extraction.records and assessment.raw_rows)."""
     ex, asm = stages.get("extraction") or {}, stages.get("assessment") or {}
     records = records_from_dicts(ex.get("records") or [])
@@ -33,7 +33,7 @@ def rebuild(stages: dict, defs: dict, regulated: dict | None = None) -> dict:
     if v.errors:
         return dict(supported=[], exploration=[], validation_log=[], classes={}, records=records, ok=False, errors=v.errors)
     names = {aid: d["name"] for aid, d in defs["areas"].items()}
-    out = rank.rank(v.rows, records, names)
+    out = rank.rank(v.rows, records, names, policy)
     out.update(validation_log=[dict(area_id=a.area_id, original_class=a.original_class, final_class=a.support_class,
                                     changes=a.changes) for a in v.rows.values() if a.changes],
                classes={aid: a.support_class for aid, a in v.rows.items()}, records=records, ok=True)

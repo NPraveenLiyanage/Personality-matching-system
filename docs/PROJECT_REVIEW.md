@@ -606,3 +606,24 @@ The first attempt (account 1) completed 0 of 12 (all HTTP 429). **This is the re
 - Not visible in this run: whether the model still proposes industry-exposure areas (they are now moved to `context_only`, which the benchmark does not store). The swap cases (`swap_v1`) were **not** re-run under v3, so the clinic-app exposure list is fixed by construction in `rank.py` but not yet checked on a live run.
 
 **Caveats:** 12 cases, one run each, author-written and AI-assisted (not human-reviewed) expectations, free model, a retry on a different account than the first attempt, and the v4 expectations were written knowing the v3 rules, so this is a check that the rules work, not independent accuracy evidence. v4 is now seen: any further pipeline change needs a new frozen set. The v2 baselines were not run on v4. Human-review gates (Phase 0/1/2 sign-off and Phase 5 raters) remain open.
+
+
+## 12. Step 1-4 work of 2026-10-30 (later): swap tests under v3, UI, rubric, synthetic fixtures, dataset audit, review pack
+
+**Swap diagnostic under policy v3** (`swap_v1`, 4 invented cases, `context_only` now saved in run files). *First attempt, account 1:* 0 of 4 completed, all HTTP 429 (`..._pipe3_swap_v1_2026-10-30.json`). *Retry on account 2 (per owner instruction to switch when account 1 is out of quota):* 4 of 4 completed, 0 failures (`..._pipe3_swap_v1_retry_acct2_2026-10-30.json`). **Result:** every case, including the clinic-app and logistics-app developers and the health-app student, shows A043 only; no exploration areas, no `context_only` entries, no health or logistics areas anywhere (v2 had shown 7 health areas and 3 logistics areas for the first two). Traps shown as supported 0/4; expected found 4/4. The v3 prompt now makes the model answer `unsupported` for those areas, and the v3 ranker would also have moved any `domain_exposure_only` rows out of exploration. Caveats: 4 cases, one run each, the cases are the ones the v3 rules were written against (not independent), free model.
+
+**v3 default decision.** Owner: keep v2 as default until the swap tests pass, then prepare v3 for default use with rollback. The swap tests now pass (above) and held-out v4 passed (section 11). v3 is **prepared, not switched**: the pilot has a version radio (v2 frozen / v3), `CAREERX_POLICY=v3` flips the pilot default, and unsetting it (or `=v2`) is the rollback. v2 prompts, definitions and ranking are unchanged and tested. The benchmark default is also still v2 (`--policy v2`). Before flipping the default: owner approval, a recorded-example refresh for the pilot under v3, and ideally a larger fresh set.
+
+**UI.** The pilot page now has separate sections: 1 Supported, 2 Exploration pathways (study or interest), 3 Industry exposure (context only, not a career suggestion), then the checker log, comparison and evidence. Older v2 results that hold exposure inside the exploration list are split on display, so exposure can never appear under exploration. The evidence bench table does the same. Tests updated (138 pass, 11 xfail).
+
+**Rubric.** `docs/RUBRIC.md` section 3a holds the complete v3 policy (three sections, caps, no padding, neighbouring-area rule, current plus older roles, abstention). Marked experimental.
+
+**Synthetic fixtures.** `bench/cases/career_cases_synth_v2.yaml`: 32 new invented CVs (9 students or school leavers, 8 experienced workers, 5 career changers, 5 regulated occupations, 5 ambiguous or adversarial), with per-case `refs` to ISCO-08, O*NET or UK National Careers Service. Method, licence notes and limits: `docs/SYNTHETIC_DATA_METHOD.md`. Labels are provisional and unreviewed. **Not yet run** through the pipeline (development set, free quota is the constraint).
+
+**Public datasets.** `docs/PUBLIC_DATASET_AUDIT.md`: nothing downloaded or used. O*NET (CC BY 4.0), ISCO-08 (free to use) and possibly ESCO are usable as references; the real-CV sets screened (Kaggle LiveCareer, CareerCorpus, ResumeAtlas, datasetmaster) are not recommended because of scraped or unclear provenance or personal data; Sri Lankan SLSCO and TVEC material needs permission. Three pages failed to load, so some rows are flagged "verify".
+
+**Human review pack (Q1).** `docs/review/BLIND_REVIEW_PACK_README.md` plus `blind_review_pack_cases_v1.csv` (62 cases, empty reviewer columns), `area_catalogue_for_reviewers.csv`, and the author key kept in a separate file. No reviewer yet; **no review gate is passed.**
+
+**Recorded for future evaluation (not changed):** the TensorFlow/A087 miss in `h4_06` (the data-science student got A086 as exploration but not A087). One case; no pipeline change was made on it.
+
+**Run-file hygiene.** Use a distinct `--label` for every case file; the earlier overwrite of the first `synth_dev_v1` run (section 11) is why. All failures and retries above are separate files.

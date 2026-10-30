@@ -1,0 +1,72 @@
+{
+ "meta": {
+  "engine": "llm_evidence",
+  "date": "2026-10-30",
+  "git_commit": "b9cb4db",
+  "k": 10,
+  "n_cases": 4,
+  "n_failed": 4,
+  "cases_sha256": "cca920761b7cb2fd",
+  "catalogue_fingerprint": "11600e8abed14d08",
+  "reference_date": "2026-10-15",
+  "model": "nvidia/nemotron-3.5-super-vl:free",
+  "note": "synthetic design expectations, not expert ratings",
+  "provider": "nvidia",
+  "split": "all",
+  "prompts": "extract_v1+assess_v3",
+  "policy": "v3",
+  "schema": "evidence_v1",
+  "definitions_status": "reviewer_provisional",
+  "frozen_files": {
+   "src/careerx/evidence/extract_v1.md": "381bcd2b9606",
+   "src/careerx/evidence/assess_v2.md": "ab33f4d06a09",
+   "src/careerx/evidence/assess_v3.md": "4e61e9725d43",
+   "src/careerx/evidence/validate.py": "38c721bb256d",
+   "src/careerx/evidence/verify.py": "c3b020dbce96",
+   "src/careerx/evidence/rank.py": "a2e3b3bb469a",
+   "src/careerx/evidence/engine.py": "8b707db2ffb7",
+   "data/processed/regulated_areas_v2.yaml": "9b80789562cd",
+   "data/processed/area_definitions_v3.yaml": "e25adfd0fb6f"
+  },
+  "label": "pipe3_swap_v1",
+  "use_confusions": false,
+  "zdr": false,
+  "data_collection": "allow",
+  "account": 1,
+  "fallbacks": "none",
+  "runs_per_case": 1,
+  "resumed_cases_from_checkpoint": []
+ },
+ "aggregate": {
+  "metrics_version": 3,
+  "k": 10,
+  "overall": {
+   "n_cases": 0,
+   "domain_confusion_cases": "0/0",
+   "domain_confusion_rate": null,
+   "trap_areas_displayed_as_supported": 0,
+   "trap_cases_shown_only_as_exploration": 0,
+   "supported_recall": "0/0",
+   "supported_recall_rate": null,
+   "all_supported_found_cases": "0/0",
+   "mean_areas_displayed": null,
+   "top1_in_authored_ok_set": "0/0",
+   "authored_ok_share_of_displayed_lower_bound": null,
+   "abstained_on_no_support_cases": "0/0",
+   "abstained_cases_total": 0,
+   "overclaim_cases": "0/0",
+   "overclaimed_areas_displayed": 0
+  },
+  "by_category": {},
+  "by_split": {}
+ },
+ "per_case": {},
+ "top": {},
+ "failed": {
+  "swap01_dev_clinic_app": "RuntimeError: extraction failed: request failed after 2 attempts (HTTP 429)",
+  "swap02_dev_logistics_app": "RuntimeError: extraction failed: request failed after 2 attempts (HTTP 429)",
+  "swap03_student_health_app_project": "RuntimeError: extraction failed: request failed after 2 attempts (HTTP 429)",
+  "swap04_student_library_app_project": "RuntimeError: extraction failed: request failed after 2 attempts (HTTP 429)"
+ },
+ "stages": {}
+}

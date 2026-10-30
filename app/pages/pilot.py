@@ -59,8 +59,10 @@ def rule_top10(cv_text: str) -> list[dict]:
 
 
 @st.cache_data(show_spinner=False)
-def definitions() -> tuple[dict, dict]:
-    return assess.load_definitions(), assess.load_regulated()
+def definitions(policy: str = "v2") -> tuple[dict, dict]:
+    """v2 policy keeps the frozen v1 definitions; v3 uses area_definitions_v3 (with the A040/A044 scope notes)."""
+    path = ROOT / "data" / "processed" / "area_definitions_v3.yaml" if policy == "v3" else None
+    return assess.load_definitions(path), assess.load_regulated()
 
 
 def plain_change(c: dict, names: dict) -> str:
@@ -76,7 +78,7 @@ def plain_change(c: dict, names: dict) -> str:
 
 def render(res: dict, cv_text: str, names: dict, direct_top10: list[dict] | None, meta: dict | None) -> None:
     classes = res.get("classes", {})
-    st.subheader("1. Career areas backed by the evidence")
+    st.subheader("1. Supported: career areas backed by the evidence")
     if not res["supported"]:
         st.info("No area is supported strongly enough by this text. That means the text gives too little evidence. "
                 "It does not mean the person lacks skills or potential.")
@@ -91,14 +93,27 @@ def render(res: dict, cv_text: str, names: dict, direct_top10: list[dict] | None
     st.caption("Evidence strength 0-4 is a rating of how well the text supports the area. It is not a probability of success, "
                "and it says nothing about hiring or suitability.")
 
-    st.subheader("2. Worth exploring (not backed by experience)")
-    if res["exploration"]:
-        for e in res["exploration"]:
+    # Industry exposure is context about where the person worked or studied. It is never a career suggestion, so it is kept out of
+    # the exploration list (policy v3 returns it as context_only; older v2 results hold it inside exploration and are split here).
+    exposure = list(res.get("context_only") or []) + [e for e in res["exploration"] if e["support_class"] == "domain_exposure_only"]
+    explore = [e for e in res["exploration"] if e["support_class"] != "domain_exposure_only"]
+    st.subheader("2. Exploration pathways (study or interest, not backed by work)")
+    if explore:
+        for e in explore:
             st.markdown(f"- **{e['name']}**: {e['label']}.")
     else:
         st.caption("None.")
 
-    st.subheader("3. What the checker changed")
+    st.subheader("3. Industry exposure (context only, not a career suggestion)")
+    if exposure:
+        st.caption("These fields appear only because the person's work or project served that industry. This is not evidence of "
+                   "doing that occupation, and it is not a suggestion that the field suits them.")
+        for e in exposure:
+            st.markdown(f"- {e['name']}: industry exposure only.")
+    else:
+        st.caption("None.")
+
+    st.subheader("4. What the checker changed")
     if res["validation_log"]:
         shown = [c for c in res["validation_log"] if c["original_class"] in ("direct", "transferable")]
         for c in shown:
@@ -111,7 +126,7 @@ def render(res: dict, cv_text: str, names: dict, direct_top10: list[dict] | None
     else:
         st.caption("The checker made no changes.")
 
-    st.subheader("4. Compared with the earlier engines on the same text")
+    st.subheader("5. Compared with the earlier engines on the same text")
     st.caption("Each area the earlier engines show is labelled with what the evidence-first pipeline concluded about it.")
     cols = st.columns(2 if direct_top10 else 1)
 
@@ -126,7 +141,7 @@ def render(res: dict, cv_text: str, names: dict, direct_top10: list[dict] | None
             st.markdown("**Earlier direct AI prompt (top 10, recorded)**")
             st.dataframe(table(direct_top10), hide_index=True, width="stretch")
 
-    st.subheader("5. Evidence extracted from the text")
+    st.subheader("6. Evidence extracted from the text")
     recs = res.get("records") or []
     if recs:
         st.dataframe(pd.DataFrame([dict(id=r["evidence_id"], type=r["evidence_type"], role=r["role"], contribution=r["contribution"],
@@ -173,6 +188,10 @@ else:
     st.info(f"Live mode sends the text to OpenRouter and the free model `{PILOT_MODEL}` (provider `{PILOT_PROVIDER}`). Free "
             "endpoints may log prompts, so only invented text is allowed. Free models are slow and have a daily request limit.",
             icon="🔒")
+    # Rollback switch: CAREERX_POLICY=v2 (the default) or v3. v3 is prepared as the future default but is NOT switched on here.
+    policy_default = 1 if os.environ.get("CAREERX_POLICY", "v2") == "v3" else 0
+    policy = st.radio("Pipeline version", ["v2 (frozen)", "v3 (exposure kept out of exploration, capped lists)"],
+                      index=policy_default, horizontal=True).split()[0]
     text = st.text_area("Example CV text", value=SAMPLE, height=300)
     confirm = st.checkbox("This is invented example text. It is not a real person's CV.")
     leak = redact(text, None) != text
@@ -181,23 +200,23 @@ else:
     if not cfg["api_key"]:
         st.warning("No OPENROUTER_API_KEY found (.env). Live mode is unavailable; recorded examples still work.")
     if st.button("Run the evidence-first pipeline", disabled=not (confirm and not leak and cfg["api_key"] and text.strip())):
-        defs, reg = definitions()
+        defs, reg = definitions(policy)
         run_cfg = dict(cfg, model=PILOT_MODEL, provider=PILOT_PROVIDER, data_collection="allow", max_tokens=60000,
                        temperature="", require_zdr=False, max_price="", api_key_2="")
         with st.spinner("Extracting evidence and assessing 94 areas (about 3-5 minutes on a free model)..."):
             try:
-                res = ev_engine.run(text, text.strip().splitlines()[0], defs, cfg=run_cfg, regulated=reg)
+                res = ev_engine.run(text, text.strip().splitlines()[0], defs, cfg=run_cfg, regulated=reg, policy=policy)
             except Exception as ex_:                              # network or unexpected provider errors
                 res = dict(status="failed", errors=[f"{type(ex_).__name__}: {str(ex_)[:160]}"], stages={})
-        st.session_state["pilot_live"] = (text, res)
+        st.session_state["pilot_live"] = (text, res, policy)
     got = st.session_state.get("pilot_live")
     if got:
-        cv_text, res = got
+        cv_text, res, run_policy = got
         if res["status"] == "failed":
             st.error("The run failed and nothing was substituted: " + "; ".join(res["errors"]))
         else:
-            defs, reg = definitions()
-            rb = replay.rebuild(res["stages"], defs, reg) if res["stages"].get("assessment") else None
+            defs, reg = definitions(run_policy)
+            rb = replay.rebuild(res["stages"], defs, reg, run_policy) if res["stages"].get("assessment") else None
             full = dict(res, classes=rb["classes"] if rb and rb["ok"] else {}, records=[
                 dict(evidence_id=r["evidence_id"], evidence_type=r["evidence_type"], role=r["role"], contribution=r["contribution"],
                      domain_context=r["domain_context"], quote=r["quote"]) for r in res["stages"]["extraction"]["records"]],

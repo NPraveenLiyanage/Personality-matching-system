@@ -55,7 +55,10 @@ def run_pipeline(text: str, name: str) -> dict:
 def top10(res: dict) -> list[dict]:
     """Evidence-backed areas first, then labelled exploration areas. May hold fewer than 10: nothing is padded with guesses."""
     rows = [dict(r, section="Backed by evidence") for r in res["supported"]]
-    rows += [dict(r, section="Worth exploring (not backed by experience)") for r in res["exploration"]]
+    rows += [dict(r, section="Worth exploring (study or interest, not backed by work)") for r in res["exploration"]
+             if r["support_class"] != "domain_exposure_only"]
+    rows += [dict(r, section="Industry exposure only (context, not a career suggestion)") for r in list(res.get("context_only") or []) +
+             [e for e in res["exploration"] if e["support_class"] == "domain_exposure_only"]]
     return rows[:10]
 
 
