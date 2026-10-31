@@ -2,7 +2,7 @@
 
 
 
-Career exploration: evidence-first career-area matching. Last updated: 2026-10-30 (owner decisions Q1–Q8 recorded; historical reviews, pipeline v2 results and held-out v3 results preserved).
+Career exploration: evidence-first career-area matching. Last updated: 2026-10-31 (synth_dev_v2 resume and OpenRouter check in section 16; owner decisions Q1–Q8 recorded; historical reviews, pipeline v2 results and held-out v3 results preserved).
 
 
 
@@ -618,7 +618,7 @@ The first attempt (account 1) completed 0 of 12 (all HTTP 429). **This is the re
 
 **Rubric.** `docs/RUBRIC.md` section 3a holds the complete v3 policy (three sections, caps, no padding, neighbouring-area rule, current plus older roles, abstention). Marked experimental.
 
-**Synthetic fixtures.** `bench/cases/career_cases_synth_v2.yaml`: 32 new invented CVs (9 students or school leavers, 8 experienced workers, 5 career changers, 5 regulated occupations, 5 ambiguous or adversarial), with per-case `refs` to ISCO-08, O*NET or UK National Careers Service. Method, licence notes and limits: `docs/SYNTHETIC_DATA_METHOD.md`. Labels are provisional and unreviewed. **Not yet run** through the pipeline (development set, free quota is the constraint).
+**Synthetic fixtures.** `bench/cases/career_cases_synth_v2.yaml`: 32 new invented CVs (9 students or school leavers, 8 experienced workers, 5 career changers, 5 regulated occupations, 5 ambiguous or adversarial), with per-case `refs` to ISCO-08, O*NET or UK National Careers Service. Method, licence notes and limits: `docs/SYNTHETIC_DATA_METHOD.md`. Labels are provisional and unreviewed. **Not yet run** through the pipeline (development set, free quota is the constraint). *Superseded: 22 of 32 have since run (sections 13 and 16).*
 
 **Public datasets.** `docs/PUBLIC_DATASET_AUDIT.md`: nothing downloaded or used. O*NET (CC BY 4.0), ISCO-08 (free to use) and possibly ESCO are usable as references; the real-CV sets screened (Kaggle LiveCareer, CareerCorpus, ResumeAtlas, datasetmaster) are not recommended because of scraped or unclear provenance or personal data; Sri Lankan SLSCO and TVEC material needs permission. Three pages failed to load, so some rows are flagged "verify".
 
@@ -657,3 +657,66 @@ Run file: `bench/runs/career_llm_evidence_nvidia_nemotron-3.5-super-vl_free_pipe
 Web research (OpenRouter free-model page and limits, read today) shows the free tier allows **50 requests per day per account** (20 per minute) until US$10 of credit has been bought, then 1,000 per day; failed attempts count and the limit is account-wide, not per model. That explains today's HTTP 429 failures and means a full comparison is about 600 requests (roughly 12 account-days, or about 1 day with the optional US$10 purchase). 16 free models are listed; only one states JSON-schema support, so a cheap 3-case screen comes first. The full plan, candidates, measures, decision rules and budget are in `docs/MODEL_COMPARISON_PROTOCOL.md`. **No comparison run has been made, no credit has been bought, and no model is claimed to be better or worse.** Owner decisions needed are listed in section 7 of that document.
 
 **Update (paid models):** at the owner's request `docs/MODEL_COMPARISON_PROTOCOL.md` section 8 covers paid models, selection by suitability, and per-model cost estimates. Anthropic prices come from its pricing page (checked 2026-10-30); other vendors' prices are unverified. Estimated cost for the full path (75 case-runs) per model ranges from under $1 (Haiku 5.5, DeepSeek) to about $49-$92 (Fable 5.1); a 9-model screen costs about $5-$9, a standard comparison about $45-$80, a full one about $110-$190. Nothing has been spent and no paid call made; all spending needs explicit owner approval.
+
+
+## 16. `synth_dev_v2` resumed (2026-10-31, account 2, free Nemotron, policy v3) and OpenRouter availability check
+
+**Availability (2026-10-31, `/api/v1/key` and `/api/v1/models`, no completions sent):** both accounts are free tier (50 requests/day each), account 1 lifetime usage US$0.16, account 2 US$0, no credit bought. 16 free models listed; all 8 protocol candidates still exist, but only 3 (`nemotron-3.5-super-vl`, `dots-3-note-preview`, `xing4.0-29b-a4b`) advertise structured outputs, so the other five should fail to route at the screen. Two Gemma 4 free models are new and not yet in the candidate table. Anthropic prices on OpenRouter match the protocol. Details are in `docs/MODEL_COMPARISON_PROTOCOL.md` section 1.
+
+**Run:** same label and settings as section 13 (`pipe3_synth_v2_acct2`, definitions v3, regulated v2, `--resume`). Run file: `bench/runs/career_llm_evidence_nvidia_nemotron-3.5-super-vl_free_pipe3_synth_v2_acct2_2026-10-31.json`. A first resume attempt was killed by the operating system's low-memory protection after adding 4 cases (checkpoint 9 to 13); the second attempt ran to the end. **All 13 checkpoint cases (s2_01 to s2_09 first attempts; s2_13, s2_14, s2_15, s2_17 from the killed session) and everything run today count as resumed/retried.** The case file's hash changed after the first run (`388f38810c48f5d4` to `8fbf79c6deace704`) because labels of unrun cases were corrected (section 14); the first nine cases keep their text and labels.
+
+**Result: 22 of 32 completed, 10 failed.** Failures: 5 `assessment truncated (finish_reason=length)` at the 12,000 output-token limit (`s2_10`, `s2_12`, `s2_16`, `s2_19`, `s2_22`); 5 HTTP 429 once the account-2 daily quota ran out (`s2_28` to `s2_32`: garbled skills, prompt injection, exaggerated title, doctor-as-referee, mixed languages). The failures are recorded, not results. Truncation is a model/limit problem, not a quota one: it is a new failure type for this pipeline and affects 5 of 17 cases that reached assessment today, so the output limit and the fail-handling need a decision before the next run (raising `--max-tokens` changes the run settings and would be a retry, not a first attempt).
+
+**On the 22 completed cases:** trap areas shown as supported 0; expected supported areas found 17/20; every supported area found in 15/18 cases; top area in the expected set 17/18; abstained on no-support cases 4/4; overclaims 0/5; mean areas shown 0.86. Misses: `s2_13` graphic designer (shows A037, misses A088), `s2_14` hotel front office (shows A055, misses A056), `s2_27` lawyer to compliance (A046 found, A052 missed). Still untested: the injection, referee, exaggerated-title and mixed-language cases, and the truncated ones (teacher, mechanic, HR officer, nurse-to-HR, soldier-to-security).
+
+**Caveats:** one run per case, author-written provisional labels, free model, resumed runs across sessions, and 10 of 32 untested (including the hardest adversarial ones). Nothing here passes a review gate or supports a claim about the full set.
+
+**Next:** re-run the 10 failures after the quota resets (account 1 or account 2 tomorrow) with a decided output limit; the truncation question is the open item.
+
+### Update: retry of the 10 failures on account 1 (2026-10-31, free Nemotron, policy v3, settings unchanged incl. `--max-tokens 12000`)
+Run file: `bench/runs/career_llm_evidence_nvidia_nemotron-3.5-super-vl_free_pipe3_synth_v2_retry_acct1_2026-10-31.json` (label `pipe3_synth_v2_retry_acct1`, `--only` the 10 failed ids; account 1 on the owner's instruction). Retries, not first attempts.
+
+**6 of 10 completed, 4 failed (all output truncation, `finish_reason=length`):** `s2_16` and `s2_19` and `s2_31` at assessment, `s2_30` at extraction. No quota errors this time.
+- Completed: `s2_10` primary teacher A031 (as expected); `s2_12` mechanic A072 (as expected, driving not inferred); `s2_29` prompt-injection case A062 (expected area, no injected area shown); `s2_28` garbled skills abstained; `s2_32` mixed languages with negation: no supported area, A043 as exploration only; `s2_22` soldier to security supervisor: abstained, **missed expected A054**.
+- Trap areas shown as supported 0/6; expected found 3/4; abstained on no-support cases 2/2.
+
+**Position of `synth_dev_v2` now: 28 of 32 have a result across the runs (22 + 6), 4 still untested:** `s2_16` HR officer, `s2_19` nurse to HR, `s2_30` exaggerated title, `s2_31` referee is a doctor (the last two are among the hardest adversarial cases). Combined over the 28: traps shown as supported 0; expected supported found 20/24 (misses A088 in `s2_13`, A056 in `s2_14`, A052 in `s2_27`, A054 in `s2_22`); abstained 6/6 on no-support cases. One run per case, resumed and retried across sessions, author-provisional labels.
+
+**Truncation is now the main blocker:** 7 distinct cases (`s2_10`, `s2_12`, `s2_16`, `s2_19`, `s2_22`, `s2_30`, `s2_31`) hit the 12,000-token limit at least once, 2 of them (`s2_16`, `s2_19`) twice. *(Corrected 2026-10-31: an earlier version of this line said 8 and 4.)*
+
+**Owner decision (2026-10-31): park the 4 untested cases (`s2_16`, `s2_19`, `s2_30`, `s2_31`) for a later run on a paid model.** Nothing is bought or approved by this; the paid-model run stays blocked until separate explicit approval (Q3, free models only for now). Until then `synth_dev_v2` stays at 28 of 32, and any statement about it must say 4 cases, including the two hardest adversarial ones, were never run. The 12,000-token limit is left unchanged.
+
+
+## 17. Phase 4 free-model screen (2026-10-31, account 1, policy v3, definitions v3, regulated v2, `--max-tokens 12000`, provider pinned, no fallbacks) and reviewer brief
+
+**Screen cases:** `swap01_dev_clinic_app`, `syn14_clinic_app_developer_negation`, `s2_06_media_student_campus_newsletter`; one run each, first attempts. Pass rule (protocol section 3): valid JSON at both stages for all 3 and no trap shown as supported. Run files: `bench/runs/career_llm_evidence_<model>_screen_<model>_<set>_2026-10-31.json`.
+
+| Model (provider) | swap01 | syn14 | s2_06 | Screen |
+|---|---|---|---|---|
+| `dots-studio/dots-3-note-preview:free` (`atlas-cloud/fp8`) | failed: assessment truncated (length) | **ok**: A043 found, no trap | failed: assessment truncated (length) | **Not passed (1 of 3)** |
+| `xingchen-agi/xing4.0-29b-a4b:free` (`phala`) | failed: assessment response unreadable (`KeyError`, no usable choice in the reply) | failed: HTTP 429 | failed: HTTP 429 | **Inconclusive**: the two 429s are most likely the account-1 daily quota running out after today's earlier runs; only one case produced a model reply, and it was unusable. Not a pass; not a fair fail. |
+
+**Reading:** dots truncates at assessment on 2 of 3 cases at the same 12,000-token limit that also hit Nemotron, so the limit, not only the model, is a common factor (see section 16). No trap was shown as supported in the one case that completed. Nothing here ranks the models. The other five candidates were not screened: they do not advertise structured outputs, so are expected to fail to route (untested). Nemotron 3.5 super VL is the baseline and was not re-screened.
+
+**Not done / options:** repeat the xing screen after the quota resets (counts as a retry); decide the output limit first, since a higher limit would change the screen conditions for every model. Spent: US$0. About 10 to 12 free requests used on account 1.
+
+**Reviewer brief (Q1):** drafted at `docs/review/REVIEWER_BRIEF.md` for a human career-guidance reviewer. No reviewer is recruited, compensation, deadline and effort are left for the owner, and no gate is passed.
+
+
+## 18. Output limit raised to 20,000 tokens (owner decision 2026-10-31): parked cases re-run and screen repeated (account 1, free models, policy v3)
+
+**Setting change:** `--max-tokens` 12000 to 20000 for these runs only. Everything earlier in this file was produced at 12000 and is not re-scored. These are retries under changed settings, not first attempts.
+
+**The 4 parked `synth_dev_v2` cases (Nemotron, label `pipe3_synth_v2_retry2_tok20k_acct1`, file `bench/runs/..._pipe3_synth_v2_retry2_tok20k_acct1_2026-10-31.json`): 4 of 4 completed, 0 truncated.** `s2_16` HR officer: A034 found, A042 also shown. `s2_19` nurse to HR: A019 found, A042 shown, expected A034 missed. `s2_30` exaggerated title with no tasks: abstained. `s2_31` referee is a doctor: A038 found, no medical area shown. Trap areas shown as supported 0/4; expected found 3/4; abstained 1/1.
+
+**`synth_dev_v2` position:** all 32 cases now have a result (22 + 6 + 4 across runs and settings). Combined: traps shown as supported 0 of 32 cases; expected supported found 23/28 (misses A088 `s2_13`, A056 `s2_14`, A052 `s2_27`, A054 `s2_22`, A034 `s2_19`); abstained correctly 7/7 on no-support cases. Caveats: one run per case, spread over three sessions, two token limits, free model, author-provisional labels, and A042 shown in two cases is not yet judged (it may be a legitimate extra or a miss on the labels).
+
+**Screen repeated at 20,000 (labels `screen20k_*`):**
+| Model | swap01 | syn14 | s2_06 | Screen |
+|---|---|---|---|---|
+| `dots-3-note-preview` | ok (A043) | ok (A043) | ok (1 area found) | **Passed 3 of 3** (valid JSON at both stages on the first attempt, no trap shown as supported). At 12000 it passed 1 of 3 because assessment was truncated, so the limit was the cause. |
+| `xing4.0-29b-a4b` | failed: assessment response unreadable (`KeyError`) | failed: HTTP 429 | failed: HTTP 429 | **Not passed (0 of 3)** |
+
+**Correction to section 17:** I attributed xing's HTTP 429s to account 1's daily quota. The identical pattern (an unusable reply, then 429 on both other cases) recurred minutes after dots completed 3 of 3 on the same account, so quota was not the limiting factor; the xing endpoint (`phala`) appears to rate-limit or fail on its own. Treat xing as failing the screen as run, cause not fully diagnosed (I did not inspect its raw error body). Nemotron is the baseline and was not re-screened at 20000.
+
+**Consequence:** the survivor list for the development comparison is now Nemotron (baseline) and dots. Passing a 3-case screen is a gate, not evidence of quality. Spent US$0.
