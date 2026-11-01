@@ -194,6 +194,8 @@ else:
                       index=policy_default, horizontal=True).split()[0]
     text = st.text_area("Example CV text", value=SAMPLE, height=300)
     confirm = st.checkbox("This is invented example text. It is not a real person's CV.")
+    pname = st.text_input("Participant name to hide (optional)", value="")
+    phide = [x.strip() for x in st.text_input("Other words to hide, comma separated (employers, schools, referees)", value="").split(",") if x.strip()]
     leak = redact(text, None) != text
     if leak:
         st.error("The text appears to contain an email address, phone number or link. Remove it; live mode accepts invented text only.")
@@ -205,7 +207,7 @@ else:
                        temperature="", require_zdr=False, max_price="", api_key_2="")
         with st.spinner("Extracting evidence and assessing 94 areas (about 3-5 minutes on a free model)..."):
             try:
-                res = ev_engine.run(text, text.strip().splitlines()[0], defs, cfg=run_cfg, regulated=reg, policy=policy)
+                res = ev_engine.run(text, pname.strip(), defs, cfg=run_cfg, regulated=reg, policy=policy, hide=phide, mask_orgs=True)
             except Exception as ex_:                              # network or unexpected provider errors
                 res = dict(status="failed", errors=[f"{type(ex_).__name__}: {str(ex_)[:160]}"], stages={})
         st.session_state["pilot_live"] = (text, res, policy)

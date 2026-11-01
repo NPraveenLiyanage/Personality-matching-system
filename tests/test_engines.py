@@ -36,3 +36,16 @@ def test_evidence_failure_is_reported_and_never_replaced_by_the_rule_engine():
                                     qualification_gaps=[], common_contextual_confusions=["z"])}}
     r = engines.run("llm_evidence", CV, "A", defs=defs, chat=boom)
     assert r.engine_id == "llm_evidence" and r.status == "failed" and r.top() == [] and r.errors
+
+
+def test_evidence_engine_forwards_policy_and_hide(monkeypatch):
+    seen = {}
+    from careerx.evidence import engine as ev
+
+    def fake_run(cv_text, name, defs, **kw):
+        seen.update(kw)
+        return dict(engine_id="llm_evidence", engine_version="x", status="accepted", supported=[], exploration=[], errors=[],
+                    validation_log=[], run_meta={})
+    monkeypatch.setattr(ev, "run", fake_run)
+    engines.run("llm_evidence", CV, "A", defs={"areas": {}}, policy="v3", hide=["Acme"], mask_orgs=True)
+    assert seen["policy"] == "v3" and seen["hide"] == ["Acme"] and seen["mask_orgs"] is True

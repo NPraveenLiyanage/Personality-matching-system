@@ -116,3 +116,32 @@ if __name__ == "__main__":
         f()
         print("ok ", f.__name__)
     print(len(fns), "checks passed")
+
+
+# ------------------------------------------------------------------ redaction v2 (2026-10-31)
+def test_redaction_masks_ids_labelled_lines_handles_and_short_phones():
+    t = payload.redact("Date of Birth: 12 May 1999\nAddress: 12 Galle Road, Colombo 03\nNIC: 199912345678\nPassport No: N1234567\n"
+                       "Skype: zoe.ng @zoe_ng\nTel 011 2345678 or 077-123-4567\nBuilt a model in 2019 - 2021.")
+    for secret in ("12 May 1999", "Galle Road", "199912345678", "N1234567", "zoe.ng", "zoe_ng", "2345678", "123-4567"):
+        assert secret not in t
+    assert "2019 - 2021" in t and "Built a model" in t
+
+
+def test_redaction_non_ascii_name_does_not_blank_ordinary_words():
+    t = payload.redact("Zoë Ñandú Ng led design and testing; Zoë Ñandú Ng mentored staff and interns.", ["Zoë Ñandú Ng"])
+    assert "Zoë" not in t and "Ñandú" not in t and t.count("[name]") == 2
+    assert t.count(" and ") == 2          # the old bug turned every "and" into [name]
+
+
+def test_redaction_common_word_names_only_masked_as_part_of_the_full_name():
+    t = payload.redact("Will Mark wrote the plan. The team will mark it done; Mark reviewed.", ["Will Mark"])
+    assert t.startswith("[name] wrote") and "will mark it" in t
+
+
+def test_redaction_masks_institutions_companies_and_hidden_terms_but_keeps_career_signal():
+    t = payload.redact("BSc Computer Science, University of Colombo and Example Institute of Technology. Backend developer at "
+                       "Brightleaf Agency (Pvt) Ltd and Acme Holdings PLC; earlier Nova Bank. Referee: Dr Hale.", None, ["Nova Bank", "Dr Hale"], orgs=True)
+    for secret in ("Colombo", "Brightleaf", "Acme", "Nova Bank", "Hale", "Example Institute"):
+        assert secret not in t
+    assert "BSc Computer Science" in t and "Backend developer" in t and t.count("[institution]") == 2
+    assert payload.redact("Studied at Example University.") == "Studied at Example University."

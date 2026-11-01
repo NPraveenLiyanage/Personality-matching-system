@@ -66,7 +66,7 @@ def _split_long(lines: list[str]) -> list[str]:
     return out
 
 
-def ingest_pages(pages: list[str], names: list[str] | None = None) -> Ingest:
+def ingest_pages(pages: list[str], names: list[str] | None = None, hide: list[str] | None = None, mask_orgs: bool = False) -> Ingest:
     """One string per page (page numbers start at 1). Sections carry over page breaks; passages never span pages."""
     passages: list[Passage] = []
     section = "header"
@@ -77,7 +77,7 @@ def ingest_pages(pages: list[str], names: list[str] | None = None) -> Ingest:
             nonlocal block
             for chunk in _split_long([b for b in block if b.strip()]):
                 pid = f"P{len(passages) + 1:03d}"
-                passages.append(Passage(pid, section, pno, chunk.strip(), redact(chunk.strip(), names),
+                passages.append(Passage(pid, section, pno, chunk.strip(), redact(chunk.strip(), names, hide, mask_orgs),
                                         is_reference=section == "references"))
             block = []
 
@@ -94,21 +94,21 @@ def ingest_pages(pages: list[str], names: list[str] | None = None) -> Ingest:
     return Ingest(passages, quality_warnings("\n".join(pages)) + _injection_warnings(passages))
 
 
-def ingest_text(text: str, names: list[str] | None = None) -> Ingest:
+def ingest_text(text: str, names: list[str] | None = None, hide: list[str] | None = None, mask_orgs: bool = False) -> Ingest:
     """Pasted text: no page information (page is None)."""
-    ing = ingest_pages([text], names)
+    ing = ingest_pages([text], names, hide, mask_orgs)
     for p in ing.passages:
         p.page = None
     return ing
 
 
-def ingest_pdf(src, names: list[str] | None = None) -> Ingest:
+def ingest_pdf(src, names: list[str] | None = None, hide: list[str] | None = None, mask_orgs: bool = False) -> Ingest:
     try:
         import pymupdf as fitz
     except ImportError:
         import fitz
     doc = fitz.open(str(src)) if isinstance(src, str) or hasattr(src, "__fspath__") else fitz.open(stream=src, filetype="pdf")
-    return ingest_pages([pg.get_text() for pg in doc], names)
+    return ingest_pages([pg.get_text() for pg in doc], names, hide, mask_orgs)
 
 
 def quality_warnings(text: str) -> list[dict]:

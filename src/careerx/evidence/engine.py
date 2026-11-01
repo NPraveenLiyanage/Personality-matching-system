@@ -23,9 +23,9 @@ def _result(**kw) -> dict:
 
 
 def run(cv_text: str, name: str, defs: dict, chat=None, cfg: dict | None = None, regulated: dict | None = None,
-        use_confusions: bool = False, policy: str = "v2") -> dict:
+        use_confusions: bool = False, policy: str = "v2", hide: list[str] | None = None, mask_orgs: bool = False) -> dict:
     chat = chat or ev_client.chat
-    ing = ingest.ingest_text(cv_text, [name] if name else None)
+    ing = ingest.ingest_text(cv_text, [name] if name else None, hide, mask_orgs)
     ex = extract.run_extraction(ing, chat, cfg)
     res = _result(warnings=ex.warnings)
     res["stages"]["extraction"] = dict(status=ex.status, records=[asdict(r) for r in ex.records], rejected=ex.rejected,

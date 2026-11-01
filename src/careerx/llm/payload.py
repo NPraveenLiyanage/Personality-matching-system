@@ -13,15 +13,64 @@ _SIDES = {"E": ("extroverted", "introverted"), "N": ("intuition", "sensing"),
 _KEYS = {"E": "energy", "N": "information", "F": "decisions", "J": "structure"}
 
 
-def redact(text: str, names: list[str] | None = None) -> str:
-    """Remove emails, URLs, phone numbers and the participant's own name tokens. Layout is kept."""
+# Words that are also ordinary English. A name token equal to one of these is masked only as part of the full name (or a
+# capitalised exact repeat), never everywhere, so "Will" or "Mark" cannot blank ordinary words and "and" is never touched.
+_COMMON = frozenset("""and the for with from that this will mark may june april august grace hope joy rose mae art ray bill rob
+frank grant hunter major miles page pat sue ted tom van victor wade ward young long strong brown green white black gray king
+lane field hall park bank case chance dean earl faith guy jack jay jo june lee max nick pearl rich rock rod sky sunny west""".split())
+_LABELLED = re.compile(
+    r"(?im)^([ 	]*(?:date of birth|d\.?o\.?b\.?|born|birth ?date|address|home address|permanent address|residential address|"
+    r"nic|n\.i\.c\.?|national id(?: card)?(?: no\.?| number)?|id (?:no\.?|number)|passport(?: no\.?| number)?|"
+    r"nationality|marital status|gender|age)[ 	]*[:\-–][ 	]*)(.+)$")
+_NIC = re.compile(r"(?<![\w])(?:\d{9}[VvXx]|\d{12})(?![\w])")
+_PASSPORT = re.compile(r"(?<![\w])[A-Z]{1,2}\d{6,8}(?![\w])")
+_HANDLE = re.compile(r"(?<![\w@])@[A-Za-z0-9_.]{3,}|\bskype\s*[:\-]\s*\S+", re.I)
+_INSTITUTION = re.compile(
+    r"\b(?:(?:University|College|Institute|Academy|School|Polytechnic) of [A-Z][\w&'’-]*(?: (?:of )?[A-Z][\w&'’-]*)*"
+    r"|[A-Z][\w&'’-]*(?: [A-Z][\w&'’-]*)* (?:University|College|Institute|Academy|Polytechnic)(?: of [A-Z][\w&'’-]*)?)")
+_COMPANY = re.compile(
+    r"\b[A-Z][\w&'’-]*(?: [A-Z][\w&'’-]*)*,? (?:\(Pvt\)\.? ?Ltd\.?|Pvt\.? ?Ltd\.?|\(Private\) Limited|Private Limited|"
+    r"Limited|Ltd\.?|PLC|Plc|Inc\.?|LLC|Corp\.?|Corporation|GmbH|Co\.)(?=\W|$)")
+
+
+def _names_phrase(n: str) -> str:
+    return r"\s+".join(re.escape(w) for w in n.split())
+
+
+def redact(text: str, names: list[str] | None = None, hide: list[str] | None = None, orgs: bool = False) -> str:
+    """Minimise identifiers before text leaves the machine. Layout is kept. This is NOT anonymisation (see PRIVACY_ROUTING.md).
+
+    Removes emails, links, phone numbers, @handles, national IDs, passport numbers, labelled lines (date of birth, address, NIC,
+    passport, nationality, marital status, gender, age), the participant's own name (full name, then each name token; tokens that
+    are ordinary words only as part of the full name), anything in `hide` (employers, schools, referees the caller names), and,
+    when `orgs` is true (off by default so frozen benchmark text is unchanged; on for real participants), institution names ("... University", "University of ...") and company names ending in Ltd/PLC/Inc etc.
+    """
     t = re.sub(r"[\w.+-]+@[\w-]+(?:\.[\w-]+)+", "[email]", text)
     t = re.sub(r"(?:https?://|www\.)\S+|\b(?:linkedin|github)\.com/\S*", "[link]", t, flags=re.I)
-    t = re.sub(r"(?<![\w.])\+?\d[\d ()./-]{7,}\d(?![\w])",
+    t = _HANDLE.sub("[handle]", t)
+    t = _LABELLED.sub(lambda m: m.group(1) + "[removed]", t)
+    t = _NIC.sub("[id]", t)
+    t = _PASSPORT.sub("[id]", t)
+    t = re.sub(r"(?<![\w.])\+?\d[\d ()./-]{5,}\d(?![\w])",
                lambda m: m.group(0) if _looks_like_date(m.group(0)) else "[phone]", t)
+    for h in sorted({x.strip() for x in (hide or []) if x and len(x.strip()) >= 3}, key=len, reverse=True):
+        t = re.sub(rf"(?<!\w){_names_phrase(h)}(?!\w)", "[hidden]", t, flags=re.I)
     for n in names or []:
-        for tok in re.findall(r"[A-Za-z]{3,}", n):
-            t = re.sub(rf"\b{re.escape(tok)}\b", "[name]", t, flags=re.I)
+        n = (n or "").strip()
+        if not n:
+            continue
+        if len(n) >= 3:                 # a 1-2 letter "name" must not blank every "a" or "of"
+            ci = 0 if any(w.casefold() in _COMMON for w in n.split()) else re.I
+            t = re.sub(rf"(?<!\w){_names_phrase(n)}(?!\w)", "[name]", t, flags=ci)
+        for tok in re.findall(r"[^\W\d_]{3,}", n):
+            if tok.casefold() in _COMMON:
+                t = re.sub(rf"(?<!\w){re.escape(tok)}(?!\w)", "[name]", t) if tok[:1].isupper() and tok.casefold() not in {
+                    "and", "the", "for", "with", "from", "that", "this"} else t
+            else:
+                t = re.sub(rf"(?<!\w){re.escape(tok)}(?!\w)", "[name]", t, flags=re.I)
+    if orgs:
+        t = _COMPANY.sub("[employer]", t)
+        t = _INSTITUTION.sub("[institution]", t)
     return t
 
 

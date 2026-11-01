@@ -1,0 +1,93 @@
+{
+ "case": "s2_02_school_leaver_volunteer_coach",
+ "expected_supported": [
+  "A026"
+ ],
+ "status": "repaired",
+ "errors": [],
+ "warnings": [],
+ "supported": [
+  [
+   "A026",
+   "Sports coaching & fitness",
+   "direct"
+  ]
+ ],
+ "exploration": [],
+ "fit": {
+  "A026": {
+   "band": "mixed",
+   "baseline": "stretch",
+   "quotes": 7,
+   "changes": []
+  }
+ },
+ "fit_status": "accepted",
+ "fit_errors": [],
+ "run_meta": {
+  "extraction": "...",
+  "assessment": {
+   "model": "nvidia/nemotron-3.5-super-vl:free",
+   "provider": "Nvidia",
+   "request_id": "gen-1793503159-vGaBTmYuC5L3Q9jvwR0J",
+   "finish_reason": "stop",
+   "usage": {
+    "prompt_tokens": 22188,
+    "completion_tokens": 11151,
+    "total_tokens": 33339,
+    "cost": 0,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0,
+     "upstream_inference_prompt_cost": 0,
+     "upstream_inference_completions_cost": 0
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 6205,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   },
+   "latency_s": 92.54,
+   "prompt_version": "assess_v3",
+   "policy": "v3"
+  },
+  "fit": {
+   "prompt_version": "fit_v1",
+   "model": "nvidia/nemotron-3.5-super-vl:free",
+   "provider": "Nvidia",
+   "request_id": "gen-1793503252-qW3pPGd9Ic6Yj1ET1BNe",
+   "finish_reason": "stop",
+   "usage": {
+    "prompt_tokens": 1675,
+    "completion_tokens": 4504,
+    "total_tokens": 6179,
+    "cost": 0,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0,
+     "upstream_inference_prompt_cost": 0,
+     "upstream_inference_completions_cost": 0
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 3958,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   },
+   "latency_s": 21.88
+  }
+ }
+}

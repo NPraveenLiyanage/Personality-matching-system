@@ -22,6 +22,15 @@ python tests/test_pipeline.py             # 20 checks
 Both pages work on whoever you choose. Three **made-up demo people** are built in. Real CVs and personality reports are
 added during the session (upload a PDF or paste text) and are held **in that browser session's memory only**.
 
+## Two-step pipeline (landing page)
+
+The landing page runs **two separate steps**. Step 1 reads the CV and finds the career areas the evidence supports. Step 2 reads the
+PersonaMap report and shows how the working style it describes meets each of those areas (strong, mixed, stretch, or not enough in the
+report), with quotes checked against the report. Step 2 never changes which areas are supported. Modes: **Local check** (works with real
+documents, calls no model, sends nothing) and **Live** (free model, invented text only). Engine id `final`; code in `src/careerx/personamap.py`,
+`workstyle.py`, `evidence/fit.py`; benchmark in `bench/run_fit_eval.py`. Not validated: the area profiles are unreviewed and no accuracy is
+claimed (see `docs/RUBRIC.md` 6a and `docs/PROJECT_REVIEW.md` section 19).
+
 ## Real data is never stored
 
 * Nothing real is bundled with the app or committed: `data/demo/` holds made-up people only.

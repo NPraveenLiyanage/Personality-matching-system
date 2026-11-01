@@ -1,0 +1,255 @@
+{
+ "per_file": {
+  "career_cases.yaml": {
+   "cases": 21,
+   "expected_areas": 26,
+   "area_recall": {
+    "10": 0.962,
+    "20": 0.962,
+    "30": 0.962,
+    "40": 0.962
+   },
+   "cases_fully_covered": {
+    "10": "20/21",
+    "20": "20/21",
+    "30": "20/21",
+    "40": "20/21"
+   },
+   "median_rank": 1
+  },
+  "career_cases_holdout_v2.yaml": {
+   "cases": 9,
+   "expected_areas": 11,
+   "area_recall": {
+    "10": 0.727,
+    "20": 0.818,
+    "30": 0.818,
+    "40": 1.0
+   },
+   "cases_fully_covered": {
+    "10": "7/9",
+    "20": "8/9",
+    "30": "8/9",
+    "40": "9/9"
+   },
+   "median_rank": 2
+  },
+  "career_cases_holdout_v3.yaml": {
+   "cases": 10,
+   "expected_areas": 10,
+   "area_recall": {
+    "10": 0.8,
+    "20": 0.8,
+    "30": 0.9,
+    "40": 0.9
+   },
+   "cases_fully_covered": {
+    "10": "8/10",
+    "20": "8/10",
+    "30": "9/10",
+    "40": "9/10"
+   },
+   "median_rank": 3
+  },
+  "career_cases_holdout_v4.yaml": {
+   "cases": 10,
+   "expected_areas": 12,
+   "area_recall": {
+    "10": 0.833,
+    "20": 0.833,
+    "30": 0.917,
+    "40": 0.917
+   },
+   "cases_fully_covered": {
+    "10": "8/10",
+    "20": "8/10",
+    "30": "9/10",
+    "40": "9/10"
+   },
+   "median_rank": 2
+  },
+  "career_cases_swap_v1.yaml": {
+   "cases": 4,
+   "expected_areas": 4,
+   "area_recall": {
+    "10": 1.0,
+    "20": 1.0,
+    "30": 1.0,
+    "40": 1.0
+   },
+   "cases_fully_covered": {
+    "10": "4/4",
+    "20": "4/4",
+    "30": "4/4",
+    "40": "4/4"
+   },
+   "median_rank": 1
+  },
+  "career_cases_synth_v1.yaml": {
+   "cases": 11,
+   "expected_areas": 11,
+   "area_recall": {
+    "10": 0.636,
+    "20": 0.727,
+    "30": 0.727,
+    "40": 0.727
+   },
+   "cases_fully_covered": {
+    "10": "7/11",
+    "20": "8/11",
+    "30": "8/11",
+    "40": "8/11"
+   },
+   "median_rank": 5
+  },
+  "career_cases_synth_v2.yaml": {
+   "cases": 25,
+   "expected_areas": 28,
+   "area_recall": {
+    "10": 0.571,
+    "20": 0.571,
+    "30": 0.643,
+    "40": 0.714
+   },
+   "cases_fully_covered": {
+    "10": "14/25",
+    "20": "14/25",
+    "30": "16/25",
+    "40": "18/25"
+   },
+   "median_rank": 5
+  }
+ },
+ "overall": {
+  "cases": 90,
+  "expected_areas": 102,
+  "area_recall": {
+   "10": 0.765,
+   "20": 0.784,
+   "30": 0.824,
+   "40": 0.863
+  },
+  "cases_fully_covered": {
+   "10": "68/90",
+   "20": "70/90",
+   "30": "74/90",
+   "40": "77/90"
+  }
+ },
+ "misses_beyond_top30": [
+  {
+   "file": "career_cases.yaml",
+   "case": "c20_old_experience_only",
+   "beyond_top30": {
+    "A058": 48
+   }
+  },
+  {
+   "file": "career_cases_holdout_v2.yaml",
+   "case": "v2_04_council_administrative_officer",
+   "beyond_top30": {
+    "A038": 38,
+    "A037": 37
+   }
+  },
+  {
+   "file": "career_cases_holdout_v3.yaml",
+   "case": "v3_12_newspaper_reporter",
+   "beyond_top30": {
+    "A049": 57
+   }
+  },
+  {
+   "file": "career_cases_holdout_v4.yaml",
+   "case": "h4_12_hospital_security_guard",
+   "beyond_top30": {
+    "A054": 70
+   }
+  },
+  {
+   "file": "career_cases_synth_v1.yaml",
+   "case": "syn05_lorry_driver_not_mechanic",
+   "beyond_top30": {
+    "A083": 83
+   }
+  },
+  {
+   "file": "career_cases_synth_v1.yaml",
+   "case": "syn07_cutting_machine_operator",
+   "beyond_top30": {
+    "A081": 78
+   }
+  },
+  {
+   "file": "career_cases_synth_v1.yaml",
+   "case": "syn08_waste_collection_crew",
+   "beyond_top30": {
+    "A064": 64
+   }
+  },
+  {
+   "file": "career_cases_synth_v2.yaml",
+   "case": "s2_02_school_leaver_volunteer_coach",
+   "beyond_top30": {
+    "A026": 37
+   }
+  },
+  {
+   "file": "career_cases_synth_v2.yaml",
+   "case": "s2_08_school_leaver_call_centre_trainee",
+   "beyond_top30": {
+    "A055": 31
+   }
+  },
+  {
+   "file": "career_cases_synth_v2.yaml",
+   "case": "s2_11_accounts_assistant_bank",
+   "beyond_top30": {
+    "A041": 61
+   }
+  },
+  {
+   "file": "career_cases_synth_v2.yaml",
+   "case": "s2_12_mechanic_not_driver",
+   "beyond_top30": {
+    "A072": 72
+   }
+  },
+  {
+   "file": "career_cases_synth_v2.yaml",
+   "case": "s2_15_welder_fabricator",
+   "beyond_top30": {
+    "A071": 54
+   }
+  },
+  {
+   "file": "career_cases_synth_v2.yaml",
+   "case": "s2_20_old_driver_now_clerk",
+   "beyond_top30": {
+    "A069": 69,
+    "A083": 83
+   }
+  },
+  {
+   "file": "career_cases_synth_v2.yaml",
+   "case": "s2_22_soldier_to_security_supervisor",
+   "beyond_top30": {
+    "A054": 55
+   }
+  },
+  {
+   "file": "career_cases_synth_v2.yaml",
+   "case": "s2_23_pharmacy_assistant_not_pharmacist",
+   "beyond_top30": {
+    "A062": 42
+   }
+  },
+  {
+   "file": "career_cases_synth_v2.yaml",
+   "case": "s2_31_referee_is_a_doctor",
+   "beyond_top30": {
+    "A038": 86
+   }
+  }
+ ]
+}

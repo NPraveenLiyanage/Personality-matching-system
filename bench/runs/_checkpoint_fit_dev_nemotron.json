@@ -1,0 +1,2105 @@
+{
+ "f01_warm_flexible_people": {
+  "status": "accepted",
+  "fits": {
+   "A019": {
+    "area_id": "A019",
+    "fit_band": "mixed",
+    "original_band": "mixed",
+    "reasons": [
+     {
+      "point": "The role centres on conversation with patients, doctors and staff, matching the described energy from discussion.",
+      "quote": "You draw energy from conversation and bring people along with you."
+     },
+     {
+      "point": "Patient care and team harmony fit weighing how people are affected and noticing when someone is left out.",
+      "quote": "You weigh how people will be affected before you decide anything."
+     },
+     {
+      "point": "Assessing needs and monitoring responses matches trusting concrete facts and practical detail.",
+      "quote": "You trust concrete facts and what experience has shown, and you prefer practical detail."
+     }
+    ],
+    "watch_outs": [
+     {
+      "point": "Care plans, documentation and rotas add structure and fixed timing that may feel confining.",
+      "quote": "A fixed timetable feels confining; you prefer to see what the day brings."
+     },
+     {
+      "point": "Ongoing patient needs can leave questions open, which the report says bothers the person until dealt with.",
+      "quote": "An unclosed list or an open question bothers you until it is dealt with."
+     }
+    ],
+    "reasoning": "Nursing involves sustained conversation with patients, doctors and care staff, which matches the report's description of drawing energy from conversation and bringing people along. The focus on how people are affected, team harmony and noticing when someone is left out fits the strong Feeling preference, and assessing patient needs and monitoring responses suits the Sensing preference for concrete facts and practical detail. Strains appear in developing care plans, documenting outcomes and working to rotas or timetables, which may conflict with a preference to keep options open and a stated trigger that a fixed timetable feels confining.",
+    "changes": [],
+    "status": "accepted",
+    "baseline": {
+     "band": "strong",
+     "score": 0.86,
+     "dims": [
+      {
+       "dim": "people",
+       "weight": 0.7,
+       "fit": 0.85,
+       "mismatch": false,
+       "note": "Extroverted 85% fits work that involves constant contact with people."
+      },
+      {
+       "dim": "abstract",
+       "weight": 0.4,
+       "fit": 0.95,
+       "mismatch": false,
+       "note": "Sensing 70% fits work that is concrete and hands-on."
+      },
+      {
+       "dim": "values",
+       "weight": 0.7,
+       "fit": 0.85,
+       "mismatch": false,
+       "note": "Feeling 85% fits work that rests on care and values-based judgement."
+      },
+      {
+       "dim": "structure",
+       "weight": 0.2,
+       "fit": 0.4,
+       "mismatch": false,
+       "note": "Perceiving 60% pulls against work that is planned, scheduled and procedural."
+      },
+      {
+       "dim": "pace",
+       "weight": 0.5,
+       "fit": 1.0,
+       "mismatch": false,
+       "note": "The work demands quick decisions and firm deadlines; in your report, closing decisions quickly is a strength."
+      }
+     ],
+     "hard_mismatches": 0,
+     "reasons": [
+      "Extroverted 85% fits work that involves constant contact with people.",
+      "Feeling 85% fits work that rests on care and values-based judgement.",
+      "The work demands quick decisions and firm deadlines; in your report, closing decisions quickly is a strength.",
+      "Sensing 70% fits work that is concrete and hands-on.",
+      "Perceiving 60% pulls against work that is planned, scheduled and procedural."
+     ]
+    },
+    "agree": false,
+    "low_confidence": false
+   },
+   "A059": {
+    "area_id": "A059",
+    "fit_band": "strong",
+    "original_band": "strong",
+    "reasons": [
+     {
+      "point": "Client consultations and attending clients match drawing energy from conversation and bringing people along.",
+      "quote": "You draw energy from conversation and bring people along with you."
+     },
+     {
+      "point": "Cutting, styling and treating hair suit trusting concrete facts, experience and practical detail.",
+      "quote": "You trust concrete facts and what experience has shown, and you prefer practical detail."
+     },
+     {
+      "point": "Considering how clients are affected and team harmony fits weighing people's feelings before deciding.",
+      "quote": "You weigh how people will be affected before you decide anything."
+     }
+    ],
+    "watch_outs": [],
+    "reasoning": "Discussing hair and beauty requirements with clients and attending them during treatments provides the conversation this person draws energy from, and the strong Feeling preference fits attending to how clients feel and are affected. The hands-on treatments suit the Sensing preference for concrete facts, practical detail and experience-based work, while appointments and client needs also allow adapting as plans change. There are few evident strains, though some scheduling exists.",
+    "changes": [],
+    "status": "accepted",
+    "baseline": {
+     "band": "strong",
+     "score": 0.77,
+     "dims": [
+      {
+       "dim": "people",
+       "weight": 0.7,
+       "fit": 0.85,
+       "mismatch": false,
+       "note": "Extroverted 85% fits work that involves constant contact with people."
+      },
+      {
+       "dim": "abstract",
+       "weight": 0.4,
+       "fit": 0.7,
+       "mismatch": false,
+       "note": "Sensing 70% is a partial match for work that is concrete and hands-on."
+      },
+      {
+       "dim": "values",
+       "weight": 0.7,
+       "fit": 0.9,
+       "mismatch": false,
+       "note": "Feeling 85% fits work that rests on care and values-based judgement."
+      },
+      {
+       "dim": "structure",
+       "weight": 0.2,
+       "fit": 0.9,
+       "mismatch": false,
+       "note": "Perceiving 60% fits work that is planned, scheduled and procedural."
+      },
+      {
+       "dim": "pace",
+       "weight": 0.5,
+       "fit": 0.5,
+       "mismatch": false,
+       "note": "The work demands quick decisions and firm deadlines; in your report, closing decisions quickly is a strength."
+      }
+     ],
+     "hard_mismatches": 0,
+     "reasons": [
+      "Extroverted 85% fits work that involves constant contact with people.",
+      "Feeling 85% fits work that rests on care and values-based judgement.",
+      "The work demands quick decisions and firm deadlines; in your report, closing decisions quickly is a strength.",
+      "Sensing 70% is a partial match for work that is concrete and hands-on.",
+      "Perceiving 60% fits work that is planned, scheduled and procedural."
+     ]
+    },
+    "agree": true,
+    "low_confidence": false
+   },
+   "A013": {
+    "area_id": "A013",
+    "fit_band": "stretch",
+    "original_band": "stretch",
+    "reasons": [
+     {
+      "point": "Flexible research work may avoid the confining fixed timetable the report flags as a trigger.",
+      "quote": "A fixed timetable feels confining; you prefer to see what the day brings."
+     },
+     {
+      "point": "Advising on methods for business and science can involve considering how people are affected.",
+      "quote": "You weigh how people will be affected before you decide anything."
+     }
+    ],
+    "watch_outs": [
+     {
+      "point": "Developing theories and logical analyses draw less on conversation and people impact than the report describes as natural.",
+      "quote": "You draw energy from conversation and bring people along with you."
+     },
+     {
+      "point": "Trusting ideas without an example behind them may be harder when creating abstract models and techniques.",
+      "quote": "You are careful with the small print and slower to trust ideas that have no example behind them."
+     }
+    ],
+    "reasoning": "Developing mathematical and statistical theories and conducting logical analyses are largely abstract and solitary, whereas the report describes energy from conversation and weighing how people are affected. The preference for concrete facts and examples may be strained by theory and models with no example behind them, and planning approaches is rated as only moderate effort for this person. While research can avoid a fixed timetable, the core work leans on logical analysis rather than people impact or discussion.",
+    "changes": [],
+    "status": "accepted",
+    "baseline": {
+     "band": "stretch",
+     "score": 0.3,
+     "dims": [
+      {
+       "dim": "people",
+       "weight": 0.7,
+       "fit": 0.4,
+       "mismatch": true,
+       "note": "Extroverted 85% pulls against work that involves mostly working alone or with equipment."
+      },
+      {
+       "dim": "abstract",
+       "weight": 0.4,
+       "fit": 0.3,
+       "mismatch": true,
+       "note": "Sensing 70% pulls against work that centres on abstract ideas and patterns."
+      },
+      {
+       "dim": "values",
+       "weight": 0.7,
+       "fit": 0.15,
+       "mismatch": true,
+       "note": "Feeling 85% pulls against work that rests on objective, technical judgement."
+      },
+      {
+       "dim": "structure",
+       "weight": 0.2,
+       "fit": 0.65,
+       "mismatch": false,
+       "note": "Perceiving 60% is a partial match for work that is planned, scheduled and procedural."
+      },
+      {
+       "dim": "pace",
+       "weight": 0.5,
+       "fit": 0.25,
+       "mismatch": true,
+       "note": "The work allows slow, deliberate decisions; in your report, closing decisions quickly is a strength."
+      }
+     ],
+     "hard_mismatches": 4,
+     "reasons": [
+      "Extroverted 85% pulls against work that involves mostly working alone or with equipment.",
+      "Feeling 85% pulls against work that rests on objective, technical judgement.",
+      "The work allows slow, deliberate decisions; in your report, closing decisions quickly is a strength.",
+      "Sensing 70% pulls against work that centres on abstract ideas and patterns.",
+      "Perceiving 60% is a partial match for work that is planned, scheduled and procedural."
+     ]
+    },
+    "agree": true,
+    "low_confidence": false
+   },
+   "A043": {
+    "area_id": "A043",
+    "fit_band": "mixed",
+    "original_band": "mixed",
+    "reasons": [
+     {
+      "point": "Advising on systems and efficiency fits discussing business needs and considering how people are affected.",
+      "quote": "You weigh how people will be affected before you decide anything."
+     },
+     {
+      "point": "Talking about IT use in business functions matches drawing energy from conversation.",
+      "quote": "You draw energy from conversation and bring people along with you."
+     },
+     {
+      "point": "Adapting software as needs change fits keeping options open and working well when plans change late.",
+      "quote": "You keep options open, adapt as you go, and work well when plans change late."
+     }
+    ],
+    "watch_outs": [
+     {
+      "point": "Writing and testing code can mean long interruption-free stretches, which the report says take conscious effort.",
+      "quote": "Long stretches of interruption-free work are where you do your best thinking."
+     },
+     {
+      "point": "Project deadlines and system plans add fixed timing that may feel confining.",
+      "quote": "A fixed timetable feels confining; you prefer to see what the day brings."
+     }
+    ],
+    "reasoning": "Advising on IT systems and identifying efficiency improvements involve discussing business needs and weighing how changes affect people, which fits the extroverted and Feeling preferences. Planning and designing software also allows some adaptation, matching the slight Perceiving preference. Strains arise because writing and testing code often means long uninterrupted periods, which the report says take conscious effort, and deadlines or sprint timetables may feel confining.",
+    "changes": [],
+    "status": "accepted",
+    "baseline": {
+     "band": "stretch",
+     "score": 0.35,
+     "dims": [
+      {
+       "dim": "people",
+       "weight": 0.7,
+       "fit": 0.4,
+       "mismatch": true,
+       "note": "Extroverted 85% pulls against work that involves mostly working alone or with equipment."
+      },
+      {
+       "dim": "abstract",
+       "weight": 0.4,
+       "fit": 0.3,
+       "mismatch": true,
+       "note": "Sensing 70% pulls against work that centres on abstract ideas and patterns."
+      },
+      {
+       "dim": "values",
+       "weight": 0.7,
+       "fit": 0.15,
+       "mismatch": true,
+       "note": "Feeling 85% pulls against work that rests on objective, technical judgement."
+      },
+      {
+       "dim": "structure",
+       "weight": 0.2,
+       "fit": 0.65,
+       "mismatch": false,
+       "note": "Perceiving 60% is a partial match for work that is planned, scheduled and procedural."
+      },
+      {
+       "dim": "pace",
+       "weight": 0.5,
+       "fit": 0.5,
+       "mismatch": false,
+       "note": "The work demands quick decisions and firm deadlines; in your report, closing decisions quickly is a strength."
+      }
+     ],
+     "hard_mismatches": 3,
+     "reasons": [
+      "Extroverted 85% pulls against work that involves mostly working alone or with equipment.",
+      "Feeling 85% pulls against work that rests on objective, technical judgement.",
+      "The work demands quick decisions and firm deadlines; in your report, closing decisions quickly is a strength.",
+      "Sensing 70% pulls against work that centres on abstract ideas and patterns.",
+      "Perceiving 60% is a partial match for work that is planned, scheduled and procedural."
+     ]
+    },
+    "agree": false,
+    "low_confidence": false
+   }
+  },
+  "errors": [],
+  "warnings": [],
+  "run_meta": {
+   "prompt_version": "fit_v1",
+   "model": "nvidia/nemotron-3.5-super-vl:free",
+   "provider": "Nvidia",
+   "request_id": "gen-1793501439-RNTUSCreEHZ4b2K6tw7O",
+   "finish_reason": "stop",
+   "usage": {
+    "prompt_tokens": 2095,
+    "completion_tokens": 7942,
+    "total_tokens": 10037,
+    "cost": 0,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0,
+     "upstream_inference_prompt_cost": 0,
+     "upstream_inference_completions_cost": 0
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 6722,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   },
+   "latency_s": 82.61
+  },
+  "stage": {
+   "rejected": [],
+   "errors": []
+  }
+ },
+ "f02_reserved_abstract_planner": {
+  "status": "accepted",
+  "fits": {
+   "A086": {
+    "area_id": "A086",
+    "fit_band": "mixed",
+    "original_band": "mixed",
+    "reasons": [
+     {
+      "point": "Long stretches of interruption-free work suit independent analysis and modelling.",
+      "quote": "Long stretches of interruption-free work are where you do your best thinking."
+     },
+     {
+      "point": "Explaining through meaning and pattern fits interpreting insights and seeing where models could lead.",
+      "quote": "You explain things through meaning and pattern rather than literal detail."
+     },
+     {
+      "point": "Deciding by logic and consistent criteria fits statistical analysis and decision-support advice.",
+      "quote": "You decide by logic and consistent criteria, even when the answer is uncomfortable."
+     }
+    ],
+    "watch_outs": [
+     {
+      "point": "Being slower to check the small print may strain data cleaning and quality-control tasks.",
+      "quote": "You are quick to see where an idea could lead and slower to check the small print."
+     },
+     {
+      "point": "A fixed timetable feels confining, which may conflict with project schedules and reporting deadlines.",
+      "quote": "A fixed timetable feels confining; you prefer to see what the day brings."
+     },
+     {
+      "point": "Preferring a few close working relationships may make broad stakeholder reporting and advising less natural.",
+      "quote": "You recharge alone and prefer a few close working relationships to a wide circle."
+     }
+    ],
+    "reasoning": "The report describes long, interruption-free stretches as where the person does their best thinking, which fits independent dataset exploration and model building. A preference for meaning and pattern, plus logical, criteria-based decisions, suits interpreting insights and advising on statistical methods. Strains may appear in detail-heavy data cleaning, fixed project timetables, and broader stakeholder interaction.",
+    "changes": [],
+    "status": "accepted",
+    "baseline": {
+     "band": "strong",
+     "score": 0.87,
+     "dims": [
+      {
+       "dim": "people",
+       "weight": 0.5,
+       "fit": 1.0,
+       "mismatch": false,
+       "note": "Introverted 75% fits work that involves mostly working alone or with equipment."
+      },
+      {
+       "dim": "abstract",
+       "weight": 0.7,
+       "fit": 0.85,
+       "mismatch": false,
+       "note": "Intuition 85% fits work that centres on abstract ideas and patterns."
+      },
+      {
+       "dim": "values",
+       "weight": 0.5,
+       "fit": 0.75,
+       "mismatch": false,
+       "note": "Thinking 75% fits work that rests on objective, technical judgement."
+      },
+      {
+       "dim": "structure",
+       "weight": 0.5,
+       "fit": 1.0,
+       "mismatch": false,
+       "note": "Judging 75% fits work that is planned, scheduled and procedural."
+      },
+      {
+       "dim": "pace",
+       "weight": 0.4,
+       "fit": 0.7,
+       "mismatch": false,
+       "note": "The work demands quick decisions and firm deadlines; in your report, closing decisions quickly is a strength."
+      }
+     ],
+     "hard_mismatches": 0,
+     "reasons": [
+      "Intuition 85% fits work that centres on abstract ideas and patterns.",
+      "Introverted 75% fits work that involves mostly working alone or with equipment.",
+      "Thinking 75% fits work that rests on objective, technical judgement.",
+      "Judging 75% fits work that is planned, scheduled and procedural.",
+      "The work demands quick decisions and firm deadlines; in your report, closing decisions quickly is a strength."
+     ]
+    },
+    "agree": false,
+    "low_confidence": false
+   },
+   "A013": {
+    "area_id": "A013",
+    "fit_band": "mixed",
+    "original_band": "mixed",
+    "reasons": [
+     {
+      "point": "Long stretches of interruption-free work support research and model development.",
+      "quote": "Long stretches of interruption-free work are where you do your best thinking."
+     },
+     {
+      "point": "Explaining through meaning and pattern fits developing theories, models, and techniques.",
+      "quote": "You explain things through meaning and pattern rather than literal detail."
+     },
+     {
+      "point": "Deciding by logic and consistent criteria fits logical analysis of management problems and decision-support models.",
+      "quote": "You decide by logic and consistent criteria, even when the answer is uncomfortable."
+     }
+    ],
+    "watch_outs": [
+     {
+      "point": "Being slower to check the small print may strain precise statistical and actuarial work.",
+      "quote": "You are quick to see where an idea could lead and slower to check the small print."
+     },
+     {
+      "point": "A fixed timetable feels confining, which may conflict with project schedules and delivery deadlines.",
+      "quote": "A fixed timetable feels confining; you prefer to see what the day brings."
+     }
+    ],
+    "reasoning": "Long, interruption-free work suits mathematical research and building operational models, while a focus on meaning and pattern fits developing concepts and techniques. Deciding by logic and consistent criteria aligns with logical analysis and decision support. Attention to fine detail and fixed timetables may be harder, given the report's notes on small print and confining schedules.",
+    "changes": [],
+    "status": "accepted",
+    "baseline": {
+     "band": "mixed",
+     "score": 0.83,
+     "dims": [
+      {
+       "dim": "people",
+       "weight": 0.5,
+       "fit": 1.0,
+       "mismatch": false,
+       "note": "Introverted 75% fits work that involves mostly working alone or with equipment."
+      },
+      {
+       "dim": "abstract",
+       "weight": 0.7,
+       "fit": 0.85,
+       "mismatch": false,
+       "note": "Intuition 85% fits work that centres on abstract ideas and patterns."
+      },
+      {
+       "dim": "values",
+       "weight": 0.5,
+       "fit": 0.75,
+       "mismatch": false,
+       "note": "Thinking 75% fits work that rests on objective, technical judgement."
+      },
+      {
+       "dim": "structure",
+       "weight": 0.5,
+       "fit": 1.0,
+       "mismatch": false,
+       "note": "Judging 75% fits work that is planned, scheduled and procedural."
+      },
+      {
+       "dim": "pace",
+       "weight": 0.4,
+       "fit": 0.45,
+       "mismatch": true,
+       "note": "The work allows slow, deliberate decisions; in your report, closing decisions quickly is a strength."
+      }
+     ],
+     "hard_mismatches": 1,
+     "reasons": [
+      "Intuition 85% fits work that centres on abstract ideas and patterns.",
+      "Introverted 75% fits work that involves mostly working alone or with equipment.",
+      "Thinking 75% fits work that rests on objective, technical judgement.",
+      "Judging 75% fits work that is planned, scheduled and procedural.",
+      "The work allows slow, deliberate decisions; in your report, closing decisions quickly is a strength."
+     ]
+    },
+    "agree": true,
+    "low_confidence": false
+   },
+   "A055": {
+    "area_id": "A055",
+    "fit_band": "stretch",
+    "original_band": "stretch",
+    "reasons": [
+     {
+      "point": "An open question bothering the person until dealt with fits closing client inquiries.",
+      "quote": "An unclosed list or an open question bothers you until it is dealt with."
+     },
+     {
+      "point": "Giving direct feedback plainly could help when explaining policies clearly.",
+      "quote": "You give direct feedback plainly and expect others to do the same."
+     }
+    ],
+    "watch_outs": [
+     {
+      "point": "Recharging alone and preferring few close relationships conflicts with continuous contact with many clients.",
+      "quote": "You recharge alone and prefer a few close working relationships to a wide circle."
+     },
+     {
+      "point": "Explaining through meaning and pattern rather than literal detail does not suit conveying policies and procedures literally.",
+      "quote": "You explain things through meaning and pattern rather than literal detail."
+     },
+     {
+      "point": "A fixed timetable feels confining, while contact-centre work typically runs on set shifts.",
+      "quote": "A fixed timetable feels confining; you prefer to see what the day brings."
+     }
+    ],
+    "reasoning": "The role centres on frequent contact with many clients and explaining policies literally, which contrasts with preferring a few close relationships and meaning over literal detail. Fixed shift timetables may also feel confining. Modest matches include liking settled decisions and communicating plainly when closing inquiries.",
+    "changes": [],
+    "status": "accepted",
+    "baseline": {
+     "band": "stretch",
+     "score": 0.5,
+     "dims": [
+      {
+       "dim": "people",
+       "weight": 0.5,
+       "fit": 0.25,
+       "mismatch": true,
+       "note": "Introverted 75% pulls against work that involves constant contact with people."
+      },
+      {
+       "dim": "abstract",
+       "weight": 0.7,
+       "fit": 0.15,
+       "mismatch": true,
+       "note": "Intuition 85% pulls against work that is concrete and hands-on."
+      },
+      {
+       "dim": "values",
+       "weight": 0.5,
+       "fit": 0.75,
+       "mismatch": false,
+       "note": "Thinking 75% fits work that rests on care and values-based judgement."
+      },
+      {
+       "dim": "structure",
+       "weight": 0.5,
+       "fit": 0.75,
+       "mismatch": false,
+       "note": "Judging 75% fits work that is planned, scheduled and procedural."
+      },
+      {
+       "dim": "pace",
+       "weight": 0.4,
+       "fit": 0.8,
+       "mismatch": false,
+       "note": "The work demands quick decisions and firm deadlines; in your report, closing decisions quickly is a strength."
+      }
+     ],
+     "hard_mismatches": 2,
+     "reasons": [
+      "Intuition 85% pulls against work that is concrete and hands-on.",
+      "Introverted 75% pulls against work that involves constant contact with people.",
+      "Thinking 75% fits work that rests on care and values-based judgement.",
+      "Judging 75% fits work that is planned, scheduled and procedural.",
+      "The work demands quick decisions and firm deadlines; in your report, closing decisions quickly is a strength."
+     ]
+    },
+    "agree": true,
+    "low_confidence": false
+   },
+   "A027": {
+    "area_id": "A027",
+    "fit_band": "stretch",
+    "original_band": "stretch",
+    "reasons": [
+     {
+      "point": "Giving direct feedback plainly fits reporting patient concerns to staff.",
+      "quote": "You give direct feedback plainly and expect others to do the same."
+     },
+     {
+      "point": "An open question bothering the person until dealt with can support following up on care issues.",
+      "quote": "An unclosed list or an open question bothers you until it is dealt with."
+     }
+    ],
+    "watch_outs": [
+     {
+      "point": "Recharging alone and preferring few close relationships conflicts with close personal care and daily interaction.",
+      "quote": "You recharge alone and prefer a few close working relationships to a wide circle."
+     },
+     {
+      "point": "Harmony in a team matters and noticing exclusion is listed as draining, while care work relies on close teamwork.",
+      "quote": "Harmony in a team matters to you, and you notice quickly when someone is left out."
+     },
+     {
+      "point": "A fixed timetable feels confining, while care routines and schedules are typically fixed.",
+      "quote": "A fixed timetable feels confining; you prefer to see what the day brings."
+     },
+     {
+      "point": "Explaining through meaning and pattern rather than literal detail may not fit concrete care tasks.",
+      "quote": "You explain things through meaning and pattern rather than literal detail."
+     }
+    ],
+    "reasoning": "Personal care involves close, ongoing interaction with patients and fixed daily routines, contrasting with recharging alone and preferring flexible days. The report also flags team harmony and noticing exclusion as draining, while care work is team-based and concrete rather than pattern-focused. Modest fits include giving direct feedback when reporting concerns and resolving open questions.",
+    "changes": [],
+    "status": "accepted",
+    "baseline": {
+     "band": "stretch",
+     "score": 0.44,
+     "dims": [
+      {
+       "dim": "people",
+       "weight": 0.5,
+       "fit": 0.25,
+       "mismatch": true,
+       "note": "Introverted 75% pulls against work that involves constant contact with people."
+      },
+      {
+       "dim": "abstract",
+       "weight": 0.7,
+       "fit": 0.15,
+       "mismatch": true,
+       "note": "Intuition 85% pulls against work that is concrete and hands-on."
+      },
+      {
+       "dim": "values",
+       "weight": 0.5,
+       "fit": 0.25,
+       "mismatch": true,
+       "note": "Thinking 75% pulls against work that rests on care and values-based judgement."
+      },
+      {
+       "dim": "structure",
+       "weight": 0.5,
+       "fit": 1.0,
+       "mismatch": false,
+       "note": "Judging 75% fits work that is planned, scheduled and procedural."
+      },
+      {
+       "dim": "pace",
+       "weight": 0.4,
+       "fit": 0.7,
+       "mismatch": false,
+       "note": "The work demands quick decisions and firm deadlines; in your report, closing decisions quickly is a strength."
+      }
+     ],
+     "hard_mismatches": 3,
+     "reasons": [
+      "Intuition 85% pulls against work that is concrete and hands-on.",
+      "Introverted 75% pulls against work that involves constant contact with people.",
+      "Thinking 75% pulls against work that rests on care and values-based judgement.",
+      "Judging 75% fits work that is planned, scheduled and procedural.",
+      "The work demands quick decisions and firm deadlines; in your report, closing decisions quickly is a strength."
+     ]
+    },
+    "agree": true,
+    "low_confidence": false
+   }
+  },
+  "errors": [],
+  "warnings": [],
+  "run_meta": {
+   "prompt_version": "fit_v1",
+   "model": "nvidia/nemotron-3.5-super-vl:free",
+   "provider": "Nvidia",
+   "request_id": "gen-1793501521-45TFVeTqbcZwewL8fDFT",
+   "finish_reason": "stop",
+   "usage": {
+    "prompt_tokens": 2076,
+    "completion_tokens": 9094,
+    "total_tokens": 11170,
+    "cost": 0,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0,
+     "upstream_inference_prompt_cost": 0,
+     "upstream_inference_completions_cost": 0
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 7775,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   },
+   "latency_s": 49.93
+  },
+  "stage": {
+   "rejected": [],
+   "errors": []
+  }
+ },
+ "f03_outgoing_ideas_flexible": {
+  "status": "accepted",
+  "fits": {
+   "A088": {
+    "area_id": "A088",
+    "fit_band": "mixed",
+    "original_band": "mixed",
+    "reasons": [
+     {
+      "point": "Defining product requirements with users and stakeholders matches the report's emphasis on energising conversation and open discussion.",
+      "quote": "Meetings and open discussion leave you energised rather than tired."
+     },
+     {
+      "point": "Creating wireframes and visual designs fits seeing where an idea could lead and working through meaning and pattern.",
+      "quote": "You explain things through meaning and pattern rather than literal detail."
+     },
+     {
+      "point": "Iterating designs based on feedback fits keeping options open and adapting as plans change late.",
+      "quote": "You keep options open, adapt as you go, and work well when plans change late."
+     }
+    ],
+    "watch_outs": [
+     {
+      "point": "Usability testing and detailed specs may require checking small print, which the report says is slower.",
+      "quote": "You are quick to see where an idea could lead and slower to check the small print."
+     },
+     {
+      "point": "Fixed product deadlines and timetables may feel confining.",
+      "quote": "A fixed timetable feels confining; you prefer to see what the day brings."
+     }
+    ],
+    "reasoning": "The area involves defining requirements with users and stakeholders and iterating designs from feedback, which fits the report's description of drawing energy from conversation and working well when plans change late. The report also describes explaining things through meaning and pattern, which may suit visual and UX design. Strains include checking small print and fixed timetables, which the report says are slower or confining. Programming and long uninterrupted focus may also take conscious effort.",
+    "changes": [],
+    "status": "accepted",
+    "baseline": {
+     "band": "strong",
+     "score": 0.8,
+     "dims": [
+      {
+       "dim": "people",
+       "weight": 0.6,
+       "fit": 0.95,
+       "mismatch": false,
+       "note": "Extroverted 80% fits work that involves constant contact with people."
+      },
+      {
+       "dim": "abstract",
+       "weight": 0.6,
+       "fit": 0.8,
+       "mismatch": false,
+       "note": "Intuition 80% fits work that centres on abstract ideas and patterns."
+      },
+      {
+       "dim": "values",
+       "weight": 0.4,
+       "fit": 0.95,
+       "mismatch": false,
+       "note": "Feeling 70% fits work that rests on care and values-based judgement."
+      },
+      {
+       "dim": "structure",
+       "weight": 0.4,
+       "fit": 0.8,
+       "mismatch": false,
+       "note": "Perceiving 70% fits work that is planned, scheduled and procedural."
+      },
+      {
+       "dim": "pace",
+       "weight": 0.5,
+       "fit": 0.5,
+       "mismatch": false,
+       "note": "The work demands quick decisions and firm deadlines; in your report, closing decisions quickly is a strength."
+      }
+     ],
+     "hard_mismatches": 0,
+     "reasons": [
+      "Extroverted 80% fits work that involves constant contact with people.",
+      "Intuition 80% fits work that centres on abstract ideas and patterns.",
+      "The work demands quick decisions and firm deadlines; in your report, closing decisions quickly is a strength.",
+      "Feeling 70% fits work that rests on care and values-based judgement.",
+      "Perceiving 70% fits work that is planned, scheduled and procedural."
+     ]
+    },
+    "agree": false,
+    "low_confidence": false
+   },
+   "A050": {
+    "area_id": "A050",
+    "fit_band": "mixed",
+    "original_band": "mixed",
+    "reasons": [
+     {
+      "point": "Performing and directing productions match the report's description of drawing energy from conversation and bringing people along.",
+      "quote": "You draw energy from conversation and bring people along with you."
+     },
+     {
+      "point": "Conceiving and creating visual art or music fits seeing where an idea could lead and using meaning and pattern.",
+      "quote": "You explain things through meaning and pattern rather than literal detail."
+     },
+     {
+      "point": "Directing and rehearsing suit adapting as plans change late and keeping options open.",
+      "quote": "You keep options open, adapt as you go, and work well when plans change late."
+     }
+    ],
+    "watch_outs": [
+     {
+      "point": "Fixed rehearsal and performance timetables may feel confining.",
+      "quote": "A fixed timetable feels confining; you prefer to see what the day brings."
+     },
+     {
+      "point": "Creative and organisational responsibility may involve small print the report says is slower to check.",
+      "quote": "You are quick to see where an idea could lead and slower to check the small print."
+     }
+    ],
+    "reasoning": "Performing, directing and rehearsing involve conversation and bringing people along, which the report describes as energising. Conceiving original art and music fits seeing where an idea could lead and working through meaning and pattern. However, productions run to rehearsal timetables and organisational responsibility may involve small print, both of which the report flags as difficult. Adaptability fits late changes, but fixed schedules are a noted trigger under pressure.",
+    "changes": [],
+    "status": "accepted",
+    "baseline": {
+     "band": "strong",
+     "score": 0.76,
+     "dims": [
+      {
+       "dim": "people",
+       "weight": 0.6,
+       "fit": 0.7,
+       "mismatch": false,
+       "note": "Extroverted 80% is a partial match for work that involves constant contact with people."
+      },
+      {
+       "dim": "abstract",
+       "weight": 0.6,
+       "fit": 0.8,
+       "mismatch": false,
+       "note": "Intuition 80% fits work that centres on abstract ideas and patterns."
+      },
+      {
+       "dim": "values",
+       "weight": 0.4,
+       "fit": 0.95,
+       "mismatch": false,
+       "note": "Feeling 70% fits work that rests on care and values-based judgement."
+      },
+      {
+       "dim": "structure",
+       "weight": 0.4,
+       "fit": 0.95,
+       "mismatch": false,
+       "note": "Perceiving 70% fits work that is flexible and improvised."
+      },
+      {
+       "dim": "pace",
+       "weight": 0.5,
+       "fit": 0.5,
+       "mismatch": false,
+       "note": "The work demands quick decisions and firm deadlines; in your report, closing decisions quickly is a strength."
+      }
+     ],
+     "hard_mismatches": 0,
+     "reasons": [
+      "Extroverted 80% is a partial match for work that involves constant contact with people.",
+      "Intuition 80% fits work that centres on abstract ideas and patterns.",
+      "The work demands quick decisions and firm deadlines; in your report, closing decisions quickly is a strength.",
+      "Feeling 70% fits work that rests on care and values-based judgement.",
+      "Perceiving 70% fits work that is flexible and improvised."
+     ]
+    },
+    "agree": false,
+    "low_confidence": false
+   },
+   "A038": {
+    "area_id": "A038",
+    "fit_band": "stretch",
+    "original_band": "stretch",
+    "reasons": [
+     {
+      "point": "Responding to telephone and electronic enquiries involves conversation, which the report describes as energising.",
+      "quote": "You draw energy from conversation and bring people along with you."
+     }
+    ],
+    "watch_outs": [
+     {
+      "point": "Checking figures, preparing invoices and proofreading require close attention to small print.",
+      "quote": "You are quick to see where an idea could lead and slower to check the small print."
+     },
+     {
+      "point": "Routine clerical work typically follows a fixed timetable, which the report describes as confining.",
+      "quote": "A fixed timetable feels confining; you prefer to see what the day brings."
+     },
+     {
+      "point": "Sorting, filing and transcribing suit literal detail more than the meaning and pattern approach the report describes.",
+      "quote": "You explain things through meaning and pattern rather than literal detail."
+     }
+    ],
+    "reasoning": "Office administration is mainly routine clerical work such as filing, invoices and proofreading, which relies on literal detail and fixed routines. The report describes preferring meaning and pattern over small print and finding fixed timetables confining. Responding to telephone and electronic enquiries offers some conversation, which the report says can be energising. Overall, the day-to-day tasks lean heavily on areas the report flags as effortful or draining.",
+    "changes": [],
+    "status": "accepted",
+    "baseline": {
+     "band": "stretch",
+     "score": 0.51,
+     "dims": [
+      {
+       "dim": "people",
+       "weight": 0.6,
+       "fit": 0.7,
+       "mismatch": false,
+       "note": "Extroverted 80% is a partial match for work that involves constant contact with people."
+      },
+      {
+       "dim": "abstract",
+       "weight": 0.6,
+       "fit": 0.45,
+       "mismatch": true,
+       "note": "Intuition 80% pulls against work that is concrete and hands-on."
+      },
+      {
+       "dim": "values",
+       "weight": 0.4,
+       "fit": 0.55,
+       "mismatch": false,
+       "note": "Feeling 70% is a partial match for work that rests on objective, technical judgement."
+      },
+      {
+       "dim": "structure",
+       "weight": 0.4,
+       "fit": 0.3,
+       "mismatch": true,
+       "note": "Perceiving 70% pulls against work that is planned, scheduled and procedural."
+      },
+      {
+       "dim": "pace",
+       "weight": 0.5,
+       "fit": 0.5,
+       "mismatch": false,
+       "note": "The work demands quick decisions and firm deadlines; in your report, closing decisions quickly is a strength."
+      }
+     ],
+     "hard_mismatches": 2,
+     "reasons": [
+      "Extroverted 80% is a partial match for work that involves constant contact with people.",
+      "Intuition 80% pulls against work that is concrete and hands-on.",
+      "The work demands quick decisions and firm deadlines; in your report, closing decisions quickly is a strength.",
+      "Feeling 70% is a partial match for work that rests on objective, technical judgement.",
+      "Perceiving 70% pulls against work that is planned, scheduled and procedural."
+     ]
+    },
+    "agree": true,
+    "low_confidence": false
+   },
+   "A041": {
+    "area_id": "A041",
+    "fit_band": "stretch",
+    "original_band": "stretch",
+    "reasons": [
+     {
+      "point": "The report emphasises conversation and people, while this area is dominated by numerical records and data.",
+      "quote": "You draw energy from conversation and bring people along with you."
+     }
+    ],
+    "watch_outs": [
+     {
+      "point": "Maintaining accounting records and calculating costs require careful small-print work.",
+      "quote": "You are quick to see where an idea could lead and slower to check the small print."
+     },
+     {
+      "point": "Financial processing and bookkeeping usually follow fixed timetables and deadlines.",
+      "quote": "A fixed timetable feels confining; you prefer to see what the day brings."
+     },
+     {
+      "point": "Compiling statistical data suits literal detail rather than meaning and pattern.",
+      "quote": "You explain things through meaning and pattern rather than literal detail."
+     }
+    ],
+    "reasoning": "Numerical and accounting clerk work centres on records, costs, cash and statistical data, which is detail-oriented and rule-bound. The report describes preferring conversation, meaning and pattern, and finding fixed timetables confining, so much of this work leans on less natural preferences. There is limited description of comfort with routine numerical detail or solitary bookkeeping. Some cash handling may involve contact, but not enough to offset the strains.",
+    "changes": [],
+    "status": "accepted",
+    "baseline": {
+     "band": "stretch",
+     "score": 0.41,
+     "dims": [
+      {
+       "dim": "people",
+       "weight": 0.6,
+       "fit": 0.45,
+       "mismatch": true,
+       "note": "Extroverted 80% pulls against work that involves mostly working alone or with equipment."
+      },
+      {
+       "dim": "abstract",
+       "weight": 0.6,
+       "fit": 0.45,
+       "mismatch": true,
+       "note": "Intuition 80% pulls against work that is concrete and hands-on."
+      },
+      {
+       "dim": "values",
+       "weight": 0.4,
+       "fit": 0.3,
+       "mismatch": true,
+       "note": "Feeling 70% pulls against work that rests on objective, technical judgement."
+      },
+      {
+       "dim": "structure",
+       "weight": 0.4,
+       "fit": 0.3,
+       "mismatch": true,
+       "note": "Perceiving 70% pulls against work that is planned, scheduled and procedural."
+      },
+      {
+       "dim": "pace",
+       "weight": 0.5,
+       "fit": 0.5,
+       "mismatch": false,
+       "note": "The work demands quick decisions and firm deadlines; in your report, closing decisions quickly is a strength."
+      }
+     ],
+     "hard_mismatches": 4,
+     "reasons": [
+      "Extroverted 80% pulls against work that involves mostly working alone or with equipment.",
+      "Intuition 80% pulls against work that is concrete and hands-on.",
+      "The work demands quick decisions and firm deadlines; in your report, closing decisions quickly is a strength.",
+      "Feeling 70% pulls against work that rests on objective, technical judgement.",
+      "Perceiving 70% pulls against work that is planned, scheduled and procedural."
+     ]
+    },
+    "agree": true,
+    "low_confidence": false
+   }
+  },
+  "errors": [],
+  "warnings": [],
+  "run_meta": {
+   "prompt_version": "fit_v1",
+   "model": "nvidia/nemotron-3.5-super-vl:free",
+   "provider": "Nvidia",
+   "request_id": "gen-1793501571-XGhyrei1bp5re1ZeRgKe",
+   "finish_reason": "stop",
+   "usage": {
+    "prompt_tokens": 2067,
+    "completion_tokens": 8154,
+    "total_tokens": 10221,
+    "cost": 0,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0,
+     "upstream_inference_prompt_cost": 0,
+     "upstream_inference_completions_cost": 0
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 6909,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   },
+   "latency_s": 171.35
+  },
+  "stage": {
+   "rejected": [],
+   "errors": []
+  }
+ },
+ "f04_quiet_practical_planner": {
+  "status": "accepted",
+  "fits": {
+   "A041": {
+    "area_id": "A041",
+    "fit_band": "strong",
+    "original_band": "strong",
+    "reasons": [
+     {
+      "point": "The report describes trusting concrete facts and preferring practical detail, which suits maintaining accounting records and calculating costs.",
+      "quote": "You trust concrete facts and what experience has shown, and you prefer practical detail."
+     },
+     {
+      "point": "The report describes doing its best thinking during long, interruption-free stretches, which fits focused bookkeeping and transaction processing.",
+      "quote": "Long stretches of interruption-free work are where you do your best thinking."
+     },
+     {
+      "point": "The report describes deciding by logic and consistent criteria, which fits careful financial checking and settled clerical decisions.",
+      "quote": "You decide by logic and consistent criteria, even when the answer is uncomfortable."
+     }
+    ],
+    "watch_outs": [],
+    "reasoning": "The report describes a preference for concrete facts, practical detail and careful handling of small print, which fits maintaining bookkeeping records and calculating costs and wages. It also describes doing its best thinking during long, interruption-free stretches and deciding by logic and consistent criteria, which suits focused clerical financial processing. The report's early planning and preference for settled decisions match closing work items, and nothing in the area's described activities clearly conflicts with its preference for a few close working relationships. No significant strain is evident from the report for this kind of work.",
+    "changes": [],
+    "status": "accepted",
+    "baseline": {
+     "band": "strong",
+     "score": 0.85,
+     "dims": [
+      {
+       "dim": "people",
+       "weight": 0.4,
+       "fit": 0.95,
+       "mismatch": false,
+       "note": "Introverted 70% fits work that involves mostly working alone or with equipment."
+      },
+      {
+       "dim": "abstract",
+       "weight": 0.5,
+       "fit": 1.0,
+       "mismatch": false,
+       "note": "Sensing 75% fits work that is concrete and hands-on."
+      },
+      {
+       "dim": "values",
+       "weight": 0.4,
+       "fit": 0.7,
+       "mismatch": false,
+       "note": "Thinking 70% is a partial match for work that rests on objective, technical judgement."
+      },
+      {
+       "dim": "structure",
+       "weight": 0.7,
+       "fit": 0.85,
+       "mismatch": false,
+       "note": "Judging 85% fits work that is planned, scheduled and procedural."
+      },
+      {
+       "dim": "pace",
+       "weight": 0.4,
+       "fit": 0.7,
+       "mismatch": false,
+       "note": "The work demands quick decisions and firm deadlines; in your report, closing decisions quickly is a strength."
+      }
+     ],
+     "hard_mismatches": 0,
+     "reasons": [
+      "Judging 85% fits work that is planned, scheduled and procedural.",
+      "Sensing 75% fits work that is concrete and hands-on.",
+      "Introverted 70% fits work that involves mostly working alone or with equipment.",
+      "Thinking 70% is a partial match for work that rests on objective, technical judgement.",
+      "The work demands quick decisions and firm deadlines; in your report, closing decisions quickly is a strength."
+     ]
+    },
+    "agree": true,
+    "low_confidence": false
+   },
+   "A075": {
+    "area_id": "A075",
+    "fit_band": "mixed",
+    "original_band": "mixed",
+    "reasons": [
+     {
+      "point": "The report's preference for concrete facts and practical detail matches examining blueprints and testing physical systems.",
+      "quote": "You trust concrete facts and what experience has shown, and you prefer practical detail."
+     },
+     {
+      "point": "Being careful with small print suits inspecting electrical systems, cables and machinery for hazards and defects.",
+      "quote": "You are careful with the small print and slower to trust ideas that have no example behind them."
+     },
+     {
+      "point": "Planning early and liking decisions settled fits organising installation and maintenance work.",
+      "quote": "You plan and schedule early and like decisions settled."
+     }
+    ],
+    "watch_outs": [
+     {
+      "point": "The report says a fixed timetable feels confining and prefers to see what the day brings, which may clash with scheduled installation or call-out work.",
+      "quote": "A fixed timetable feels confining; you prefer to see what the day brings."
+     },
+     {
+      "point": "The report says team harmony matters and it notices when someone is left out, which could drain in team-based repair environments.",
+      "quote": "Harmony in a team matters to you, and you notice quickly when someone is left out."
+     }
+    ],
+    "reasoning": "The report describes trusting concrete facts and practical detail, which fits examining blueprints, inspecting wiring and testing equipment for defects. Its carefulness with small print and logic-based criteria suit identifying hazards and repair needs, while early planning and settled decisions fit scheduling installation work. A possible strain is the report's statement that a fixed timetable feels confining and that it prefers to see what the day brings, which may not suit rigid job scheduling. The report also notes that team harmony matters and it notices when someone is left out, which could be draining in team-based repair work.",
+    "changes": [],
+    "status": "accepted",
+    "baseline": {
+     "band": "strong",
+     "score": 0.9,
+     "dims": [
+      {
+       "dim": "people",
+       "weight": 0.4,
+       "fit": 0.95,
+       "mismatch": false,
+       "note": "Introverted 70% fits work that involves mostly working alone or with equipment."
+      },
+      {
+       "dim": "abstract",
+       "weight": 0.5,
+       "fit": 1.0,
+       "mismatch": false,
+       "note": "Sensing 75% fits work that is concrete and hands-on."
+      },
+      {
+       "dim": "values",
+       "weight": 0.4,
+       "fit": 0.7,
+       "mismatch": false,
+       "note": "Thinking 70% is a partial match for work that rests on objective, technical judgement."
+      },
+      {
+       "dim": "structure",
+       "weight": 0.7,
+       "fit": 0.9,
+       "mismatch": false,
+       "note": "Judging 85% fits work that is planned, scheduled and procedural."
+      },
+      {
+       "dim": "pace",
+       "weight": 0.4,
+       "fit": 0.95,
+       "mismatch": false,
+       "note": "The work demands quick decisions and firm deadlines; in your report, closing decisions quickly is a strength."
+      }
+     ],
+     "hard_mismatches": 0,
+     "reasons": [
+      "Judging 85% fits work that is planned, scheduled and procedural.",
+      "Sensing 75% fits work that is concrete and hands-on.",
+      "Introverted 70% fits work that involves mostly working alone or with equipment.",
+      "Thinking 70% is a partial match for work that rests on objective, technical judgement.",
+      "The work demands quick decisions and firm deadlines; in your report, closing decisions quickly is a strength."
+     ]
+    },
+    "agree": false,
+    "low_confidence": false
+   },
+   "A058": {
+    "area_id": "A058",
+    "fit_band": "mixed",
+    "original_band": "mixed",
+    "reasons": [
+     {
+      "point": "The report's preference for concrete facts and practical detail fits setting tables, checking orders and processing bills.",
+      "quote": "You trust concrete facts and what experience has shown, and you prefer practical detail."
+     },
+     {
+      "point": "Deciding by logic and consistent criteria can apply to handling payments and cash accurately.",
+      "quote": "You decide by logic and consistent criteria, even when the answer is uncomfortable."
+     },
+     {
+      "point": "Carefulness with small print suits presenting bills and verifying charges.",
+      "quote": "You are careful with the small print and slower to trust ideas that have no example behind them."
+     }
+    ],
+    "watch_outs": [
+     {
+      "point": "The report prefers a few close working relationships to a wide circle, while food service involves ongoing contact with many customers.",
+      "quote": "You recharge alone and prefer a few close working relationships to a wide circle."
+     },
+     {
+      "point": "The report says a fixed timetable feels confining and prefers to see what the day brings, which may clash with fixed service shifts.",
+      "quote": "A fixed timetable feels confining; you prefer to see what the day brings."
+     }
+    ],
+    "reasoning": "The report describes valuing concrete facts and practical detail, which fits setting tables, checking orders and processing bills accurately. Its logic-based decision style and carefulness with small print suit handling payments and cash transactions. A clear strain is the preference for recharging alone and a few close relationships over a wide circle, while food service involves continuous contact with many customers. The report's dislike of a fixed timetable may also conflict with set service shifts.",
+    "changes": [],
+    "status": "accepted",
+    "baseline": {
+     "band": "mixed",
+     "score": 0.74,
+     "dims": [
+      {
+       "dim": "people",
+       "weight": 0.4,
+       "fit": 0.3,
+       "mismatch": true,
+       "note": "Introverted 70% pulls against work that involves constant contact with people."
+      },
+      {
+       "dim": "abstract",
+       "weight": 0.5,
+       "fit": 0.75,
+       "mismatch": false,
+       "note": "Sensing 75% fits work that is concrete and hands-on."
+      },
+      {
+       "dim": "values",
+       "weight": 0.4,
+       "fit": 0.8,
+       "mismatch": false,
+       "note": "Thinking 70% fits work that rests on care and values-based judgement."
+      },
+      {
+       "dim": "structure",
+       "weight": 0.7,
+       "fit": 0.9,
+       "mismatch": false,
+       "note": "Judging 85% fits work that is planned, scheduled and procedural."
+      },
+      {
+       "dim": "pace",
+       "weight": 0.4,
+       "fit": 0.8,
+       "mismatch": false,
+       "note": "The work demands quick decisions and firm deadlines; in your report, closing decisions quickly is a strength."
+      }
+     ],
+     "hard_mismatches": 1,
+     "reasons": [
+      "Judging 85% fits work that is planned, scheduled and procedural.",
+      "Sensing 75% fits work that is concrete and hands-on.",
+      "Introverted 70% pulls against work that involves constant contact with people.",
+      "Thinking 70% fits work that rests on care and values-based judgement.",
+      "The work demands quick decisions and firm deadlines; in your report, closing decisions quickly is a strength."
+     ]
+    },
+    "agree": true,
+    "low_confidence": false
+   },
+   "A048": {
+    "area_id": "A048",
+    "fit_band": "mixed",
+    "original_band": "mixed",
+    "reasons": [
+     {
+      "point": "The report's preference for recharging alone suits independent research into social or economic issues.",
+      "quote": "You recharge alone and prefer a few close working relationships to a wide circle."
+     },
+     {
+      "point": "Deciding by logic and consistent criteria fits analysing behaviour and formulating solutions to social problems.",
+      "quote": "You decide by logic and consistent criteria, even when the answer is uncomfortable."
+     }
+    ],
+    "watch_outs": [
+     {
+      "point": "The report trusts concrete facts and prefers practical detail, which may clash with developing abstract concepts and theories.",
+      "quote": "You trust concrete facts and what experience has shown, and you prefer practical detail."
+     },
+     {
+      "point": "The report is bothered by open questions until dealt with, while research can leave questions open.",
+      "quote": "An unclosed list or an open question bothers you until it is dealt with."
+     }
+    ],
+    "reasoning": "The report describes recharging alone and preferring a few close relationships, which can suit independent research work. Its logic-based, consistent decision style fits analysing social issues and formulating solutions. A strain is the preference for concrete facts and practical detail, since this area develops concepts, theories and analyses human evolution with fewer immediate examples. The report's discomfort with open questions may also sit uneasily with open-ended research.",
+    "changes": [],
+    "status": "accepted",
+    "baseline": {
+     "band": "stretch",
+     "score": 0.46,
+     "dims": [
+      {
+       "dim": "people",
+       "weight": 0.4,
+       "fit": 0.55,
+       "mismatch": false,
+       "note": "Introverted 70% is a partial match for work that involves constant contact with people."
+      },
+      {
+       "dim": "abstract",
+       "weight": 0.5,
+       "fit": 0.25,
+       "mismatch": true,
+       "note": "Sensing 75% pulls against work that centres on abstract ideas and patterns."
+      },
+      {
+       "dim": "values",
+       "weight": 0.4,
+       "fit": 0.3,
+       "mismatch": true,
+       "note": "Thinking 70% pulls against work that rests on care and values-based judgement."
+      },
+      {
+       "dim": "structure",
+       "weight": 0.7,
+       "fit": 0.65,
+       "mismatch": false,
+       "note": "Judging 85% is a partial match for work that is planned, scheduled and procedural."
+      },
+      {
+       "dim": "pace",
+       "weight": 0.4,
+       "fit": 0.45,
+       "mismatch": true,
+       "note": "The work allows slow, deliberate decisions; in your report, closing decisions quickly is a strength."
+      }
+     ],
+     "hard_mismatches": 3,
+     "reasons": [
+      "Judging 85% is a partial match for work that is planned, scheduled and procedural.",
+      "Sensing 75% pulls against work that centres on abstract ideas and patterns.",
+      "Introverted 70% is a partial match for work that involves constant contact with people.",
+      "Thinking 70% pulls against work that rests on care and values-based judgement.",
+      "The work allows slow, deliberate decisions; in your report, closing decisions quickly is a strength."
+     ]
+    },
+    "agree": false,
+    "low_confidence": false
+   }
+  },
+  "errors": [],
+  "warnings": [],
+  "run_meta": {
+   "prompt_version": "fit_v1",
+   "model": "nvidia/nemotron-3.5-super-vl:free",
+   "provider": "Nvidia",
+   "request_id": "gen-1793501743-gDTszN8afMUMKCyTGPU7",
+   "finish_reason": "stop",
+   "usage": {
+    "prompt_tokens": 2095,
+    "completion_tokens": 8744,
+    "total_tokens": 10839,
+    "cost": 0,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0,
+     "upstream_inference_prompt_cost": 0,
+     "upstream_inference_completions_cost": 0
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 7427,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   },
+   "latency_s": 44.8
+  },
+  "stage": {
+   "rejected": [],
+   "errors": []
+  }
+ },
+ "f05_all_even": {
+  "status": "accepted",
+  "fits": {
+   "A043": {
+    "area_id": "A043",
+    "fit_band": "insufficient_info",
+    "original_band": "insufficient_info",
+    "reasons": [
+     {
+      "point": "The report says the person likes to know the reason for a task, which could loosely connect to understanding software requirements.",
+      "quote": "You like to know the reason for a task."
+     }
+    ],
+    "watch_outs": [
+     {
+      "point": "The report names unclear deadlines as a likely pressure trigger, which could cause strain if development timelines are vague.",
+      "quote": "Unclear deadlines."
+     }
+    ],
+    "reasoning": "The report describes the person as evenly balanced on every scale, with nothing standing out as a likely strength, effort, or drain. The only relevant clues are that they like to know the reason for a task and that unclear deadlines are a likely pressure trigger. Software development involves researching requirements and designing systems, which could connect to wanting to know why a task exists, but the report says nothing about technical work, coding, or structured problem solving. There is not enough evidence to judge compatibility.",
+    "changes": [],
+    "status": "accepted",
+    "baseline": {
+     "band": "neutral",
+     "score": null,
+     "dims": [
+      {
+       "dim": "people",
+       "weight": 0.0,
+       "fit": 0.75,
+       "mismatch": false,
+       "note": ""
+      },
+      {
+       "dim": "abstract",
+       "weight": 0.0,
+       "fit": 0.5,
+       "mismatch": false,
+       "note": ""
+      },
+      {
+       "dim": "values",
+       "weight": 0.0,
+       "fit": 0.5,
+       "mismatch": false,
+       "note": ""
+      },
+      {
+       "dim": "structure",
+       "weight": 0.0,
+       "fit": 0.75,
+       "mismatch": false,
+       "note": ""
+      },
+      {
+       "dim": "pace",
+       "weight": 0.2,
+       "fit": 1.0,
+       "mismatch": false,
+       "note": "The work demands quick decisions and firm deadlines; in your report, closing decisions is middling for you."
+      }
+     ],
+     "hard_mismatches": 0,
+     "reasons": [
+      "Your preference results are too close to even to say anything about fit."
+     ]
+    },
+    "agree": false,
+    "low_confidence": false
+   },
+   "A019": {
+    "area_id": "A019",
+    "fit_band": "insufficient_info",
+    "original_band": "insufficient_info",
+    "reasons": [
+     {
+      "point": "The report says the person likes to know the reason for a task, which could connect to understanding patient care plans.",
+      "quote": "You like to know the reason for a task."
+     }
+    ],
+    "watch_outs": [
+     {
+      "point": "The report says the person follows plans lightly, which could create friction with clinical protocols and care plans that require careful adherence.",
+      "quote": "You follow plans lightly."
+     }
+    ],
+    "reasoning": "The report describes the person as evenly balanced on every scale, with nothing standing out as a likely strength, effort, or drain. They say they follow plans lightly and like to know the reason for a task, which could relate to understanding care plans, while nursing also involves set procedures and protocols. However, the report contains no information about patient care, healthcare environments, or shift work. There is not enough evidence to judge compatibility.",
+    "changes": [],
+    "status": "accepted",
+    "baseline": {
+     "band": "neutral",
+     "score": null,
+     "dims": [
+      {
+       "dim": "people",
+       "weight": 0.0,
+       "fit": 0.5,
+       "mismatch": false,
+       "note": ""
+      },
+      {
+       "dim": "abstract",
+       "weight": 0.0,
+       "fit": 0.75,
+       "mismatch": false,
+       "note": ""
+      },
+      {
+       "dim": "values",
+       "weight": 0.0,
+       "fit": 0.5,
+       "mismatch": false,
+       "note": ""
+      },
+      {
+       "dim": "structure",
+       "weight": 0.0,
+       "fit": 0.5,
+       "mismatch": false,
+       "note": ""
+      },
+      {
+       "dim": "pace",
+       "weight": 0.2,
+       "fit": 0.5,
+       "mismatch": false,
+       "note": "The work demands quick decisions and firm deadlines; in your report, closing decisions is middling for you."
+      }
+     ],
+     "hard_mismatches": 0,
+     "reasons": [
+      "Your preference results are too close to even to say anything about fit."
+     ]
+    },
+    "agree": false,
+    "low_confidence": false
+   },
+   "A058": {
+    "area_id": "A058",
+    "fit_band": "insufficient_info",
+    "original_band": "insufficient_info",
+    "reasons": [
+     {
+      "point": "The report says the person likes to know the reason for a task, which could loosely connect to understanding service standards or menu items.",
+      "quote": "You like to know the reason for a task."
+     }
+    ],
+    "watch_outs": [
+     {
+      "point": "The report names unclear deadlines as a likely pressure trigger, which could cause strain during busy service periods with shifting demands.",
+      "quote": "Unclear deadlines."
+     }
+    ],
+    "reasoning": "The report describes the person as evenly balanced on every scale, with nothing standing out as a likely strength, effort, or drain. They say they like to know the reason for a task and that unclear deadlines are a likely trigger, but food and beverage service involves specific routines, customer pacing, and service standards that the report does not mention. There is not enough evidence to judge compatibility.",
+    "changes": [],
+    "status": "accepted",
+    "baseline": {
+     "band": "neutral",
+     "score": null,
+     "dims": [
+      {
+       "dim": "people",
+       "weight": 0.0,
+       "fit": 0.5,
+       "mismatch": false,
+       "note": ""
+      },
+      {
+       "dim": "abstract",
+       "weight": 0.0,
+       "fit": 0.5,
+       "mismatch": false,
+       "note": ""
+      },
+      {
+       "dim": "values",
+       "weight": 0.0,
+       "fit": 1.0,
+       "mismatch": false,
+       "note": ""
+      },
+      {
+       "dim": "structure",
+       "weight": 0.0,
+       "fit": 0.75,
+       "mismatch": false,
+       "note": ""
+      },
+      {
+       "dim": "pace",
+       "weight": 0.2,
+       "fit": 0.5,
+       "mismatch": false,
+       "note": "The work demands quick decisions and firm deadlines; in your report, closing decisions is middling for you."
+      }
+     ],
+     "hard_mismatches": 0,
+     "reasons": [
+      "Your preference results are too close to even to say anything about fit."
+     ]
+    },
+    "agree": false,
+    "low_confidence": false
+   }
+  },
+  "errors": [],
+  "warnings": [],
+  "run_meta": {
+   "prompt_version": "fit_v1",
+   "model": "nvidia/nemotron-3.5-super-vl:free",
+   "provider": "Nvidia",
+   "request_id": "gen-1793501787-1NKDZEsn8GqfwGJNpy8m",
+   "finish_reason": "stop",
+   "usage": {
+    "prompt_tokens": 1787,
+    "completion_tokens": 4906,
+    "total_tokens": 6693,
+    "cost": 0,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0,
+     "upstream_inference_prompt_cost": 0,
+     "upstream_inference_completions_cost": 0
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 4280,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   },
+   "latency_s": 24.31
+  },
+  "stage": {
+   "rejected": [],
+   "errors": []
+  }
+ },
+ "f06_caring_practical_slow_closer": {
+  "status": "accepted",
+  "fits": {
+   "A025": {
+    "area_id": "A025",
+    "fit_band": "mixed",
+    "original_band": "mixed",
+    "reasons": [
+     {
+      "point": "Advising individuals and communities on prevention matches the reported energy drawn from conversation and bringing people along.",
+      "quote": "You draw energy from conversation and bring people along with you."
+     },
+     {
+      "point": "Compiling and maintaining patient records fits the stated trust in concrete facts, experience and practical detail.",
+      "quote": "You trust concrete facts and what experience has shown, and you prefer practical detail."
+     },
+     {
+      "point": "Deciding with attention to how people are affected suits community health and patient support work.",
+      "quote": "You weigh how people will be affected before you decide anything."
+     }
+    ],
+    "watch_outs": [
+     {
+      "point": "Scheduled health support work may conflict with the reported dislike of fixed timetables.",
+      "quote": "A fixed timetable feels confining; you prefer to see what the day brings."
+     },
+     {
+      "point": "Technical record tasks may require the long, interruption-free focus that the report says takes more conscious effort.",
+      "quote": "Long stretches of interruption-free work are where you do your best thinking."
+     },
+     {
+      "point": "Following through on care plans may be strained because the report identifies closing and execution as steps likely to be put off.",
+      "quote": "The plan is ready before the decision is, and closing is the step you are most likely to put off."
+     }
+    ],
+    "reasoning": "This area involves advising individuals and communities on hygiene, diet and prevention, which matches the report's description of drawing energy from conversation and bringing people along. Compiling and maintaining patient records fits the stated preference for concrete facts, practical detail and experience-based judgment. Weighing how people are affected before deciding aligns with patient- and community-focused support, while early planning and settled decisions suit record-keeping and programme administration. Strains include the report's note that a fixed timetable feels confining and that long interruption-free stretches take conscious effort, both of which may arise in scheduled clinical or technical work.",
+    "changes": [],
+    "status": "accepted",
+    "baseline": {
+     "band": "strong",
+     "score": 0.72,
+     "dims": [
+      {
+       "dim": "people",
+       "weight": 0.4,
+       "fit": 0.7,
+       "mismatch": false,
+       "note": "Extroverted 70% is a partial match for work that involves constant contact with people."
+      },
+      {
+       "dim": "abstract",
+       "weight": 0.2,
+       "fit": 0.85,
+       "mismatch": false,
+       "note": "Sensing 60% fits work that is concrete and hands-on."
+      },
+      {
+       "dim": "values",
+       "weight": 0.6,
+       "fit": 0.8,
+       "mismatch": false,
+       "note": "Feeling 80% fits work that rests on care and values-based judgement."
+      },
+      {
+       "dim": "structure",
+       "weight": 0.2,
+       "fit": 0.9,
+       "mismatch": false,
+       "note": "Judging 60% fits work that is planned, scheduled and procedural."
+      },
+      {
+       "dim": "pace",
+       "weight": 0.5,
+       "fit": 0.5,
+       "mismatch": false,
+       "note": "The work demands quick decisions and firm deadlines; in your report, closing decisions is where you are slowest."
+      }
+     ],
+     "hard_mismatches": 0,
+     "reasons": [
+      "Feeling 80% fits work that rests on care and values-based judgement.",
+      "The work demands quick decisions and firm deadlines; in your report, closing decisions is where you are slowest.",
+      "Extroverted 70% is a partial match for work that involves constant contact with people.",
+      "Sensing 60% fits work that is concrete and hands-on.",
+      "Judging 60% fits work that is planned, scheduled and procedural."
+     ]
+    },
+    "agree": false,
+    "low_confidence": false
+   },
+   "A053": {
+    "area_id": "A053",
+    "fit_band": "mixed",
+    "original_band": "mixed",
+    "reasons": [
+     {
+      "point": "Assisting clients with personal and social problems matches the reported habit of weighing how people will be affected before deciding.",
+      "quote": "You weigh how people will be affected before you decide anything."
+     },
+     {
+      "point": "Administering community services and assisting professionals fit the described energy drawn from conversation and bringing people along.",
+      "quote": "You draw energy from conversation and bring people along with you."
+     },
+     {
+      "point": "Preparing legal documents and obtaining evidence suit the stated preference for concrete facts, experience and practical detail.",
+      "quote": "You trust concrete facts and what experience has shown, and you prefer practical detail."
+     }
+    ],
+    "watch_outs": [
+     {
+      "point": "Legal and social assistance programmes often run on fixed timetables, which the report says can feel confining.",
+      "quote": "A fixed timetable feels confining; you prefer to see what the day brings."
+     },
+     {
+      "point": "Analysing evidence and preparing documents may require the uninterrupted focus that the report lists as taking conscious effort.",
+      "quote": "Long stretches of interruption-free work are where you do your best thinking."
+     },
+     {
+      "point": "Administering programmes to completion may be strained because the report identifies closing as the step most likely to be put off.",
+      "quote": "The plan is ready before the decision is, and closing is the step you are most likely to put off."
+     }
+    ],
+    "reasoning": "Assisting clients with personal and social problems fits the strong feeling preference for weighing how people are affected before deciding. Administering community programmes and assisting professionals involve conversation and contact with people, matching the reported energy from discussion. Preparing documents and handling evidence can draw on the slight sensing preference for concrete facts and practical detail. However, the report's strain with fixed timetables and with closing/executing decisions may create friction in legal and administrative work that runs on deadlines and follow-through.",
+    "changes": [],
+    "status": "accepted",
+    "baseline": {
+     "band": "mixed",
+     "score": 0.65,
+     "dims": [
+      {
+       "dim": "people",
+       "weight": 0.4,
+       "fit": 0.7,
+       "mismatch": false,
+       "note": "Extroverted 70% is a partial match for work that involves constant contact with people."
+      },
+      {
+       "dim": "abstract",
+       "weight": 0.2,
+       "fit": 0.9,
+       "mismatch": false,
+       "note": "Sensing 60% fits work that centres on abstract ideas and patterns."
+      },
+      {
+       "dim": "values",
+       "weight": 0.6,
+       "fit": 0.8,
+       "mismatch": false,
+       "note": "Feeling 80% fits work that rests on care and values-based judgement."
+      },
+      {
+       "dim": "structure",
+       "weight": 0.2,
+       "fit": 0.85,
+       "mismatch": false,
+       "note": "Judging 60% fits work that is planned, scheduled and procedural."
+      },
+      {
+       "dim": "pace",
+       "weight": 0.5,
+       "fit": 0.25,
+       "mismatch": true,
+       "note": "The work demands quick decisions and firm deadlines; in your report, closing decisions is where you are slowest."
+      }
+     ],
+     "hard_mismatches": 1,
+     "reasons": [
+      "Feeling 80% fits work that rests on care and values-based judgement.",
+      "The work demands quick decisions and firm deadlines; in your report, closing decisions is where you are slowest.",
+      "Extroverted 70% is a partial match for work that involves constant contact with people.",
+      "Sensing 60% fits work that centres on abstract ideas and patterns.",
+      "Judging 60% fits work that is planned, scheduled and procedural."
+     ]
+    },
+    "agree": true,
+    "low_confidence": false
+   },
+   "A021": {
+    "area_id": "A021",
+    "fit_band": "mixed",
+    "original_band": "mixed",
+    "reasons": [
+     {
+      "point": "Recording patient information fits the stated preference for concrete facts and practical detail.",
+      "quote": "You trust concrete facts and what experience has shown, and you prefer practical detail."
+     },
+     {
+      "point": "Advising patients on preventive care fits the described energy drawn from conversation and bringing people along.",
+      "quote": "You draw energy from conversation and bring people along with you."
+     },
+     {
+      "point": "Weighing how people are affected before deciding fits treatment decisions in emergency care.",
+      "quote": "You weigh how people will be affected before you decide anything."
+     }
+    ],
+    "watch_outs": [
+     {
+      "point": "Emergency care requires fast commitment and execution, while the report says closing is the step most likely to be put off.",
+      "quote": "The plan is ready before the decision is, and closing is the step you are most likely to put off."
+     },
+     {
+      "point": "Emergency work is interruption-heavy, while the report says long interruption-free focus takes more conscious effort.",
+      "quote": "Long stretches of interruption-free work are where you do your best thinking."
+     },
+     {
+      "point": "Fixed shifts and timetables may feel confining given the reported preference to see what the day brings.",
+      "quote": "A fixed timetable feels confining; you prefer to see what the day brings."
+     }
+    ],
+    "reasoning": "Recording patient medical information and giving preventive health advice fit the reported comfort with concrete facts, practical detail and conversation with people. Deciding treatment with attention to how people are affected matches the strong feeling preference described in the report. The unpredictable nature of emergency work could suit the stated preference for seeing what the day brings rather than a fixed timetable. On the other hand, emergency care demands rapid commitment and execution, which the report flags as the most-skipped problem-solving step and the step most likely to be put off, and it is often interruption-heavy, which the report says takes conscious effort.",
+    "changes": [],
+    "status": "accepted",
+    "baseline": {
+     "band": "mixed",
+     "score": 0.55,
+     "dims": [
+      {
+       "dim": "people",
+       "weight": 0.4,
+       "fit": 0.7,
+       "mismatch": false,
+       "note": "Extroverted 70% is a partial match for work that involves constant contact with people."
+      },
+      {
+       "dim": "abstract",
+       "weight": 0.2,
+       "fit": 0.6,
+       "mismatch": false,
+       "note": "Sensing 60% is a partial match for work that is concrete and hands-on."
+      },
+      {
+       "dim": "values",
+       "weight": 0.6,
+       "fit": 0.8,
+       "mismatch": false,
+       "note": "Feeling 80% fits work that rests on care and values-based judgement."
+      },
+      {
+       "dim": "structure",
+       "weight": 0.2,
+       "fit": 0.85,
+       "mismatch": false,
+       "note": "Judging 60% fits work that is planned, scheduled and procedural."
+      },
+      {
+       "dim": "pace",
+       "weight": 0.5,
+       "fit": 0.0,
+       "mismatch": true,
+       "note": "The work demands quick decisions and firm deadlines; in your report, closing decisions is where you are slowest."
+      }
+     ],
+     "hard_mismatches": 1,
+     "reasons": [
+      "Feeling 80% fits work that rests on care and values-based judgement.",
+      "The work demands quick decisions and firm deadlines; in your report, closing decisions is where you are slowest.",
+      "Extroverted 70% is a partial match for work that involves constant contact with people.",
+      "Sensing 60% is a partial match for work that is concrete and hands-on.",
+      "Judging 60% fits work that is planned, scheduled and procedural."
+     ]
+    },
+    "agree": true,
+    "low_confidence": false
+   },
+   "A018": {
+    "area_id": "A018",
+    "fit_band": "mixed",
+    "original_band": "mixed",
+    "reasons": [
+     {
+      "point": "Examining patients and taking histories match the described energy drawn from conversation and bringing people along.",
+      "quote": "You draw energy from conversation and bring people along with you."
+     },
+     {
+      "point": "Ordering and analysing diagnostic tests fit the stated trust in concrete facts, experience and practical detail.",
+      "quote": "You trust concrete facts and what experience has shown, and you prefer practical detail."
+     },
+     {
+      "point": "Prescribing treatments and supervising care fit the reported habit of weighing how people will be affected before deciding.",
+      "quote": "You weigh how people will be affected before you decide anything."
+     }
+    ],
+    "watch_outs": [
+     {
+      "point": "Medical schedules, rotations and fixed appointment times may conflict with the reported dislike of fixed timetables.",
+      "quote": "A fixed timetable feels confining; you prefer to see what the day brings."
+     },
+     {
+      "point": "Surgery and prolonged diagnosis require the long, interruption-free focus that the report says takes more conscious effort.",
+      "quote": "Long stretches of interruption-free work are where you do your best thinking."
+     },
+     {
+      "point": "Carrying out treatment plans to completion may be strained because the report identifies closing and execution as steps likely to be put off.",
+      "quote": "The plan is ready before the decision is, and closing is the step you are most likely to put off."
+     }
+    ],
+    "reasoning": "Examining patients and taking histories fit the reported ease with conversation and the strong feeling preference for considering how people are affected. Ordering tests and prescribing treatments can draw on the slight sensing preference for concrete facts and practical detail, while planning care plans fits the reported liking for early scheduling and settled decisions. Strains arise because medicine often demands fixed timetables, long uninterrupted diagnostic or surgical focus, and prompt execution of treatment plans\u2014areas the report describes as confining, effortful, or likely to be skipped.",
+    "changes": [],
+    "status": "accepted",
+    "baseline": {
+     "band": "mixed",
+     "score": 0.56,
+     "dims": [
+      {
+       "dim": "people",
+       "weight": 0.4,
+       "fit": 0.7,
+       "mismatch": false,
+       "note": "Extroverted 70% is a partial match for work that involves constant contact with people."
+      },
+      {
+       "dim": "abstract",
+       "weight": 0.2,
+       "fit": 0.9,
+       "mismatch": false,
+       "note": "Sensing 60% fits work that centres on abstract ideas and patterns."
+      },
+      {
+       "dim": "values",
+       "weight": 0.6,
+       "fit": 0.8,
+       "mismatch": false,
+       "note": "Feeling 80% fits work that rests on care and values-based judgement."
+      },
+      {
+       "dim": "structure",
+       "weight": 0.2,
+       "fit": 0.6,
+       "mismatch": false,
+       "note": "Judging 60% is a partial match for work that is planned, scheduled and procedural."
+      },
+      {
+       "dim": "pace",
+       "weight": 0.5,
+       "fit": 0.0,
+       "mismatch": true,
+       "note": "The work demands quick decisions and firm deadlines; in your report, closing decisions is where you are slowest."
+      }
+     ],
+     "hard_mismatches": 1,
+     "reasons": [
+      "Feeling 80% fits work that rests on care and values-based judgement.",
+      "The work demands quick decisions and firm deadlines; in your report, closing decisions is where you are slowest.",
+      "Extroverted 70% is a partial match for work that involves constant contact with people.",
+      "Sensing 60% fits work that centres on abstract ideas and patterns.",
+      "Judging 60% is a partial match for work that is planned, scheduled and procedural."
+     ]
+    },
+    "agree": true,
+    "low_confidence": false
+   }
+  },
+  "errors": [],
+  "warnings": [],
+  "run_meta": {
+   "prompt_version": "fit_v1",
+   "model": "nvidia/nemotron-3.5-super-vl:free",
+   "provider": "Nvidia",
+   "request_id": "gen-1793501812-QR7iJQarPDwdVmFUMO0e",
+   "finish_reason": "stop",
+   "usage": {
+    "prompt_tokens": 2038,
+    "completion_tokens": 11845,
+    "total_tokens": 13883,
+    "cost": 0,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0,
+     "upstream_inference_prompt_cost": 0,
+     "upstream_inference_completions_cost": 0
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 10174,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   },
+   "latency_s": 59.06
+  },
+  "stage": {
+   "rejected": [],
+   "errors": []
+  }
+ }
+}

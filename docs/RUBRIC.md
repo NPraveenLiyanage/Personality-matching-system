@@ -86,6 +86,18 @@ The number is an evidence/relevance rating. It does not predict success, ability
 ## 6. Keep separate (never fold into one number)
 Evidence relevance; qualification/preparation gaps; participant interest; work-style preferences (PersonaMap); uncertainty. Personality describes preferences, not ability or qualification, and creates no professional evidence.
 
+## 6a. The PersonaMap work-style fit (added 2026-11-01)
+
+The PersonaMap report is read in a **second, separate step** after the CV step has decided which areas are supported. Rules:
+
+1. It describes how a person says they prefer to work. It is never professional evidence and never changes whether an area is supported or the order of supported areas.
+2. Each area gets a band: `strong`, `mixed`, `stretch` or `insufficient_info`. The wording is always about *working-style compatibility* ("the report describes..."), never ability, qualification, readiness or likelihood of success or of being hired.
+3. Every reason or watch-out must carry a verbatim quote from the report text that was sent; code checks it. A statement without a valid quote is dropped. `strong` or `stretch` with no valid quote becomes `insufficient_info`.
+4. A scale within 5 points of even is neutral: neither a match nor a strain. If every scale is near even, say so instead of guessing.
+5. Stereotypes about types, names, genders or nationalities are not used. Only what the report says.
+6. The model sees the report and each area's own description, never the CV. A local, deterministic style check runs beside it; a two-level disagreement (strong vs stretch) is shown as low confidence.
+7. The area work-demand profiles (`data/processed/area_workstyle_v1.yaml`) are author-drafted and unreviewed until a human domain reviewer signs them off. Until then no accuracy is claimed for this step.
+
 ## 7. Worked examples
 | CV snippet | Area | Class | Why |
 |---|---|---|---|

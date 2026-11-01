@@ -7,6 +7,13 @@
       "runtimeArgs": ["-m", "streamlit", "run", "app/streamlit_app.py", "--server.port", "8791", "--server.headless", "true", "--browser.gatherUsageStats", "false"],
       "port": 8791,
       "autoPort": false
+    },
+    {
+      "name": "ui-design",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8792", "--directory", "docs/ui"],
+      "port": 8792,
+      "autoPort": false
     }
   ]
 }

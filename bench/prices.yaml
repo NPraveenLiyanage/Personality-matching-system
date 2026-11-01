@@ -1,0 +1,6 @@
+# List prices in US$ per million tokens, as reported by the 2026-10-31 cost research (official pages, fetched that day). Prices change;
+# re-check before relying on them. These are used ONLY to turn measured token counts into an estimated cost; no spend is made or implied.
+source: "cost research notes 2026-10-31 (Anthropic pricing page for Haiku 5.5 and Sonnet 5.5); not re-verified"
+models:
+  claude-haiku-5-5: {input: 0.10, output: 0.50}
+  claude-sonnet-5-5: {input: 2.00, output: 10.00}

@@ -1,0 +1,180 @@
+{
+ "mode": "live",
+ "label": "dev_nemotron",
+ "date": "2026-11-01",
+ "cases_run": 6,
+ "cases_failed": [],
+ "model_score": {
+  "n": 23,
+  "exact": 11,
+  "exact_rate": 0.478,
+  "strong_stretch_flips": 0,
+  "abstained_where_expected_clear": 0,
+  "claimed_fit_where_report_is_even": 0
+ },
+ "baseline_score_same_rows": {
+  "n": 23,
+  "exact": 19,
+  "exact_rate": 0.826,
+  "strong_stretch_flips": 0,
+  "abstained_where_expected_clear": 0,
+  "claimed_fit_where_report_is_even": 0
+ },
+ "rows": [
+  {
+   "case": "f01_warm_flexible_people",
+   "area": "A019",
+   "expected": "strong",
+   "got": "mixed"
+  },
+  {
+   "case": "f01_warm_flexible_people",
+   "area": "A059",
+   "expected": "strong",
+   "got": "strong"
+  },
+  {
+   "case": "f01_warm_flexible_people",
+   "area": "A013",
+   "expected": "stretch",
+   "got": "stretch"
+  },
+  {
+   "case": "f01_warm_flexible_people",
+   "area": "A043",
+   "expected": "stretch",
+   "got": "mixed"
+  },
+  {
+   "case": "f02_reserved_abstract_planner",
+   "area": "A086",
+   "expected": "strong",
+   "got": "mixed"
+  },
+  {
+   "case": "f02_reserved_abstract_planner",
+   "area": "A013",
+   "expected": "strong",
+   "got": "mixed"
+  },
+  {
+   "case": "f02_reserved_abstract_planner",
+   "area": "A055",
+   "expected": "stretch",
+   "got": "stretch"
+  },
+  {
+   "case": "f02_reserved_abstract_planner",
+   "area": "A027",
+   "expected": "stretch",
+   "got": "stretch"
+  },
+  {
+   "case": "f03_outgoing_ideas_flexible",
+   "area": "A088",
+   "expected": "strong",
+   "got": "mixed"
+  },
+  {
+   "case": "f03_outgoing_ideas_flexible",
+   "area": "A050",
+   "expected": "strong",
+   "got": "mixed"
+  },
+  {
+   "case": "f03_outgoing_ideas_flexible",
+   "area": "A038",
+   "expected": "stretch",
+   "got": "stretch"
+  },
+  {
+   "case": "f03_outgoing_ideas_flexible",
+   "area": "A041",
+   "expected": "stretch",
+   "got": "stretch"
+  },
+  {
+   "case": "f04_quiet_practical_planner",
+   "area": "A041",
+   "expected": "strong",
+   "got": "strong"
+  },
+  {
+   "case": "f04_quiet_practical_planner",
+   "area": "A075",
+   "expected": "strong",
+   "got": "mixed"
+  },
+  {
+   "case": "f04_quiet_practical_planner",
+   "area": "A058",
+   "expected": "stretch",
+   "got": "mixed"
+  },
+  {
+   "case": "f04_quiet_practical_planner",
+   "area": "A048",
+   "expected": "stretch",
+   "got": "mixed"
+  },
+  {
+   "case": "f05_all_even",
+   "area": "A043",
+   "expected": "insufficient",
+   "got": "insufficient"
+  },
+  {
+   "case": "f05_all_even",
+   "area": "A019",
+   "expected": "insufficient",
+   "got": "insufficient"
+  },
+  {
+   "case": "f05_all_even",
+   "area": "A058",
+   "expected": "insufficient",
+   "got": "insufficient"
+  },
+  {
+   "case": "f06_caring_practical_slow_closer",
+   "area": "A025",
+   "expected": "strong",
+   "got": "mixed"
+  },
+  {
+   "case": "f06_caring_practical_slow_closer",
+   "area": "A053",
+   "expected": "strong",
+   "got": "mixed"
+  },
+  {
+   "case": "f06_caring_practical_slow_closer",
+   "area": "A021",
+   "expected": "stretch",
+   "got": "mixed"
+  },
+  {
+   "case": "f06_caring_practical_slow_closer",
+   "area": "A018",
+   "expected": "mixed",
+   "got": "mixed"
+  }
+ ],
+ "model_vs_baseline_agreement": 0.652,
+ "low_confidence_rows": 0,
+ "quotes_kept": 104,
+ "quotes_or_points_dropped": 0,
+ "quote_survival": 1.0,
+ "mean_tokens_in": 2026,
+ "mean_tokens_out": 8448,
+ "mean_latency_s": 72.0,
+ "fit_call_cost_per_1000_users_usd_at_list_price": {
+  "claude-haiku-5-5": 4.43,
+  "claude-sonnet-5-5": 88.53
+ },
+ "prices_source": "cost research notes 2026-10-31 (Anthropic pricing page for Haiku 5.5 and Sonnet 5.5); not re-verified",
+ "model": "nvidia/nemotron-3.5-super-vl:free",
+ "provider": "nvidia",
+ "split": "dev",
+ "holdout_hash": "d8cccb70b16e9b3720136d66b12f5a99a3d5b675b3ef3afedce5cb2417fdd183"
+}

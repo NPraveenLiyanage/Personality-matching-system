@@ -720,3 +720,85 @@ Run file: `bench/runs/career_llm_evidence_nvidia_nemotron-3.5-super-vl_free_pipe
 **Correction to section 17:** I attributed xing's HTTP 429s to account 1's daily quota. The identical pattern (an unusable reply, then 429 on both other cases) recurred minutes after dots completed 3 of 3 on the same account, so quota was not the limiting factor; the xing endpoint (`phala`) appears to rate-limit or fail on its own. Treat xing as failing the screen as run, cause not fully diagnosed (I did not inspect its raw error body). Nemotron is the baseline and was not re-screened at 20000.
 
 **Consequence:** the survivor list for the development comparison is now Nemotron (baseline) and dots. Passing a 3-case screen is a gate, not evidence of quality. Spent US$0.
+
+
+## 19. Phase 4 development comparison, batch 1: `dots-3-note-preview` on `synth_dev_v2` s2_01 to s2_05 (2026-10-31, account 1, free, policy v3, 20,000 tokens)
+
+Run file: `bench/runs/career_llm_evidence_dots-studio_dots-3-note-preview_free_dev_dots_synth_v2_b1_2026-10-31.json` (label `dev_dots_synth_v2_b1`, provider `atlas-cloud/fp8`, first attempts). **5 of 5 completed, 0 failed, no truncation.**
+
+**Result:** trap areas shown as supported 0/5; expected supported found 2/2 (`s2_02` A026, `s2_03` A035); abstained on the 3 no-support cases 3/3 (`s2_01`, `s2_04`, `s2_05`); mean areas shown 0.4; overclaims 0.
+
+**Against Nemotron on the same 5 cases** (Nemotron's results from section 13, run at 12,000 tokens): identical supported and exploration lists in 4 of 5. The one difference: in `s2_03` (marketing student) dots also offered **A004 as exploration**, which the case labels count as a trap area shown as exploration (not as supported). Under the protocol this is not a hard-gate failure (the gate is supported only) but it is the kind of extra the owner's "fewer, better-justified exploration areas" rule discourages. One case; a tie in all other respects.
+
+**Not a ranking:** 5 easy student cases, one run each, author-provisional labels. **Remaining for the development comparison: 27 of `synth_dev_v2` plus the 4 `swap_v1` cases on dots** (about 31 cases, roughly 75 requests, i.e. 2 to 3 batches over separate days on one account). No winner is chosen at this stage (protocol section 3).
+
+
+## 19. Two-step pipeline: step 1 of the build (2026-10-31)
+
+Plan: CV evidence first (Step 1), then a PersonaMap work-style fit for the supported areas (Step 2); personality never counts as evidence. Deep-research review changed the plan (see the plan file and its report). This entry covers only the first small fixes.
+
+| Change | Where | Result |
+|---|---|---|
+| `engines.run_evidence` silently dropped `policy`, so the registry always ran frozen v2 | `src/careerx/engines.py`, `evidence/engine.py` | Now forwards `policy`, `hide`, `mask_orgs` (test added). |
+| `redact`: non-ASCII name turned every "and" into `[name]`; common-word names and 1-2 letter names corrupted text | `src/careerx/llm/payload.py` | Unicode-safe full-name match, common-word guard, minimum length. 4 regression tests. |
+| `redact` gaps listed in PRIVACY_ROUTING | same | Now masks national IDs, passport numbers, labelled lines (DOB, address, NIC, nationality, marital status, gender, age), @handles/Skype, 6+ digit phones, plus a caller-supplied `hide` list (employers, schools, referees). Institution and company names are masked only with `mask_orgs=True` (off by default so frozen benchmark text is unchanged). |
+| Pilot page used the first CV line as the name | `app/pages/pilot.py` | Explicit name and hide-words inputs; live runs set `mask_orgs=True`. |
+
+Tests: 143 passed, 11 xfailed (the same expected failures). Redaction is still minimisation, not anonymisation. Still open: PersonaMap masking and parser (next), neutral band rule (reuse the existing 5/15/30 bands), privacy gate for real data. Nothing real was sent anywhere.
+
+### 19b. PersonaMap parser (2026-10-31)
+
+New `src/careerx/personamap.py`. Keeps only what the fit step needs and drops the rest by construction: the cover, the running page header (it carries the participant's name; removed because it repeats on most pages), the report date, and the reading-guide boilerplate. The participant's own name (read from the cover) is removed from the remaining prose. Output: the four percentages, the type code, which scales are balanced, the one or two type readings, the four problem-solving steps with the rating the report gives each, and eleven cleaned sections (`report_text()` is exactly what a model may see; model quotes will be validated against it). Nothing is guessed: unparsed parts are listed in `warnings` (missing section, steps not parsed, no percentages).
+
+Checked on the real report locally: all four percentages, both readings, four steps, no warnings; about 11k of 16k characters would be sent, with no name, date or cover text. 10 new tests on invented report text (153 passed, 11 xfailed). Only one real report exists, so other layouts are untested. The report is about preferences and is never professional evidence.
+
+### 19c. Step 2: PersonaMap work-style fit (2026-10-31)
+
+Built, not yet run against any live model. All 171 tests pass offline (11 xfailed as before).
+
+| Part | File | Notes |
+|---|---|---|
+| Area work-demand profiles | `data/processed/area_workstyle_v1.yaml` (from `scripts/make_area_workstyle.py`) | 94 areas x 5 dimensions (people, abstract, values, structure, pace), 0-4. **Author-drafted, status `draft_unreviewed`.** Needs a human domain reviewer before any evaluation use. |
+| Local baseline fit | `src/careerx/workstyle.py` | Deterministic, free, runs on every request. Balanced scales (within 5 points of even) carry no weight; the report's rating of "Commit and execute" stands in for preferred closing speed. Bands: strong, mixed, stretch, neutral. Thresholds (0.70 / 0.50, hard-mismatch rule) are author choices, not tuned on data. |
+| Model fit + verifier | `src/careerx/evidence/fit.py`, `fit_v1.md` | One call per user for at most 6 supported + 3 exploration areas. The model sees the minimal report text and each area's own description, **never the CV or the support classes** (independence, and no single call carries both documents). Strict JSON schema, reasoning before verdict. Verifier is downgrade-only: a reason survives only if its quote is found verbatim in the text sent and it makes no ability or outcome claim; strong/stretch without a surviving quote becomes `insufficient_info`; unknown, duplicate and missing areas handled; one JSON retry; no fallback. |
+| Disagreement flag | `workstyle.compare` | Model and baseline two levels apart (strong vs stretch) is flagged low confidence. |
+| Combined engine | `engines.run_final`, engine id `final` | Step 1 decides the supported areas and their order. Step 2 only adds a separate fit per area; it never changes support or order. Step 2 failure leaves Step 1 intact and returns the baseline separately as `baseline_only`. Default policy stays v2 (v3 is still not switched on). |
+
+Changed from the plan: the fit call no longer receives CV evidence summaries. Reason: independence of the personality judgement, and the baseline-versus-model disagreement is only informative if the two do not share the CV.
+
+Honest limits: no model has been run on this prompt, so nothing is known about how well a free or paid model follows it; the work-demand numbers and band thresholds are unvalidated; fit accuracy cannot be claimed until human raters exist (Phase 5). The report describes preferences, not ability, and creates no professional evidence.
+
+### 19d. Two-step app page (2026-11-01)
+
+New page `app/pages/two_step.py` ("Two-step: CV + PersonaMap"), now the default landing page; the old pilot stays as a second page. Two modes. **Local check**: accepts real documents, calls no model and sends nothing; the shortlist is the local keyword engine (not evidence-checked) with the local style check beside it. **Live two-step run**: free model, invented text only (confirmation box, PII check on the CV, masked-CV preview, name and hide-word fields); runs the `final` engine and shows, per supported area, a CV-evidence panel and a PersonaMap working-style panel (verified quotes, watch-outs, low-confidence flag, count of statements the checker removed). If the AI fit step fails, the local style check is shown alone and labelled as such. `PersonaMap.parse_pdf` now also accepts uploaded bytes.
+
+Tests: 6 headless page tests (loads, local check table, live-mode blocking, both panels, failed-fit labelling); 176 passed, 11 xfailed overall.
+
+First local check on the real participant documents (no model, nothing sent): the keyword shortlist is technology-heavy as before, and the draft style check rates 3 of the top 10 strong, 6 mixed, 1 stretch. This says only that the draft rules run end to end; it is not evidence of fit accuracy (profiles unreviewed, thresholds untuned, no raters).
+
+### 19e. Fit benchmark results, shortlist recall and cost (2026-11-01)
+
+All synthetic (invented profiles and reports, `bench/cases/fit_cases_v1.yaml`, generator `bench/personamap_synth.py`). Labels are author-written, AI-assisted, not independently reviewed, and the same author drafted the area profiles, so agreement with the local baseline is partly circular. **None of this is accuracy evidence.** Free model `nvidia/nemotron-3.5-super-vl:free`, prompt `fit_v1`, one run per case, unchanged between the two splits. Run files: `bench/runs/fit_live_dev_dev_nemotron_2026-11-01.json`, `fit_live_holdout_holdout_nemotron_fit_v1_2026-11-01.json`, `fit_baseline_all_run_2026-11-01.json`.
+
+| Split | Rows | AI fit exact | Local baseline exact (same rows) | Strong vs stretch flips (AI / baseline) | Quotes kept / dropped |
+|---|---|---|---|---|---|
+| dev (6 profiles) | 23 | 11 (47.8%) | 19 (82.6%) | 0 / 0 | 104 / 0 |
+| holdout (6 profiles, frozen, run once) | 24 | 8 (33.3%) | 16 (66.7%) | 0 / 0 | 97 / 0 |
+
+Reading: (1) The AI step never gave the opposite answer, never claimed a fit on the all-even profile, and every quote it gave was found verbatim in the report (201 of 201), so the grounding and checking work. (2) It is very cautious: nearly all misses are "mixed" where the label said strong or stretch; on the holdout it gave "strong" once in 12 expected-strong rows. Whether that caution is right or my labels are too generous cannot be told without human raters. (3) It currently does not beat the free local baseline on my labels, so the AI step adds explanation and checked quotes but no measured gain in agreement. (4) The holdout is now used for `fit_v1`; any prompt change needs a new frozen set. No tuning was done on either split.
+
+Local baseline on all 47 rows: 35 exact (74.5%), 0 flips, every miss one level off and always "mixed" (conservative). Thresholds are untuned.
+
+Shortlist recall (`bench/shortlist_recall.py`, 90 labelled cases, 102 expected areas): keyword top-10 / 20 / 30 / 40 keeps 76.5% / 78.4% / 82.4% / 86.3% of expected areas, and fully covers 68 / 70 / 74 / 77 of 90 cases. **Decision: do not use a keyword shortlist; the assess step keeps all 94 areas.** Misses are mostly trades and operator work (welder, driver, machine operator, waste collection). Untested alternative: local embeddings.
+
+Measured cost (free reasoning model token counts, list prices from the 2026-10-31 research, not re-verified; a non-reasoning paid model would output far fewer tokens, so this is an upper-end estimate): Step 1 about 23k in / 18k out (earlier runs), fit call about 2.1k in / 8.6k out and about 65 s. Whole pipeline about US$16 per 1,000 users at Haiku 5.5 list price (about 1.6 cents per user), about US$310 per 1,000 at Sonnet 5.5. Per user the free route takes roughly 4 minutes, so it is a demo route, not a public one.
+
+Open (cannot be done by the AI): domain review of the 94 area profiles and the case labels; independent human raters for fit (Phase 5); privacy route for real documents; legal check of the Sri Lanka PDPA position before real users.
+
+### 19f. Completeness check (2026-11-01)
+
+First complete run of the two-step `final` engine on a real (free) model, invented CV and invented report (`bench/run_e2e_demo.py`, `bench/runs/e2e_final_2026-11-01.json`): Step 1 found the expected area (A026 sports coaching, direct, case `s2_02`), Step 2 returned a checked fit (mixed, 7 quoted statements all valid; local check said stretch, one level apart so not flagged). One run, one case: it shows the pieces work together, nothing more.
+
+Gaps found against the plan and closed: result caching (`engines.cache_key`, in-memory per session, digest keys only, failed runs never cached) and a per-run token, time and estimated-cost total (`src/careerx/cost.py`, `run_meta["totals"]`, shown on the page). All six app pages start without errors (headless check). 184 tests pass, 11 xfailed.
+
+Not done and not doable by the AI: domain review of area profiles and labels; independent raters; privacy route for real documents; legal check; choice of final paid or local model (needs the Haiku 5.5 benchmark, which needs spend approval). Not committed to git.

@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Calybrate Career Exploration — UI Design</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+/* Tokens taken from pldp-components.html (Calybrate design system) */
+:root{
+  --p-300:#9B5FE0;--p-400:#7B2FBF;--p-500:#500085;--p-600:#3d0063;
+  --s-300:#47a1ff;--s-400:#1a7ee0;--s-500:#0060a8;
+  --g-300:#4ade80;--g-400:#22c55e;--g-500:#16a34a;
+  --w-300:#fcd34d;--w-400:#fbbf24;--w-500:#d97706;
+  --d-300:#f87171;--d-500:#dc2626;
+  --surface-base:#f9f9f9;--surface-low:#f3f3f3;--surface-lowest:#fff;--surface-high:#e8e8e8;
+  --on-surface:#1a1c1c;--on-surface-variant:#49454e;--on-surface-dim:#8a8a8a;
+  --outline-variant:#cfc2d5;--ghost:rgba(207,194,213,.22);
+  --chip-active-bg:#ede0ff;--chip-active-text:#500085;--chip-neutral-bg:#ece8f0;--chip-neutral-text:#49454e;
+  --info-bg:rgba(71,161,255,.09);--info-text:#0060a8;--info-border:rgba(71,161,255,.25);
+  --success-bg:rgba(22,163,74,.09);--success-text:#15803d;--success-border:rgba(22,163,74,.25);
+  --warning-bg:rgba(217,119,6,.09);--warning-text:#b45309;--warning-border:rgba(217,119,6,.25);
+  --shadow-float:0 20px 40px rgba(26,28,28,.07);
+  --shadow-card:0 1px 3px rgba(26,28,28,.04),0 8px 24px rgba(26,28,28,.06);
+  --shadow-chip:0 1px 4px rgba(26,28,28,.06);
+  --dark-surface:#11101a;
+  --nav-bg:rgba(249,249,249,.80);--nav-border:rgba(255,255,255,.92);
+  --nav-shadow:0 1px 2px rgba(26,28,28,.04),0 4px 18px rgba(26,28,28,.07);
+  --f:'Inter',system-ui,sans-serif;
+  --r-xs:.5rem;--r-sm:.75rem;--r-md:1.5rem;--r-lg:2rem;--r-xl:3rem;--r-full:9999px;
+  --hover-wash:rgba(26,28,28,.05);--active-wash:rgba(26,28,28,.07);
+}
+[data-theme="dark"]{
+  --surface-base:#0f0e16;--surface-low:#17152a;--surface-lowest:#1e1b30;--surface-high:#2a2740;
+  --on-surface:#e6e1ec;--on-surface-variant:#9e99a8;--on-surface-dim:#7d788a;
+  --outline-variant:#3a3448;--ghost:rgba(255,255,255,.07);
+  --chip-active-bg:rgba(155,95,224,.15);--chip-active-text:#b482ff;--chip-neutral-bg:rgba(255,255,255,.07);--chip-neutral-text:#9e99a8;
+  --info-bg:rgba(71,161,255,.12);--info-text:#47a1ff;--info-border:rgba(71,161,255,.22);
+  --success-bg:rgba(74,222,128,.12);--success-text:#4ade80;--success-border:rgba(74,222,128,.22);
+  --warning-bg:rgba(251,191,36,.12);--warning-text:#fcd34d;--warning-border:rgba(251,191,36,.22);
+  --shadow-float:0 20px 40px rgba(0,0,0,.45);
+  --shadow-card:0 1px 3px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.4);
+  --shadow-chip:0 2px 8px rgba(0,0,0,.35);
+  --nav-bg:rgba(15,14,22,.82);--nav-border:rgba(255,255,255,.07);
+  --nav-shadow:0 1px 2px rgba(0,0,0,.35),0 4px 20px rgba(0,0,0,.5);
+  --hover-wash:rgba(255,255,255,.07);--active-wash:rgba(255,255,255,.09);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--f);background:var(--surface-base);color:var(--on-surface);min-height:100vh;transition:background .3s,color .3s;-webkit-font-smoothing:antialiased}
+button{font-family:inherit}
+.wrap{max-width:1100px;margin:0 auto;padding:20px 16px 90px}
+
+/* navbar */
+.topbar{position:sticky;top:12px;z-index:50;display:flex;justify-content:center;margin-bottom:40px}
+.nav-pill{display:flex;align-items:center;gap:6px;padding:8px 8px 8px 12px;border-radius:var(--r-full);background:var(--nav-bg);
+  backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6);
+  box-shadow:inset 0 1px 0 var(--nav-border),inset 0 -1px 0 rgba(0,0,0,.06),var(--nav-shadow);max-width:100%}
+.logo{display:flex;align-items:center;gap:9px;margin-right:18px;font-weight:800;font-size:15px;letter-spacing:-.03em}
+.logo img{width:30px;height:30px;border-radius:50%;background:#fff;display:block}
+.nav-link{border:none;background:none;cursor:pointer;font-size:13px;font-weight:600;letter-spacing:-.01em;color:var(--on-surface-variant);padding:8px 14px;border-radius:var(--r-full);transition:.18s;white-space:nowrap}
+.nav-link:hover{color:var(--on-surface);background:var(--hover-wash)}
+.nav-link.active{color:var(--on-surface);background:var(--active-wash)}
+.icon-btn{width:36px;height:36px;border-radius:50%;border:none;cursor:pointer;background:var(--hover-wash);color:var(--on-surface);font-size:15px;display:flex;align-items:center;justify-content:center;transition:.2s;flex-shrink:0}
+.icon-btn:hover{transform:scale(1.07)}
+
+@media(max-width:560px){.logo span{display:none}.logo{margin-right:6px}.nav-link{padding:8px 10px;font-size:12px}.nav-pill{gap:2px}.topbar{margin-bottom:28px}}
+
+/* type */
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--on-surface-dim);margin-bottom:8px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:900;letter-spacing:-.045em;line-height:1.04;margin-bottom:14px}
+h1 em{font-style:normal;color:var(--p-500)}[data-theme="dark"] h1 em{color:var(--p-300)}
+h2{font-size:22px;font-weight:800;letter-spacing:-.03em;margin-bottom:6px}
+.lead{font-size:15px;line-height:1.65;color:var(--on-surface-variant);max-width:620px;margin-bottom:28px}
+.sub{font-size:13.5px;line-height:1.65;color:var(--on-surface-variant)}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin:44px 0 18px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 28px;border:none;cursor:pointer;border-radius:var(--r-full);
+  font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;transition:transform .13s,box-shadow .13s,background .13s}
+.btn-primary{background:var(--p-500);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),inset 0 -1px 0 rgba(0,0,0,.22),0 2px 10px rgba(80,0,133,.28)}
+.btn-primary:hover{background:var(--p-400);transform:translateY(-1px);box-shadow:0 8px 22px rgba(80,0,133,.36)}
+.btn-primary:active{transform:translateY(1px);background:var(--p-600)}
+.btn-ghost{background:transparent;color:var(--p-500);border:1.5px solid var(--outline-variant)}
+[data-theme="dark"] .btn-ghost{color:var(--p-300)}
+.btn-ghost:hover{background:rgba(80,0,133,.06);transform:translateY(-1px)}
+.btn-sm{height:34px;padding:0 16px;font-size:10px}
+
+/* tags */
+.tag{display:inline-flex;align-items:center;gap:7px;padding:5px 13px 5px 9px;border-radius:var(--r-full);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
+.tag::before{content:'';width:5px;height:5px;border-radius:50%;background:currentColor;box-shadow:0 0 4px currentColor}
+.tag.purple{color:var(--chip-active-text);background:var(--chip-active-bg)}
+.tag.blue{color:var(--info-text);background:var(--info-bg)}
+.tag.green{color:var(--success-text);background:var(--success-bg)}
+.tag.amber{color:var(--warning-text);background:var(--warning-bg)}
+.pill{display:inline-flex;padding:4px 12px;border-radius:var(--r-full);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:var(--chip-neutral-bg);color:var(--chip-neutral-text)}
+
+/* cards */
+.card{background:var(--surface-lowest);border-radius:var(--r-xl);padding:32px;box-shadow:var(--shadow-card)}
+.card.sm{border-radius:var(--r-lg);padding:24px}
+.card-dark{background:var(--dark-surface);color:#fff;border-radius:var(--r-xl);padding:32px;position:relative;overflow:hidden;box-shadow:0 4px 28px rgba(0,0,0,.45)}
+.card-dark::before{content:'';position:absolute;top:-80px;right:-80px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(123,47,191,.28),transparent 68%)}
+.card-dark::after{content:'';position:absolute;bottom:-60px;left:-40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(0,96,168,.2),transparent 70%)}
+.card-dark>*{position:relative;z-index:1}
+.card-dark .sub{color:rgba(255,255,255,.55)}
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:1.15fr .85fr}.g3{grid-template-columns:repeat(3,1fr)}
+@media(max-width:820px){.g2,.g3{grid-template-columns:1fr}.card,.card-dark{padding:24px}}
+
+/* stepper */
+.steps{display:flex;gap:10px;margin-bottom:28px;flex-wrap:wrap}
+.step{display:flex;align-items:center;gap:10px;padding:8px 16px 8px 8px;border-radius:var(--r-full);background:var(--surface-lowest);box-shadow:var(--shadow-chip);font-size:12.5px;font-weight:600;color:var(--on-surface-variant)}
+.step b{width:26px;height:26px;border-radius:50%;background:var(--surface-high);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--on-surface-variant)}
+.step.on{color:var(--on-surface)}.step.on b{background:var(--p-500);color:#fff}
+.step.done b{background:var(--g-500);color:#fff}
+
+/* inputs */
+.field-label{display:block;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--on-surface-dim);margin-bottom:9px}
+.field-input,.field-textarea,.field-select{width:100%;border-radius:var(--r-md);background:var(--surface-high);border:1.5px solid transparent;padding:0 16px;font-family:var(--f);font-size:14px;color:var(--on-surface);outline:none;transition:.18s}
+[data-theme="dark"] .field-input,[data-theme="dark"] .field-textarea,[data-theme="dark"] .field-select{background:rgba(255,255,255,.06)}
+.field-input,.field-select{height:52px}
+.field-textarea{border-radius:var(--r-lg);padding:14px 16px;min-height:150px;resize:vertical;line-height:1.6}
+.field-input:focus,.field-textarea:focus,.field-select:focus{border-color:var(--p-500);box-shadow:0 0 0 4px rgba(80,0,133,.10);background:var(--surface-lowest)}
+[data-theme="dark"] .field-input:focus,[data-theme="dark"] .field-textarea:focus{border-color:var(--p-300)}
+.field{margin-bottom:20px}
+.drop{border:1.5px dashed var(--outline-variant);border-radius:var(--r-lg);padding:26px;text-align:center;font-size:13px;color:var(--on-surface-variant);cursor:pointer;transition:.18s}
+.drop:hover{border-color:var(--p-500);background:rgba(80,0,133,.04)}
+.drop b{color:var(--p-500)}[data-theme="dark"] .drop b{color:var(--p-300)}
+
+/* scale (working style) */
+.scale{margin-bottom:22px}
+.scale-row{display:flex;justify-content:space-between;font-size:12px;font-weight:600;color:var(--on-surface-variant);margin-bottom:8px;gap:12px}
+.scale-row span:last-child{text-align:right}
+.dots{display:flex;gap:8px}
+.dot{flex:1;height:38px;border-radius:var(--r-full);border:none;background:var(--surface-high);cursor:pointer;transition:.18s}
+[data-theme="dark"] .dot{background:rgba(255,255,255,.08)}
+.dot:hover{background:var(--chip-active-bg)}
+.dot.on{background:var(--p-500);box-shadow:0 2px 8px rgba(80,0,133,.32)}
+
+/* toggle */
+.toggle{display:flex;align-items:center;gap:12px;cursor:pointer;font-size:13px;font-weight:500}
+.toggle input{display:none}
+.track{width:44px;height:26px;border-radius:var(--r-full);background:var(--surface-high);position:relative;transition:.22s;flex-shrink:0}
+.track::after{content:'';position:absolute;width:20px;height:20px;border-radius:50%;background:#fff;top:3px;left:3px;transition:transform .22s cubic-bezier(.34,1.56,.64,1);box-shadow:0 1px 4px rgba(0,0,0,.2)}
+.toggle input:checked+.track{background:var(--p-500)}
+.toggle input:checked+.track::after{transform:translateX(18px)}
+
+/* notice */
+.notice{display:flex;gap:12px;padding:14px 16px;border-radius:var(--r-md);font-size:12.5px;line-height:1.55;border:1px solid var(--info-border);background:var(--info-bg);color:var(--info-text)}
+.notice.warn{border-color:var(--warning-border);background:var(--warning-bg);color:var(--warning-text)}
+.notice.ok{border-color:var(--success-border);background:var(--success-bg);color:var(--success-text)}
+.notice svg{flex-shrink:0;margin-top:2px}
+
+/* area cards */
+.area{display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:center;background:var(--surface-lowest);border-radius:var(--r-lg);padding:22px 24px;box-shadow:var(--shadow-chip);cursor:pointer;transition:transform .15s,box-shadow .15s;border:1px solid transparent;text-align:left;width:100%;font-family:inherit;color:inherit}
+.area:hover{transform:translateY(-2px);box-shadow:var(--shadow-card);border-color:var(--ghost)}
+.rank{width:44px;height:44px;border-radius:50%;background:var(--chip-active-bg);color:var(--chip-active-text);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px}
+.area-title{font-size:16px;font-weight:700;letter-spacing:-.02em;margin-bottom:4px}
+.area-meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.evlabel{font-size:11px;font-weight:600;color:var(--on-surface-variant)}
+.chev{color:var(--on-surface-dim);font-size:18px}
+@media(max-width:620px){.area{grid-template-columns:auto 1fr;}.area .chev{display:none}}
+
+/* progress */
+.prog-row{display:flex;justify-content:space-between;margin-bottom:7px;font-size:11px;font-weight:600;color:var(--on-surface-variant)}
+.prog-row b{color:var(--on-surface);font-weight:700}
+.track-bar{height:8px;border-radius:var(--r-full);background:var(--surface-high);overflow:hidden}
+[data-theme="dark"] .track-bar{background:rgba(255,255,255,.08)}
+.fill{height:100%;border-radius:var(--r-full);background:var(--p-500)}
+[data-theme="dark"] .fill{background:var(--p-400)}
+.fill.blue{background:var(--s-500)}[data-theme="dark"] .fill.blue{background:var(--s-300)}
+.fill.green{background:var(--g-500)}[data-theme="dark"] .fill.green{background:var(--g-400)}
+.fill.amber{background:var(--w-500)}[data-theme="dark"] .fill.amber{background:var(--w-400)}
+.bars>div{margin-bottom:16px}.bars>div:last-child{margin-bottom:0}
+
+/* stat chips */
+.stat{background:var(--surface-lowest);border-radius:var(--r-lg);padding:22px 20px;box-shadow:var(--shadow-chip)}
+.stat-num{font-size:38px;font-weight:900;letter-spacing:-.05em;line-height:1;margin-bottom:6px}
+.stat-num i{font-style:normal;color:var(--p-500)}[data-theme="dark"] .stat-num i{color:var(--p-300)}
+.stat-lbl{font-size:10.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--on-surface-dim)}
+
+/* tabs */
+.tabs{display:inline-flex;gap:4px;padding:5px;background:var(--surface-high);border-radius:var(--r-full);margin-bottom:22px;max-width:100%;overflow-x:auto}
+[data-theme="dark"] .tabs{background:rgba(255,255,255,.07)}
+.tab{padding:8px 20px;border-radius:var(--r-full);border:none;background:transparent;cursor:pointer;font-size:12px;font-weight:600;color:var(--on-surface-variant);white-space:nowrap}
+.tab.active{background:var(--surface-lowest);color:var(--on-surface);box-shadow:0 1px 4px rgba(26,28,28,.10)}
+
+/* table */
+.table-wrap{overflow-x:auto;border-radius:var(--r-lg);border:1px solid var(--ghost);box-shadow:var(--shadow-chip);background:var(--surface-lowest)}
+table{width:100%;border-collapse:collapse}
+th{padding:11px 16px;font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--on-surface-dim);text-align:left;background:var(--surface-low);white-space:nowrap}
+td{padding:14px 16px;font-size:13px;border-top:1px solid var(--ghost);vertical-align:top}
+.td-sub{font-size:11px;color:var(--on-surface-dim);margin-top:2px}
+
+/* accordion */
+.acc{border-radius:var(--r-md);background:var(--surface-lowest);border:1px solid var(--ghost);margin-bottom:8px;overflow:hidden}
+.acc button{width:100%;display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border:none;background:none;cursor:pointer;font-size:14px;font-weight:600;color:var(--on-surface);text-align:left;gap:12px}
+.acc .body{max-height:0;overflow:hidden;transition:max-height .3s;font-size:13.5px;line-height:1.65;color:var(--on-surface-variant)}
+.acc.open .body{max-height:300px}.acc .body div{padding:0 20px 18px}
+.acc .ar{transition:transform .25s}.acc.open .ar{transform:rotate(180deg)}
+
+/* breadcrumb / misc */
+.crumbs{display:flex;gap:6px;align-items:center;font-size:13px;color:var(--on-surface-variant);margin-bottom:18px;flex-wrap:wrap}
+.crumbs a{cursor:pointer;padding:2px 4px;border-radius:var(--r-xs)}.crumbs a:hover{background:var(--surface-high)}
+.crumbs b{color:var(--on-surface);font-weight:600}
+.quote{border-left:3px solid var(--p-500);padding:2px 0 2px 14px;font-size:13.5px;font-style:italic;line-height:1.6;margin-bottom:12px}
+[data-theme="dark"] .quote{border-color:var(--p-300)}
+.avatar{width:44px;height:44px;border-radius:50%;background:var(--p-500);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0}
+.row{display:flex;gap:14px;align-items:center}
+.spread{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.footer-note{margin-top:48px;font-size:11.5px;line-height:1.6;color:var(--on-surface-dim);text-align:center;max-width:640px;margin-inline:auto}
+
+/* screens */
+.screen{display:none;animation:fade .3s ease}.screen.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* modal + toast */
+.overlay{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.45);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;visibility:hidden;transition:.22s}
+.overlay.open{opacity:1;visibility:visible}
+.modal{background:var(--surface-lowest);border-radius:var(--r-xl);max-width:480px;width:100%;padding:28px;box-shadow:0 24px 64px rgba(0,0,0,.25)}
+.modal h3{font-size:18px;font-weight:800;letter-spacing:-.02em;margin-bottom:10px}
+.modal ul{margin:12px 0 4px 18px;font-size:13.5px;line-height:1.75;color:var(--on-surface-variant)}
+.modal .foot{display:flex;justify-content:flex-end;gap:10px;margin-top:22px}
+.toast{position:fixed;bottom:24px;right:24px;z-index:600;display:flex;gap:11px;padding:14px 16px;border-radius:var(--r-md);background:var(--surface-lowest);box-shadow:0 8px 28px rgba(26,28,28,.16);border-left:3px solid var(--g-400);min-width:260px;max-width:340px;opacity:0;transform:translateY(12px);pointer-events:none;transition:.28s}
+.toast.show{opacity:1;transform:none}
+.toast b{display:block;font-size:13px;margin-bottom:2px}.toast span{font-size:12px;color:var(--on-surface-variant)}
+:focus-visible{outline:2px solid var(--p-400);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- NAVBAR -->
+  <div class="topbar">
+    <nav class="nav-pill" aria-label="Main">
+      <div class="logo"><img src="calybrate-logo.png" alt="Calybrate logo"/><span>Calybrate</span></div>
+      <button class="nav-link active" data-go="start">1 · Start</button>
+      <button class="nav-link" data-go="results">2 · Results</button>
+      <button class="nav-link" data-go="detail">3 · Evidence</button>
+      <button class="icon-btn" id="theme" aria-label="Toggle dark mode" title="Light / dark">☾</button>
+    </nav>
+  </div>
+
+  <!-- ===================== SCREEN 1: START ===================== -->
+  <section class="screen active" id="s-start">
+    <div class="row" style="margin-bottom:18px"><img src="calybrate-logo.png" alt="" style="width:64px;height:64px;border-radius:50%;box-shadow:var(--shadow-card)"/><div class="eyebrow" style="margin:0">Career exploration</div></div>
+    <h1>Find career areas <em>your evidence</em> supports.</h1>
+    <p class="lead">Two short steps. First we read what your CV shows you have done. Then we look at how you like to work. We never invent experience, and we say how strong the evidence is.</p>
+
+    <div class="steps">
+      <div class="step on" id="st1"><b>1</b>Your CV</div>
+      <div class="step" id="st2"><b>2</b>Working style</div>
+      <div class="step" id="st3"><b>3</b>Your areas</div>
+    </div>
+
+    <div class="grid g2">
+      <div class="card">
+        <h2>Step 1 · Your CV</h2>
+        <p class="sub" style="margin-bottom:22px">Paste your CV text or add a file. Include study, projects, volunteering and paid work.</p>
+        <div class="field">
+          <label class="field-label" for="cv">CV text</label>
+          <textarea class="field-textarea" id="cv" placeholder="Paste text here…">BSc Computer Science (in progress, year 3). Final-year individual project: built a recommender for a small library dataset. Summer internship: data entry and report checks at a logistics firm. Volunteer tutor for secondary-school maths.</textarea>
+        </div>
+        <div class="drop" role="button" tabindex="0"><b>Add a file</b> · PDF or DOCX · or drag it here</div>
+        <div class="row" style="margin-top:22px">
+          <label class="toggle"><input type="checkbox" checked id="local"/><span class="track"></span>Check on this computer only</label>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div class="card-dark">
+          <span class="tag" style="background:rgba(255,255,255,.12);color:#fff">How it works</span>
+          <h2 style="margin-top:16px;color:#fff">Evidence first.</h2>
+          <p class="sub" style="margin-bottom:18px">Each suggestion is labelled so you can see what it rests on.</p>
+          <div style="display:flex;flex-direction:column;gap:10px;font-size:13px;color:rgba(255,255,255,.82)">
+            <div><span class="tag green" style="margin-right:8px">Supported</span>Backed by work you did</div>
+            <div><span class="tag blue" style="margin-right:8px">Explore</span>Backed by study or interest</div>
+            <div><span class="tag amber" style="margin-right:8px">Exposure</span>Context only</div>
+          </div>
+        </div>
+        <div class="notice ok" role="note">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg>
+          <span>With “this computer only” on, your document is not sent anywhere.</span>
+        </div>
+        <div class="notice" role="note">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v5h1"/></svg>
+          <span>Unfinished study counts as <b>exploration</b>, not as professional experience.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="spread" style="margin-top:28px">
+      <button class="btn btn-ghost" id="privacy">How we use your data</button>
+      <button class="btn btn-primary" id="next1">Continue to working style →</button>
+    </div>
+
+    <!-- step 2 (inline panel) -->
+    <div class="card" id="style" style="margin-top:28px;display:none">
+      <h2>Step 2 · Working style</h2>
+      <p class="sub" style="margin-bottom:26px">Pick the point on each line that sounds most like you. There are no right answers.</p>
+      <div class="grid g2" style="gap:6px 40px">
+        <div class="scale"><div class="scale-row"><span>Work alone</span><span>Work with others</span></div><div class="dots" data-v="3"></div></div>
+        <div class="scale"><div class="scale-row"><span>Steady routine</span><span>Changing tasks</span></div><div class="dots" data-v="2"></div></div>
+        <div class="scale"><div class="scale-row"><span>Ideas and concepts</span><span>Hands-on tasks</span></div><div class="dots" data-v="4"></div></div>
+        <div class="scale"><div class="scale-row"><span>Clear instructions</span><span>Open problems</span></div><div class="dots" data-v="4"></div></div>
+      </div>
+      <div style="text-align:right;margin-top:10px"><button class="btn btn-primary" data-go="results">See my areas →</button></div>
+    </div>
+  </section>
+
+  <!-- ===================== SCREEN 2: RESULTS ===================== -->
+  <section class="screen" id="s-results">
+    <div class="eyebrow">Step 3 · Your areas</div>
+    <h1>Directions to <em>explore</em>.</h1>
+    <p class="lead">These come from your CV and working style. Fewer than three, or none, is a valid result. We do not pad the list.</p>
+
+    <div class="grid g3" style="margin-bottom:8px">
+      <div class="stat"><div class="stat-num">2<i>/94</i></div><div class="stat-lbl">Supported by evidence</div></div>
+      <div class="stat"><div class="stat-num">2</div><div class="stat-lbl">Exploration pathways</div></div>
+      <div class="stat"><div class="stat-num">1</div><div class="stat-lbl">Industry exposure</div></div>
+    </div>
+
+    <div class="sec-head"><div><div class="eyebrow">Section 1</div><h2>Supported by your evidence</h2></div><span class="tag green">Work-backed</span></div>
+    <div class="grid">
+      <button class="area" data-go="detail">
+        <div class="rank">1</div>
+        <div><div class="area-title">Data and Analytics</div><div class="sub">Report checks and data entry at an internship, plus an individual data project.</div>
+          <div class="area-meta"><span class="tag green">Supported</span><span class="pill">Internship</span><span class="pill">Academic project</span></div></div>
+        <div class="chev">›</div>
+      </button>
+      <button class="area" data-go="detail">
+        <div class="rank">2</div>
+        <div><div class="area-title">Education and Training Support</div><div class="sub">Volunteer tutoring in secondary-school maths.</div>
+          <div class="area-meta"><span class="tag green">Supported</span><span class="pill">Volunteering</span></div></div>
+        <div class="chev">›</div>
+      </button>
+    </div>
+
+    <div class="sec-head"><div><div class="eyebrow">Section 2</div><h2>Exploration pathways</h2></div><span class="tag blue">Study or interest</span></div>
+    <div class="grid">
+      <button class="area" data-go="detail">
+        <div class="rank" style="background:var(--info-bg);color:var(--info-text)">A</div>
+        <div><div class="area-title">Software Engineering</div><div class="sub">Based on your degree in progress. Not yet shown in work you did.</div>
+          <div class="area-meta"><span class="tag blue">Explore</span><span class="pill">In-progress study</span></div></div>
+        <div class="chev">›</div>
+      </button>
+      <button class="area" data-go="detail">
+        <div class="rank" style="background:var(--info-bg);color:var(--info-text)">B</div>
+        <div><div class="area-title">Operations and Logistics Planning</div><div class="sub">Linked to your internship setting, not to tasks you did there.</div>
+          <div class="area-meta"><span class="tag blue">Explore</span><span class="pill">Interest</span></div></div>
+        <div class="chev">›</div>
+      </button>
+    </div>
+
+    <div class="sec-head"><div><div class="eyebrow">Section 3</div><h2>Industry exposure</h2></div><span class="tag amber">Context only</span></div>
+    <div class="notice warn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 3l10 18H2L12 3z"/><path d="M12 10v5M12 18h.01"/></svg><span><b>Transport and logistics</b> appears in your CV. That shows where you have been, not a career suggestion.</span></div>
+
+    <div class="sec-head"><div><div class="eyebrow">Your style</div><h2>How your working style meets each area</h2></div></div>
+    <div class="card sm">
+      <div class="bars">
+        <div><div class="prog-row"><span>Data and Analytics</span><b>Good match</b></div><div class="track-bar"><div class="fill green" style="width:78%"></div></div></div>
+        <div><div class="prog-row"><span>Education and Training Support</span><b>Partial match</b></div><div class="track-bar"><div class="fill blue" style="width:52%"></div></div></div>
+        <div><div class="prog-row"><span>Software Engineering</span><b>Good match</b></div><div class="track-bar"><div class="fill green" style="width:74%"></div></div></div>
+        <div><div class="prog-row"><span>Operations and Logistics Planning</span><b>Weak match</b></div><div class="track-bar"><div class="fill amber" style="width:31%"></div></div></div>
+      </div>
+      <p class="sub" style="margin-top:18px;font-size:12px">Style fit is a guide for reflection, not a score of ability.</p>
+    </div>
+
+    <div class="sec-head"><div><div class="eyebrow">Your list</div><h2>Shortlist</h2></div></div>
+    <div class="card sm" id="shortlist"><p class="sub" id="shortempty">Nothing saved yet. Open an area and choose “Save this area”.</p></div>
+  </section>
+
+  <!-- ===================== SCREEN 3: DETAIL ===================== -->
+  <section class="screen" id="s-detail">
+    <div class="crumbs"><a data-go="results">Results</a>›<b>Data and Analytics</b></div>
+    <div class="spread" style="margin-bottom:8px">
+      <h1 style="margin:0">Data and <em>Analytics</em></h1>
+      <span class="tag green">Supported</span>
+    </div>
+    <p class="lead" style="margin-top:12px">Why this area is suggested, and what it rests on.</p>
+
+    <div class="tabs" role="tablist">
+      <button class="tab active" data-tab="t1">Evidence</button>
+      <button class="tab" data-tab="t2">Working style</button>
+      <button class="tab" data-tab="t3">Next steps</button>
+    </div>
+
+    <div id="t1" class="tabpanel">
+      <div class="grid g2">
+        <div class="card">
+          <div class="eyebrow">From your CV</div>
+          <div class="quote">“Summer internship: data entry and report checks at a logistics firm.”</div>
+          <div class="row" style="margin-bottom:22px"><span class="tag green">Internship</span><span class="evlabel">Tasks actually performed</span></div>
+          <div class="quote">“Final-year individual project: built a recommender for a small library dataset.”</div>
+          <div class="row"><span class="tag purple">Academic project</span><span class="evlabel">Individual work</span></div>
+        </div>
+        <div class="card-dark">
+          <span class="tag" style="background:rgba(255,255,255,.12);color:#fff">Evidence strength</span>
+          <div style="font-size:44px;font-weight:900;letter-spacing:-.05em;margin:16px 0 4px">Moderate</div>
+          <p class="sub">Two sources, both early-career. Labelled so it is not read as professional practice.</p>
+        </div>
+      </div>
+
+      <div class="sec-head"><h2>What the checker changed</h2></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Step</th><th>Result</th><th>Reason</th></tr></thead>
+        <tbody>
+          <tr><td>Reading the CV<div class="td-sub">Evidence extracted</div></td><td><span class="tag green">Kept</span></td><td>Tasks clearly stated.</td></tr>
+          <tr><td>Software Engineering<div class="td-sub">First pass: supported</div></td><td><span class="tag blue">Moved</span></td><td>Study only, so moved to exploration.</td></tr>
+          <tr><td>Transport and logistics<div class="td-sub">First pass: suggested</div></td><td><span class="tag amber">Context</span></td><td>Setting, not tasks.</td></tr>
+        </tbody></table></div>
+    </div>
+
+    <div id="t2" class="tabpanel" style="display:none">
+      <div class="card"><div class="bars">
+        <div><div class="prog-row"><span>Work alone ↔ with others</span><b>Mid</b></div><div class="track-bar"><div class="fill" style="width:60%"></div></div></div>
+        <div><div class="prog-row"><span>Routine ↔ changing tasks</span><b>Lean routine</b></div><div class="track-bar"><div class="fill" style="width:40%"></div></div></div>
+        <div><div class="prog-row"><span>Open problems</span><b>High</b></div><div class="track-bar"><div class="fill green" style="width:80%"></div></div></div>
+      </div></div>
+    </div>
+
+    <div id="t3" class="tabpanel" style="display:none">
+      <div class="acc open"><button><span>Try a small task</span><span class="ar">⌄</span></button><div class="body"><div>Clean and chart a public dataset, then write three sentences on what it shows.</div></div></div>
+      <div class="acc"><button><span>Talk to someone in the field</span><span class="ar">⌄</span></button><div class="body"><div>Ask what a normal week looks like, and what they wish they had known at your stage.</div></div></div>
+      <div class="acc"><button><span>Check requirements</span><span class="ar">⌄</span></button><div class="body"><div>Some roles need licences or registration. Check the official source before you plan study.</div></div></div>
+    </div>
+
+    <div class="spread" style="margin-top:28px">
+      <button class="btn btn-ghost" data-go="results">← Back to results</button>
+      <button class="btn btn-primary" id="save">Save this area</button>
+    </div>
+  </section>
+
+  <p class="footer-note">Design mockup using the Calybrate component system. Example text is invented. Suggestions are for exploration, and are not a claim of accuracy.</p>
+</div>
+
+<div class="overlay" id="modal" role="dialog" aria-modal="true" aria-labelledby="mt">
+  <div class="modal">
+    <h3 id="mt">How we use your data</h3>
+    <p class="sub">Your CV is used only to read what you have done.</p>
+    <ul><li>Local check keeps your file on this computer.</li><li>Nothing is shared without your say-so.</li><li>You can delete your results at any time.</li></ul>
+    <div class="foot"><button class="btn btn-primary btn-sm" id="close">Got it</button></div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status"><div><b>Saved</b><span>Data and Analytics added to your shortlist.</span></div></div>
+
+<script>
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+function go(n){
+  $$('.screen').forEach(s=>s.classList.toggle('active',s.id==='s-'+n));
+  $$('.nav-link').forEach(b=>b.classList.toggle('active',b.dataset.go===n));
+  if(n==='results')steps(3);else if(n==='start')steps($('#style').style.display==='block'?2:1);
+  scrollTo({top:0,behavior:'smooth'});
+}
+document.addEventListener('click',e=>{const t=e.target.closest('[data-go]');if(t)go(t.dataset.go)});
+$('#theme').onclick=()=>{const d=document.documentElement,dark=d.dataset.theme==='dark';d.dataset.theme=dark?'light':'dark';$('#theme').textContent=dark?'☾':'☀'};
+function steps(n){[1,2,3].forEach(i=>{const e=$('#st'+i);e.className='step'+(i<n?' done':i==n?' on':'');e.firstChild.textContent=i<n?'✓':i})}
+$('#next1').onclick=()=>{steps(2);const s=$('#style');s.style.display='block';s.scrollIntoView({behavior:'smooth',block:'start'})};
+// working-style dots
+$$('.dots').forEach(d=>{for(let i=1;i<=5;i++){const b=document.createElement('button');b.className='dot'+(i==d.dataset.v?' on':'');b.setAttribute('aria-label','Point '+i);b.onclick=()=>$$('.dot',d).forEach((x,j)=>x.classList.toggle('on',j==i-1));d.appendChild(b)}});
+// tabs
+$$('.tab').forEach(t=>t.onclick=()=>{$$('.tab').forEach(x=>x.classList.toggle('active',x===t));$$('.tabpanel').forEach(p=>p.style.display=p.id===t.dataset.tab?'block':'none')});
+// accordion
+$$('.acc button').forEach(b=>b.onclick=()=>b.parentElement.classList.toggle('open'));
+// modal + toast
+$('#privacy').onclick=()=>$('#modal').classList.add('open');
+$('#close').onclick=()=>$('#modal').classList.remove('open');
+$('#modal').onclick=e=>{if(e.target.id==='modal')e.currentTarget.classList.remove('open')};
+const saved=new Set();
+$('#save').onclick=()=>{if(!saved.has('Data and Analytics')){saved.add('Data and Analytics');$('#shortempty').remove();$('#shortlist').insertAdjacentHTML('beforeend','<div class="spread"><div class="row"><span class="rank">1</span><b>Data and Analytics</b></div><span class="tag green">Supported</span></div>')}
+  const t=$('#toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600)};
+</script>
+</body>
+</html>

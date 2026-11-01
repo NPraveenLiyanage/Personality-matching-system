@@ -11,7 +11,8 @@ import streamlit as st
 st.set_page_config(page_title="Career Exploration", page_icon="🧭", layout="wide")
 
 pages = [
-    st.Page("pages/pilot.py", title="Evidence-first pilot", icon="🔬", default=True),
+    st.Page("pages/two_step.py", title="Two-step: CV + PersonaMap", icon="🧩", default=True),
+    st.Page("pages/pilot.py", title="Evidence-first pilot", icon="🔬"),
     st.Page("pages/evidence_bench.py", title="Evidence test bench", icon="🧭"),
     st.Page("pages/overview.py", title="Overview report", icon="📊"),
     st.Page("pages/bench.py", title="Test bench", icon="🧪"),
